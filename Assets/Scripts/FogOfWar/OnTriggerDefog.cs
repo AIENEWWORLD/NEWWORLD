@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(FogOfWarUnit))]
 public class OnTriggerDefog : MonoBehaviour
 {
     //Component requires FogOfWarUnit
@@ -18,8 +19,5 @@ public class OnTriggerDefog : MonoBehaviour
             gameObject.GetComponent<FogOfWarUnit>().enabled = true;
             hasBeenTrigger = true;
         }
- 
     }
-
-
 }
