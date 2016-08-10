@@ -3,6 +3,10 @@ using System.Collections;
 
 public class ControlScript : MonoBehaviour
 {
+    //Breadcrumb solution for fog loss upon death, potential placeHolder->Breadcrumbs will need to be dropped after playerMoves x,y-+ > 0.5;
+    //Fog of War unit will need to be removed from player component
+    //Vista will need a collider the size of the radius / .65 to prevent overlap
+    
 	Vector3 velocity;
 	Vector3 mouseWorldPos;
 	public float movementSpeed;
@@ -15,32 +19,56 @@ public class ControlScript : MonoBehaviour
 	public float meleeAttackDuration;
     public float reloadDuration;
     public float AttackForce;
+    public GameObject characterModel;
+    public BoxCollider meleeHitbox;
+    public GameObject bulletPrefab;
+    public GameObject defogBreadCrumbPrefab;
 
+    //Placeholder for Percentage Fog Tracking
+    public GameObject[] VistaObjects;
+    [HideInInspector]
+    public float visionRadius;
     [HideInInspector]
     public bool FacingDirection = false;
 
 	float meleeTimer;
 	float reloadTimer;
 	float distanceFromCamera;
-
-	public GameObject characterModel;
-	public BoxCollider meleeHitbox;
-	public GameObject bulletPrefab;
-
+    //Set in Start
+    float percentageMapDiscovered;
 	Plane m_plane;
-	Ray m_ray;
+    Ray m_ray;
 
-	// Use this for initialization
-	void Start ()
+    void checkDiscoveredPercentage()
+    {
+        //Using InvokeRepeating method to update only update percentage every x second rather than each update cycle
+        int vistaNumber = VistaObjects.Length;
+        int discoveredVistas = 0;
+        for (int itr = 0; itr < vistaNumber; itr++)
+        {
+            GameObject visRef = VistaObjects[itr];
+            if (visRef.GetComponent<OnTriggerDefog>().hasBeenTriggered == true)
+            {
+                discoveredVistas++;
+            }
+
+            if(discoveredVistas != 0 && VistaObjects.Length != 0)
+            {
+                percentageMapDiscovered = (discoveredVistas / vistaNumber) * 100.0f;
+            }
+        }
+    }
+    // Use this for initialization
+    void Start ()
     {
 		currentAmmo = maxAmmo;
 		playerHealth = maxHealth;
 		m_plane = new Plane (Vector3.up, 0);
 		meleeHitbox = GetComponentInChildren<BoxCollider> ();
 		meleeHitbox.enabled = false;
-
+        percentageMapDiscovered = 0.0f;
     }
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -58,10 +86,8 @@ public class ControlScript : MonoBehaviour
 		velocity.x = Input.GetAxis ("Horizontal");
 		velocity.z = Input.GetAxis ("Vertical");
 
-
         Vector3.Normalize(velocity);
         //quickfix
-
 
         velocity.y = 0;
         if(velocity.x < 0)
@@ -100,6 +126,8 @@ public class ControlScript : MonoBehaviour
                 }
             
             }
+
+            visionRadius = gameObject.GetComponent<FogOfWarUnit>().radius;
         }
 
 		//attacking
@@ -121,7 +149,6 @@ public class ControlScript : MonoBehaviour
 				reloadTimer = reloadDuration;
 			}
 		}
-
 		if (meleeTimer <= 0)
 		{
 			meleeTimer = 0;
