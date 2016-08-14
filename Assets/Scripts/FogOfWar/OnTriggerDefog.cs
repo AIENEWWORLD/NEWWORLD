@@ -5,7 +5,8 @@ using System.Collections;
 public class OnTriggerDefog : MonoBehaviour
 {
     //Component requires FogOfWarUnit
-    private bool hasBeenTrigger = false;
+    [HideInInspector]
+    public bool hasBeenTriggered = false;
 
     void Start()
     {
@@ -14,10 +15,10 @@ public class OnTriggerDefog : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == ("Player") && hasBeenTrigger == false)
+        if (col.gameObject.tag == ("Player") && hasBeenTriggered == false)
         {
             gameObject.GetComponent<FogOfWarUnit>().enabled = true;
-            hasBeenTrigger = true;
+            hasBeenTriggered = true;
         }
     }
 }
