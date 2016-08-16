@@ -3,14 +3,11 @@ using System.Collections;
 
 public class ControlScript : MonoBehaviour
 {
-    //Breadcrumb solution for fog loss upon death, potential placeHolder->Breadcrumbs will need to be dropped after playerMoves x,y-+ > 0.5;
-    //Fog of War unit will need to be removed from player component
-    //Vista will need a collider the size of the radius / .65 to prevent overlap
-    
 	Vector3 velocity;
 	Vector3 mouseWorldPos;
-	public float movementSpeed;
-	public float endurance;
+    public float movementSpeed;
+    public float supplyDeincrement;
+	public float supplyAmount;
     public float maxSupply;
 	public float playerHealth;
 	public float maxHealth;
@@ -22,7 +19,8 @@ public class ControlScript : MonoBehaviour
     public GameObject characterModel;
     public BoxCollider meleeHitbox;
     public GameObject bulletPrefab;
-    public GameObject defogBreadCrumbPrefab;
+
+   // public GameObject defogBreadCrumbPrefab;
 
     //Placeholder for Percentage Fog Tracking
     public GameObject[] VistaObjects;
@@ -38,6 +36,9 @@ public class ControlScript : MonoBehaviour
     float percentageMapDiscovered;
 	Plane m_plane;
     Ray m_ray;
+
+    float l_Time = 0.0f;
+    Vector3 currentPosition = new Vector3();
 
     void checkDiscoveredPercentage()
     {
@@ -61,19 +62,24 @@ public class ControlScript : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-		currentAmmo = maxAmmo;
+        supplyAmount = maxSupply;
+        currentAmmo = maxAmmo;
 		playerHealth = maxHealth;
 		m_plane = new Plane (Vector3.up, 0);
 		meleeHitbox = GetComponentInChildren<BoxCollider> ();
 		meleeHitbox.enabled = false;
         percentageMapDiscovered = 0.0f;
+        currentPosition = transform.position;
     }
 
 	// Update is called once per frame
 	void Update ()
 	{
-		//make sure the player is always looking at the mouse
-		m_ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+      
+
+
+        //make sure the player is always looking at the mouse
+        m_ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		if (m_plane.Raycast (m_ray, out distanceFromCamera)) 
 		{
 			mouseWorldPos = m_ray.GetPoint (distanceFromCamera);
@@ -102,17 +108,18 @@ public class ControlScript : MonoBehaviour
         //Placeholder for shh
         if (velocity.x != 0 || velocity.z != 0 )
         {
-            if (endurance < 0)
+            if (supplyAmount < 0)
             {
-                endurance = 0;
+                supplyAmount = 0;
             }
             else
             {
-                endurance -= Time.deltaTime;
+                supplyAmount -= (Time.deltaTime * supplyDeincrement);
             }
 
+          
         }
-        if (endurance < 0.5)
+        if (supplyAmount < 0.5)
         {
             if (velocity.x != 0 || velocity.z != 0 && playerHealth > 0)
             {
@@ -127,7 +134,7 @@ public class ControlScript : MonoBehaviour
             
             }
 
-            visionRadius = gameObject.GetComponent<FogOfWarUnit>().radius;
+           // visionRadius = gameObject.GetComponent<FogOfWarUnit>().radius;
         }
 
 		//attacking

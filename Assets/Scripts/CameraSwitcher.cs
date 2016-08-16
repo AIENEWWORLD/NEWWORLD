@@ -10,7 +10,16 @@ public class CameraSwitcher : MonoBehaviour
     public bool MainCameraActive = true;
     private float m_lTime = 0;
 
+    private Camera m_MapCameraStart = new Camera();
+    private Camera m_MainCameraStart = new Camera();
 
+    private Rect FullRect = new Rect(0, 0, 1, 1);
+    private Rect MiniMapRect;
+    void Start()
+    {
+      
+        MiniMapRect = new Rect(MapCamera.rect);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -20,14 +29,13 @@ public class CameraSwitcher : MonoBehaviour
         {
             if (MainCameraActive == true)
             {
-                MainCamera.enabled = false;
-                MapCamera.enabled = true;
+                MapCamera.rect = FullRect;
+
                 MainCameraActive = false;
             }
             else
             {
-                MainCamera.enabled = true;
-                MapCamera.enabled = false;
+                MapCamera.rect = MiniMapRect;
                 MainCameraActive = true;
             }
             m_lTime = 0.0f;

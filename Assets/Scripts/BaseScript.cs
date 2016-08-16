@@ -18,7 +18,7 @@ public class BaseScript : MonoBehaviour {
 		if (collision.gameObject.tag == "Player")
 		{
 			ControlScript thisPlayer = collision.gameObject.GetComponentInParent<ControlScript> ();
-			thisPlayer.endurance = thisPlayer.maxSupply;
+			thisPlayer.supplyAmount = thisPlayer.maxSupply;
 			thisPlayer.currentAmmo = thisPlayer.maxAmmo;
 			thisPlayer.playerHealth = thisPlayer.maxHealth;
 		}
