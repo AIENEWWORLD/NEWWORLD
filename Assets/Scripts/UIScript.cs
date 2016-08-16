@@ -18,7 +18,7 @@ public class UIScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		exhaustion.text = "Supply: " + (int)m_player.endurance;
+		exhaustion.text = "Supply: " + (int)m_player.supplyAmount;
 		ammo.text = "Ammo: " + (int)m_player.currentAmmo;
 		health.text = "Health: " + (int)m_player.playerHealth;
 
