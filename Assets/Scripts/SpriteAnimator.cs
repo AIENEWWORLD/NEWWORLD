@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class SpriteAnimator : MonoBehaviour
 {
-    public Material[] AnimatedFrames;
+    public Sprite[] AnimatedFrames;
     Renderer thisObject;
     public float FrameInterval;
     private int NumberOfFrames;
     private int CurrentFrameIndex;
-    private Material thisMaterial;
+    private Sprite thisMaterial;
 
     private float t_Time;
 
@@ -39,7 +40,7 @@ public class SpriteAnimator : MonoBehaviour
                 CurrentFrameIndex += 1;
 
             }
-            thisObject.material = AnimatedFrames[CurrentFrameIndex];
+            thisObject.GetComponent<SpriteRenderer>().sprite = AnimatedFrames[CurrentFrameIndex];
             t_Time = 0.0f;
         }
     }
