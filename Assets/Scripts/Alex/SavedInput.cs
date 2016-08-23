@@ -40,7 +40,7 @@ public class SavedInput : MonoBehaviour
     {
 	    if(Input.GetKeyDown(keycodes["forward"]))
         {
-            Debug.Log("forward");
+            //Debug.Log("forward");
         }
 	}
     void Awake()
