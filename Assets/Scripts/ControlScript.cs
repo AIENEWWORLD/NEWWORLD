@@ -20,8 +20,6 @@ public class ControlScript : MonoBehaviour
     public BoxCollider meleeHitbox;
     public GameObject bulletPrefab;
 
-   // public GameObject defogBreadCrumbPrefab;
-
     //Placeholder for Percentage Fog Tracking
     public GameObject[] VistaObjects;
     [HideInInspector]
