@@ -43,12 +43,13 @@ public class FightCanvas : MonoBehaviour
 
     public bool swapplayerweapons = false;
     public int newAttackCoins = 0;
-    public int newDefenceCoins = 0;
+    public int xn = 0;
 
     void Start ()
     {
         button = false;
         setupBattle();
+        xn = player.attack_coins;
 	}
 	void Update ()
     {
@@ -202,9 +203,22 @@ public class FightCanvas : MonoBehaviour
     }
     void swapWeapons()
     {
-        for (int i = 0; i < 5; i++)
+        if (swapplayerweapons)
         {
-            if (i < newAttackCoins)
+            player.attack_coins = xn;
+            setAttackCoins(player.attack_coins);
+        }
+        else if(!swapplayerweapons)
+        {
+            setAttackCoins(player.attack_coins + newAttackCoins);
+        }
+        
+    }
+    void setAttackCoins(int x)//attack coins
+    {
+        for (int i = 0; i < P_Coins.Count; i++)
+        {
+            if (i < x)
             {
                 P_Coins[i].attackCoin.gameObject.SetActive(true);
             }
@@ -213,20 +227,8 @@ public class FightCanvas : MonoBehaviour
                 P_Coins[i].attackCoin.gameObject.SetActive(false);
             }
         }
-
-        for (int i = 0; i < 5; i++)
-        {
-            if (i < newDefenceCoins)
-            {
-                P_Coins[i].defendCoin.gameObject.SetActive(true);
-            }
-            else
-            {
-                P_Coins[i].defendCoin.gameObject.SetActive(false);
-            }
-        }
-        player.attack_coins = newAttackCoins;
-        player.defence_coins = newDefenceCoins;
+        xn = player.attack_coins;
+        player.attack_coins = x;
     }
 
 
@@ -263,6 +265,7 @@ public class FightCanvas : MonoBehaviour
     }
     public void swapWeaponsClicked()
     {
+        swapplayerweapons = !swapplayerweapons;
         swapWeapons();
     }
 }
