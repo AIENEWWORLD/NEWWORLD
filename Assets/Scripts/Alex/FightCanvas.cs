@@ -41,6 +41,10 @@ public class FightCanvas : MonoBehaviour
     public bool runFlip = false;
     public bool playerAttacking = true;
 
+    public bool swapplayerweapons = false;
+    public int newAttackCoins = 0;
+    public int newDefenceCoins = 0;
+
     void Start ()
     {
         button = false;
@@ -48,6 +52,8 @@ public class FightCanvas : MonoBehaviour
 	}
 	void Update ()
     {
+
+
         updateUI();
 
         if(playerAttacking == true && runFlip)
@@ -194,6 +200,34 @@ public class FightCanvas : MonoBehaviour
 
         }
     }
+    void swapWeapons()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < newAttackCoins)
+            {
+                P_Coins[i].attackCoin.gameObject.SetActive(true);
+            }
+            else
+            {
+                P_Coins[i].attackCoin.gameObject.SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            if (i < newDefenceCoins)
+            {
+                P_Coins[i].defendCoin.gameObject.SetActive(true);
+            }
+            else
+            {
+                P_Coins[i].defendCoin.gameObject.SetActive(false);
+            }
+        }
+        player.attack_coins = newAttackCoins;
+        player.defence_coins = newDefenceCoins;
+    }
 
 
 
@@ -226,5 +260,9 @@ public class FightCanvas : MonoBehaviour
     {
         //have a check so it's not so spammable?
         runFlip = !runFlip;
+    }
+    public void swapWeaponsClicked()
+    {
+        swapWeapons();
     }
 }

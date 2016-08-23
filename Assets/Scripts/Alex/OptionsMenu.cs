@@ -278,6 +278,7 @@ public class OptionsMenu : MonoBehaviour
         QualitySettings.vSyncCount = vsync;
 
         setKeyCodes();
+        applycontrols();
     }
     void OnGUI()
     {
@@ -367,5 +368,27 @@ public class OptionsMenu : MonoBehaviour
                 controls[i].BindingButton.transform.GetComponentInChildren<Text>().text = "Right mouse";
             }
         }
+    }
+    void applycontrols()
+    {
+        GameObject InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
+
+        if(InputGameobject != null)
+        {
+            InputGameobject.GetComponent<SavedInput>().keycodes.Clear();
+
+            for (int i = 0; i < controls.Count; i++)
+            {
+                InputGameobject.GetComponent<SavedInput>().keycodes.Add(controls[i].keyname, controls[i].keycode);
+                //Debug.Log("adding " + controls[i].keyname + " " + controls[i].keycode);
+                InputGameobject.GetComponent<SavedInput>().controls[i].keyname = controls[i].keyname;
+                InputGameobject.GetComponent<SavedInput>().controls[i].keycode = controls[i].keycode;
+            }
+
+            //InputGameobject.GetComponent<SavedInput>().keycodes = key;
+            InputGameobject.GetComponent<SavedInput>().soundEffectValue = soundEffectSlider.value;
+            InputGameobject.GetComponent<SavedInput>().SoundValue = SoundSelectedSlider.value;
+        }
+        
     }
 }
