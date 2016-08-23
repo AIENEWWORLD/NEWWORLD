@@ -13,8 +13,6 @@ public class SpriteAnimator : MonoBehaviour
 
     private float t_Time;
 
-
-    // Use this for initialization
     void Start()
     {
 
@@ -22,7 +20,6 @@ public class SpriteAnimator : MonoBehaviour
         thisObject = gameObject.GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         t_Time += Time.deltaTime;
