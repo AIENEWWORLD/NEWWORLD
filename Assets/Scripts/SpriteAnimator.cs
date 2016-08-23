@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class SpriteAnimator : MonoBehaviour
 {
-    public Material[] AnimatedFrames;
+    public Sprite[] AnimatedFrames;
     Renderer thisObject;
     public float FrameInterval;
     private int NumberOfFrames;
     private int CurrentFrameIndex;
-    private Material thisMaterial;
+    private Sprite thisMaterial;
 
     private float t_Time;
 
-
-    // Use this for initialization
     void Start()
     {
 
@@ -21,7 +20,6 @@ public class SpriteAnimator : MonoBehaviour
         thisObject = gameObject.GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         t_Time += Time.deltaTime;
@@ -39,7 +37,7 @@ public class SpriteAnimator : MonoBehaviour
                 CurrentFrameIndex += 1;
 
             }
-            thisObject.material = AnimatedFrames[CurrentFrameIndex];
+            thisObject.GetComponent<SpriteRenderer>().sprite = AnimatedFrames[CurrentFrameIndex];
             t_Time = 0.0f;
         }
     }
