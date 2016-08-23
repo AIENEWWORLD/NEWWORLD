@@ -9,7 +9,6 @@ public class CameraSwitcher : MonoBehaviour
     [HideInInspector]
     public bool MainCameraActive = true;
     private float m_lTime = 0;
-
     private Camera m_MapCameraStart = new Camera();
     private Camera m_MainCameraStart = new Camera();
 
@@ -17,10 +16,8 @@ public class CameraSwitcher : MonoBehaviour
     private Rect MiniMapRect;
     void Start()
     {
-      
         MiniMapRect = new Rect(MapCamera.rect);
     }
-    // Update is called once per frame
     void Update()
     {
         m_lTime += Time.deltaTime;
@@ -40,6 +37,5 @@ public class CameraSwitcher : MonoBehaviour
             }
             m_lTime = 0.0f;
         }
-
     }
 }
