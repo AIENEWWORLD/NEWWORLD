@@ -73,9 +73,6 @@ public class ControlScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-      
-
-
         //make sure the player is always looking at the mouse
         m_ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		if (m_plane.Raycast (m_ray, out distanceFromCamera)) 
