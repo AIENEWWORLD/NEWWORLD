@@ -136,7 +136,7 @@ public class ControlScript : MonoBehaviour
 		meleeTimer -= Time.deltaTime;
 		if (Input.GetKeyDown (KeyCode.Mouse0)) 
 		{
-			Debug.Log ("melee");
+			//Debug.Log ("melee");
 			meleeHitbox.enabled = true;
 			meleeTimer = meleeAttackDuration;
 		}

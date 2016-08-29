@@ -25,6 +25,12 @@ public class SavedInput : MonoBehaviour
 
     public static SavedInput instance;
 
+    //testing horizontal, vertical.
+    public float horizontal = 0;
+    public float vertical = 0;
+
+    public float smooth;
+
     // Use this for initialization
     void Start ()
     {
@@ -38,11 +44,64 @@ public class SavedInput : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    if(Input.GetKeyDown(keycodes["forward"]))
+        if (Input.GetKey(keycodes["left"]))
         {
-            //Debug.Log("forward");
+            //horizontal = -1;
+            if (horizontal > -1)
+            {
+                horizontal -= smooth * Time.deltaTime;
+            }
+            else
+                horizontal = -1;
         }
-	}
+        else if (Input.GetKey(keycodes["right"]))
+        {
+            //horizontal = 1;
+            if (horizontal < 1)
+            {
+                horizontal += smooth * Time.deltaTime;
+            }
+            else
+                horizontal = 1;
+        }
+        else
+        {
+            horizontal = 0;
+        }
+
+        if (Input.GetKey(keycodes["forward"]))
+        {
+            //vertical = 1;
+            if (vertical < 1)
+            {
+                vertical += smooth * Time.deltaTime;
+            }
+            else
+                vertical = 1;
+        }
+        else if (Input.GetKey(keycodes["down"]))
+        {
+            //vertical = -1;
+            if (vertical > -1)
+            {
+                vertical -= smooth * Time.deltaTime;
+            }
+            else
+                vertical = -1;
+        }
+        else
+        {
+            vertical = 0;
+        }
+
+
+        /*
+        GameObject InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
+        
+        velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
+		velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
+         */
+    }
     void Awake()
     {
         if (instance == null)
