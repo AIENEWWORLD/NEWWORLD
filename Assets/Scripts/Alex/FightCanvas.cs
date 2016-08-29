@@ -258,14 +258,4 @@ public class FightCanvas : MonoBehaviour
     {
         button = false;
     }
-    public void flipClicked()
-    {
-        //have a check so it's not so spammable?
-        runFlip = !runFlip;
-    }
-    public void swapWeaponsClicked()
-    {
-        swapplayerweapons = !swapplayerweapons;
-        swapWeapons();
-    }
 }
