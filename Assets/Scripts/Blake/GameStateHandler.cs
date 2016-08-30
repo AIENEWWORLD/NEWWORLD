@@ -1,36 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class GameStateHandler : MonoBehaviour
+public class PlayerHandler : MonoBehaviour
 {
-    //Basic class to colate any relevant information that will needed to be saved or loaded.
-    [HideInInspector]
-    public float PlayerHealth = new float();
-    [HideInInspector]
-    public float PlayerSupply = new float();
-    [HideInInspector]
-    public Vector3 PlayerLocation = new Vector3();
-    [HideInInspector]
-    public Quaternion PlayerRotation = new Quaternion();
+    public float PlayerStartHealth;
+    public float PlayerStartAPS;
+    public float PlayerStartMoveSpeed;
 
-    //Things needing to be added: CurrentCoins, DiscoveredVistas, FogMap, Upgrades, etc..
-    public void GetGameData()
-    {
-        GameObject h_PlayerRef = GameObject.FindGameObjectWithTag("Player");
-        PlayerHealth = h_PlayerRef.GetComponent<ControlScript>().playerHealth;
-        PlayerSupply = h_PlayerRef.GetComponent<ControlScript>().supplyAmount;
-        PlayerLocation = h_PlayerRef.transform.position;
-        PlayerRotation = h_PlayerRef.transform.rotation;
-    }
+    [HideInInspector]
+    public float PlayerHealth;
+    [HideInInspector]
+    public float PlayerAPS;
+    [HideInInspector]
+    public float PlayerMoveSpeed;
+    [HideInInspector]
+    public float PercentageMapExplored;
 
-    public void SetGameData()
+    void Start ()
     {
-        GameObject h_PlayerRef = GameObject.FindGameObjectWithTag("Player");
-        h_PlayerRef.GetComponent<ControlScript>().playerHealth = PlayerHealth;
-        h_PlayerRef.GetComponent<ControlScript>().supplyAmount = PlayerSupply;
-        h_PlayerRef.transform.position = PlayerLocation;
-        h_PlayerRef.transform.rotation = PlayerRotation;
+        PlayerHealth = PlayerStartHealth;
+        PlayerAPS = PlayerStartAPS;
+        PlayerMoveSpeed = PlayerStartMoveSpeed;
+        PercentageMapExplored = 0.0f;
     }
+	
 
 }

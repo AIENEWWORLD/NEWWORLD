@@ -3,7 +3,6 @@ using System.Collections;
 
 public class TextureCycler : MonoBehaviour
 {
-
     public Material[] AnimatedFrames;
     Renderer thisObject;
     public float FrameInterval;
@@ -12,7 +11,9 @@ public class TextureCycler : MonoBehaviour
     private Material thisMaterial;
 
     private float t_Time;
- 
+   
+
+	// Use this for initialization
 	void Start ()
     {
        
@@ -20,6 +21,7 @@ public class TextureCycler : MonoBehaviour
         thisObject = gameObject.GetComponent<Renderer>();
     }
 
+    // Update is called once per frame
     void Update()
     {
         t_Time += Time.deltaTime;

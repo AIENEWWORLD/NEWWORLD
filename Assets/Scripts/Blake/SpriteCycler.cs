@@ -8,7 +8,7 @@ public class SpriteCycler : MonoBehaviour
     public Material RightSprite;
 
     Renderer ThisSprite;
-      public GameObject PlayerObject;
+    public GameObject PlayerObject;
     bool FacingDir;
     // Use this for initialization
     void Start()
@@ -25,7 +25,9 @@ public class SpriteCycler : MonoBehaviour
 
         if (PlayerObject.GetComponent<ControlScript>().FacingDirection == true)
         {
+            print("left");
             ThisSprite.material = LeftSprite;
+          
         }
         else if (PlayerObject.GetComponent<ControlScript>().FacingDirection == false)
         {

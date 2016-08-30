@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour {
 	public Transform playerPos;
     [HideInInspector]
 	public Vector3 knockbackPos;
+    public Camera FightCamera;
 
 	public float knockBackDistance;
 
@@ -53,8 +54,9 @@ public class EnemyScript : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-			ControlScript thisPlayer = collision.gameObject.GetComponentInParent<ControlScript> ();
-			thisPlayer.playerHealth -= damage;
+            FightCamera.enabled = true;
+            Destroy(this.gameObject);
+            
 		}
 	}
 }
