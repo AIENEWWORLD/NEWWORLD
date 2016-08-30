@@ -133,6 +133,7 @@ public class ControlScript : MonoBehaviour
         }
 
 		//attacking
+
 		meleeTimer -= Time.deltaTime;
 		if (Input.GetKeyDown (KeyCode.Mouse0)) 
 		{
@@ -160,21 +161,24 @@ public class ControlScript : MonoBehaviour
 
 	void OnTriggerEnter(Collider collision)
 	{
-		if (collision.gameObject.tag == "enemy")
-		{
-			EnemyScript thisEnemy = collision.gameObject.GetComponentInParent<EnemyScript> ();
-			if (meleeHitbox.enabled == true) 
-			{
-				thisEnemy.enemyHealth -= 1;
-				thisEnemy.m_rigidBody.AddForce ((thisEnemy.transform.position - transform.position).normalized * Time.deltaTime * AttackForce);
-				thisEnemy.isKnockedBack = true;
-				thisEnemy.knockbackPos = transform.position;
-			}
+        if (collision.gameObject.tag == "enemy")
+        {
+            //EnemyScript thisEnemy = collision.gameObject.GetComponentInParent<EnemyScript> ();
+            //if (meleeHitbox.enabled == true) 
+            //{
+            //	thisEnemy.enemyHealth -= 1;
+            //	thisEnemy.m_rigidBody.AddForce ((thisEnemy.transform.position - transform.position).normalized * Time.deltaTime * AttackForce);
+            //	thisEnemy.isKnockedBack = true;
+            //	thisEnemy.knockbackPos = transform.position;
+            //}
 
-			if (thisEnemy.enemyHealth <= 0)
-			{
-				Destroy (thisEnemy.gameObject);
-			}
-		}
+            //if (thisEnemy.enemyHealth <= 0)
+            //{
+            //	Destroy (thisEnemy.gameObject);
+            //}
+
+            //Begin Combat script.
+
+        }
 	}
 }

@@ -29,7 +29,6 @@ public class EnemySpawner : MonoBehaviour
             ph_Parent.transform.position += RandomOffset;
             Instantiate(ToBeSpawned, ph_Parent);
             
-            //More organic feel to Spawn timer.
             SpawnTimeLimit = Random.Range(SpawnTimeLimit / 2, SpawnTimeLimit * 2);
             t_Time = 0.0f;
         }
