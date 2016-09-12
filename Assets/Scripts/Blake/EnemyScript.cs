@@ -54,8 +54,8 @@ public class EnemyScript : MonoBehaviour {
 	{
 		if (collision.gameObject.tag == "Player") 
 		{
-            FightCamera.enabled = true;
-            Destroy(this.gameObject);
+            //FightCamera.enabled = true;
+            //Destroy(this.gameObject);
             
 		}
 	}

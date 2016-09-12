@@ -1,0 +1,99 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+
+public class CreateInventory : MonoBehaviour
+{
+    public List<GameObject> itemList = new List<GameObject>();
+    public List<CoinStats> coinList = new List<CoinStats>();
+    public GameObject Items;
+    int _x = -260; int _y = 180;
+
+    AddItem addI;
+
+
+    // Use this for initialization
+    void Start ()
+    {
+
+        addI = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AddItem>();
+
+        reAddItems();
+
+
+    }
+
+    public void addItem(int id)
+    {
+        for (int i = 0; i < addI.coins.Count; i++)
+        {
+            if (addI.coins[i].itemID == id)
+            {
+                CoinStats item = addI.coins[i];
+
+                for (int x = 0; x < coinList.Count; i++)
+                {
+                    if (coinList[i].itemName == null)
+                    {
+                        coinList[i] = item;
+                        break;
+                    }
+                }
+
+                break;
+            }
+        }
+    }
+
+    public void reAddItems()
+    {
+        coinList.Clear();
+        itemList.Clear();
+        int num = 0;
+
+        for (int x = 0; x < 5; x++)
+        {
+            for (int y = 0; y < 10; y++)
+            {
+                Items.GetComponent<coinScript>().itemNumber = num;
+                GameObject item = Instantiate(Items);
+                itemList.Add(item);
+                coinList.Add(new CoinStats());
+                item.transform.SetParent(gameObject.transform);
+                item.transform.localScale = new Vector3(1, 1, 1);
+                item.transform.localPosition = new Vector3(_x, _y, 0);
+                _x += 60;
+                if (y == 9)
+                {
+                    _x = -260;
+                    _y -= 60;
+                }
+                num++;
+            }
+        }
+
+        for (int i = 0; i < addI.coins.Count; i++)
+        {
+            addItem(addI.coins[i].itemID);
+            coinList[i] = addI.coins[i];
+            itemList[i].GetComponent<coinScript>().coin = addI.coins[i];
+
+        }
+    }
+
+    public void fullReset(int x, int y)
+    {
+        for(int i = 0; i > itemList.Count; i++)
+        {
+            Destroy(itemList[i]);
+        }
+        _x = x;
+        _y = y;
+    }
+	
+	// Update is called once per frame
+	void Update ()
+    {
+	}
+}

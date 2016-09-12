@@ -28,7 +28,7 @@ public class CameraSwitcher : MonoBehaviour
         m_lTime += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            FightCamera.enabled = false;
+            //FightCamera.enabled = false;
         }
 
 

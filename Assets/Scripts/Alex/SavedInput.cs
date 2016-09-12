@@ -29,7 +29,6 @@ public class SavedInput : MonoBehaviour
     public float horizontal = 0;
     public float vertical = 0;
 
-    public float smooth;
 
     // Use this for initialization
     void Start ()
@@ -46,23 +45,13 @@ public class SavedInput : MonoBehaviour
     {
         if (Input.GetKey(keycodes["left"]))
         {
-            //horizontal = -1;
-            if (horizontal > -1)
-            {
-                horizontal -= smooth * Time.deltaTime;
-            }
-            else
-                horizontal = -1;
+            horizontal = -1;
+
         }
         else if (Input.GetKey(keycodes["right"]))
         {
-            //horizontal = 1;
-            if (horizontal < 1)
-            {
-                horizontal += smooth * Time.deltaTime;
-            }
-            else
-                horizontal = 1;
+            horizontal = 1;
+
         }
         else
         {
@@ -71,23 +60,11 @@ public class SavedInput : MonoBehaviour
 
         if (Input.GetKey(keycodes["forward"]))
         {
-            //vertical = 1;
-            if (vertical < 1)
-            {
-                vertical += smooth * Time.deltaTime;
-            }
-            else
-                vertical = 1;
+            vertical = 1;
         }
         else if (Input.GetKey(keycodes["down"]))
         {
-            //vertical = -1;
-            if (vertical > -1)
-            {
-                vertical -= smooth * Time.deltaTime;
-            }
-            else
-                vertical = -1;
+            vertical = -1;
         }
         else
         {

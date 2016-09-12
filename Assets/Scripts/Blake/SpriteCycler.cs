@@ -25,7 +25,7 @@ public class SpriteCycler : MonoBehaviour
 
         if (PlayerObject.GetComponent<ControlScript>().FacingDirection == true)
         {
-            print("left");
+            //print("left");
             ThisSprite.material = LeftSprite;
           
         }

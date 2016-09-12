@@ -1,0 +1,319 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+
+public class SetupFight : MonoBehaviour
+{
+    /*TO DO:
+     * combat ends in the enemydropcoins script, referencing the buttonspressed script
+     * autoresolve
+     * for healing take away supplies from the player at the end of combat using a rate
+     * on death lock it so that the attack button cant be clicked again.
+     * make sure when you attack you have selected coins. this can be done by checking the size of the player list
+     * reward. this can be done by adding gold in the stats script, gold on player can be the total player gold and enemy gold can be how much you recieve from a fight
+     * flee rate destroy items on flee or exit combat just to be safe
+     * clean up script
+     */
+    public GameObject Inventory;
+    public GameObject FightScreen;
+    public bool inventoryisActive = true;
+
+    public List<CoinStats> EnemycoinList = new List<CoinStats>();
+    public List<GameObject> EnemyitemList = new List<GameObject>();
+
+    public List<CoinStats> PlayercoinList = new List<CoinStats>();
+    public List<GameObject> PlayeritemList = new List<GameObject>();
+
+    public bool enterCombat = false;
+
+    public GameObject PlayerCoinPrefab;
+    public GameObject EnemyCoinPrefab;
+
+    public StatsScript playerStats;
+    public StatsScript enemyStats;//the way this is being set could be dodgy///////////////////////////////////////
+
+    float offsetPosX = -130; //player offset coins
+    float offsetPosY = -22; //player offset coins
+
+    float EnemyoffsetPosX = -130; //Enemy offset coins
+    float EnemyoffsetPosY = -95; //Enemy offset coins
+
+    Transform fightPanel;
+
+    AddItem AddItm;
+
+    [HideInInspector]
+    public GameObject mouseover;
+    [HideInInspector]
+    public bool playerAttacks = true;
+    [HideInInspector]
+    public bool enemyAttacks = true;
+
+    public Vector3 screenmousePos;
+    public Vector2 MouseOverTextOffset = new Vector2(0, 0); //this needs to offset itself so the mouseover can check if it's over the button.
+
+    public int playerFleeRate = 50;
+    public int playerAttack = 0, playerDefence = 0, playerHeal = 0;
+    public int enemyAttack = 0, enemyDefence = 0, enemyHeal = 0;
+    public bool calcFight = false;
+    public Slider playerSlider;
+    public Slider EnemySlider;
+
+    // Use this for initialization
+    void Start ()
+    {
+        playerStats = gameObject.GetComponent<StatsScript>();
+
+        //PlayercoinList add this to inventory list.
+        fightPanel = GameObject.FindGameObjectWithTag("FightPanel").transform;
+        AddItm = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AddItem>();
+
+        mouseover = GameObject.FindGameObjectWithTag("MouseOverText");
+        mouseover.SetActive(false);
+
+        
+        
+    }
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        if (inventoryisActive)
+        {
+            Inventory.SetActive(true);
+            FightScreen.SetActive(false);
+        }
+        else
+        {
+            Inventory.SetActive(false);
+            FightScreen.SetActive(true);
+        }
+
+        if (enterCombat)
+        {
+            onEnterCombat();
+            enterCombat = false;
+        }
+
+        if (calcFight)
+        {
+            calculateFight();
+            applyFight();
+            calcFight = false;
+        }
+        //mouseover.SetActive(false);
+
+        screenmousePos = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        mouseover.transform.position = new Vector3(screenmousePos.x + MouseOverTextOffset.x, screenmousePos.y + MouseOverTextOffset.y, mouseover.transform.position.z);
+    }
+
+    public void setEnemyList(List<CoinStats> cList)
+    {
+        //coinList.Clear();
+        EnemycoinList = cList;
+    }
+
+    public void setInventory()
+    {
+        inventoryisActive = !inventoryisActive;
+        enterCombat = true;
+    }
+
+    public void onEnterCombat()
+    {
+        playerSlider.maxValue = playerStats.maxHealth;
+        EnemySlider.maxValue = enemyStats.maxHealth;
+
+        playerSlider.value = playerStats.health;
+        EnemySlider.value = enemyStats.health;
+
+        loadPlayerCoins();
+        loadEnemyCoins();
+    }
+
+    public void onExitCombat()
+    {
+        clearPlayerCoins();
+        clearEnemyCoins();
+    }
+
+    void clearPlayerCoins()
+    {
+        PlayercoinList.Clear();
+        for (int i = 0; i < PlayeritemList.Count; i++)
+        {
+            Destroy(PlayeritemList[i].gameObject);
+        }
+        PlayeritemList.Clear();
+    } //this should be done every time you exit combat
+    void clearEnemyCoins()
+    {
+        for (int i = 0; i < EnemyitemList.Count; i++)
+        {
+            Destroy(EnemyitemList[i].gameObject);
+        }
+        EnemyitemList.Clear();
+    }//this should be done every time you exit combat, use onExitCombat to access these publicly.
+
+    void loadPlayerCoins()
+    {
+        clearPlayerCoins();
+
+        offsetPosX = -130;
+        offsetPosY = -22;
+
+        for (int i = 0; i < AddItm.coins.Count; i++)
+        {
+            if (AddItm.coins[i].isSelected == true)
+            {
+                PlayercoinList.Add(AddItm.coins[i]);
+            }
+        }
+
+        int num = 0;
+        for (int x = 0; x < PlayercoinList.Count; x++)
+        {
+            PlayerCoinPrefab.GetComponent<PlayerCoinsScript>().itemNumber = num;
+            GameObject item = Instantiate(PlayerCoinPrefab);
+            PlayeritemList.Add(item);
+            item.transform.SetParent(fightPanel);
+            item.transform.localScale = new Vector3(1, 1, 1);
+            item.transform.localPosition = new Vector3(offsetPosX, offsetPosY, 0);
+            offsetPosX += 60;
+
+            PlayeritemList[x].GetComponent<PlayerCoinsScript>().coin = PlayercoinList[x];
+            PlayeritemList[x].name = "PlayerCoin: " + PlayeritemList[x].GetComponent<PlayerCoinsScript>().coin.itemName;
+            num++;
+        }
+    }
+    void loadEnemyCoins()
+    {
+        clearEnemyCoins();
+
+        EnemyoffsetPosX = -130;
+        EnemyoffsetPosY = -95;
+
+        int num = 0;
+
+        for (int x = 0; x < EnemycoinList.Count; x++)
+        {
+            EnemyCoinPrefab.GetComponent<EnemyCoinsScript>().itemNumber = num;
+            GameObject item = Instantiate(EnemyCoinPrefab);
+            EnemyitemList.Add(item);
+            item.transform.SetParent(fightPanel);
+            item.transform.localScale = new Vector3(1, 1, 1);
+            item.transform.localPosition = new Vector3(EnemyoffsetPosX, EnemyoffsetPosY, 0);
+            EnemyoffsetPosX += 60;
+
+            EnemyitemList[x].GetComponent<EnemyCoinsScript>().coin = EnemycoinList[x];
+            EnemyitemList[x].name = "EnemyCoin: " + EnemyitemList[x].GetComponent<EnemyCoinsScript>().coin.itemName;
+            num++;
+        }
+    }
+
+    //chance out of rangeMax, minrange (0), rangeMax(100)
+    bool getRandom(int chance, int rangeMin, int rangeMax)//returns true if random number is higher
+    {
+        return (Random.Range(rangeMin, rangeMax) > rangeMax - chance);
+    }
+
+    public void calculateFight()
+    {
+        //play fancy flip animation on 3d model coins hopefully
+
+        playerAttack = 0; playerDefence = 0; playerHeal = 0;
+        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
+        if (playerAttacks)
+        {
+            for (int i = 0; i < PlayercoinList.Count; i++)
+            {
+                PlayercoinList[i].isHeads = getRandom(50, 0, 100);
+                if (PlayercoinList[i].isHeads == true)
+                {
+                    playerAttack += PlayercoinList[i].Heads_attack;
+                    playerDefence += PlayercoinList[i].Heads_defence;
+                    playerHeal += PlayercoinList[i].Heads_HP;
+                }
+                else if (PlayercoinList[i].isHeads == false)
+                {
+                    playerAttack += PlayercoinList[i].Tails_attack;
+                    playerDefence += PlayercoinList[i].Tails_defence;
+                    playerHeal += PlayercoinList[i].Tails_HP;
+                }
+            }
+        }
+
+        if (enemyAttacks)
+        {
+            for (int i = 0; i < EnemycoinList.Count; i++)
+            {
+                EnemycoinList[i].isHeads = getRandom(50, 0, 100);
+                if (EnemycoinList[i].isHeads == true)
+                {
+                    enemyAttack += EnemycoinList[i].Heads_attack;
+                    enemyDefence += EnemycoinList[i].Heads_defence;
+                    enemyHeal += EnemycoinList[i].Heads_HP;
+                }
+                else if (EnemycoinList[i].isHeads == false)
+                {
+                    enemyAttack += EnemycoinList[i].Tails_attack;
+                    enemyDefence += EnemycoinList[i].Tails_defence;
+                    enemyHeal += EnemycoinList[i].Tails_HP;
+                }
+            }
+        }
+    }
+
+    void applyFight()//on death lock it so that the attack button cant be clicked again.
+    {
+        //player takedamage
+        if (playerDefence < enemyAttack)
+        {
+            enemyAttack -= playerDefence;
+        }
+
+        playerStats.health = playerStats.health + (playerHeal - enemyAttack);
+
+        if (playerStats.maxHealth < playerStats.health)
+        {
+            playerStats.health = playerStats.maxHealth;
+        }
+
+        if (playerStats.health <= 0)
+        {
+            playerStats.health = 0;
+            //do something about death too
+        }
+
+        playerSlider.value = playerStats.health;
+
+        ///////////////enemy
+
+        if (enemyDefence < playerAttack)
+        {
+            playerAttack -= enemyDefence;
+        }
+
+        enemyStats.health = enemyStats.health + (enemyHeal - playerAttack);
+
+        if (enemyStats.maxHealth < enemyStats.health)
+        {
+            enemyStats.health = enemyStats.maxHealth;
+        }
+
+        if (enemyStats.health <= 0)
+        {
+            enemyStats.health = 0;
+            //do something about death too
+            gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.dropRate);
+
+    }
+
+        EnemySlider.value = enemyStats.health;
+        playerAttacks = true;
+        enemyAttacks = true;
+    }
+
+
+}
