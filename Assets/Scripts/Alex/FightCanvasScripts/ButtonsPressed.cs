@@ -42,15 +42,18 @@ public class ButtonsPressed : MonoBehaviour
 
     public void endcombat()
     {
-        destroysprite();
-        if (fCam != null)
+        if (GameObject.FindGameObjectWithTag("CanvasEnemy") != null)
         {
-            fCam.GetComponent<Camera>().enabled = false;
-            fCam.GetComponent<SetupFight>().onExitCombat();
-        }
-        else
-        {
-            Debug.Log("FightCamera = null");
+            destroysprite();
+            if (fCam != null)
+            {
+                fCam.GetComponent<Camera>().enabled = false;
+                fCam.GetComponent<SetupFight>().onExitCombat();
+            }
+            else
+            {
+                Debug.Log("FightCamera = null");
+            }
         }
     }
 

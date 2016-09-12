@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SetupFight : MonoBehaviour
 {
     /*TO DO:
+     * lock some scripts yo
+     * visual indication of coins and heads/tails
      * combat ends in the enemydropcoins script, referencing the buttonspressed script
      * autoresolve
      * for healing take away supplies from the player at the end of combat using a rate
