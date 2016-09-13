@@ -20,8 +20,8 @@ public class SavedInput : MonoBehaviour
 {
     public List<keys> controls; //save this
     public Dictionary<string, KeyCode> keycodes = new Dictionary<string, KeyCode>(); //save this
-    public float SoundValue;
-    public float soundEffectValue;
+    public float SoundValue; //save this
+    public float soundEffectValue; //save this I guess
 
     public static SavedInput instance;
 

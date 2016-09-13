@@ -76,7 +76,20 @@ public class ControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
+        //this stuff should work, just left it here uncommented
 
+        //check if in combat
+        if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
+        {
+            //do stuff if not in combat
+        }
+
+        //sets the velocity using the stored input keys
+        GameObject InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
+        velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
+        velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
+         */
 
 
         //make sure the player is always looking at the mouse
