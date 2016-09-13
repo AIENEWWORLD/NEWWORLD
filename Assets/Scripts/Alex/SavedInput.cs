@@ -18,8 +18,8 @@ public class keys
 
 public class SavedInput : MonoBehaviour
 {
-    public List<keys> controls;
-    public Dictionary<string, KeyCode> keycodes = new Dictionary<string, KeyCode>();
+    public List<keys> controls; //save this
+    public Dictionary<string, KeyCode> keycodes = new Dictionary<string, KeyCode>(); //save this
     public float SoundValue;
     public float soundEffectValue;
 

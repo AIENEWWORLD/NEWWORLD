@@ -55,6 +55,7 @@ public class ButtonsPressed : MonoBehaviour
                 Debug.Log("FightCamera = null");
             }
         }
+        gameObject.GetComponent<EnemyDropCoins>().dead = false;
     }
 
     bool getRandom(int chance, int rangeMin, int rangeMax)//returns true if random number is higher

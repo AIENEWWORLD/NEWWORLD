@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class StatsScript : MonoBehaviour
 {
+
+    //save pretty much this entire script
+
     public string Name;
     public int maxHealth;
     public int health;
@@ -25,7 +28,7 @@ public class StatsScript : MonoBehaviour
 
     public enum enumType
     {
-        boss,//REMEMBER TO SET THIS ON THE FLEE BUTTON PROPERLY
+        boss,//REMEMBER TO SET THIS ON THE FLEE BUTTON PROPERLY SO THAT CANT FLEE FROM BOSSES
         pimpkin,
         bird,
         player,

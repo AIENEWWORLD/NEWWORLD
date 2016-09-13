@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class SetupFight : MonoBehaviour
 {
     /*TO DO:
+     * EVERYTHING STILL WORKS SINCE ONLY THE CAMERA IS BEING DISABLED BUT NOT THE BUTTONS
+     * adds two coins if you spam attack fast enough.
      * lock some scripts yo
      * visual indication of coins and heads/tails
      * combat ends in the enemydropcoins script, referencing the buttonspressed script
@@ -21,11 +23,11 @@ public class SetupFight : MonoBehaviour
     public GameObject FightScreen;
     public bool inventoryisActive = true;
 
-    public List<CoinStats> EnemycoinList = new List<CoinStats>();
-    public List<GameObject> EnemyitemList = new List<GameObject>();
+    public List<CoinStats> EnemycoinList = new List<CoinStats>(); //save this
+    public List<GameObject> EnemyitemList = new List<GameObject>(); //save this
 
-    public List<CoinStats> PlayercoinList = new List<CoinStats>();
-    public List<GameObject> PlayeritemList = new List<GameObject>();
+    public List<CoinStats> PlayercoinList = new List<CoinStats>(); //save this
+    public List<GameObject> PlayeritemList = new List<GameObject>(); //save this
 
     public bool enterCombat = false;
 
@@ -308,7 +310,10 @@ public class SetupFight : MonoBehaviour
         {
             enemyStats.health = 0;
             //do something about death too
-            gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.dropRate);
+            if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
+            {
+                gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.dropRate);
+            }
 
     }
 

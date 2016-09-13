@@ -5,9 +5,12 @@ using System.Collections.Generic;
 public class EnemyDropCoins : MonoBehaviour
 {
 
-    public List<CoinStats> DropCoins = new List<CoinStats>();
+    public List<CoinStats> DropCoins = new List<CoinStats>(); //save this
     CreateInventory cInv;
     int count;
+
+    [HideInInspector]
+    public bool dead = false;
 
     // Use this for initialization
     void Start ()
@@ -35,7 +38,7 @@ public class EnemyDropCoins : MonoBehaviour
 
     public void onKilled(StatsScript.enumType gType, int droprate)
     {
-
+        dead = true;
         if (getRandom2(droprate, 0, 100))
         {
             if (DropCoins.Count > 0)

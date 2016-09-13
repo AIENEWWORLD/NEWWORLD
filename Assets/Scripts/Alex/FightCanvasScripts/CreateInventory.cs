@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CreateInventory : MonoBehaviour
 {
-    public List<GameObject> itemList = new List<GameObject>();
-    public List<CoinStats> coinList = new List<CoinStats>();
+    public List<GameObject> itemList = new List<GameObject>(); //save this
+    public List<CoinStats> coinList = new List<CoinStats>(); //save this
     public GameObject Items;
     int _x = -260; int _y = 180;
 

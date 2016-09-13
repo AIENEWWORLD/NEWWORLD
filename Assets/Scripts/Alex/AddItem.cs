@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class AddItem : MonoBehaviour
 {
     //10x5 list
-    public List<CoinStats> coins = new List<CoinStats>();
+    public List<CoinStats> coins = new List<CoinStats>(); //save this
     
 
 
