@@ -19,7 +19,7 @@ public class BaseScript : MonoBehaviour {
 		{
 			ControlScript thisPlayer = collision.gameObject.GetComponentInParent<ControlScript> ();
 			thisPlayer.supplyAmount = thisPlayer.maxSupply;
-			thisPlayer.currentAmmo = thisPlayer.maxAmmo;
+		
 			thisPlayer.playerHealth = thisPlayer.maxHealth;
 		}
 	}

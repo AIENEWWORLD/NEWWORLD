@@ -11,11 +11,11 @@ public class ControlScript : MonoBehaviour
     public float maxSupply;
     public float playerHealth;
     public float maxHealth;
-    public float currentAmmo;
-    public float maxAmmo;
-    public float meleeAttackDuration;
-    public float reloadDuration;
-    public float AttackForce;
+
+    //Here<-
+    public Rigidbody t_Body;
+
+
     public GameObject characterModel;
     public BoxCollider meleeHitbox;
     public GameObject bulletPrefab;
@@ -63,13 +63,14 @@ public class ControlScript : MonoBehaviour
     void Start()
     {
         supplyAmount = maxSupply;
-        currentAmmo = maxAmmo;
+  
         playerHealth = maxHealth;
         m_plane = new Plane(Vector3.up, 0);
         meleeHitbox = GetComponentInChildren<BoxCollider>();
         meleeHitbox.enabled = false;
         percentageMapDiscovered = 0.0f;
         currentPosition = transform.position;
+        t_Body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -104,8 +105,18 @@ public class ControlScript : MonoBehaviour
         {
             FacingDirection = false;
         }
-        transform.position += velocity * movementSpeed * Time.deltaTime;
-        //Placeholder for shh
+        if(velocity.x != 0 || velocity.z != 0)
+        {
+            t_Body.velocity = (velocity * movementSpeed);
+      
+        }
+        else
+        {
+            t_Body.velocity = new Vector3(0,0,0);
+        }
+       
+        //transform.position += velocity * movementSpeed * Time.deltaTime;
+    
         if (velocity.x != 0 || velocity.z != 0)
         {
             if (supplyAmount < 0)
@@ -134,52 +145,6 @@ public class ControlScript : MonoBehaviour
 
             }
 
-            // visionRadius = gameObject.GetComponent<FogOfWarUnit>().radius;
-        }
-
-        //attacking
-        //	meleeTimer -= Time.deltaTime;
-        //       if (Input.GetKeyDown(KeyCode.Mouse0))
-        //       {
-        //           Debug.Log ("melee");
-        //		meleeHitbox.enabled = true;
-        //		meleeTimer = meleeAttackDuration;
-        //	}
-
-        //	reloadTimer -= Time.deltaTime;
-        //	if (Input.GetKeyDown (KeyCode.Mouse1) && reloadTimer <= 0) 
-        //	{
-        //		if (currentAmmo > 0) 
-        //		{
-        //			Instantiate (bulletPrefab, transform.position, characterModel.transform.rotation);
-        //			currentAmmo--;
-        //			reloadTimer = reloadDuration;
-        //		}
-        //	}
-        //	if (meleeTimer <= 0)
-        //	{
-        //		meleeTimer = 0;
-        //		meleeHitbox.enabled = false;
-        //	}
-    }
-
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "enemy")
-        {
-            EnemyScript thisEnemy = collision.gameObject.GetComponentInParent<EnemyScript>();
-            if (meleeHitbox.enabled == true)
-            {
-                thisEnemy.enemyHealth -= 1;
-                thisEnemy.m_rigidBody.AddForce((thisEnemy.transform.position - transform.position).normalized * Time.deltaTime * AttackForce);
-                thisEnemy.isKnockedBack = true;
-                thisEnemy.knockbackPos = transform.position;
-            }
-
-            if (thisEnemy.enemyHealth <= 0)
-            {
-                Destroy(thisEnemy.gameObject);
-            }
         }
     }
 }

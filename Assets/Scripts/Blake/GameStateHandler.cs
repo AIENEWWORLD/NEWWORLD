@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHandler : MonoBehaviour
+public class GameStateHandler : MonoBehaviour
 {
+    
     public float PlayerStartHealth;
     public float PlayerStartAPS;
     public float PlayerStartMoveSpeed;
@@ -16,13 +17,24 @@ public class PlayerHandler : MonoBehaviour
     [HideInInspector]
     public float PercentageMapExplored;
 
-    void Start ()
+
+    void Start()
     {
         PlayerHealth = PlayerStartHealth;
         PlayerAPS = PlayerStartAPS;
         PlayerMoveSpeed = PlayerStartMoveSpeed;
         PercentageMapExplored = 0.0f;
     }
-	
+
+   public void SetGameData()
+    {
+        GetComponent<ControlScript>().playerHealth = PlayerHealth;
+    }
+
+    public void GetGameData()
+    {
+        PlayerHealth = GetComponent<ControlScript>().playerHealth;
+    }
+
 
 }
