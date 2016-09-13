@@ -1,21 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ButtonsPressed : MonoBehaviour
 {
     GameObject fCam;
+    public Button FlipButton;
 	// Use this for initialization
 	void Start ()
     {
         fCam = GameObject.FindGameObjectWithTag("FightCamera");
 
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-	
-	}
+        if (fCam != null)
+        {
+            if (fCam.GetComponent<SetupFight>().PlayercoinList.Count < 1)
+            {
+                FlipButton.interactable = false;
+            }
+            else
+            {
+                FlipButton.interactable = true;
+            }
+        }
+    }
     public void onClickFlee()
     {
         if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
@@ -67,7 +79,9 @@ public class ButtonsPressed : MonoBehaviour
     {
         if (fCam != null)
         {
+
             fCam.GetComponent<SetupFight>().calcFight = true;
+
         }
     }
 

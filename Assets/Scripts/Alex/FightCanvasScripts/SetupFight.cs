@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class SetupFight : MonoBehaviour
 {
     /*TO DO:
-     * EVERYTHING STILL WORKS SINCE ONLY THE CAMERA IS BEING DISABLED BUT NOT THE BUTTONS
-     * adds two coins if you spam attack fast enough.
+     * 
      * lock some scripts yo
      * visual indication of coins and heads/tails
-     * combat ends in the enemydropcoins script, referencing the buttonspressed script
      * autoresolve
      * for healing take away supplies from the player at the end of combat using a rate
-     * on death lock it so that the attack button cant be clicked again.
-     * make sure when you attack you have selected coins. this can be done by checking the size of the player list
+     * implement death system.
+     * make sure when you attack you have selected coins done, needs to grey out the button
      * reward. this can be done by adding gold in the stats script, gold on player can be the total player gold and enemy gold can be how much you recieve from a fight
      * flee rate destroy items on flee or exit combat just to be safe
      * clean up script
+     * 
+     * Notes:
+     * combat ends in the enemydropcoins script, referencing the buttonspressed script
      */
     public GameObject Inventory;
     public GameObject FightScreen;
