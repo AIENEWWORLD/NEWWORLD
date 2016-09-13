@@ -2,18 +2,21 @@
 using System.Collections;
 
 public class CheckinCombatScript : MonoBehaviour
-{
+{ 
+
     //all the buttons still work even though camera was disabled.
 
     GameObject FightCamera;
+    GameObject FightCanvas;
     [HideInInspector]
-    bool Combatisenabled = false;
+    public bool Combatisenabled = false;
 
 	void Start ()
     {
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
+        FightCanvas = GameObject.FindGameObjectWithTag("FightCanvas");
 
-        if(GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
+        if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
         {
             //do stuff if not in combat
         }
@@ -26,24 +29,20 @@ public class CheckinCombatScript : MonoBehaviour
         {
             if(FightCamera.GetComponent<Camera>().enabled == true)
             {
-                FightCamera.SetActive(true);
+                //FightCamera.SetActive(true);
+                FightCanvas.GetComponent<Canvas>().enabled = true;
 
                 Combatisenabled = true;
             }
             else if(FightCamera.GetComponent<Camera>().enabled == false)
             {
-                FightCamera.SetActive(false);
+                //FightCamera.SetActive(false);
+                FightCanvas.GetComponent<Canvas>().enabled = false;
 
                 Combatisenabled = false;
             }
         }
 	}
-
-    //returns false if the player isn't in combat
-    public bool isInCombat()
-    {
-        return Combatisenabled;
-    }
 }
 
 
