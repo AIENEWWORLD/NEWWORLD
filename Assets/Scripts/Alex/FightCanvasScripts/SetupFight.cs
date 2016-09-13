@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SetupFight : MonoBehaviour
 {
     /*TO DO:
-     * 
+     * change enemy name
      * lock some scripts yo
      * visual indication of coins and heads/tails
      * autoresolve
