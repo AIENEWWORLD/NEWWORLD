@@ -168,11 +168,19 @@ public class SetupFight : MonoBehaviour
         offsetPosX = -130;
         offsetPosY = -22;
 
+
         for (int i = 0; i < AddItm.coins.Count; i++)
         {
             if (AddItm.coins[i].isSelected == true)
             {
                 PlayercoinList.Add(AddItm.coins[i]);
+            }
+        }
+        if(PlayercoinList.Count < playerStats.totalCoins)
+        {
+            for (int i = 0; i < (playerStats.totalCoins - PlayercoinList.Count+1); i++)
+            {
+                PlayercoinList.Add(new CoinStats("newCoin", "", "", 0, 0, 0, 0, 0, 0, 0));
             }
         }
 
@@ -236,12 +244,14 @@ public class SetupFight : MonoBehaviour
                 PlayercoinList[i].isHeads = getRandom(50, 0, 100);
                 if (PlayercoinList[i].isHeads == true)
                 {
+                    PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
                     playerAttack += PlayercoinList[i].Heads_attack;
                     playerDefence += PlayercoinList[i].Heads_defence;
                     playerHeal += PlayercoinList[i].Heads_HP;
                 }
                 else if (PlayercoinList[i].isHeads == false)
                 {
+                    PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
                     playerAttack += PlayercoinList[i].Tails_attack;
                     playerDefence += PlayercoinList[i].Tails_defence;
                     playerHeal += PlayercoinList[i].Tails_HP;
@@ -254,14 +264,17 @@ public class SetupFight : MonoBehaviour
             for (int i = 0; i < EnemycoinList.Count; i++)
             {
                 EnemycoinList[i].isHeads = getRandom(50, 0, 100);
+                
                 if (EnemycoinList[i].isHeads == true)
                 {
+                    EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
                 }
                 else if (EnemycoinList[i].isHeads == false)
                 {
+                    EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
                     enemyAttack += EnemycoinList[i].Tails_attack;
                     enemyDefence += EnemycoinList[i].Tails_defence;
                     enemyHeal += EnemycoinList[i].Tails_HP;

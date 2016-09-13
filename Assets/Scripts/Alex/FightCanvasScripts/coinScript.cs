@@ -33,18 +33,6 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         {
             itemImage.enabled = false;
         }
-        if(coin.isSelected && coin.itemName.CompareTo("") != 0)
-        {
-            if (inv.itemList[itemNumber] != null)
-            {
-                inv.itemList[itemNumber].GetComponent<Image>().color = new Color(0, 0, 1, 1);
-            }
-        }
-        else
-        {
-            if (inv.itemList[itemNumber] != null)
-                inv.itemList[itemNumber].GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        }
 	}
 
     public void OnPointerDown(PointerEventData data)
@@ -72,7 +60,7 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
                 }
             }
         }
-        
+        inv.greyoutUnselected();
         //if the amount of selected coins is smaller than the playerstats upgrade amount
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System;
 
+//THIS IS GETTING ERRORS WHEN MINIMIZED
 
 //using controls:
 

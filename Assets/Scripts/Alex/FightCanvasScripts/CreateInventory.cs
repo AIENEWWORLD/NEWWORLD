@@ -10,6 +10,8 @@ public class CreateInventory : MonoBehaviour
     public GameObject Items;
     int _x = -260; int _y = 180;
 
+    public bool greyout = true;
+
     AddItem addI;
 
 
@@ -21,7 +23,7 @@ public class CreateInventory : MonoBehaviour
 
         reAddItems();
 
-
+        greyoutUnselected();
     }
 
     public void addItem(int id)
@@ -95,5 +97,41 @@ public class CreateInventory : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if(greyout)
+        {
+            greyoutUnselected();
+            greyout = false;
+        }
 	}
+
+    public void greyoutUnselected()
+    {
+        int num = 0;
+        for (int i = 0; i < coinList.Count; i++)
+        {
+            if (coinList[i].isSelected == true)
+            {
+                itemList[i].GetComponent<Image>().color = new Color(0, 0, 1, 1);
+                num += 1;
+            }
+        }
+
+        for (int x = 0; x < itemList.Count; x++)
+        {
+            if (num >= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().totalCoins)
+            {
+                if (coinList[x].isSelected != true)
+                {
+                    itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+                }
+            }
+            else
+            {
+                if (coinList[x].isSelected != true)
+                {
+                    itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                }
+            }
+        }
+    }
 }
