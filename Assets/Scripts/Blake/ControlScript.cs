@@ -82,6 +82,12 @@ public class ControlScript : MonoBehaviour
         //check if in combat
         if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
         {
+
+
+
+
+
+
             //do stuff if not in combat
         }
 
