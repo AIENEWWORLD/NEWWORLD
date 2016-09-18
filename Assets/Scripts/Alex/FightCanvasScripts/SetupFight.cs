@@ -65,6 +65,9 @@ public class SetupFight : MonoBehaviour
     public Slider playerSlider;
     public Slider EnemySlider;
 
+    [HideInInspector]
+    public bool playerinCombat = false;
+
     // Use this for initialization
     void Start ()
     {
@@ -127,6 +130,7 @@ public class SetupFight : MonoBehaviour
 
     public void onEnterCombat()
     {
+        playerinCombat = true;
         playerSlider.maxValue = playerStats.maxHealth;
         EnemySlider.maxValue = enemyStats.maxHealth;
 
@@ -141,6 +145,7 @@ public class SetupFight : MonoBehaviour
     {
         clearPlayerCoins();
         clearEnemyCoins();
+        playerinCombat = false;
     }
 
     void clearPlayerCoins()

@@ -63,11 +63,11 @@ public class StatsScript : MonoBehaviour
         prefab = s.prefab;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision) //using oncollisionstay because oncollisionenter bugs out when its already colliding with the player
     {
         if (guyType != enumType.player)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player" && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat == false)
             {
                 if (FightCamera != null)
                 {
@@ -102,4 +102,44 @@ public class StatsScript : MonoBehaviour
             }
         }
     }
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (guyType != enumType.player)
+    //    {
+    //        if (collision.gameObject.tag == "Player" && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat == false)
+    //        {
+    //            if (FightCamera != null)
+    //            {
+    //                FightCamera.GetComponent<Camera>().enabled = true;
+    //
+    //                FightCamera.GetComponent<SetupFight>().setEnemyList(coinList);
+    //                FightCamera.GetComponent<SetupFight>().enterCombat = true;
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("error in stats script");
+    //            }
+    //
+    //            if (FightPanel != null)
+    //            {
+    //
+    //                GameObject sprite = Instantiate(prefab);
+    //                sprite.AddComponent<StatsScript>();
+    //                sprite.GetComponent<StatsScript>().setScript(this);
+    //                FightCamera.GetComponent<SetupFight>().enemyStats = sprite.GetComponent<StatsScript>(); //////////////////////////////////////////////////this could be dodgy
+    //                sprite.transform.SetParent(FightPanel.transform);
+    //                //sprite.transform.localScale = new Vector3(1, 1, 1);
+    //                sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -15);
+    //                sprite.transform.localEulerAngles = new Vector3(UIrotation.x, UIrotation.y, UIrotation.z);
+    //            }
+    //            else
+    //            {
+    //                Debug.Log("error in stats script");
+    //            }
+    //            Destroy(gameObject);
+    //
+    //        }
+    //    }
+    //}
 }
