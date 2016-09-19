@@ -65,8 +65,10 @@ public class SetupFight : MonoBehaviour
     public Slider playerSlider;
     public Slider EnemySlider;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool playerinCombat = false;
+
+    CreateInventory inventory;
 
     // Use this for initialization
     void Start ()
@@ -80,8 +82,9 @@ public class SetupFight : MonoBehaviour
         mouseover = GameObject.FindGameObjectWithTag("MouseOverText");
         mouseover.SetActive(false);
 
-        
-        
+        inventory = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<CreateInventory>();
+
+
     }
 	
 	// Update is called once per frame
@@ -137,6 +140,7 @@ public class SetupFight : MonoBehaviour
         playerSlider.value = playerStats.health;
         EnemySlider.value = enemyStats.health;
 
+        inventory.greyoutUnselected();
         loadPlayerCoins();
         loadEnemyCoins();
     }
@@ -306,7 +310,7 @@ public class SetupFight : MonoBehaviour
         if (playerStats.health <= 0)
         {
             playerStats.health = 0;
-            gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0));
+            gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0), 0);
             //do something about death too
         }
 
@@ -332,7 +336,7 @@ public class SetupFight : MonoBehaviour
             //do something about death too
             if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
             {
-                gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.dropRate);
+                gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
             }
 
     }

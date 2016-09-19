@@ -11,6 +11,7 @@ public class StatsScript : MonoBehaviour
     public int maxHealth;
     public int health;
     public int gold; //how much gold the player has / how much gold you will recieve for defeating
+    public int supplies;
     public int totalCoins; //how many coins can be selected.
     public int dropRate = 50;//the drop rate of the coins
     public enumType guyType;

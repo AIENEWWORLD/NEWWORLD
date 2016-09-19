@@ -36,7 +36,7 @@ public class EnemyDropCoins : MonoBehaviour
         return (Random.Range(rangeMin, rangeMax) > rangeMax - chance);
     }
 
-    public void onKilled(StatsScript.enumType gType, int droprate)
+    public void onKilled(StatsScript.enumType gType, int gold, int droprate)
     {
         CoinStats coin = new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0);
         dead = true;
@@ -79,6 +79,6 @@ public class EnemyDropCoins : MonoBehaviour
             //Debug.Log(gType + " did not drop a coin");
         }
         gameObject.GetComponent<ButtonsPressed>().endcombat();
-        gameObject.GetComponent<OnWinLose>().CheckDeath(true, coin);
+        gameObject.GetComponent<OnWinLose>().CheckDeath(true, coin, gold);
     }
 }

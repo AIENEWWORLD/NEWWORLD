@@ -40,13 +40,22 @@ public class OnWinLose : MonoBehaviour
             gameObject.GetComponent<Camera>().enabled = false;
             FightCanvas.SetActive(true);
             endCombatCanvas.SetActive(false);
-            item.GetComponent<DisplayCoins>().mouseover.SetActive(false);
-            Destroy(item);
+            if (item != null)
+            {
+                if (item.GetComponent<DisplayCoins>().mouseover != null)
+                {
+                    item.GetComponent<DisplayCoins>().mouseover.SetActive(false);
+                }
+                Destroy(item);
+            }
 
         }
 	}
 
-    public void CheckDeath(bool dead, CoinStats coin)
+
+    //heal if the amount to heal is smaller than the supplies, or else heal for as much as we can.
+
+    public void CheckDeath(bool dead, CoinStats coin, int gold)
     {
 
         Title.text = "";
@@ -56,8 +65,30 @@ public class OnWinLose : MonoBehaviour
         if (dead == true)
         {
             Title.text = "You Win";
-            RecievedText.text = "you got " + 1 +  " gold\nclick to continue...";
-            
+            gameObject.GetComponent<SetupFight>().playerStats.gold += gold;
+            StatsScript playerstats = gameObject.GetComponent<SetupFight>().playerStats;
+            int heal = playerstats.maxHealth - playerstats.health;
+            int supplies = playerstats.supplies;
+            if(playerstats.supplies > heal)
+            {
+                supplies -= heal;
+            }
+            else
+            {
+                heal = supplies;
+            }
+            playerstats.health += heal;
+
+            RecievedText.text = "you got " + gold + " gold\nTotal gold: " + playerstats.gold;
+
+            RecievedText.text = RecievedText.text + "\nYou used " + heal + " supplies to heal to " + playerstats.health;
+
+            playerstats.supplies -= heal;
+
+            RecievedText.text = RecievedText.text + "\nClick to continue...";
+            //healed = supplies - health
+
+            //you used x supplies to heal x health.
             if(coin.itemName.CompareTo("") == 1)
             {
                 Debug.Log(coin.itemName);
