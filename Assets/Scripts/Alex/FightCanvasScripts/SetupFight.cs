@@ -65,7 +65,7 @@ public class SetupFight : MonoBehaviour
     public Slider playerSlider;
     public Slider EnemySlider;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool playerinCombat = false;
 
     // Use this for initialization
@@ -143,9 +143,9 @@ public class SetupFight : MonoBehaviour
 
     public void onExitCombat()
     {
+        playerinCombat = false;
         clearPlayerCoins();
         clearEnemyCoins();
-        playerinCombat = false;
     }
 
     void clearPlayerCoins()
@@ -238,7 +238,7 @@ public class SetupFight : MonoBehaviour
 
     public void calculateFight()
     {
-        //play fancy flip animation on 3d model coins hopefully
+        //play fancy flip animation on 3d model coins hopefully?
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0;
         enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
@@ -306,6 +306,7 @@ public class SetupFight : MonoBehaviour
         if (playerStats.health <= 0)
         {
             playerStats.health = 0;
+            gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0));
             //do something about death too
         }
 

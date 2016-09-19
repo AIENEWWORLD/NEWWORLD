@@ -38,6 +38,7 @@ public class ButtonsPressed : MonoBehaviour
                 {
                     //have the enemy attack you without your coins working
                     endcombat();
+                    fCam.GetComponent<Camera>().enabled = false;
                 }
                 else
                 {
@@ -59,7 +60,7 @@ public class ButtonsPressed : MonoBehaviour
             destroysprite();
             if (fCam != null)
             {
-                fCam.GetComponent<Camera>().enabled = false;
+                //fCam.GetComponent<Camera>().enabled = false;
                 fCam.GetComponent<SetupFight>().onExitCombat();
             }
             else

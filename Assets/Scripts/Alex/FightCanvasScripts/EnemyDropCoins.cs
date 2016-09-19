@@ -38,6 +38,7 @@ public class EnemyDropCoins : MonoBehaviour
 
     public void onKilled(StatsScript.enumType gType, int droprate)
     {
+        CoinStats coin = new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0);
         dead = true;
         if (getRandom2(droprate, 0, 100))
         {
@@ -64,6 +65,8 @@ public class EnemyDropCoins : MonoBehaviour
                     GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AddItem>().AddCoin(newDcoins[rand]);
                     cInv.addItem(newDcoins[rand].itemID);
                     Debug.Log(newDcoins.Count + " you got " + newDcoins[rand].itemName + " for killing " + gType);
+                    //gameObject.GetComponent<OnWinLose>().CheckDeath(true, newDcoins[rand]);
+                    coin = newDcoins[rand];
                     cInv.fullReset(-260, 180);
                     cInv.reAddItems();
                     DropCoins.Remove(newDcoins[rand]);
@@ -76,5 +79,6 @@ public class EnemyDropCoins : MonoBehaviour
             //Debug.Log(gType + " did not drop a coin");
         }
         gameObject.GetComponent<ButtonsPressed>().endcombat();
+        gameObject.GetComponent<OnWinLose>().CheckDeath(true, coin);
     }
 }
