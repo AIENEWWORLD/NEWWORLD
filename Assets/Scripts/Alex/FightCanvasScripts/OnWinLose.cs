@@ -40,6 +40,9 @@ public class OnWinLose : MonoBehaviour
             gameObject.GetComponent<Camera>().enabled = false;
             FightCanvas.SetActive(true);
             endCombatCanvas.SetActive(false);
+            item.GetComponent<DisplayCoins>().mouseover.SetActive(false);
+            Destroy(item);
+
         }
 	}
 

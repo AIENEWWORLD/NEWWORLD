@@ -9,7 +9,8 @@ public class DisplayCoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     Image itemImage;
     SetupFight inv;
 
-    GameObject mouseover;
+    [HideInInspector]
+    public GameObject mouseover;
 
     Text mouseoverTextDesc1;
     Text mouseoverTextDesc2;
