@@ -64,7 +64,7 @@ public class EnemyDropCoins : MonoBehaviour
                     newDcoins[rand].itemID += count;
                     GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AddItem>().AddCoin(newDcoins[rand]);
                     cInv.addItem(newDcoins[rand].itemID);
-                    Debug.Log(newDcoins.Count + " you got " + newDcoins[rand].itemName + " for killing " + gType);
+                    //Debug.Log(newDcoins.Count + " you got " + newDcoins[rand].itemName + " for killing " + gType);
                     //gameObject.GetComponent<OnWinLose>().CheckDeath(true, newDcoins[rand]);
                     coin = newDcoins[rand];
                     cInv.fullReset(-260, 180);

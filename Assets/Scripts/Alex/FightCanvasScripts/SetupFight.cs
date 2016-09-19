@@ -50,7 +50,7 @@ public class SetupFight : MonoBehaviour
 
     [HideInInspector]
     public GameObject mouseover;
-    [HideInInspector]
+    //[HideInInspector]
     public bool playerAttacks = true;
     [HideInInspector]
     public bool enemyAttacks = true;
@@ -65,7 +65,7 @@ public class SetupFight : MonoBehaviour
     public Slider playerSlider;
     public Slider EnemySlider;
 
-    [HideInInspector]
+   // [HideInInspector]
     public bool playerinCombat = false;
 
     CreateInventory inventory;
@@ -148,6 +148,7 @@ public class SetupFight : MonoBehaviour
     public void onExitCombat()
     {
         playerinCombat = false;
+       // playerAttacks = true;
         clearPlayerCoins();
         clearEnemyCoins();
     }

@@ -52,9 +52,6 @@ public class OnWinLose : MonoBehaviour
         }
 	}
 
-
-    //heal if the amount to heal is smaller than the supplies, or else heal for as much as we can.
-
     public void CheckDeath(bool dead, CoinStats coin, int gold)
     {
 
@@ -86,12 +83,9 @@ public class OnWinLose : MonoBehaviour
             playerstats.supplies -= heal;
 
             RecievedText.text = RecievedText.text + "\nClick to continue...";
-            //healed = supplies - health
 
-            //you used x supplies to heal x health.
             if(coin.itemName.CompareTo("") == 1)
             {
-                Debug.Log(coin.itemName);
                 item = Instantiate(PlayerCoinPrefab);
                 item.GetComponent<DisplayCoins>().coin = coin;
                 item.transform.SetParent(CoinPosition);

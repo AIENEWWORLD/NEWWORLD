@@ -29,13 +29,13 @@ public class CheckinCombatScript : MonoBehaviour
         {
             if(FightCamera.GetComponent<Camera>().enabled == true)
             {
-                //FightCanvas.GetComponent<Canvas>().enabled = true;
+                FightCanvas.GetComponent<Canvas>().enabled = true;
 
                 Combatisenabled = true;
             }
             else if(FightCamera.GetComponent<Camera>().enabled == false)
             {
-                //FightCanvas.GetComponent<Canvas>().enabled = false;
+                FightCanvas.GetComponent<Canvas>().enabled = false;
 
                 Combatisenabled = false;
             }

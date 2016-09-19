@@ -42,10 +42,16 @@ public class ButtonsPressed : MonoBehaviour
                 }
                 else
                 {
-                    fCam.GetComponent<SetupFight>().playerAttacks = false;
                     if (fCam != null)
                     {
-                        fCam.GetComponent<SetupFight>().calcFight = true;
+                        if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                        {
+                            fCam.GetComponent<SetupFight>().playerAttacks = false;
+                        }
+                        if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                        {
+                            fCam.GetComponent<SetupFight>().calcFight = true;
+                        }
                     }
                 }
             }
