@@ -6,14 +6,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System;
 
-//the left mouse binding is kinda broken.
-
-//the list saves the keys, returning to menu results in reset of controls as it needs to be saved throughout all scenes.
-
-//make sure when checking the list for input there is something that exists with that name
-
-//make selectedbutton's name the same as in inspector
-
 [System.Serializable]
 public class keycodes
 {
@@ -61,6 +53,8 @@ public class OptionsMenu : MonoBehaviour
     public bool DebugControls = false;
     public bool testkeycodes = false;
 
+
+    public bool sceneOptions = false;
     void Start()
     {
         res = Screen.resolutions;
@@ -134,6 +128,12 @@ public class OptionsMenu : MonoBehaviour
             setselect = false;
         }
 
+        if(sceneOptions == true && Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameObject.FindGameObjectWithTag("OptionsCamera").GetComponent<Camera>().enabled = true;
+            GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>().enabled = true;
+        }
+
         getSelection();
         getUpdates();
 
@@ -199,6 +199,11 @@ public class OptionsMenu : MonoBehaviour
     public void clickBack()
     {
         SceneManager.LoadScene(0);
+    }
+    public void clickBack2()
+    {
+        GameObject.FindGameObjectWithTag("OptionsCamera").GetComponent<Camera>().enabled = false;
+        GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>().enabled = false;
     }
     public void MouseOverButton(Button button)
     {

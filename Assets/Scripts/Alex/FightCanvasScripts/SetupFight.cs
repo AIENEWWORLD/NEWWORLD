@@ -8,14 +8,15 @@ public class SetupFight : MonoBehaviour
     /*TO DO:
      * change enemy name
      * lock some scripts yo
-     * visual indication of coins and heads/tails
+     * visual indication of coins and heads/tails, make cylinder flip and stuff.
      * autoresolve
      * for healing take away supplies from the player at the end of combat using a rate
      * implement death system.
-     * make sure when you attack you have selected coins done, needs to grey out the button
-     * reward. this can be done by adding gold in the stats script, gold on player can be the total player gold and enemy gold can be how much you recieve from a fight
-     * flee rate destroy items on flee or exit combat just to be safe
      * clean up script
+     * 
+     * shop menu
+     * options menu, also options menu doesn't reload from the actual controls, go from menu to options to key bindings change controls, apply, return to menu, go back to options and its the same.
+     * make sure my scripts can all save and load
      * 
      * Notes:
      * combat ends in the enemydropcoins script, referencing the buttonspressed script
@@ -346,6 +347,4 @@ public class SetupFight : MonoBehaviour
         playerAttacks = true;
         enemyAttacks = true;
     }
-
-
 }

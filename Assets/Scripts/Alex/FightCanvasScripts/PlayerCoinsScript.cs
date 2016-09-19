@@ -39,7 +39,7 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
 
     public void OnPointerDown(PointerEventData data)
     {
-
+        
     }
 
     public void OnPointerEnter(PointerEventData data)
