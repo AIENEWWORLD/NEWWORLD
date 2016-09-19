@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using System;
 
 [System.Serializable]
 public class keycodes
@@ -130,8 +129,8 @@ public class OptionsMenu : MonoBehaviour
 
         if(sceneOptions == true && Input.GetKeyDown(KeyCode.Escape))
         {
-            GameObject.FindGameObjectWithTag("OptionsCamera").GetComponent<Camera>().enabled = true;
-            GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>().enabled = true;
+            GameObject.FindGameObjectWithTag("OptionsCamera").GetComponent<Camera>().enabled = !GameObject.FindGameObjectWithTag("OptionsCamera").GetComponent<Camera>().enabled;
+            GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>().enabled = !GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>().enabled;
         }
 
         getSelection();
@@ -204,6 +203,11 @@ public class OptionsMenu : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("OptionsCamera").GetComponent<Camera>().enabled = false;
         GameObject.FindGameObjectWithTag("OptionsCanvas").GetComponent<Canvas>().enabled = false;
+    }
+    public void clickQuit()
+    {
+        //save then return to menu?
+        SceneManager.LoadScene(0);
     }
     public void MouseOverButton(Button button)
     {
