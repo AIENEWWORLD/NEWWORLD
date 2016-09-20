@@ -36,16 +36,16 @@ public class StatsScript : MonoBehaviour
         player,
     }
 
-	void Start ()
+    void Start()
     {
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
         FightPanel = GameObject.FindGameObjectWithTag("FightPanel");
-	}
-	
-	void Update ()
+    }
+
+    void Update()
     {
-	
-	}
+
+    }
 
     void setScript(StatsScript s)
     {
@@ -71,6 +71,7 @@ public class StatsScript : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat == false)
             {
+                //Debug.Log("entering combat");
                 if (FightCamera != null)
                 {
                     FightCamera.GetComponent<Camera>().enabled = true;

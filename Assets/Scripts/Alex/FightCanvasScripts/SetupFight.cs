@@ -150,7 +150,7 @@ public class SetupFight : MonoBehaviour
 
     public void onExitCombat()
     {
-        playerinCombat = false;
+
         // playerAttacks = true;
         clearPlayerCoins();
         clearEnemyCoins();

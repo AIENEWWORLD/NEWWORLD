@@ -39,6 +39,7 @@ public class ButtonsPressed : MonoBehaviour
                     //have the enemy attack you without your coins working
                     endcombat();
                     fCam.GetComponent<Camera>().enabled = false;
+                    gameObject.GetComponent<SetupFight>().playerinCombat = false;
                 }
                 else
                 {
