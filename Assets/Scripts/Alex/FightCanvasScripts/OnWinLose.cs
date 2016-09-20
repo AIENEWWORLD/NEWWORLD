@@ -16,20 +16,20 @@ public class OnWinLose : MonoBehaviour
     public bool counteddown = false;
     public float count = 2;
 
-    void Start ()
+    void Start()
     {
         endCombatCanvas.SetActive(false);
-	}
-	
-	void Update ()
+    }
+
+    void Update()
     {
-	    //if input getbuttondown mouse and fightcanvas isnt enabled and endcombatcanvas is enabled
+        //if input getbuttondown mouse and fightcanvas isnt enabled and endcombatcanvas is enabled
         //close the canvas
         //destroy the coin
-        if(countdown == true && counteddown == false)
+        if (countdown == true && counteddown == false)
         {
             count -= Time.deltaTime;
-            if(count <= 0)
+            if (count <= 0)
             {
                 counteddown = true;
             }
@@ -50,7 +50,7 @@ public class OnWinLose : MonoBehaviour
             }
 
         }
-	}
+    }
 
     public void CheckDeath(bool dead, CoinStats coin, int gold)
     {
@@ -66,7 +66,7 @@ public class OnWinLose : MonoBehaviour
             StatsScript playerstats = gameObject.GetComponent<SetupFight>().playerStats;
             int heal = playerstats.maxHealth - playerstats.health;
             int supplies = playerstats.supplies;
-            if(playerstats.supplies > heal)
+            if (playerstats.supplies > heal)
             {
                 supplies -= heal;
             }
@@ -77,14 +77,15 @@ public class OnWinLose : MonoBehaviour
             playerstats.health += heal;
 
             RecievedText.text = "you got " + gold + " gold\nTotal gold: " + playerstats.gold;
-
-            RecievedText.text = RecievedText.text + "\nYou used " + heal + " supplies to heal to " + playerstats.health;
-
+            if (heal != 0)
+            {
+                RecievedText.text = RecievedText.text + "\nYou used " + heal + " supplies to heal to " + playerstats.health;
+            }
             playerstats.supplies -= heal;
 
             RecievedText.text = RecievedText.text + "\nClick to continue...";
 
-            if(coin.itemName.CompareTo("") == 1)
+            if (coin.itemName.CompareTo("") == 1)
             {
                 item = Instantiate(PlayerCoinPrefab);
                 item.GetComponent<DisplayCoins>().coin = coin;
@@ -95,7 +96,7 @@ public class OnWinLose : MonoBehaviour
                 //item.transform.localScale = new Vector3(1, 1, 1);
             }
         }
-        if(dead == false)
+        if (dead == false)
         {
             Title.text = "You Died";
             RecievedText.text = "click to continue...";
