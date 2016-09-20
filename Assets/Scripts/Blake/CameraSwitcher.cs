@@ -36,15 +36,16 @@ public class CameraSwitcher : MonoBehaviour
         {
             if (MainCameraActive == true)
             {
-                MapCamera.rect = FullRect;
-                MapCamera.fieldOfView = 140.0f;
+                MapCamera.enabled = true;
+             //   MapCamera.fieldOfView = 140.0f;
                 MainCameraActive = false;
             }
             else
             {
-                MapCamera.rect = MiniMapRect;
-                MapCamera.fieldOfView = 45.0f;
+               // MapCamera.rect = MiniMapRect;
+              //  MapCamera.fieldOfView = 45.0f;
                 MainCameraActive = true;
+                MapCamera.enabled = false;
             }
             m_lTime = 0.0f;
         }
