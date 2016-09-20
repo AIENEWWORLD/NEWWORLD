@@ -42,6 +42,7 @@ public class TentPlacement : MonoBehaviour
             m_TentPlaced = true;
             Vector3 TentLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Instantiate(Tent, TentLocation, transform.rotation);
+            
         }
     }
 }
