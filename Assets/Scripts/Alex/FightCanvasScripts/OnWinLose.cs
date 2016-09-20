@@ -48,6 +48,7 @@ public class OnWinLose : MonoBehaviour
                 }
                 Destroy(item);
             }
+            gameObject.GetComponent<SetupFight>().playerinCombat = false;
 
         }
     }

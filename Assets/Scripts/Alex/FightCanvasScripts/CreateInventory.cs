@@ -114,6 +114,10 @@ public class CreateInventory : MonoBehaviour
                 itemList[i].GetComponent<Image>().color = new Color(0, 0, 1, 1);
                 num += 1;
             }
+            else
+            {
+                itemList[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
         }
 
         for (int x = 0; x < itemList.Count; x++)
