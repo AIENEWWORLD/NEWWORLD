@@ -86,7 +86,7 @@ public class CreateInventory : MonoBehaviour
 
     public void fullReset(int x, int y)
     {
-        for(int i = 0; i > itemList.Count; i++)
+        for(int i = 0; i < itemList.Count; i++)
         {
             Destroy(itemList[i]);
         }
@@ -114,6 +114,10 @@ public class CreateInventory : MonoBehaviour
                 itemList[i].GetComponent<Image>().color = new Color(0, 0, 1, 1);
                 num += 1;
             }
+            else
+            {
+                itemList[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
         }
 
         for (int x = 0; x < itemList.Count; x++)
@@ -127,10 +131,7 @@ public class CreateInventory : MonoBehaviour
             }
             else
             {
-                if (coinList[x].isSelected != true)
-                {
-                    itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, 1);
-                }
+               
             }
         }
     }

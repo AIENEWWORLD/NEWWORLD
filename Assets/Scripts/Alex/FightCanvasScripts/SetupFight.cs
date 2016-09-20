@@ -130,6 +130,7 @@ public class SetupFight : MonoBehaviour
     public void setInventory()
     {
         inventoryisActive = !inventoryisActive;
+        inventory.greyout = true;
         enterCombat = true;
     }
 
