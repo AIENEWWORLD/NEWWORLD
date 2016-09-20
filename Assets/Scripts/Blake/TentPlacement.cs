@@ -10,6 +10,7 @@ public class TentPlacement : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+       
         if (col.gameObject.tag == ("Player"))
         {
             m_Inside = true;
@@ -26,20 +27,20 @@ public class TentPlacement : MonoBehaviour
 
     void Start()
     {
-        if (m_TentPlaced == true)
-        {
-            Instantiate(Tent, transform.position, transform.rotation);
-        }
+        //if (m_TentPlaced == true)
+        //{
+        //    Instantiate(Tent, transform.position, transform.rotation);
+        //}
     }
 
     void Update()
     {
 
+      
         if (Input.GetButtonDown("PlaceTent") == true && m_Inside == true && m_TentPlaced == false)
         {
-
             m_TentPlaced = true;
-            Vector3 TentLocation = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
+            Vector3 TentLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Instantiate(Tent, TentLocation, transform.rotation);
         }
     }

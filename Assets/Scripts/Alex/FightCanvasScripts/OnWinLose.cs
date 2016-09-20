@@ -64,15 +64,15 @@ public class OnWinLose : MonoBehaviour
             Title.text = "You Win";
             gameObject.GetComponent<SetupFight>().playerStats.gold += gold;
             StatsScript playerstats = gameObject.GetComponent<SetupFight>().playerStats;
-            int heal = playerstats.maxHealth - playerstats.health;
-            int supplies = playerstats.supplies;
+            float heal = playerstats.maxHealth - playerstats.health;
+            float supplies = playerstats.supplies;
             if (playerstats.supplies > heal)
             {
                 supplies -= heal;
             }
             else
             {
-                heal = supplies;
+                heal = (int)supplies;
             }
             playerstats.health += heal;
 

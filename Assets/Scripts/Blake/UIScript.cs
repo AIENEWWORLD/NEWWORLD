@@ -4,10 +4,10 @@ using System.Collections;
 
 public class UIScript : MonoBehaviour {
 
-	public Text exhaustion;
-	public Text ammo;
+	public Text supply;
+
 	public Text health;
-	public ControlScript m_player;
+	public GameObject m_player;
 
 	// Use this for initialization
 	void Start () 
@@ -18,9 +18,9 @@ public class UIScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		exhaustion.text = "Supply: " + (int)m_player.supplyAmount;
+        supply.text = "Supply: " + (int)m_player.GetComponent<StatsScript>().supplies;
 	
-		health.text = "Health: " + (int)m_player.playerHealth;
+		health.text = "Health: " + (int)m_player.GetComponent<StatsScript>().health;
 
-	}
+    }
 }

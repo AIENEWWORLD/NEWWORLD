@@ -5,7 +5,9 @@ public class CameraSwitcher : MonoBehaviour
 {
     public Camera MainCamera;
     public Camera MapCamera;
-    public Camera FightCamera;
+    //public Camera FightCamera;
+    public GameObject Player;
+
 
     public float ButtonToggleLimit;
     [HideInInspector]
@@ -37,8 +39,10 @@ public class CameraSwitcher : MonoBehaviour
             if (MainCameraActive == true)
             {
                 MapCamera.enabled = true;
-             //   MapCamera.fieldOfView = 140.0f;
+                MainCamera.enabled = false;
+                //   MapCamera.fieldOfView = 140.0f;
                 MainCameraActive = false;
+                Player.GetComponent<ControlScript>().p_SeizeMovement = true;
             }
             else
             {
@@ -46,6 +50,8 @@ public class CameraSwitcher : MonoBehaviour
               //  MapCamera.fieldOfView = 45.0f;
                 MainCameraActive = true;
                 MapCamera.enabled = false;
+                MainCamera.enabled = true;
+             Player.GetComponent<ControlScript>().p_SeizeMovement = false;
             }
             m_lTime = 0.0f;
         }

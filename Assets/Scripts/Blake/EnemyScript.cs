@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyScript : MonoBehaviour {
 
+    [HideInInspector]
+    public bool p_SeizeMovement = false;
 	public Transform playerPos;
     [HideInInspector]
 	public Vector3 knockbackPos;
@@ -28,35 +30,29 @@ public class EnemyScript : MonoBehaviour {
 		m_rigidBody = GetComponent<Rigidbody> ();
 		isKnockedBack = false;
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if (Vector3.Distance (transform.position, knockbackPos) > knockBackDistance) 
-		{
-			isKnockedBack = false;
-			m_rigidBody.velocity = Vector3.zero;
-		}
 
-		//ignore the player if they're too far away
-		if (Vector3.Distance (transform.position, playerPos.position) > aggroResetRadius) 
-		{
-			//reset aggro
-		}
+    // Update is called once per frame
+    void Update()
+    {
+        if (p_SeizeMovement == false)
+        {
+            if (Vector3.Distance(transform.position, knockbackPos) > knockBackDistance)
+            {
+                isKnockedBack = false;
+                m_rigidBody.velocity = Vector3.zero;
+            }
 
-		else if (Vector3.Distance (transform.position, playerPos.position) > 0.1f && Vector3.Distance (transform.position, playerPos.position) < aggroRadius && isKnockedBack == false) 
-		{
-			transform.position += ((playerPos.position - transform.position).normalized * Time.deltaTime * movementSpeed);
-		}
-	}
+            //ignore the player if they're too far away
+            if (Vector3.Distance(transform.position, playerPos.position) > aggroResetRadius)
+            {
+                //reset aggro
+            }
 
-	void OnCollisionEnter(Collision collision)
-	{
-		if (collision.gameObject.tag == "Player") 
-		{
-            //FightCamera.enabled = true;
-            //Destroy(this.gameObject);
-            
-		}
-	}
+            else if (Vector3.Distance(transform.position, playerPos.position) > 0.1f && Vector3.Distance(transform.position, playerPos.position) < aggroRadius && isKnockedBack == false)
+            {
+                transform.position += ((playerPos.position - transform.position).normalized * Time.deltaTime * movementSpeed);
+            }
+        }
+
+    }
 }
