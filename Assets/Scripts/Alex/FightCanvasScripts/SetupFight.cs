@@ -67,13 +67,13 @@ public class SetupFight : MonoBehaviour
     public Slider playerSlider;
     public Slider EnemySlider;
 
-   // [HideInInspector]
+    // [HideInInspector]
     public bool playerinCombat = false;
 
     CreateInventory inventory;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         playerStats = gameObject.GetComponent<StatsScript>();
 
@@ -88,9 +88,9 @@ public class SetupFight : MonoBehaviour
 
 
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         if (inventoryisActive)
         {
@@ -151,7 +151,7 @@ public class SetupFight : MonoBehaviour
     public void onExitCombat()
     {
         playerinCombat = false;
-       // playerAttacks = true;
+        // playerAttacks = true;
         clearPlayerCoins();
         clearEnemyCoins();
     }
@@ -189,11 +189,11 @@ public class SetupFight : MonoBehaviour
                 PlayercoinList.Add(AddItm.coins[i]);
             }
         }
-        if(PlayercoinList.Count < playerStats.totalCoins)
+        if (PlayercoinList.Count < playerStats.totalCoins)
         {
-            for (int i = 0; i < (playerStats.totalCoins - PlayercoinList.Count+1); i++)
+            for (int i = 0; i < (playerStats.totalCoins - PlayercoinList.Count + 1); i++)
             {
-                PlayercoinList.Add(new CoinStats("newCoin", "", "", 0, 0, 0, 0, 0, 0, 0));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0));
             }
         }
 
@@ -277,7 +277,7 @@ public class SetupFight : MonoBehaviour
             for (int i = 0; i < EnemycoinList.Count; i++)
             {
                 EnemycoinList[i].isHeads = getRandom(50, 0, 100);
-                
+
                 if (EnemycoinList[i].isHeads == true)
                 {
                     EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
@@ -343,7 +343,7 @@ public class SetupFight : MonoBehaviour
                 gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
             }
 
-    }
+        }
 
         EnemySlider.value = enemyStats.health;
         playerAttacks = true;
