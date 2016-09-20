@@ -43,6 +43,7 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         }
         else
         {
+            inv.greyout = true;
             GameObject fCam = GameObject.FindGameObjectWithTag("FightCamera");
             if (fCam != null)
             {
