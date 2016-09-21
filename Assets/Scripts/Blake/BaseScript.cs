@@ -18,9 +18,9 @@ public class BaseScript : MonoBehaviour {
 		if (collision.gameObject.tag == "Player")
 		{
             print("Yes");
-			GameObject thisPlayer = collision.gameObject.GetComponentInParent<ControlScript> ().statsScript;
-            thisPlayer.GetComponent<StatsScript>().supplies = thisPlayer.GetComponent<StatsScript>().maxSupply;
-            thisPlayer.GetComponent<StatsScript>().health = thisPlayer.GetComponent<StatsScript>().maxHealth;
+			StatsScript thisPlayer = collision.gameObject.GetComponentInParent<ControlScript> ().statsScript;
+            thisPlayer.supplies = thisPlayer.maxSupply;
+            thisPlayer.health = thisPlayer.maxHealth;
 
         }
 	}

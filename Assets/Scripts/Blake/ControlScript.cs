@@ -13,7 +13,7 @@ public class ControlScript : MonoBehaviour
     public float maxSupply;
     public float playerHealth;
     public float maxHealth;
-    public GameObject statsScript;
+    public StatsScript statsScript;
     //Here<-
     public Rigidbody t_Body;
 
@@ -148,7 +148,7 @@ public class ControlScript : MonoBehaviour
                 }
                 else
                 {
-                    statsScript.GetComponent<StatsScript>().supplies -= (Time.deltaTime * supplyDeincrement);
+                    statsScript.supplies -= (Time.deltaTime * supplyDeincrement);
                 }
 
 
