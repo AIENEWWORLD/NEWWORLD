@@ -18,6 +18,7 @@ public class SetupFight : MonoBehaviour
      * shop menu
      * options menu, also options menu doesn't reload from the actual controls, go from menu to options to key bindings change controls, apply, return to menu, go back to options and its the same.
      * make sure my scripts can all save and load
+     * totalcoins is a bit broken
      * 
      * Notes:
      * combat ends in the enemydropcoins script, referencing the buttonspressed script
@@ -191,8 +192,10 @@ public class SetupFight : MonoBehaviour
         }
         if (PlayercoinList.Count < playerStats.totalCoins)
         {
-            for (int i = 0; i < (playerStats.totalCoins - PlayercoinList.Count + 1); i++)
+            int x = playerStats.totalCoins - PlayercoinList.Count;
+            for (int i = 0; i < x; i++)
             {
+                //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0));
             }
         }
