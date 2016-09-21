@@ -19,6 +19,7 @@ public class SetupFight : MonoBehaviour
      * options menu, also options menu doesn't reload from the actual controls, go from menu to options to key bindings change controls, apply, return to menu, go back to options and its the same.
      * make sure my scripts can all save and load
      * totalcoins is a bit broken
+     * while in paused menu and in combat, the combat attack buttons are still active.
      * 
      * Notes:
      * combat ends in the enemydropcoins script, referencing the buttonspressed script
