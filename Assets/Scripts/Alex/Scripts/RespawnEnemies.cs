@@ -18,7 +18,12 @@ public class RespawnEnemies : MonoBehaviour
 
     GameObject[] respawnGameObjects;
 
-	void Start ()
+    public float timer = 10;
+
+    bool counting = false;
+
+
+    void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -40,6 +45,10 @@ public class RespawnEnemies : MonoBehaviour
          */
 	}
 	
+    //go through the list, check if it's far enough away to start countdown.
+    //countdown from x number to zero
+    //if the number is zero or lower and the enemy is still in range respawn the enemy
+    //else, keep checking to spawn the enemy when it's in range properly
 	void Update ()
     {
         if (EnemyList.Count != 0)
@@ -48,12 +57,28 @@ public class RespawnEnemies : MonoBehaviour
             {
                 dist = Vector3.Distance(EnemyList[i].transform.position, player.transform.position);
                 //Debug.Log(dist);
-                if (dist > distAway)
+                if (dist > distAway && !counting)
                 {
-                    EnemyList[i].SetActive(true);
-                    EnemyList.Remove(EnemyList[i]);
+                    StartCoroutine(num(timer, i));
                 }
             }
         }
-	}                                                                         
+	}
+    public IEnumerator num(float time, int i)
+    {
+        counting = true;
+        yield return new WaitForSeconds(time);
+        dist = Vector3.Distance(EnemyList[i].transform.position, player.transform.position);
+        //Debug.Log(dist);
+        if (dist > distAway)
+        {
+            EnemyList[i].SetActive(true);
+            EnemyList.Remove(EnemyList[i]);
+        }
+        else
+        {
+            num(timer, i);
+        }
+        counting = false;
+    }                                                                         
 }

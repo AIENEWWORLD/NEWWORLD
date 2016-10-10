@@ -39,8 +39,10 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
-     * timer on respawn script
-     * 
+     * supplies in negatives heal negatives after combat
+     * death, go back to previous supply thing, lose gold
+     * timer on respawn script KINDA WORKS?
+     * tutorial script
      * can kind of skip the text too fast?
      * enemies move when in combat, play can move when in combat
      * under playerprefab1 playerobject has tag "player", does it need to be there? this breaks my respawn enemies getcomponent<Transform> position

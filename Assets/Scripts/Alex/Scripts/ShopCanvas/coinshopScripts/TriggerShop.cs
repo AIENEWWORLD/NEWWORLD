@@ -12,7 +12,7 @@ public class TriggerShop : MonoBehaviour
     public string textToType = "";
     public string newTEXT;
     public float TimeBetweenChar;
-    public bool runText = false;
+    public bool runText = true;
     public bool tmpBool = false;
     public int x = 0;
     public float timeBetweenCanvas = 2;
@@ -32,11 +32,11 @@ public class TriggerShop : MonoBehaviour
         tmptext.text = newTEXT;
         if (tmpBool)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && myCanvas.enabled == false)
             {
                 speechCanvas.enabled = true;
                 StartCoroutine(writeText(textToType, TimeBetweenChar));
-                runText = false;
+                //runText = false;
             }
         }
         else
@@ -45,11 +45,25 @@ public class TriggerShop : MonoBehaviour
             newTEXT = "";
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && speechCanvas.enabled == true && tmpBool == true || newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
+        if(newTEXT.CompareTo(textToType) == 0)
+        {
+            runText = false;
+        }
+        else
+        {
+            myCanvas.enabled = false;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             newTEXT = textToType;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && speechCanvas.enabled == true && tmpBool == true && newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
+        {
+            
             newbool = true;
-            StartCoroutine(enablemyCanvas(timeBetweenCanvas));
+            StartCoroutine(enablemyCanvas(2));
         }
 
 
@@ -62,6 +76,8 @@ public class TriggerShop : MonoBehaviour
     }
     void OnTriggerExit(Collider collision)
     {
+        runText = true;
+        newTEXT = "";
         tmpBool = false;
         myCanvas.enabled = false;
         speechCanvas.enabled = false;
@@ -71,23 +87,20 @@ public class TriggerShop : MonoBehaviour
     public IEnumerator writeText(string txt, float time)
     {
         yield return new WaitForSeconds(time);
-        if (x < txt.Length && newbool == false && tmpBool)
+        if (x < txt.Length && newbool == false && tmpBool && runText == true)
         {
+            
             //Debug.Log(txt[x]);
             newTEXT = newTEXT + txt[x];
             x += 1;
             StartCoroutine(writeText(textToType, TimeBetweenChar));
-        }
-        else
-        {
-            runText = false;
         }
     }
 
     public IEnumerator enablemyCanvas(float time)
     {
         yield return new WaitForSeconds(time);
-        if (tmpBool && newTEXT.CompareTo(textToType) == 0)
+        if (tmpBool && newTEXT.CompareTo(textToType) == 0 && runText == false)
         {
             speechCanvas.enabled = false;
             if (UBS != null)
