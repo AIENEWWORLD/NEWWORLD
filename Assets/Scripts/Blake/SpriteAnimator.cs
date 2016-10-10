@@ -13,32 +13,42 @@ public class SpriteAnimator : MonoBehaviour
 
     private float t_Time;
 
+    public bool enable = false;
+
     void Start()
     {
-
+        enable = true;
         CurrentFrameIndex = 0;
         thisObject = gameObject.GetComponent<Renderer>();
     }
 
     void Update()
     {
-        t_Time += Time.deltaTime;
-        AnimatedFrames.GetLength(NumberOfFrames);
-
-        if (t_Time > FrameInterval)
+        if (enable)
         {
+            t_Time += Time.deltaTime;
+            AnimatedFrames.GetLength(NumberOfFrames);
 
-            if (CurrentFrameIndex > NumberOfFrames + 1)
+            if (t_Time > FrameInterval)
             {
-                CurrentFrameIndex = 0;
-            }
-            else
-            {
-                CurrentFrameIndex += 1;
 
+                if (CurrentFrameIndex > NumberOfFrames + 1)
+                {
+                    CurrentFrameIndex = 0;
+                }
+                else
+                {
+                    CurrentFrameIndex += 1;
+
+                }
+                thisObject.GetComponent<SpriteRenderer>().sprite = AnimatedFrames[CurrentFrameIndex];
+                t_Time = 0.0f;
             }
-            thisObject.GetComponent<SpriteRenderer>().sprite = AnimatedFrames[CurrentFrameIndex];
-            t_Time = 0.0f;
+        }
+        else
+        {
+            thisObject.GetComponent<SpriteRenderer>().sprite = AnimatedFrames[0];
+            CurrentFrameIndex = 0;
         }
     }
 }
