@@ -15,7 +15,7 @@ public class RespawnPlayer : MonoBehaviour
     public GameObject StartingPoint;
 
     //Invoke repeating
-    void FindNearestRespawn()
+   public void FindNearestRespawn()
     {
 
         float distanceX;
@@ -55,10 +55,7 @@ public class RespawnPlayer : MonoBehaviour
 
     void Update()
     {
-       if( Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            FindNearestRespawn();
-        }
+    
     }
 
 
