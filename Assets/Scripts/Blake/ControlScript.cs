@@ -103,7 +103,12 @@ public class ControlScript : MonoBehaviour
             velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
              */
 
+            if (Input.GetKeyDown(KeyCode.KeypadMinus))
+            {
 
+                transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, 90);
+                //GameObject.FindGameObjectWithTag("Player").transform.rotation *= Quaternion.Euler(0, -90, 0);
+            }
             //make sure the player is always looking at the mouse
             m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (m_plane.Raycast(m_ray, out distanceFromCamera))
