@@ -35,10 +35,11 @@ public class CameraFollower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
          
             transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, 90);
+          //  GameObject.FindGameObjectWithTag("Player").transform.rotation = new Quaternion(0, 90, 0, 0);
         }
     }
 }
