@@ -9,6 +9,8 @@ public class EnemyScript : MonoBehaviour {
     [HideInInspector]
 	public Vector3 knockbackPos;
     public Camera FightCamera;
+    [HideInInspector]
+
 
 	public float knockBackDistance;
 
@@ -21,25 +23,27 @@ public class EnemyScript : MonoBehaviour {
 
 	public bool isKnockedBack;
 
-	public Rigidbody m_rigidBody;
+	//public Rigidbody m_rigidBody;
 
 	// Use this for initialization
 	void Start () 
 	{
 		enemyHealth = maxHealth;
-		m_rigidBody = GetComponent<Rigidbody> ();
+		//m_rigidBody = GetComponent<Rigidbody> ();
 		isKnockedBack = false;
 	}
 
     // Update is called once per frame
     void Update()
     {
+        p_SeizeMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement;
+
         if (p_SeizeMovement == false)
         {
             if (Vector3.Distance(transform.position, knockbackPos) > knockBackDistance)
             {
                 isKnockedBack = false;
-                m_rigidBody.velocity = Vector3.zero;
+              //  m_rigidBody.velocity = Vector3.zero;
             }
 
             //ignore the player if they're too far away
@@ -51,6 +55,8 @@ public class EnemyScript : MonoBehaviour {
             else if (Vector3.Distance(transform.position, playerPos.position) > 0.1f && Vector3.Distance(transform.position, playerPos.position) < aggroRadius && isKnockedBack == false)
             {
                 transform.position += ((playerPos.position - transform.position).normalized * Time.deltaTime * movementSpeed);
+
+
             }
         }
 
