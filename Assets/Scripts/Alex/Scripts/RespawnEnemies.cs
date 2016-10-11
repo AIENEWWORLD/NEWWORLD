@@ -23,12 +23,12 @@ public class RespawnEnemies : MonoBehaviour
     bool counting = false;
 
 
-    void Start ()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
 
-        
+
         //for (int i = 0; i < EnemyList.Count; i++) //this startup is run after the statsscript
         //{
         //    EnemyposList.Add(EnemyList[i].gameObject.transform);
@@ -43,13 +43,13 @@ public class RespawnEnemies : MonoBehaviour
          * check if the player is far enough away from it's original transform position
          * if so, set the inactive object back to active.
          */
-	}
-	
+    }
+
     //go through the list, check if it's far enough away to start countdown.
     //countdown from x number to zero
     //if the number is zero or lower and the enemy is still in range respawn the enemy
     //else, keep checking to spawn the enemy when it's in range properly
-	void Update ()
+    void Update()
     {
         if (EnemyList.Count != 0)
         {
@@ -63,7 +63,7 @@ public class RespawnEnemies : MonoBehaviour
                 }
             }
         }
-	}
+    }
     public IEnumerator num(float time, int i)
     {
         counting = true;
@@ -80,5 +80,5 @@ public class RespawnEnemies : MonoBehaviour
             num(timer, i);
         }
         counting = false;
-    }                                                                         
+    }
 }

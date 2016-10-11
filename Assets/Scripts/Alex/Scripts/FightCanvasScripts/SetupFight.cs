@@ -36,16 +36,16 @@ public class SetupFight : MonoBehaviour
      * space enables/disables the menu sometimes? strange bug (to do with what is selected on the eventsystem). SETTING SELECTIONS SEGMENT
      * spamming space while in the upgrade total coins menu breaks it
      * mouseovertext stayed enabled one time after finishing combat
+     * under playerprefab1 playerobject has tag "player", does it need to be there? this breaks my respawn enemies getcomponent<Transform> position
+     * supplies in negatives heal negatives after combat
+     * can kind of skip the text too fast?
      * 
      * -------------------------------------------------
      * TO DO:
-     * supplies in negatives heal negatives after combat
      * death, go back to previous supply thing, lose gold
      * timer on respawn script KINDA WORKS?
      * tutorial script
-     * can kind of skip the text too fast?
      * enemies move when in combat, play can move when in combat
-     * under playerprefab1 playerobject has tag "player", does it need to be there? this breaks my respawn enemies getcomponent<Transform> position
      * flipping the coins on attack works by checking flip, then spin coin
      * chkme on each coinscript
      * check out the art, remember there are phases of combat, there is art to help remember and cursed coins activate the things in the bottom right.
@@ -362,8 +362,8 @@ public class SetupFight : MonoBehaviour
             for (int i = 0; i < PlayercoinList.Count; i++)
             {
 
-               PlayercoinList[i].isHeads = getRandom(50, 0, 100);
-                
+                PlayercoinList[i].isHeads = getRandom(50, 0, 100);
+
                 if (PlayercoinList[i].isHeads == true)
                 {
                     PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
@@ -486,6 +486,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
+                    playerStats.dead = true;
                     //do something about death too
                 }
 
@@ -554,6 +555,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
+                    playerStats.dead = true;
                     //do something about death too
                 }
 
@@ -758,14 +760,14 @@ public class SetupFight : MonoBehaviour
         enemyAttacks = true;
 
     */
-     
 
 
-    /*
-     * attack, if you have flip/counter coins display the text saying which coin you are using
-     * let the player select from the coins grey out coins that cant be flipped, no flip or counter coins can be flipped apart from myself
-     * change the coin colour of the flipped coin
-     * check the coins enum to determine which coins it can pick from
-     * reset the colours so that people know what happened
-     * continue combat.
-     */
+
+/*
+ * attack, if you have flip/counter coins display the text saying which coin you are using
+ * let the player select from the coins grey out coins that cant be flipped, no flip or counter coins can be flipped apart from myself
+ * change the coin colour of the flipped coin
+ * check the coins enum to determine which coins it can pick from
+ * reset the colours so that people know what happened
+ * continue combat.
+ */

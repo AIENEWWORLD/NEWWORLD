@@ -28,7 +28,7 @@ public class StatsScript : MonoBehaviour
 
     public GameObject prefab;
 
-    bool dead = false;
+    public bool dead = false;
     Transform playertrans;
     RespawnEnemies respawnscript;
     //[HideInInspector]

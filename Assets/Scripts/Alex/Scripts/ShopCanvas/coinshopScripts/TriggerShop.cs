@@ -27,7 +27,7 @@ public class TriggerShop : MonoBehaviour
     {
         speechCanvas.enabled = false;
     }
-	void Update ()
+    void Update()
     {
         tmptext.text = newTEXT;
         if (tmpBool)
@@ -45,7 +45,7 @@ public class TriggerShop : MonoBehaviour
             newTEXT = "";
         }
 
-        if(newTEXT.CompareTo(textToType) == 0)
+        if (newTEXT.CompareTo(textToType) == 0)
         {
             runText = false;
         }
@@ -61,9 +61,9 @@ public class TriggerShop : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && speechCanvas.enabled == true && tmpBool == true && newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
         {
-            
+
             newbool = true;
-            StartCoroutine(enablemyCanvas(timeBetweenCanvas));
+            StartCoroutine(enablemyCanvas(2));
         }
 
 
@@ -76,13 +76,13 @@ public class TriggerShop : MonoBehaviour
     }
     void OnTriggerExit(Collider collision)
     {
+        StopAllCoroutines();
         runText = true;
         newTEXT = "";
         tmpBool = false;
         myCanvas.enabled = false;
         speechCanvas.enabled = false;
         newbool = false;
-        StopAllCoroutines();
     }
 
     public IEnumerator writeText(string txt, float time)
@@ -90,7 +90,7 @@ public class TriggerShop : MonoBehaviour
         yield return new WaitForSeconds(time);
         if (x < txt.Length && newbool == false && tmpBool && runText == true)
         {
-            
+
             //Debug.Log(txt[x]);
             newTEXT = newTEXT + txt[x];
             x += 1;
