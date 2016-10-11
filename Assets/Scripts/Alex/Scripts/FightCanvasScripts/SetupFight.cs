@@ -486,7 +486,8 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
-                    playerStats.dead = true;
+                    //playerStats.dead = true;
+                    GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
                 }
 
@@ -555,7 +556,8 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
-                    playerStats.dead = true;
+                    //playerStats.dead = true;
+                    GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
                 }
 

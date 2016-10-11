@@ -14,6 +14,8 @@ public class RespawnPlayer : MonoBehaviour
 
     public GameObject StartingPoint;
 
+    public int goldToTake = 5;
+
     //Invoke repeating
    public void FindNearestRespawn()
     {
@@ -25,8 +27,14 @@ public class RespawnPlayer : MonoBehaviour
         foreach (GameObject itr in allRespawnPoints)
         {
             GameObject rRef = itr;
-
-
+            if (goldToTake <= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold)
+            {
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= goldToTake;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold = 0;
+            }
             distanceX = rRef.transform.position.x - PlayerObject.transform.position.x;
             distanceZ = rRef.transform.position.z - PlayerObject.transform.position.z;
             // abs transform for nearest
