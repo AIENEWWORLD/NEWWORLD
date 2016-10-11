@@ -18,6 +18,7 @@ public class ControlScript : MonoBehaviour
     public Rigidbody t_Body;
 
 
+
     public GameObject characterModel;
     public BoxCollider meleeHitbox;
     public GameObject bulletPrefab;
@@ -141,16 +142,27 @@ public class ControlScript : MonoBehaviour
             {
                 NotMoving = true;
             }
-       
+
+
 
             if (velocity.x != 0 || velocity.z != 0)
             {
+                t_Body.constraints = RigidbodyConstraints.None;
+                t_Body.constraints = RigidbodyConstraints.FreezeRotation;
+ 
+           
                 t_Body.velocity = (velocity * movementSpeed);
-
             }
             else
             {
-                t_Body.velocity = new Vector3(0, 0, 0);
+                t_Body.velocity = new Vector3(0, t_Body.velocity.y, 0);
+                t_Body.constraints = RigidbodyConstraints.FreezeAll;
+
+                //t_Body.constraints = RigidbodyConstraints.FreezePositionX;
+                //t_Body.constraints = RigidbodyConstraints.FreezePositionZ;
+                //t_Body.constraints = RigidbodyConstraints.FreezeRotationX;
+                //t_Body.constraints = RigidbodyConstraints.FreezeRotationY;
+                //t_Body.constraints = RigidbodyConstraints.FreezeRotationX;
             }
 
             //transform.position += velocity * movementSpeed * Time.deltaTime;
@@ -187,7 +199,7 @@ public class ControlScript : MonoBehaviour
         }
         else
         {
-            t_Body.velocity = new Vector3(0,0,0);
+            t_Body.velocity = new Vector3(0, 0, 0);
         }
     }
 }
