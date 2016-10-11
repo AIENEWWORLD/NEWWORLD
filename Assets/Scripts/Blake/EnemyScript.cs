@@ -36,7 +36,7 @@ public class EnemyScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        p_SeizeMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement;
+      //  p_SeizeMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement;
 
         if (p_SeizeMovement == false)
         {
