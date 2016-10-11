@@ -30,6 +30,8 @@ public class ControlScript : MonoBehaviour
     public float visionRadius;
     [HideInInspector]
     public bool FacingDirection = false;
+    [HideInInspector]
+    public bool NotMoving = false;
 
     float meleeTimer;
     float reloadTimer;
@@ -122,12 +124,20 @@ public class ControlScript : MonoBehaviour
             velocity.y = 0;
             if (velocity.x < 0)
             {
+                NotMoving = false;
                 FacingDirection = true;
             }
             else if (velocity.x > 0)
             {
+                NotMoving = false;
                 FacingDirection = false;
             }
+            else if (velocity.x == 0)
+            {
+                NotMoving = true;
+            }
+       
+
             if (velocity.x != 0 || velocity.z != 0)
             {
                 t_Body.velocity = (velocity * movementSpeed);
@@ -142,9 +152,9 @@ public class ControlScript : MonoBehaviour
 
             if (velocity.x != 0 || velocity.z != 0)
             {
-                if (supplyAmount < 0)
+                if (statsScript.supplies < 0)
                 {
-                    supplyAmount = 0;
+                    statsScript.supplies = 0;
                 }
                 else
                 {
@@ -153,7 +163,7 @@ public class ControlScript : MonoBehaviour
 
 
             }
-            if (supplyAmount < 0.5)
+            if (statsScript.supplies < 0.5)
             {
                 if (velocity.x != 0 || velocity.z != 0 && playerHealth > 0)
                 {
