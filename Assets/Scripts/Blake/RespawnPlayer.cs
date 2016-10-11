@@ -1,58 +1,64 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class RespawnPlayer : MonoBehaviour
 {
+    [HideInInspector]
+    public GameObject PlayerObject;
 
     [HideInInspector]
     public GameObject nearestRespawnPoint;
 
     [HideInInspector]
-    public GameObject[] allRespawnPoints;
-    
+    public List<GameObject> allRespawnPoints;
+
+    public GameObject StartingPoint;
 
     //Invoke repeating
     void FindNearestRespawn()
     {
-        int CheckLength = allRespawnPoints.Length;
+
         float distanceX;
         float distanceZ;
         float actualDistance = 0;
         float currentDistance = 0;
-        for (int itr = 0; itr <= CheckLength; itr++)
+        foreach (GameObject itr in allRespawnPoints)
         {
-            GameObject rRef = allRespawnPoints[itr];
+            GameObject rRef = itr;
 
 
-            distanceX = rRef.transform.position.x - gameObject.transform.position.x;
-            distanceZ = rRef.transform.position.z - gameObject.transform.position.z;
+            distanceX = rRef.transform.position.x - PlayerObject.transform.position.x;
+            distanceZ = rRef.transform.position.z - PlayerObject.transform.position.z;
             // abs transform for nearest
             currentDistance = Mathf.Abs(distanceX) + Mathf.Abs(distanceZ);
-            if (itr == 0)
-            {
-                nearestRespawnPoint = rRef;
-                actualDistance = Mathf.Abs(distanceX) + Mathf.Abs(distanceZ);
-                currentDistance = actualDistance;
-            }
-
+            distanceX = nearestRespawnPoint.transform.position.x - PlayerObject.transform.position.x;
+            distanceZ = nearestRespawnPoint.transform.position.z - PlayerObject.transform.position.z;
+            actualDistance = Mathf.Abs(distanceX) + Mathf.Abs(distanceZ);
             if (currentDistance < actualDistance)
             {
                 actualDistance = currentDistance;
                 nearestRespawnPoint = rRef;
             }
-
-
         }
+
+        PlayerObject.transform.position = nearestRespawnPoint.transform.position;
     }
 
     void Start()
     {
+        PlayerObject = GameObject.FindGameObjectWithTag("Player");
+        allRespawnPoints.Add(StartingPoint);
+        nearestRespawnPoint = StartingPoint;
 
+        //  
     }
 
     void Update()
     {
-
+       if( Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            FindNearestRespawn();
+        }
     }
 
 

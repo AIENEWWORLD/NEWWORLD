@@ -10,9 +10,10 @@ public class TentPlacement : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-       
+
         if (col.gameObject.tag == ("Player"))
         {
+            print("player");
             m_Inside = true;
         }
     }
@@ -21,6 +22,7 @@ public class TentPlacement : MonoBehaviour
     {
         if (col.gameObject.tag == ("Player"))
         {
+            print("player");
             m_Inside = false;
         }
     }
@@ -36,14 +38,14 @@ public class TentPlacement : MonoBehaviour
     void Update()
     {
 
-      
+
         if (Input.GetButtonDown("PlaceTent") == true && m_Inside == true && m_TentPlaced == false)
         {
             m_TentPlaced = true;
             Vector3 TentLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Instantiate(Tent, TentLocation, transform.rotation);
             gameObject.GetComponent<Renderer>().enabled = false;
-
+            GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().allRespawnPoints.Add(gameObject);
         }
     }
 }
