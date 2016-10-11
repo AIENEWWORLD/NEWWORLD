@@ -111,14 +111,14 @@ public class ControlScript : MonoBehaviour
                 //GameObject.FindGameObjectWithTag("Player").transform.rotation *= Quaternion.Euler(0, -90, 0);
             }
             //make sure the player is always looking at the mouse
-            m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (m_plane.Raycast(m_ray, out distanceFromCamera))
-            {
-                mouseWorldPos = m_ray.GetPoint(distanceFromCamera);
-                mouseWorldPos.y = transform.position.y;
-            }
+            //m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //if (m_plane.Raycast(m_ray, out distanceFromCamera))
+            //{
+            //    mouseWorldPos = m_ray.GetPoint(distanceFromCamera);
+            //    mouseWorldPos.y = transform.position.y;
+            //}
 
-            characterModel.transform.LookAt(mouseWorldPos);
+            //characterModel.transform.LookAt(mouseWorldPos);
 
             //character movement
             velocity.x = Input.GetAxis("Horizontal");
