@@ -13,7 +13,7 @@ public class TentPlacement : MonoBehaviour
 
         if (col.gameObject.tag == ("Player"))
         {
-            print("player");
+          
             m_Inside = true;
         }
     }
@@ -22,7 +22,7 @@ public class TentPlacement : MonoBehaviour
     {
         if (col.gameObject.tag == ("Player"))
         {
-            print("player");
+      
             m_Inside = false;
         }
     }
