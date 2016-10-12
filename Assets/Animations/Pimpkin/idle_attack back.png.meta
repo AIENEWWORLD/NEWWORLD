@@ -1,0 +1,319 @@
+fileFormatVersion: 2
+guid: 7d2f1a1d8df439f409944d1c4aa1f454
+timeCreated: 1476232741
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: idle_attack back_0
+    21300002: idle_attack back_1
+    21300004: idle_attack back_2
+    21300006: idle_attack back_3
+    21300008: idle_attack back_4
+    21300010: idle_attack back_5
+    21300012: idle_attack back_6
+    21300014: idle_attack back_7
+    21300016: idle_attack back_8
+    21300018: idle_attack back_9
+    21300020: idle_attack back_10
+    21300022: idle_attack back_11
+    21300024: idle_attack back_12
+    21300026: idle_attack back_13
+    21300028: idle_attack back_14
+    21300030: idle_attack back_15
+    21300032: idle_attack back_16
+    21300034: idle_attack back_17
+    21300036: idle_attack back_18
+    21300038: idle_attack back_19
+    21300040: idle_attack back_20
+    21300042: idle_attack back_21
+    21300044: idle_attack back_22
+    21300046: idle_attack back_23
+    21300048: idle_attack back_24
+    21300050: idle_attack back_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: idle_attack back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_1
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_2
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_3
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_4
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_5
+      rect:
+        serializedVersion: 2
+        x: 2510
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_6
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_7
+      rect:
+        serializedVersion: 2
+        x: 3514
+        y: 962
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_9
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_10
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_11
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_12
+      rect:
+        serializedVersion: 2
+        x: 2008
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_13
+      rect:
+        serializedVersion: 2
+        x: 2510
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_14
+      rect:
+        serializedVersion: 2
+        x: 3012
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_15
+      rect:
+        serializedVersion: 2
+        x: 3514
+        y: 481
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: idle_attack back_17
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 0
+        width: 502
+        height: 481
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

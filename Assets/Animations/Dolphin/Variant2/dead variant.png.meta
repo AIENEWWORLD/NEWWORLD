@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: 290fb9c57080b5141b7b5dbf4bb4ce64
+timeCreated: 1476233570
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: dead variant_0
+    21300002: dead variant_1
+    21300004: dead variant_2
+    21300006: dead variant_3
+    21300008: dead variant_4
+    21300010: dead variant_5
+    21300012: dead variant_6
+    21300014: dead variant_7
+    21300016: dead variant_8
+    21300018: dead variant_9
+    21300020: dead variant_10
+    21300022: dead variant_11
+    21300024: dead variant_12
+    21300026: dead variant_13
+    21300028: dead variant_14
+    21300030: dead variant_15
+    21300032: dead variant_16
+    21300034: dead variant_17
+    21300036: dead variant_18
+    21300038: dead variant_19
+    21300040: dead variant_20
+    21300042: dead variant_21
+    21300044: dead variant_22
+    21300046: dead variant_23
+    21300048: dead variant_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dead variant_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_1
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_2
+      rect:
+        serializedVersion: 2
+        x: 2384
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_3
+      rect:
+        serializedVersion: 2
+        x: 3576
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_4
+      rect:
+        serializedVersion: 2
+        x: 4768
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_5
+      rect:
+        serializedVersion: 2
+        x: 5960
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_6
+      rect:
+        serializedVersion: 2
+        x: 7152
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_7
+      rect:
+        serializedVersion: 2
+        x: 8344
+        y: 1044
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_9
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_10
+      rect:
+        serializedVersion: 2
+        x: 2384
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_11
+      rect:
+        serializedVersion: 2
+        x: 3576
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_12
+      rect:
+        serializedVersion: 2
+        x: 4768
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_13
+      rect:
+        serializedVersion: 2
+        x: 5960
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_14
+      rect:
+        serializedVersion: 2
+        x: 7152
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_15
+      rect:
+        serializedVersion: 2
+        x: 8344
+        y: 696
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_17
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_18
+      rect:
+        serializedVersion: 2
+        x: 2384
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_19
+      rect:
+        serializedVersion: 2
+        x: 3576
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_20
+      rect:
+        serializedVersion: 2
+        x: 4768
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_21
+      rect:
+        serializedVersion: 2
+        x: 5960
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_22
+      rect:
+        serializedVersion: 2
+        x: 7152
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_23
+      rect:
+        serializedVersion: 2
+        x: 8344
+        y: 348
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: dead variant_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1192
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

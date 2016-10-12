@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: cae7aa848720fd045ac2ccbd5154cb99
+timeCreated: 1476233846
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: male front_0
+    21300002: male front_1
+    21300004: male front_2
+    21300006: male front_3
+    21300008: male front_4
+    21300010: male front_5
+    21300012: male front_6
+    21300014: male front_7
+    21300016: male front_8
+    21300018: male front_9
+    21300020: male front_10
+    21300022: male front_11
+    21300024: male front_12
+    21300026: male front_13
+    21300028: male front_14
+    21300030: male front_15
+    21300032: male front_16
+    21300034: male front_17
+    21300036: male front_18
+    21300038: male front_19
+    21300040: male front_20
+    21300042: male front_21
+    21300044: male front_22
+    21300046: male front_23
+    21300048: male front_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: male front_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_1
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_2
+      rect:
+        serializedVersion: 2
+        x: 1678
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_3
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_4
+      rect:
+        serializedVersion: 2
+        x: 3356
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_5
+      rect:
+        serializedVersion: 2
+        x: 4195
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_6
+      rect:
+        serializedVersion: 2
+        x: 5034
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_7
+      rect:
+        serializedVersion: 2
+        x: 5873
+        y: 2736
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_9
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_10
+      rect:
+        serializedVersion: 2
+        x: 1678
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_11
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_12
+      rect:
+        serializedVersion: 2
+        x: 3356
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_13
+      rect:
+        serializedVersion: 2
+        x: 4195
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_14
+      rect:
+        serializedVersion: 2
+        x: 5034
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_15
+      rect:
+        serializedVersion: 2
+        x: 5873
+        y: 1824
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_17
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_18
+      rect:
+        serializedVersion: 2
+        x: 1678
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_19
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_20
+      rect:
+        serializedVersion: 2
+        x: 3356
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_21
+      rect:
+        serializedVersion: 2
+        x: 4195
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_22
+      rect:
+        serializedVersion: 2
+        x: 5034
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_23
+      rect:
+        serializedVersion: 2
+        x: 5873
+        y: 912
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: male front_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 839
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -107,7 +107,7 @@ public class ControlScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.KeypadMinus))
             {
 
-                transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, 90);
+                transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, 5);
                 //GameObject.FindGameObjectWithTag("Player").transform.rotation *= Quaternion.Euler(0, -90, 0);
             }
             //make sure the player is always looking at the mouse
@@ -149,9 +149,14 @@ public class ControlScript : MonoBehaviour
             {
                 t_Body.constraints = RigidbodyConstraints.None;
                 t_Body.constraints = RigidbodyConstraints.FreezeRotation;
- 
-           
-                t_Body.velocity = (velocity * movementSpeed);
+
+                Vector3 forward = transform.forward * movementSpeed * velocity.z;
+                Vector3 right = transform.right * movementSpeed * velocity.x;
+                Vector3 tmpvec;
+                tmpvec = forward + right;
+
+
+                t_Body.velocity = (tmpvec);
             }
             else
             {

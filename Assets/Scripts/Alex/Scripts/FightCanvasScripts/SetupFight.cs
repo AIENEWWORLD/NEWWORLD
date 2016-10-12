@@ -42,6 +42,7 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * multiple enemies in combat screen?
      * death, go back to previous supply thing, lose gold
      * timer on respawn script KINDA WORKS?
      * tutorial script
