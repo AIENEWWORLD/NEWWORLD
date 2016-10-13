@@ -30,6 +30,14 @@ public class SavedInput : MonoBehaviour
     public float horizontal = 0;
     public float vertical = 0;
 
+    public float Temphorizontal = 0;
+    public float Tempvertical = 0;
+
+    public float smooth = 5;
+    [Range(0,1)]
+    public float intepAdjustment = 0.05f;
+
+    public bool doesSmooth = true;
 
     // Use this for initialization
     void Start ()
@@ -40,36 +48,69 @@ public class SavedInput : MonoBehaviour
             //Debug.Log("adding keyname: " + controls[i].keyname + " keycode: " + controls[i].keycode.ToString());
         }
     }
+
+    void smoothVoid()
+    {
+        Temphorizontal = Mathf.Lerp(Temphorizontal, horizontal, Time.deltaTime*smooth);
+        if (Mathf.Abs(Temphorizontal) < intepAdjustment)
+        {
+            Temphorizontal = 0;
+        }
+        if (Temphorizontal > 1)
+            Temphorizontal = 1;
+
+        if (Temphorizontal < -1)
+            Temphorizontal = -1;
+
+        horizontal = Temphorizontal;
+
+        Tempvertical = Mathf.Lerp(Tempvertical, vertical, Time.deltaTime*smooth);
+        if (Mathf.Abs(Tempvertical) < intepAdjustment)
+        {
+            Tempvertical = 0;
+        }
+        if (Tempvertical > 1)
+            Tempvertical = 1;
+
+        if (Tempvertical < -1)
+            Tempvertical = -1;
+
+        vertical = Tempvertical;
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        horizontal = 0;
+        vertical = 0;
         if (Input.GetKey(keycodes["left"]))
         {
             horizontal = -1;
-
+            if (Temphorizontal > -intepAdjustment)
+            Temphorizontal -= intepAdjustment;
         }
-        else if (Input.GetKey(keycodes["right"]))
+        if (Input.GetKey(keycodes["right"]))
         {
-            horizontal = 1;
-
+            horizontal += 1;
+            if(Temphorizontal < intepAdjustment)
+            Temphorizontal += intepAdjustment;
         }
-        else
-        {
-            horizontal = 0;
-        }
-
-        if (Input.GetKey(keycodes["forward"]))
-        {
-            vertical = 1;
-        }
-        else if (Input.GetKey(keycodes["down"]))
+        
+        if (Input.GetKey(keycodes["down"]))
         {
             vertical = -1;
+            if(Tempvertical > -intepAdjustment)
+            Tempvertical -= intepAdjustment;
         }
-        else
+        if (Input.GetKey(keycodes["forward"]))
         {
-            vertical = 0;
+            vertical += 1;
+            if(Tempvertical < intepAdjustment)
+            Tempvertical += intepAdjustment;
+        }
+        if (doesSmooth)
+        {
+            smoothVoid();
         }
 
 

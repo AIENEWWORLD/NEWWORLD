@@ -19,9 +19,11 @@ public class CameraSwitcher : MonoBehaviour
 
     private Rect FullRect = new Rect(0, 0, 1, 1);
     private Rect MiniMapRect;
+
+    private CheckinCombatScript CheckCombat;
     void Start()
     {
-      
+        CheckCombat = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>();
         MiniMapRect = new Rect(MapCamera.rect);
     }
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class CameraSwitcher : MonoBehaviour
         }
 
 
-            if (m_lTime > ButtonToggleLimit && Input.GetButton("ToggleMap") == true)
+            if (m_lTime > ButtonToggleLimit && Input.GetButton("ToggleMap") == true && CheckCombat.Combatisenabled == false && CheckCombat.Optionsisenabled == false)
         {
             if (MainCameraActive == true)
             {

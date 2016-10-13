@@ -45,6 +45,8 @@ public class ControlScript : MonoBehaviour
     float l_Time = 0.0f;
     Vector3 currentPosition = new Vector3();
 
+    GameObject InputGameobject;
+
     void checkDiscoveredPercentage()
     {
         //Using InvokeRepeating method to update only update percentage every x second rather than each update cycle
@@ -76,6 +78,7 @@ public class ControlScript : MonoBehaviour
         percentageMapDiscovered = 0.0f;
         currentPosition = transform.position;
         t_Body = GetComponent<Rigidbody>();
+        InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
     }
 
     // Update is called once per frame
@@ -121,8 +124,11 @@ public class ControlScript : MonoBehaviour
             //characterModel.transform.LookAt(mouseWorldPos);
 
             //character movement
-            velocity.x = Input.GetAxis("Horizontal");
-            velocity.z = Input.GetAxis("Vertical");
+            //velocity.x = Input.GetAxis("Horizontal");
+            //velocity.z = Input.GetAxis("Vertical");
+
+            velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
+            velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
 
             Vector3.Normalize(velocity);
             //quickfix

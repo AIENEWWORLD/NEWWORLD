@@ -5,7 +5,7 @@ public class FogOfWarUnit : MonoBehaviour
 {
     public float radius = 5.0f;
 
-    public float updateFrequency { get { return FogOfWar.current.updateFrequency; } } //this gets mad errors if the game isnt running for ages (alt+tabbed)
+    public float updateFrequency { get { return FogOfWar.current.updateFrequency; } }
     float _nextUpdate = 0.0f;
 
     public LayerMask lineOfSightMask = 0;

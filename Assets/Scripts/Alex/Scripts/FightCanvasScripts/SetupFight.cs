@@ -7,6 +7,7 @@ public class SetupFight : MonoBehaviour
 {
     /* Fixed?: Double check
      * 
+     * FIXED PROBLEM
      * script execution order:
      * additem
      * createinventory
@@ -39,24 +40,30 @@ public class SetupFight : MonoBehaviour
      * under playerprefab1 playerobject has tag "player", does it need to be there? this breaks my respawn enemies getcomponent<Transform> position
      * supplies in negatives heal negatives after combat
      * can kind of skip the text too fast?
+     * death, go back to previous supply thing, lose gold
+     * enemies move when in combat, play can move when in combat
+     * lock some scripts
+     * check out the art, remember there are phases of combat, there is art to help remember and cursed coins activate the things in the bottom right.
+     * EnemyScript uses the rigidbody to zero out velocity, sometimes the enemy would just run in a random direction.
      * 
      * -------------------------------------------------
      * TO DO:
-     * multiple enemies in combat screen?
-     * death, go back to previous supply thing, lose gold
+     * something kinda messed up with the shop text...
+     * added - smooth movement, locked scripts when in combat etc...
+     * Tell blake that the player will have to remember that it has gone to set locations so that it can check that each has been discovered & all bosses have been killed to end the game?
+     * multiple enemies in combat screen? CANT GET THIS TO HAPPEN.
      * timer on respawn script KINDA WORKS?
      * tutorial script
-     * enemies move when in combat, play can move when in combat
      * flipping the coins on attack works by checking flip, then spin coin
      * chkme on each coinscript
-     * check out the art, remember there are phases of combat, there is art to help remember and cursed coins activate the things in the bottom right.
      * add all those coins
      * autoresolve
      * reposition the enemy coins
-     * lock some scripts yo
      * clean up scripts
-     * make sure my scripts can all save and load
      * 
+     * -----------------------------------------------
+     * Maybe:
+     * make sure my scripts can all save and load
      * maybe saving can be done like this public List<Object> scripts; ?????
      * 
      * Notes:

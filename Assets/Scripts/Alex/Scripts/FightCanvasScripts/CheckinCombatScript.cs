@@ -8,18 +8,24 @@ public class CheckinCombatScript : MonoBehaviour
 
     GameObject FightCamera;
     GameObject FightCanvas;
-    [HideInInspector]
+    GameObject OptionsCamera;
+    GameObject MapCamera;
+    //[HideInInspector]
     public bool Combatisenabled = false;
+    public bool Optionsisenabled = false;
+    public bool Mapisenabled = false;
 
 	void Start ()
     {
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
         FightCanvas = GameObject.FindGameObjectWithTag("FightCanvas");
+        MapCamera = GameObject.FindGameObjectWithTag("MapCamera");
+        OptionsCamera = GameObject.FindGameObjectWithTag("OptionsCamera");
 
-        if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
-        {
-            //do stuff if not in combat
-        }
+        //if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
+        //{
+        //    //do stuff if not in combat
+        //}
 	}
 	
 	void Update ()
@@ -39,6 +45,33 @@ public class CheckinCombatScript : MonoBehaviour
 
                 Combatisenabled = false;
             }
+        }
+        if (OptionsCamera.GetComponent<Camera>().enabled == true)
+        {
+            Optionsisenabled = true;
+        }
+        else
+        {
+            Optionsisenabled = false;
+        }
+
+        if (MapCamera.GetComponent<Camera>().enabled == true)
+        {
+            Mapisenabled = true;
+        }
+        else
+        {
+            Mapisenabled = false;
+        }
+
+
+        if (Combatisenabled || Optionsisenabled || Mapisenabled)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement = true;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement = false;
         }
 	}
 }

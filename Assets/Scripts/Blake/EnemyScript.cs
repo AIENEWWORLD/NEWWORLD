@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyScript : MonoBehaviour
 {
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool p_SeizeMovement = false;
     public Transform playerPos;
     [HideInInspector]
@@ -36,6 +36,7 @@ public class EnemyScript : MonoBehaviour
     private Vector3 l_RelativeDistance;
     private float xDif;
     private float zDif;
+    private Rigidbody m_rigidBody;
 
 
 
@@ -43,7 +44,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         enemyHealth = maxHealth;
-        //m_rigidBody = GetComponent<Rigidbody> ();
+        m_rigidBody = GetComponent<Rigidbody> ();
         isKnockedBack = false;
         p_PlayerRef = GameObject.FindGameObjectWithTag("Player");
 
@@ -52,14 +53,14 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //  p_SeizeMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement;
+        p_SeizeMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement;
 
         if (p_SeizeMovement == false)
         {
             if (Vector3.Distance(transform.position, knockbackPos) > knockBackDistance)
             {
                 isKnockedBack = false;
-                //  m_rigidBody.velocity = Vector3.zero;
+                m_rigidBody.velocity = Vector3.zero;
             }
 
             //ignore the player if they're too far away
