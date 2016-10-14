@@ -17,6 +17,11 @@ public class TriggerShop : MonoBehaviour
     public int x = 0;
     public float timeBetweenCanvas = 2;
     public bool newbool = false;
+    public bool typing = false;
+    public SavedInput InputGameobject;
+
+    bool starting = true;
+    //startup not working well for getcomponent, probably something to do with the script execution order
 
     /*
      * when you walk into the shop enable the speech canvas and set its text to the newTEXT.
@@ -30,20 +35,13 @@ public class TriggerShop : MonoBehaviour
     void Update()
     {
         tmptext.text = newTEXT;
-        if (tmpBool)
+        if (starting)
         {
-            if (Input.GetKeyDown(KeyCode.E) && myCanvas.enabled == false)
-            {
-                speechCanvas.enabled = true;
-                StartCoroutine(writeText(textToType, TimeBetweenChar));
-                //runText = false;
-            }
+            InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>(); //less getcomponents per update
+            starting = false;
         }
-        else
-        {
-            x = 0;
-            newTEXT = "";
-        }
+
+
 
         if (newTEXT.CompareTo(textToType) == 0)
         {
@@ -54,16 +52,32 @@ public class TriggerShop : MonoBehaviour
             myCanvas.enabled = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && typing == true)
         {
+            newbool = true;
             newTEXT = textToType;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && speechCanvas.enabled == true && tmpBool == true && newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
+        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && speechCanvas.enabled == true && tmpBool == true && newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
         {
-
+        
             newbool = true;
             StartCoroutine(enablemyCanvas(2));
+        }
+        if (tmpBool)
+        {
+            if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && myCanvas.enabled == false && runText == true)
+            {
+                speechCanvas.enabled = true;
+                
+                StartCoroutine(writeText(textToType, TimeBetweenChar));
+                //runText = false;
+            }
+        }
+        else
+        {
+            x = 0;
+            newTEXT = "";
         }
 
 
@@ -83,10 +97,12 @@ public class TriggerShop : MonoBehaviour
         myCanvas.enabled = false;
         speechCanvas.enabled = false;
         newbool = false;
+        typing = false;
     }
 
     public IEnumerator writeText(string txt, float time)
     {
+        typing = true;
         yield return new WaitForSeconds(time);
         if (x < txt.Length && newbool == false && tmpBool && runText == true)
         {

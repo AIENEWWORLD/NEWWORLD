@@ -19,8 +19,8 @@ public class RespawnEnemies : MonoBehaviour
     GameObject[] respawnGameObjects;
 
     public float timer = 10;
-
-    bool counting = false;
+    [HideInInspector]
+    public bool counting = false;
 
 
     void Start()
@@ -57,28 +57,17 @@ public class RespawnEnemies : MonoBehaviour
             {
                 dist = Vector3.Distance(EnemyList[i].transform.position, player.transform.position);
                 //Debug.Log(dist);
-                if (dist > distAway && !counting)
+                if (dist > distAway)
                 {
-                    StartCoroutine(num(timer, i));
+                    if(!EnemyList[i].GetComponent<StatsScript>().counting)
+                    EnemyList[i].GetComponent<StatsScript>().RespawnEnemy(timer, i); //StartCoroutine(num(timer, i));
+                }
+                else
+                {
+                    EnemyList[i].GetComponent<StatsScript>().counting = false;
+                    EnemyList[i].GetComponent<StatsScript>().CancelRespawn();
                 }
             }
         }
-    }
-    public IEnumerator num(float time, int i)
-    {
-        counting = true;
-        yield return new WaitForSeconds(time);
-        dist = Vector3.Distance(EnemyList[i].transform.position, player.transform.position);
-        //Debug.Log(dist);
-        if (dist > distAway)
-        {
-            EnemyList[i].SetActive(true);
-            EnemyList.Remove(EnemyList[i]);
-        }
-        else
-        {
-            num(timer, i);
-        }
-        counting = false;
     }
 }

@@ -33,6 +33,8 @@ public class StatsScript : MonoBehaviour
     RespawnEnemies respawnscript;
     //[HideInInspector]
     public Vector3 startpos;
+    [HideInInspector]
+    public bool counting;
 
     public enum enumType
     {
@@ -79,7 +81,7 @@ public class StatsScript : MonoBehaviour
 
     void OnCollisionStay(Collision collision) //using oncollisionstay because oncollisionenter bugs out when its already colliding with the player
     {
-        if (guyType != enumType.player)
+        if (guyType != enumType.player && !dead)
         {
             if (collision.gameObject.tag == "Player" && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat == false)
             {
@@ -117,48 +119,90 @@ public class StatsScript : MonoBehaviour
                 dead = true;
                 transform.position = startpos;
                 respawnscript.EnemyList.Add(gameObject);
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                gameObject.GetComponent<EnemyScript>().enabled = false;
+                if (gameObject.GetComponent<SpriteRenderer>() != null)
+                {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                }
+                else
+                {
+                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                }
+                gameObject.GetComponent<BoxCollider>().enabled = false;
             }
         }
     }
 
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    if (guyType != enumType.player)
-    //    {
-    //        if (collision.gameObject.tag == "Player" && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat == false)
-    //        {
-    //            if (FightCamera != null)
-    //            {
-    //                FightCamera.GetComponent<Camera>().enabled = true;
-    //
-    //                FightCamera.GetComponent<SetupFight>().setEnemyList(coinList);
-    //                FightCamera.GetComponent<SetupFight>().enterCombat = true;
-    //            }
-    //            else
-    //            {
-    //                Debug.Log("error in stats script");
-    //            }
-    //
-    //            if (FightPanel != null)
-    //            {
-    //
-    //                GameObject sprite = Instantiate(prefab);
-    //                sprite.AddComponent<StatsScript>();
-    //                sprite.GetComponent<StatsScript>().setScript(this);
-    //                FightCamera.GetComponent<SetupFight>().enemyStats = sprite.GetComponent<StatsScript>(); //////////////////////////////////////////////////this could be dodgy
-    //                sprite.transform.SetParent(FightPanel.transform);
-    //                //sprite.transform.localScale = new Vector3(1, 1, 1);
-    //                sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -15);
-    //                sprite.transform.localEulerAngles = new Vector3(UIrotation.x, UIrotation.y, UIrotation.z);
-    //            }
-    //            else
-    //            {
-    //                Debug.Log("error in stats script");
-    //            }
-    //            Destroy(gameObject);
-    //
-    //        }
-    //    }
-    //}
-}
+    public IEnumerator Respawn(float time, int i)
+    {
+        //Debug.Log("HI");
+        counting = true;
+        yield return new WaitForSeconds(time);
+            //respawnscript.EnemyList[i].SetActive(true);
+            gameObject.GetComponent<EnemyScript>().enabled = true;
+        if (gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+        gameObject.GetComponent<BoxCollider>().enabled = true;
+        respawnscript.EnemyList.Remove(gameObject);
+        dead = false;
+        counting = false;
+    }
+
+    public void RespawnEnemy(float time, int i)
+    {
+        StartCoroutine(Respawn(time, i));
+        //Debug.Log("HI2");
+    }
+
+    public void CancelRespawn()
+    {
+        StopAllCoroutines();
+    }
+
+        //void OnCollisionEnter(Collision collision)
+        //{
+        //    if (guyType != enumType.player)
+        //    {
+        //        if (collision.gameObject.tag == "Player" && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat == false)
+        //        {
+        //            if (FightCamera != null)
+        //            {
+        //                FightCamera.GetComponent<Camera>().enabled = true;
+        //
+        //                FightCamera.GetComponent<SetupFight>().setEnemyList(coinList);
+        //                FightCamera.GetComponent<SetupFight>().enterCombat = true;
+        //            }
+        //            else
+        //            {
+        //                Debug.Log("error in stats script");
+        //            }
+        //
+        //            if (FightPanel != null)
+        //            {
+        //
+        //                GameObject sprite = Instantiate(prefab);
+        //                sprite.AddComponent<StatsScript>();
+        //                sprite.GetComponent<StatsScript>().setScript(this);
+        //                FightCamera.GetComponent<SetupFight>().enemyStats = sprite.GetComponent<StatsScript>(); //////////////////////////////////////////////////this could be dodgy
+        //                sprite.transform.SetParent(FightPanel.transform);
+        //                //sprite.transform.localScale = new Vector3(1, 1, 1);
+        //                sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -15);
+        //                sprite.transform.localEulerAngles = new Vector3(UIrotation.x, UIrotation.y, UIrotation.z);
+        //            }
+        //            else
+        //            {
+        //                Debug.Log("error in stats script");
+        //            }
+        //            Destroy(gameObject);
+        //
+        //        }
+        //    }
+        //}
+    }

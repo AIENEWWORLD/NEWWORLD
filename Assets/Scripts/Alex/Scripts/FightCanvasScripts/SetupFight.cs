@@ -48,6 +48,11 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * ENEMY RUNS IN RANDOM DIRECTION (MAYBE BECAUSE OF RESPAWN) ----------- BECAUSE OF COLLISION PUSHING IT AWAY WHEN IT FINALLY COLLIDES WITH PLAYER
+     * With collision between the enemy and player there is sometimes a chance that unity collision will still occur and the enemy will continue to add velocity away from the object it collided with this happens now that the enemies are disabled when they die rather than destroyed. with the rigidbody's mass on the player being 500, and the enemies mass being 0.1 I'd assume this is why the enemy floats away and doesn't seem to slow down.
+     * 
+     * 
+     * upgrade slots shop sucks
      * something kinda messed up with the shop text...
      * added - smooth movement, locked scripts when in combat etc...
      * Tell blake that the player will have to remember that it has gone to set locations so that it can check that each has been discovered & all bosses have been killed to end the game?
