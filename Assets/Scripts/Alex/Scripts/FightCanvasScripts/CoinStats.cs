@@ -18,23 +18,37 @@ public class CoinStats
     public int Tails_attack;
     public int Tails_defence;
     public int Tails_HP; // + or -.
+
+    //ENEMY ONLY COINS
+
+    //I decided to make these bools, rather than enums so that we can use multiple
+    [Header("Enemy Coins Only-------------")]
+    public bool BleedCoin;        //deals 1 damage, if unblocked increase counter, if counter reaches 5 deal 5 damage, ------ what determines which coin is blocked?
+    public bool RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it
+    public bool DealDmgGainHealth;//deal 1 damage, gain 1 damage if unblocked ------ what determines which coin is blocked?
+    public bool DealDmgDealDmg;   //deal 1 damage, deal 2 damage if player health < x --- done but combat2 needs to be fixed
+    public bool DuplicateCoin;    //weird 
+    public bool CurseCoin;        //count to 5 if it reaches 5 player loses halfHealth --- done but no UI?
+
+
+    [Space][Space]
+    [Header("Selections")]
     public bool activeonHeads;
-
+    [HideInInspector]
     public bool isPlayerCoin;
-
+    [HideInInspector]
     public bool isFlipCoin;
 
     public bool isHeads;
 
-
     public bool isSelected = false;
-
+    [Header("Use this for dropCoins")]
     public List<StatsScript.enumType> en = new List<StatsScript.enumType>();//only for dropcoins.
-
+    [Header("cost to buy")]
     public int cost = 0;//only for the shop coins that you can buy
-
+    [Header("use only for player coins")]
     public coinTypes cType;
-
+    [Header("adjust only for enemy coins")]
     public EnemycoinTypes ETypes;
 
     public enum coinTypes
@@ -56,7 +70,6 @@ public class CoinStats
     {
         none,
         standard,
-        combo
     }
 
     void Start ()

@@ -48,9 +48,15 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it
+     * 
+     * calculatecoins2 breaks other coins.
+     * make coins flip properly
      * ENEMY RUNS IN RANDOM DIRECTION (MAYBE BECAUSE OF RESPAWN) ----------- BECAUSE OF COLLISION PUSHING IT AWAY WHEN IT FINALLY COLLIDES WITH PLAYER
      * With collision between the enemy and player there is sometimes a chance that unity collision will still occur and the enemy will continue to add velocity away from the object it collided with this happens now that the enemies are disabled when they die rather than destroyed. with the rigidbody's mass on the player being 500, and the enemies mass being 0.1 I'd assume this is why the enemy floats away and doesn't seem to slow down.
      * 
+     * blakes player movement script locks the players Y axis (preventing falling when no keys are being pressed), this might work better without that
+     * enemies don't fall + if they unlock the Y axis on rigidbody they can't climb hills, mass 500 works better
      * 
      * upgrade slots shop sucks
      * something kinda messed up with the shop text...
@@ -79,22 +85,26 @@ public class SetupFight : MonoBehaviour
      */
     public GameObject Inventory;
     public GameObject FightScreen;
+    [HideInInspector]
     public bool inventoryisActive = true;
-
+    [HideInInspector]
     public List<CoinStats> EnemycoinList = new List<CoinStats>(); //save this
+    [HideInInspector]
     public List<GameObject> EnemyitemList = new List<GameObject>(); //save this
-
+    [HideInInspector]
     public List<CoinStats> PlayercoinList = new List<CoinStats>(); //save this
+    [HideInInspector]
     public List<GameObject> PlayeritemList = new List<GameObject>(); //save this
-
+    [HideInInspector]
     public bool enterCombat = false;
 
     public GameObject PlayerCoinPrefab;
     public GameObject EnemyCoinPrefab;
-
+    [HideInInspector]
     public StatsScript playerStats;
+    [HideInInspector]
     public StatsScript enemyStats;//the way this is being set could be dodgy///////////////////////////////////////
-
+    [HideInInspector]
     public GameObject enemySprite;
 
     float offsetPosX = -130; //player offset coins
@@ -109,17 +119,22 @@ public class SetupFight : MonoBehaviour
 
     [HideInInspector]
     public GameObject mouseover;
-    //[HideInInspector]
+    [HideInInspector]
     public bool playerAttacks = true;
     [HideInInspector]
     public bool enemyAttacks = true;
-
+    [HideInInspector]
     public Vector3 screenmousePos;
     public Vector2 MouseOverTextOffset = new Vector2(0, 0); //this needs to offset itself so the mouseover can check if it's over the button.
 
     public int playerFleeRate = 50;
+    [HideInInspector]
     public int playerAttack = 0, playerDefence = 0, playerHeal = 0;
-    public int enemyAttack = 0, enemyDefence = 0, enemyHeal = 0;
+    [HideInInspector]
+    public int enemyAttack = 0, enemyDefence = 0, enemyHeal = 0, enemyCounterCursed = 0;
+    [HideInInspector]
+    public bool enemyRegenCoin = false;
+    [HideInInspector]
     public bool calcFight = false;
     public Slider playerSlider;
     public Slider EnemySlider;
@@ -128,24 +143,27 @@ public class SetupFight : MonoBehaviour
 
     public Text Instructions;
 
-    // [HideInInspector]
+    [HideInInspector]
     public bool playerinCombat = false;
 
     CreateInventory inventory;
 
     public float TimeBetweenCombat = 2.0f;
+    [HideInInspector]
     public int combatStage = 0; //1 attack + defend phase, 2 select phase, 3 heal phase
 
     public Text PlayerNumbers;
     public Text EnemyNumbers;
-
+    [HideInInspector]
     public TextureCycler texcycle;
+    [HideInInspector]
     public SpriteAnimator sprcycle;
     bool spr;
-
+    [HideInInspector]
     public List<CoinStats> pickCoinList;
+    [HideInInspector]
     public bool picking = false;
-
+    [HideInInspector]
     public int emptyCoins = 0;
 
     // Use this for initialization
@@ -369,6 +387,7 @@ public class SetupFight : MonoBehaviour
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0;
         enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
+        enemyRegenCoin = false;
         //pickCoinList.Clear();
         if (playerAttacks)
         {
@@ -415,6 +434,26 @@ public class SetupFight : MonoBehaviour
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
+                    if (EnemycoinList[i].CurseCoin == true)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        enemyCounterCursed += 1;
+                        
+                    }
+                    if (EnemycoinList[i].DealDmgDealDmg == true)/////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        if (playerStats.health > 10)
+                        {
+                            enemyAttack += 2;
+                        }
+                        else
+                        {
+                            enemyAttack += 1;
+                        }
+                    }
+                    if (EnemycoinList[i].RegenCoin == true)
+                    {
+                        enemyRegenCoin = true;
+                    }
                 }
                 else if (EnemycoinList[i].isHeads == false)
                 {
@@ -447,7 +486,25 @@ public class SetupFight : MonoBehaviour
         //take damage
         if (gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeSelf == false)
         {
-            if (combatStage == 1)//player attacks + enemy defends
+            if (combatStage == 1)
+            {
+                for (int i = 0; i < PlayercoinList.Count; i++)
+                {
+                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
+                }
+                //time until flip
+                StartCoroutine(PlayerCombat(3));
+            }
+            if (combatStage == 2)
+            {
+                for (int i = 0; i < PlayercoinList.Count; i++)
+                {
+                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
+                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = true;
+                }
+                StartCoroutine(PlayerCombat(TimeBetweenCombat));
+            }
+            if (combatStage == 3)//player attacks + enemy defends
             {
                 if (spr)
                 {
@@ -466,14 +523,14 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 2)
+            if (combatStage == 4)
             {
 
                 Instructions.text = "Instructions";
                 setColoursHT();
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 3)//enemy attacks + player defends
+            if (combatStage == 5)//enemy attacks + player defends
             {
 
                 if (enemyAttacks)
@@ -487,13 +544,17 @@ public class SetupFight : MonoBehaviour
                     playerStats.health = playerStats.health - enemyAttack;
                     PlayerNumbers.text = "-" + enemyAttack.ToString();
                     playerSlider.value = playerStats.health;
-
+                    if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        playerStats.health /= 2;
+                        enemyCounterCursed = 0;
+                    }
                 }
 
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 4)// enemy + player heal
+            if (combatStage == 6)// enemy + player heal
             {
                 if (playerStats.health <= 0)
                 {
@@ -520,15 +581,19 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 5)
+            if (combatStage == 7)
             {
                 if (enemyStats.health <= 0)
                 {
                     enemyStats.health = 0;
                     //do something about death too
-                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
+                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
                     {
                         gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
+                    }
+                    else
+                    {
+                        enemyStats.health = enemyStats.maxHealth / 2;
                     }
 
                 }
@@ -562,7 +627,7 @@ public class SetupFight : MonoBehaviour
                 enemyAttacks = true;
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 6)
+            if (combatStage == 8)
             {
                 //RECHECK DEATH since players can heal negative values (risky coins)
                 if (playerStats.health <= 0)
@@ -578,9 +643,13 @@ public class SetupFight : MonoBehaviour
                 {
                     enemyStats.health = 0;
                     //do something about death too
-                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
+                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
                     {
                         gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
+                    }
+                    else
+                    {
+                        enemyStats.health = enemyStats.maxHealth / 2;
                     }
 
                 }
@@ -599,6 +668,12 @@ public class SetupFight : MonoBehaviour
                     texcycle.enable = false;
                 }
                 gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
+
+                for (int i = 0; i < PlayercoinList.Count; i++)
+                {
+                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = false;
+                }
+
                 combatStage = 0;
             }
         }

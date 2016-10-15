@@ -14,8 +14,7 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
     public GameObject myCoin;
 
     public bool flip = false;
-    public bool spinCoin = true;
-    public float RotationSpeedFlip = 5;
+
     private Quaternion lookRot;
     private Vector3 dir;
 
@@ -62,10 +61,6 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
         }
         if (flip)
         {
-            if (spinCoin)
-            {
-                spincoin();
-            }
             StartCoroutine(flipcoin(coin.isHeads, 0));
         }
         else
@@ -105,20 +100,13 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
         mouseover.SetActive(false);
     }
 
-    public void spincoin()
-    {
-        if (spinCoin)
-        {
-            myCoin.transform.Rotate(0, RotationSpeedFlip, 0);
-        }
-    }
 
     public IEnumerator flipcoin(bool heads, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         if (flip)
         {
-            spinCoin = false;
+            //spinCoin = false;
             Vector3 pos = transform.position;
             if (heads)
             {
@@ -132,7 +120,7 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
 
             dir = (pos - myCoin.transform.position).normalized;
             lookRot = Quaternion.LookRotation(dir);
-            myCoin.transform.rotation = Quaternion.Slerp(myCoin.transform.rotation, lookRot, Time.deltaTime * RotationSpeedFlip);
+            myCoin.transform.rotation = Quaternion.Slerp(myCoin.transform.rotation, lookRot, Time.deltaTime * spinrate);
         }
         //myCoin.transform.Rotate
         //rotate passed a point x times, slow down and stop on a specified rotation.

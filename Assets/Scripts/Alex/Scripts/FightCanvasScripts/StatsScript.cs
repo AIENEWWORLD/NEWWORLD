@@ -33,7 +33,7 @@ public class StatsScript : MonoBehaviour
     RespawnEnemies respawnscript;
     //[HideInInspector]
     public Vector3 startpos;
-    [HideInInspector]
+    //[HideInInspector]
     public bool counting;
 
     public enum enumType
@@ -130,6 +130,7 @@ public class StatsScript : MonoBehaviour
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
                 }
                 gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.name = Name + " dead";
             }
         }
     }
@@ -152,6 +153,7 @@ public class StatsScript : MonoBehaviour
         gameObject.GetComponent<BoxCollider>().enabled = true;
         respawnscript.EnemyList.Remove(gameObject);
         dead = false;
+        gameObject.name = Name + " alive";
         counting = false;
     }
 

@@ -36,7 +36,7 @@ public class EnemyScript : MonoBehaviour
     private Vector3 l_RelativeDistance;
     private float xDif;
     private float zDif;
-    private Rigidbody m_rigidBody;
+    //private Rigidbody m_rigidBody;
 
 
 
@@ -44,7 +44,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         enemyHealth = maxHealth;
-        m_rigidBody = GetComponent<Rigidbody> ();
+        //m_rigidBody = GetComponent<Rigidbody> ();
         isKnockedBack = false;
         p_PlayerRef = GameObject.FindGameObjectWithTag("Player");
 
@@ -57,11 +57,11 @@ public class EnemyScript : MonoBehaviour
 
         if (p_SeizeMovement == false)
         {
-            if (Vector3.Distance(transform.position, knockbackPos) > knockBackDistance)
-            {
-                isKnockedBack = false;
-                m_rigidBody.velocity = Vector3.zero;
-            }
+            //if (Vector3.Distance(transform.position, knockbackPos) > knockBackDistance)
+            //{
+            //    isKnockedBack = false;
+            //    m_rigidBody.velocity = Vector3.zero;
+            //}
 
             //ignore the player if they're too far away
             if (Vector3.Distance(transform.position, playerPos.position) > aggroResetRadius)
