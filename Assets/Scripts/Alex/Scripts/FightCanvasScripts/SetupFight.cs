@@ -579,7 +579,6 @@ public class SetupFight : MonoBehaviour
 
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().grounded = true;
                     //do something about death too
                 }
 

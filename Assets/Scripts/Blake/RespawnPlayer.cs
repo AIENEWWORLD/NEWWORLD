@@ -40,6 +40,7 @@ public class RespawnPlayer : MonoBehaviour
         }
 
         PlayerObject.transform.position = nearestRespawnPoint.transform.position;
+        PlayerObject.transform.position += new Vector3(0, 5, 0); // fix for checking grounded
     }
 
     void Start()
