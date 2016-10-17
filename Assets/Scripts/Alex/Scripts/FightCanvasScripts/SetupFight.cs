@@ -50,6 +50,13 @@ public class SetupFight : MonoBehaviour
      * TO DO:
      * RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it
      * 
+     * orthographic cameras on shop, fix input after text is fully written
+     * 
+     * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
+     * 
+     * merge counter coin and flip coin into one
+     * health not resetting upon death
+     * 
      * calculatecoins2 breaks other coins.
      * make coins flip properly
      * ENEMY RUNS IN RANDOM DIRECTION (MAYBE BECAUSE OF RESPAWN) ----------- BECAUSE OF COLLISION PUSHING IT AWAY WHEN IT FINALLY COLLIDES WITH PLAYER
@@ -149,6 +156,7 @@ public class SetupFight : MonoBehaviour
     CreateInventory inventory;
 
     public float TimeBetweenCombat = 2.0f;
+    public float TimeBeforeFlip = 2.0f;
     [HideInInspector]
     public int combatStage = 0; //1 attack + defend phase, 2 select phase, 3 heal phase
 
@@ -441,7 +449,7 @@ public class SetupFight : MonoBehaviour
                     }
                     if (EnemycoinList[i].DealDmgDealDmg == true)/////////////////////////////////////////////////////////////////////////////////////////////
                     {
-                        if (playerStats.health > 10)
+                        if (playerStats.health <= 10)
                         {
                             enemyAttack += 2;
                         }
@@ -493,7 +501,7 @@ public class SetupFight : MonoBehaviour
                     PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
                 }
                 //time until flip
-                StartCoroutine(PlayerCombat(3));
+                StartCoroutine(PlayerCombat(TimeBeforeFlip));
             }
             if (combatStage == 2)
             {
@@ -541,14 +549,15 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyAttack = 0;
                     }
+                    if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        enemyAttack = (int)playerStats.health;
+                        //playerStats.health /= 2;
+                        enemyCounterCursed = 0;
+                    }
                     playerStats.health = playerStats.health - enemyAttack;
                     PlayerNumbers.text = "-" + enemyAttack.ToString();
                     playerSlider.value = playerStats.health;
-                    if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
-                    {
-                        playerStats.health /= 2;
-                        enemyCounterCursed = 0;
-                    }
                 }
 
 

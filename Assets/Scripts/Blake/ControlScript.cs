@@ -17,7 +17,8 @@ public class ControlScript : MonoBehaviour
     //Here<-
     public Rigidbody t_Body;
 
-
+    public float fallspeed = -20;
+    public bool grounded = true;
 
     public GameObject characterModel;
     public BoxCollider meleeHitbox;
@@ -129,6 +130,11 @@ public class ControlScript : MonoBehaviour
 
             velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
             velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
+            if (!grounded)
+            {
+                velocity.y = fallspeed;
+            }
+            //velocity.y = 5;
 
             Vector3.Normalize(velocity);
             //quickfix
@@ -161,12 +167,17 @@ public class ControlScript : MonoBehaviour
                 Vector3 tmpvec;
                 tmpvec = forward + right;
 
+                if(!grounded)
+                {
+                    tmpvec.y = fallspeed;
+                }
 
                 t_Body.velocity = (tmpvec);
             }
             else
             {
                 t_Body.velocity = new Vector3(0, t_Body.velocity.y, 0);
+                if(grounded)
                 t_Body.constraints = RigidbodyConstraints.FreezeAll;
 
                 //t_Body.constraints = RigidbodyConstraints.FreezePositionX;
@@ -211,6 +222,20 @@ public class ControlScript : MonoBehaviour
         else
         {
             t_Body.velocity = new Vector3(0, 0, 0);
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = false;
         }
     }
 }

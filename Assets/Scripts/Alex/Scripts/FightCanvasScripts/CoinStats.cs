@@ -24,10 +24,10 @@ public class CoinStats
     //I decided to make these bools, rather than enums so that we can use multiple
     [Header("Enemy Coins Only-------------")]
     public bool BleedCoin;        //deals 1 damage, if unblocked increase counter, if counter reaches 5 deal 5 damage, ------ what determines which coin is blocked?
-    public bool RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it
+    public bool RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it 4hp
     public bool DealDmgGainHealth;//deal 1 damage, gain 1 damage if unblocked ------ what determines which coin is blocked?
     public bool DealDmgDealDmg;   //deal 1 damage, deal 2 damage if player health < x --- done but combat2 needs to be fixed
-    public bool DuplicateCoin;    //weird 
+    public bool DuplicateCoin;    //weird
     public bool CurseCoin;        //count to 5 if it reaches 5 player loses halfHealth --- done but no UI?
 
 

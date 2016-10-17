@@ -23,6 +23,7 @@ public class CoinShopManager : MonoBehaviour
     public Text Desc2;
     public Vector3 screenmousePos;
     public Vector2 MouseOverTextOffset = new Vector2(0, 0);
+    public TriggerShop TrigShop;
 
     public float dist = 0;
 
@@ -83,6 +84,9 @@ public class CoinShopManager : MonoBehaviour
     }
     public void onclickexitshop()
     {
+        TrigShop.resetStuff();
+        Camera.main.orthographic = false;
+        Camera.main.nearClipPlane = 0.3f;
         myCanvas.enabled = false;
     }
 

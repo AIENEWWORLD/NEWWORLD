@@ -13,6 +13,7 @@ public class UpgradeButtonScripts : MonoBehaviour
     public GameObject[] ButtonList; // I hate these things so much
     public List<GameObject> bList = new List<GameObject>();
     public GameObject currButton;
+    public TriggerShop TrigShop;
 
     public bool chkgld = false;
 
@@ -79,6 +80,13 @@ public class UpgradeButtonScripts : MonoBehaviour
     {
         playerStats.gold -= cost;
         playerStats.totalCoins += 1;
+    }
+    public void ExitShop2()
+    {
+        TrigShop.resetStuff();
+        Camera.main.orthographic = false;
+        Camera.main.nearClipPlane = 0.3f;
+        myCanvas.enabled = false;
     }
     public void _checkGold()
     {

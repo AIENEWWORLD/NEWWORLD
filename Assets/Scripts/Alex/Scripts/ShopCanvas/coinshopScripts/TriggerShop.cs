@@ -52,17 +52,17 @@ public class TriggerShop : MonoBehaviour
             myCanvas.enabled = false;
         }
 
-        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && typing == true)
-        {
-            newbool = true;
-            newTEXT = textToType;
-        }
-
-        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && speechCanvas.enabled == true && tmpBool == true && newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
+        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && speechCanvas.enabled == true && newTEXT.CompareTo(textToType) == 0 && tmpBool == true)
         {
         
             newbool = true;
             StartCoroutine(enablemyCanvas(2));
+        }
+
+        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && typing == true)
+        {
+            newbool = true;
+            newTEXT = textToType;
         }
         if (tmpBool)
         {
@@ -86,9 +86,14 @@ public class TriggerShop : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         tmpBool = true;
-
+        
     }
-    void OnTriggerExit(Collider collision)
+    void OnTriggerStay(Collider collision)
+    {
+        tmpBool = true;
+    }
+
+    public void resetStuff()
     {
         StopAllCoroutines();
         runText = true;
@@ -98,6 +103,13 @@ public class TriggerShop : MonoBehaviour
         speechCanvas.enabled = false;
         newbool = false;
         typing = false;
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+        resetStuff();
+        Camera.main.orthographic = false;
+        Camera.main.nearClipPlane = 0.3f;
     }
 
     public IEnumerator writeText(string txt, float time)
@@ -117,6 +129,8 @@ public class TriggerShop : MonoBehaviour
     public IEnumerator enablemyCanvas(float time)
     {
         yield return new WaitForSeconds(time);
+        Camera.main.nearClipPlane = -40;
+        Camera.main.orthographic = true;
         if (tmpBool && newTEXT.CompareTo(textToType) == 0 && runText == false)
         {
             speechCanvas.enabled = false;
