@@ -67,6 +67,7 @@ public class SetupFight : MonoBehaviour
      * put in the animations
      * tutorial script when you talk to dude trigger tutorial
      * 
+     * ON RESPAWN SET GROUNDED TO TRUE
      * 
      * upgrade slots shop
      * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.
@@ -578,6 +579,7 @@ public class SetupFight : MonoBehaviour
 
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().grounded = true;
                     //do something about death too
                 }
 
