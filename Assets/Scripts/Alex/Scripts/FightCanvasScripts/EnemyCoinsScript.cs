@@ -57,7 +57,7 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
 
     public void OnPointerDown(PointerEventData data)
     {
-        if (inv.picking && coin.itemName != "empty slot" && inv.pickCoinList[0].cType == CoinStats.coinTypes.counter)
+        if (inv.picking && coin.itemName != "empty slot" && inv.pickCoinList[0].cType == CoinStats.coinTypes.flip)
         {
             inv.checkSelections(coin);
         }

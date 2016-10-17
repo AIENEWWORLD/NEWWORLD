@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
 
 public class SetupFight : MonoBehaviour
 {
@@ -45,34 +46,33 @@ public class SetupFight : MonoBehaviour
      * lock some scripts
      * check out the art, remember there are phases of combat, there is art to help remember and cursed coins activate the things in the bottom right.
      * EnemyScript uses the rigidbody to zero out velocity, sometimes the enemy would just run in a random direction.
-     * 
-     * -------------------------------------------------
-     * TO DO:
-     * RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it
-     * 
      * orthographic cameras on shop, fix input after text is fully written
-     * 
-     * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
-     * 
-     * merge counter coin and flip coin into one
-     * health not resetting upon death
-     * 
-     * calculatecoins2 breaks other coins.
      * make coins flip properly
      * ENEMY RUNS IN RANDOM DIRECTION (MAYBE BECAUSE OF RESPAWN) ----------- BECAUSE OF COLLISION PUSHING IT AWAY WHEN IT FINALLY COLLIDES WITH PLAYER
      * With collision between the enemy and player there is sometimes a chance that unity collision will still occur and the enemy will continue to add velocity away from the object it collided with this happens now that the enemies are disabled when they die rather than destroyed. with the rigidbody's mass on the player being 500, and the enemies mass being 0.1 I'd assume this is why the enemy floats away and doesn't seem to slow down.
-     * 
      * blakes player movement script locks the players Y axis (preventing falling when no keys are being pressed), this might work better without that
      * enemies don't fall + if they unlock the Y axis on rigidbody they can't climb hills, mass 500 works better
-     * 
-     * upgrade slots shop sucks
      * something kinda messed up with the shop text...
-     * added - smooth movement, locked scripts when in combat etc...
-     * Tell blake that the player will have to remember that it has gone to set locations so that it can check that each has been discovered & all bosses have been killed to end the game?
-     * multiple enemies in combat screen? CANT GET THIS TO HAPPEN.
-     * timer on respawn script KINDA WORKS?
-     * tutorial script
-     * flipping the coins on attack works by checking flip, then spin coin
+     * enemyCounterCursed counts towards damage even when there is a flip coin that got heads
+     * picking flip coin breaking getting random happened twice
+     * WHEN YOU DIE CANVAS IS GLITCHY fixed, things weren't being reset
+     * calculatecoins2 breaks other coins. Fixed
+     * health not resetting upon death fixed
+     * merge counter coin and flip coin into one. Done
+     * 
+     * -------------------------------------------------
+     * TO DO:
+     * enemy AI with roaming
+     * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
+     * put in the animations
+     * tutorial script when you talk to dude trigger tutorial
+     * 
+     * 
+     * upgrade slots shop
+     * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.
+     * 
+     * 
+     * 
      * chkme on each coinscript
      * add all those coins
      * autoresolve
@@ -87,8 +87,6 @@ public class SetupFight : MonoBehaviour
      * Notes:
      * combat ends in the enemydropcoins script, referencing the buttonspressed script
      * 
-     * maybe I can grey out all the buttons until the applyfight has finished, run enemy defend and player attack, wait X time run player defend enemy attack, wait X time run heal on both players.
-     * While applyfight is running, make the animations play
      */
     public GameObject Inventory;
     public GameObject FightScreen;
@@ -147,6 +145,8 @@ public class SetupFight : MonoBehaviour
     public Slider EnemySlider;
     public Text PlayerName;
     public Text EnemyName;
+
+    public float GoldToLosePercentage = 10;
 
     public Text Instructions;
 
@@ -386,7 +386,7 @@ public class SetupFight : MonoBehaviour
     //chance out of rangeMax, minrange (0), rangeMax(100)
     bool getRandom(int chance, int rangeMin, int rangeMax)//returns true if random number is higher
     {
-        return (Random.Range(rangeMin, rangeMax) > rangeMax - chance);
+        return (UnityEngine.Random.Range(rangeMin, rangeMax) > rangeMax - chance);
     }
 
     public void calculateFight()
@@ -442,9 +442,10 @@ public class SetupFight : MonoBehaviour
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
-                    if (EnemycoinList[i].CurseCoin == true)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    if (EnemycoinList[i].CurseCoin == true && pickCoinList.Count == 0)///////////////////////////////////////////////////////////////////////////////////////////////////
                     {
                         enemyCounterCursed += 1;
+                        //Debug.Log(enemyCounterCursed);
                         
                     }
                     if (EnemycoinList[i].DealDmgDealDmg == true)/////////////////////////////////////////////////////////////////////////////////////////////
@@ -568,7 +569,13 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
+                    gameObject.GetComponent<ButtonsPressed>().endcombat();
                     gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
+                    playerStats.health = playerStats.maxHealth;
+                    playerStats.supplies = playerStats.maxSupply;
+                    playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
+
+
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
@@ -752,6 +759,7 @@ public class SetupFight : MonoBehaviour
         }
     }
 
+    /*
     public void calculateFight2() //temporary fix
     {
         //play fancy flip animation on 3d model coins hopefully?
@@ -791,6 +799,81 @@ public class SetupFight : MonoBehaviour
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
+                }
+                else if (EnemycoinList[i].isHeads == false)
+                {
+                    EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                    enemyAttack += EnemycoinList[i].Tails_attack;
+                    enemyDefence += EnemycoinList[i].Tails_defence;
+                    enemyHeal += EnemycoinList[i].Tails_HP;
+                }
+            }
+        }
+    }
+    */
+
+    public void calculateFight2()
+    {
+        //play fancy flip animation on 3d model coins hopefully?
+
+        playerAttack = 0; playerDefence = 0; playerHeal = 0;
+        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
+        enemyRegenCoin = false;
+        //pickCoinList.Clear();
+        if (playerAttacks)
+        {
+            for (int i = 0; i < PlayercoinList.Count; i++)
+            {
+
+                if (PlayercoinList[i].isHeads == true)
+                {
+                    PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                    playerAttack += PlayercoinList[i].Heads_attack;
+                    playerDefence += PlayercoinList[i].Heads_defence;
+                    playerHeal += PlayercoinList[i].Heads_HP;
+
+                }
+                else if (PlayercoinList[i].isHeads == false)
+                {
+                    PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                    playerAttack += PlayercoinList[i].Tails_attack;
+                    playerDefence += PlayercoinList[i].Tails_defence;
+                    playerHeal += PlayercoinList[i].Tails_HP;
+                }
+            }
+        }
+
+        if (enemyAttacks)
+        {
+            for (int i = 0; i < EnemycoinList.Count; i++)
+            {
+                if (EnemycoinList[i].isHeads == true)
+                {
+                    EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                    enemyAttack += EnemycoinList[i].Heads_attack;
+                    enemyDefence += EnemycoinList[i].Heads_defence;
+                    enemyHeal += EnemycoinList[i].Heads_HP;
+                    if (EnemycoinList[i].CurseCoin == true && pickCoinList.Count == 0)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        enemyCounterCursed += 1;
+                        Debug.Log(enemyCounterCursed);
+
+                    }
+                    if (EnemycoinList[i].DealDmgDealDmg == true)/////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        if (playerStats.health <= 10)
+                        {
+                            enemyAttack += 2;
+                        }
+                        else
+                        {
+                            enemyAttack += 1;
+                        }
+                    }
+                    if (EnemycoinList[i].RegenCoin == true)
+                    {
+                        enemyRegenCoin = true;
+                    }
                 }
                 else if (EnemycoinList[i].isHeads == false)
                 {
