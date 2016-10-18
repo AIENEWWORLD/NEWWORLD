@@ -120,7 +120,7 @@ public class StatsScript : MonoBehaviour
                 transform.position = startpos;
                 respawnscript.EnemyList.Add(gameObject);
                 //gameObject.SetActive(false);
-                gameObject.GetComponent<EnemyScript>().enabled = false;
+                //gameObject.GetComponent<EnemyScript>().enabled = false;
                 if (gameObject.GetComponent<SpriteRenderer>() != null)
                 {
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -129,7 +129,7 @@ public class StatsScript : MonoBehaviour
                 {
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
                 }
-                gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.GetComponent<Collider>().enabled = false;
                 gameObject.name = Name + " dead";
             }
         }
@@ -140,8 +140,9 @@ public class StatsScript : MonoBehaviour
         //Debug.Log("HI");
         counting = true;
         yield return new WaitForSeconds(time);
-            //respawnscript.EnemyList[i].SetActive(true);
-            gameObject.GetComponent<EnemyScript>().enabled = true;
+        //respawnscript.EnemyList[i].SetActive(true);
+        //gameObject.GetComponent<EnemyScript>().enabled = true;
+        gameObject.transform.position = gameObject.GetComponent<EnemyAI>().myPos;
         if (gameObject.GetComponent<SpriteRenderer>() != null)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;

@@ -67,6 +67,7 @@ public class SetupFight : MonoBehaviour
      * put in the animations
      * tutorial script when you talk to dude trigger tutorial
      * 
+     * adjusting the slope can be done in the navigation tab under bake.
      * 
      * upgrade slots shop
      * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.

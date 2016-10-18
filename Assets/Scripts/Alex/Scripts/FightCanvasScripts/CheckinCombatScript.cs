@@ -49,9 +49,11 @@ public class CheckinCombatScript : MonoBehaviour
         if (OptionsCamera.GetComponent<Camera>().enabled == true)
         {
             Optionsisenabled = true;
+            Time.timeScale = 0;
         }
         else
         {
+            Time.timeScale = 1;
             Optionsisenabled = false;
         }
 

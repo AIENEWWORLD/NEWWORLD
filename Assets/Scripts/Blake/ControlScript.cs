@@ -48,6 +48,10 @@ public class ControlScript : MonoBehaviour
 
     GameObject InputGameobject;
 
+    public float rotLR = 0;
+    public float smooth = 5;
+    public float maxRotSpeed = 2;
+
     void checkDiscoveredPercentage()
     {
         //Using InvokeRepeating method to update only update percentage every x second rather than each update cycle
@@ -82,11 +86,41 @@ public class ControlScript : MonoBehaviour
         InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
     }
 
+    void FixedUpdate() //very bad to get input in the fixedupdate, however this is lerping the values anyway so it doesn't really matter if this returns that the key isn't down for small amounts of time.
+    {
+        if (Input.GetKey(KeyCode.KeypadMinus))
+        {
+            rotLR = Mathf.Lerp(rotLR, maxRotSpeed, Time.deltaTime * smooth);
+            transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+            //if (rotLR < 0.1f)
+            //{
+            //    rotLR = 0.1f;
+            //}
+            //GameObject.FindGameObjectWithTag("Player").transform.rotation *= Quaternion.Euler(0, -90, 0);
+        }
+
+        if (Input.GetKey(KeyCode.KeypadMultiply))
+        {
+            rotLR = Mathf.Lerp(rotLR, -maxRotSpeed, Time.deltaTime * smooth);
+            transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+            //if (rotLR > -0.1f)
+            //{
+            //    rotLR = -0.1f;
+            //}
+        }
+
+        if (!Input.GetKey(KeyCode.KeypadMinus) && !Input.GetKey(KeyCode.KeypadMultiply))
+        {
+            rotLR = 0;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (p_SeizeMovement == false)
         {
+            
             /*
             //this stuff should work, just left it here uncommented
 
@@ -108,12 +142,8 @@ public class ControlScript : MonoBehaviour
             velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
              */
 
-            if (Input.GetKeyDown(KeyCode.KeypadMinus))
-            {
 
-                transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, 5);
-                //GameObject.FindGameObjectWithTag("Player").transform.rotation *= Quaternion.Euler(0, -90, 0);
-            }
+
             //make sure the player is always looking at the mouse
             //m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //if (m_plane.Raycast(m_ray, out distanceFromCamera))
@@ -122,13 +152,13 @@ public class ControlScript : MonoBehaviour
             //    mouseWorldPos.y = transform.position.y;
             //}
 
-            //characterModel.transform.LookAt(mouseWorldPos);
+                //characterModel.transform.LookAt(mouseWorldPos);
 
-            //character movement
-            //velocity.x = Input.GetAxis("Horizontal");
-            //velocity.z = Input.GetAxis("Vertical");
+                //character movement
+                //velocity.x = Input.GetAxis("Horizontal");
+                //velocity.z = Input.GetAxis("Vertical");
 
-            velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
+                velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
             velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
             if (!grounded)
             {
@@ -222,6 +252,7 @@ public class ControlScript : MonoBehaviour
         else
         {
             t_Body.velocity = new Vector3(0, 0, 0);
+            
         }
     }
     void OnCollisionEnter(Collision collision)

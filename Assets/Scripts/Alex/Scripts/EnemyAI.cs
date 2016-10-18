@@ -5,7 +5,8 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour
 {
     NavMeshAgent me;
-    Vector3 myPos;
+    [HideInInspector]
+    public Vector3 myPos;
     Vector3 myRotation;
     GameObject Player;
     bool RandomMove = true;
@@ -41,9 +42,17 @@ public class EnemyAI : MonoBehaviour
         prevpos = transform.position;
         myRotation = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y, myRotation.z);
         gameObject.transform.eulerAngles = myRotation;
-        me.Resume();
-        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement)
+
+        if (gameObject.GetComponent<StatsScript>().dead == true)
         {
+            //me.Resume();
+            me.speed = chaseSpeed;
+            me.destination = myPos;
+        }
+
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement && !gameObject.GetComponent<StatsScript>().dead)
+        {
+            me.Resume();
             Vector3 PlayerPos = Player.transform.position;
             float Dist = Vector3.Distance(transform.position, PlayerPos);
             if (Dist <= DistanceToPlayer)
@@ -106,7 +115,9 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            me.speed = 0;
+            //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //me.Stop();
+            //me.speed = 0;
         }
 	}
 
@@ -121,22 +132,22 @@ public class EnemyAI : MonoBehaviour
         {
             if (Velocity.x > 0)
             {
-                Debug.Log("Right");
+                //Debug.Log("Right");
             }
             if (Velocity.x < 0)
             {
-                Debug.Log("Left");
+                //Debug.Log("Left");
             }
         }
         else
         {
             if (Velocity.z > 0)
             {
-                Debug.Log("Up");
+                //Debug.Log("Up");
             }
             if (Velocity.z < 0)
             {
-                Debug.Log("Down");
+                //Debug.Log("Down");
             }
         }
     }
