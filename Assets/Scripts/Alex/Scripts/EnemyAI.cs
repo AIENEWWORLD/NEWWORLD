@@ -36,9 +36,9 @@ public class EnemyAI : MonoBehaviour
     {
         Velocity = (transform.position - prevpos) / Time.deltaTime;
         Velocity = Velocity.normalized;
-        prevpos = transform.position;
         
         GetDirectionofMe();
+        prevpos = transform.position;
         myRotation = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y, myRotation.z);
         gameObject.transform.eulerAngles = myRotation;
         me.Resume();
@@ -115,6 +115,7 @@ public class EnemyAI : MonoBehaviour
         /*
          * get the players rotation and compare it to enemy current rotation, then figure out which animation to play
          */
+        Velocity = transform.InverseTransformDirection(Velocity);
 
         if (Mathf.Abs(Velocity.x) > Mathf.Abs(Velocity.z))
         {
