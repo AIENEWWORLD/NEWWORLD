@@ -51,6 +51,9 @@ public class ControlScript : MonoBehaviour
     public float rotLR = 0;
     public float smooth = 5;
     public float maxRotSpeed = 2;
+    public float rotationSpeed = 2;
+    Vector3 tmpvec;
+    float sqrMaxVel;
 
     void checkDiscoveredPercentage()
     {
@@ -86,32 +89,12 @@ public class ControlScript : MonoBehaviour
         InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
     }
 
-    void FixedUpdate() //very bad to get input in the fixedupdate, however this is lerping the values anyway so it doesn't really matter if this returns that the key isn't down for small amounts of time.
+    void FixedUpdate()//https://www.reddit.com/r/Unity3D/comments/1yeegm/rigidbody_velocity_cap_for_diagonal_movement/ this helped a lot to keep the movement smooth while still normalizing the velocity
     {
-        if (Input.GetKey(KeyCode.KeypadMinus))
+        transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+        if (t_Body.velocity.sqrMagnitude > sqrMaxVel)
         {
-            rotLR = Mathf.Lerp(rotLR, maxRotSpeed, Time.deltaTime * smooth);
-            transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
-            //if (rotLR < 0.1f)
-            //{
-            //    rotLR = 0.1f;
-            //}
-            //GameObject.FindGameObjectWithTag("Player").transform.rotation *= Quaternion.Euler(0, -90, 0);
-        }
-
-        if (Input.GetKey(KeyCode.KeypadMultiply))
-        {
-            rotLR = Mathf.Lerp(rotLR, -maxRotSpeed, Time.deltaTime * smooth);
-            transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
-            //if (rotLR > -0.1f)
-            //{
-            //    rotLR = -0.1f;
-            //}
-        }
-
-        if (!Input.GetKey(KeyCode.KeypadMinus) && !Input.GetKey(KeyCode.KeypadMultiply))
-        {
-            rotLR = 0;
+            t_Body.velocity = (tmpvec.normalized * movementSpeed);
         }
     }
 
@@ -120,30 +103,7 @@ public class ControlScript : MonoBehaviour
     {
         if (p_SeizeMovement == false)
         {
-            
-            /*
-            //this stuff should work, just left it here uncommented
-
-            //check if in combat
-            if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
-            {
-
-
-
-
-
-
-                //do stuff if not in combat
-            }
-
-            //sets the velocity using the stored input keys
-            GameObject InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
-            velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
-            velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
-             */
-
-
-
+            sqrMaxVel = movementSpeed * movementSpeed;
             //make sure the player is always looking at the mouse
             //m_ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //if (m_plane.Raycast(m_ray, out distanceFromCamera))
@@ -152,13 +112,44 @@ public class ControlScript : MonoBehaviour
             //    mouseWorldPos.y = transform.position.y;
             //}
 
-                //characterModel.transform.LookAt(mouseWorldPos);
+            //characterModel.transform.LookAt(mouseWorldPos);
 
-                //character movement
-                //velocity.x = Input.GetAxis("Horizontal");
-                //velocity.z = Input.GetAxis("Vertical");
+            //character movement
+            //velocity.x = Input.GetAxis("Horizontal");
+            //velocity.z = Input.GetAxis("Vertical");
 
-                velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
+            if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                //if (rotLR < maxRotSpeed)
+                //{
+                    rotLR = Input.GetAxis("Mouse X") * rotationSpeed;
+                //}
+                if (rotLR > 0)
+                {
+                    rotLR = Mathf.Lerp(rotLR, maxRotSpeed, Time.deltaTime * smooth);
+                }
+                else if(rotLR < 0)
+                {
+                    rotLR = Mathf.Lerp(rotLR, -maxRotSpeed, Time.deltaTime * smooth);
+                }
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                //rotLR = 0;
+                
+                if (Mathf.Abs(rotLR) < 0.1f)
+                {
+                    rotLR = 0;
+                }
+                else
+                {
+                    rotLR = Mathf.Lerp(rotLR, 0, Time.deltaTime * smooth * 5);
+                }
+            }
+
+            velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
             velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
             if (!grounded)
             {
@@ -166,7 +157,7 @@ public class ControlScript : MonoBehaviour
             }
             //velocity.y = 5;
 
-            Vector3.Normalize(velocity);
+            //velocity = Vector3.Normalize(velocity);
             //quickfix
 
             velocity.y = 0;
@@ -185,16 +176,16 @@ public class ControlScript : MonoBehaviour
                 NotMoving = true;
             }
 
-
+            
 
             if (velocity.x != 0 || velocity.z != 0)
             {
                 t_Body.constraints = RigidbodyConstraints.None;
                 t_Body.constraints = RigidbodyConstraints.FreezeRotation;
-
+                
                 Vector3 forward = transform.forward * movementSpeed * velocity.z;
                 Vector3 right = transform.right * movementSpeed * velocity.x;
-                Vector3 tmpvec;
+
                 tmpvec = forward + right;
 
                 if(!grounded)

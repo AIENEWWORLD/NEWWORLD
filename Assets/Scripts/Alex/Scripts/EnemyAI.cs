@@ -40,8 +40,8 @@ public class EnemyAI : MonoBehaviour
         
         GetDirectionofMe();
         prevpos = transform.position;
-        myRotation = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y, myRotation.z);
-        gameObject.transform.eulerAngles = myRotation;
+        Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
+        gameObject.transform.eulerAngles = temprot_;
 
         if (gameObject.GetComponent<StatsScript>().dead == true)
         {
@@ -71,7 +71,7 @@ public class EnemyAI : MonoBehaviour
             {
                 
                 
-                if(Vector3.Distance(transform.position,newRandomPosition) < 2)
+                if(Vector3.Distance(transform.position,newRandomPosition) < 2) //Might have to change this to a vector 2
                 {
                     me.speed = RandomMoveSpeed;
                     /*
@@ -80,6 +80,8 @@ public class EnemyAI : MonoBehaviour
 
                     //me.speed = 8;
                     newRandomPosition = myPos;
+
+                    newRandomPosition.y = transform.position.y;
 
                     if(Random.Range(0, 2) == 0)//right
                     {

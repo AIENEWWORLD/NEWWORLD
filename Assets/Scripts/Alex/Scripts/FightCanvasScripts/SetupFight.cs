@@ -69,6 +69,8 @@ public class SetupFight : MonoBehaviour
      * 
      * adjusting the slope can be done in the navigation tab under bake.
      * 
+     * //Might have to change this to a vector 2 in the EnemyAI under randommove
+     * 
      * upgrade slots shop
      * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.
      * 
