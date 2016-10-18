@@ -120,7 +120,7 @@ public class ControlScript : MonoBehaviour
 
             if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.Confined;
                 //if (rotLR < maxRotSpeed)
                 //{
                     rotLR = Input.GetAxis("Mouse X") * rotationSpeed;

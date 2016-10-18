@@ -151,7 +151,7 @@ public class StatsScript : MonoBehaviour
         {
             gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
-        gameObject.GetComponent<BoxCollider>().enabled = true;
+        gameObject.GetComponent<Collider>().enabled = true;
         respawnscript.EnemyList.Remove(gameObject);
         dead = false;
         gameObject.name = Name + " alive";
