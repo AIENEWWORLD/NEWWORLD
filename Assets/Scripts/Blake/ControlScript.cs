@@ -96,6 +96,7 @@ public class ControlScript : MonoBehaviour
         {
             t_Body.velocity = (tmpvec.normalized * movementSpeed);
         }
+
     }
 
     // Update is called once per frame
@@ -118,9 +119,20 @@ public class ControlScript : MonoBehaviour
             //velocity.x = Input.GetAxis("Horizontal");
             //velocity.z = Input.GetAxis("Vertical");
 
+            if(Input.GetKey(KeyCode.E))
+            {
+                rotLR = 1 * rotationSpeed;
+                
+            }
+            if(Input.GetKey(KeyCode.Q))
+            {
+                rotLR = -1 * rotationSpeed;
+                
+            }
+
             if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.lockState = CursorLockMode.Locked;
                 //if (rotLR < maxRotSpeed)
                 //{
                     rotLR = Input.GetAxis("Mouse X") * rotationSpeed;
