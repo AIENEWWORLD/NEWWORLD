@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 283439780c5bd8744856d237b166a18c
+timeCreated: 1476835200
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Beasts
+    100002: Beasts 1
+    100004: Big_Hand
+    100006: Coins
+    100008: Coins 1
+    100010: Face
+    100012: Face 1
+    100014: Faces2
+    100016: Health
+    100018: Landmarks
+    100020: Landmarks 1
+    100022: Outer_Base
+    100024: Rim
+    100026: Screw1
+    100028: Screw2
+    100030: Screw3
+    100032: Small_Hand
+    100034: Supplies
+    100036: //RootNode
+    400000: Beasts
+    400002: Beasts 1
+    400004: Big_Hand
+    400006: Coins
+    400008: Coins 1
+    400010: Face
+    400012: Face 1
+    400014: Faces2
+    400016: Health
+    400018: Landmarks
+    400020: Landmarks 1
+    400022: Outer_Base
+    400024: Rim
+    400026: Screw1
+    400028: Screw2
+    400030: Screw3
+    400032: Small_Hand
+    400034: Supplies
+    400036: //RootNode
+    2300000: Big_Hand
+    2300002: Faces2
+    2300004: Health
+    2300006: Outer_Base
+    2300008: Rim
+    2300010: Screw1
+    2300012: Screw2
+    2300014: Screw3
+    2300016: Small_Hand
+    2300018: Supplies
+    3300000: Big_Hand
+    3300002: Faces2
+    3300004: Health
+    3300006: Outer_Base
+    3300008: Rim
+    3300010: Screw1
+    3300012: Screw2
+    3300014: Screw3
+    3300016: Small_Hand
+    3300018: Supplies
+    4300000: Faces2
+    4300002: Screw1
+    4300004: Screw2
+    4300006: Rim
+    4300008: Big_Hand
+    4300010: Screw3
+    4300012: Small_Hand
+    4300014: Outer_Base
+    4300016: Health
+    4300018: Supplies
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 20
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
