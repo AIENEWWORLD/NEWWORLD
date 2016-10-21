@@ -47,6 +47,7 @@ public class ControlScript : MonoBehaviour
     Vector3 currentPosition = new Vector3();
 
     GameObject InputGameobject;
+    SmoothCamera SmoothCameraObj;
 
     public float rotLR = 0;
     public float smooth = 5;
@@ -87,15 +88,22 @@ public class ControlScript : MonoBehaviour
         currentPosition = transform.position;
         t_Body = GetComponent<Rigidbody>();
         InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
+        SmoothCameraObj = Camera.main.GetComponent<SmoothCamera>();
+    }
+
+    void LateUpdate()
+    {
+        transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
     }
 
     void FixedUpdate()//https://www.reddit.com/r/Unity3D/comments/1yeegm/rigidbody_velocity_cap_for_diagonal_movement/ this helped a lot to keep the movement smooth while still normalizing the velocity
     {
-        transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+        
         if (t_Body.velocity.sqrMagnitude > sqrMaxVel)
         {
             t_Body.velocity = (tmpvec.normalized * movementSpeed);
         }
+            //Debug.Log(t_Body.velocity);
 
     }
 
