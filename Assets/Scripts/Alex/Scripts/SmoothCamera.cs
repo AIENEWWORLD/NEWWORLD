@@ -117,10 +117,7 @@ public class SmoothCamera : MonoBehaviour
         //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
 
 
-        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) - Player.transform.position) + Player.transform.position;
-
-
-
+        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
         transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position ).normalized), CamLookSmooth * Time.smoothDeltaTime);
