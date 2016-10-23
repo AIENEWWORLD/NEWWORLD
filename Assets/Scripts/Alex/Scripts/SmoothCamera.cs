@@ -6,7 +6,7 @@ public class SmoothCamera : MonoBehaviour
     public SavedInput InputGameobject;
     public GameObject Player;
     public Vector3 zOffset;
-    [HideInInspector]
+    //[HideInInspector]
     public Vector3 tempOffset;
     public Vector3 Box;
     [HideInInspector]
@@ -27,7 +27,7 @@ public class SmoothCamera : MonoBehaviour
     public float targetLookAheadX;
     [HideInInspector]
     public float lookAheadDirX;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentLookAheadX;
     [HideInInspector]
     public bool lookAheadStopped;
@@ -47,6 +47,8 @@ public class SmoothCamera : MonoBehaviour
     [HideInInspector]
     public Vector3 PlayerVelocity;
 
+    public bool fix = true;
+
     //bool withinRadius;
     //Vector3 NewLookPos;
 
@@ -55,6 +57,7 @@ public class SmoothCamera : MonoBehaviour
         lookAheadStopped = true;
         BoxPosition = Player.transform.position;
         transform.LookAt(Player.transform);
+        zOffset = (transform.position - Player.transform.position);
         tempOffset = zOffset;
         camVelocity = Vector3.zero;
         InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>();
@@ -118,14 +121,32 @@ public class SmoothCamera : MonoBehaviour
 
 
         //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
-        transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
+        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position ).normalized), CamLookSmooth * Time.smoothDeltaTime);
-    }
+        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
 
-    void FixedUpdate()
-    {
 
+
+        if (fix)
+        {
+            transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position ).normalized), CamLookSmooth * Time.smoothDeltaTime);
+
+        }
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
+
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
+            }
+            else
+            {
+                transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((new Vector3(Player.transform.position.x+currentLookAheadX,Player.transform.position.y,Player.transform.position.z+currentLookAheadZ) - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
+            }
+        }
     }
 
     void resetBox()

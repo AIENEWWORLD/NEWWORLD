@@ -93,7 +93,14 @@ public class ControlScript : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+        if (p_SeizeMovement == false)
+        {
+            transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     void FixedUpdate()//https://www.reddit.com/r/Unity3D/comments/1yeegm/rigidbody_velocity_cap_for_diagonal_movement/ this helped a lot to keep the movement smooth while still normalizing the velocity
