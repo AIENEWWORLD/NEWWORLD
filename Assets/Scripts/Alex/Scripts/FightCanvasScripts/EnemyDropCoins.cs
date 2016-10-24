@@ -38,7 +38,7 @@ public class EnemyDropCoins : MonoBehaviour
 
     public void onKilled(StatsScript.enumType gType, int gold, int droprate)
     {
-        CoinStats coin = new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0,CoinStats.coinTypes.standard,CoinStats.EnemycoinTypes.none);
+        CoinStats coin = new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0,CoinStats.coinTypes.standard,CoinStats.EnemycoinTypes.none, false, null,false,false);
         dead = true;
         if (getRandom2(droprate, 0, 100))
         {

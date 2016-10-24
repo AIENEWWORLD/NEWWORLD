@@ -62,6 +62,7 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * make bosses not respawn
      * enemy AI with roaming
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * put in the animations
@@ -176,6 +177,13 @@ public class SetupFight : MonoBehaviour
     public bool picking = false;
     [HideInInspector]
     public int emptyCoins = 0;
+
+    int DealDmgGainHealthCoins = 0;
+    int enemybleedcoin = 0;
+    int bleedcoinCounter = 0;
+    bool duplicate = false;
+
+    public List<int> dupeList;
 
     // Use this for initialization
     void Start()
@@ -330,7 +338,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,null,false,false));
             }
         }
         else
@@ -398,7 +406,9 @@ public class SetupFight : MonoBehaviour
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0;
         enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
-        enemyRegenCoin = false;
+        enemyRegenCoin = false; duplicate = false;
+        DealDmgGainHealthCoins = 0; enemybleedcoin = 0;
+        dupeList.Clear();
         //pickCoinList.Clear();
         if (playerAttacks)
         {
@@ -449,7 +459,23 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyCounterCursed += 1;
                         //Debug.Log(enemyCounterCursed);
-                        
+
+                    }
+                    if (EnemycoinList[i].DuplicateCoin == true && EnemycoinList.Count < 5)
+                    {
+                        Debug.Log(i);
+                        duplicate = true;
+                        dupeList.Add(i);
+
+
+                    }
+                    if (EnemycoinList[i].BleedCoin == true)
+                    {
+                        enemybleedcoin += 1;
+                    }
+                    if (EnemycoinList[i].DealDmgGainHealth == true)
+                    {
+                        DealDmgGainHealthCoins += 1;
                     }
                     if (EnemycoinList[i].DealDmgDealDmg == true)/////////////////////////////////////////////////////////////////////////////////////////////
                     {
@@ -474,17 +500,30 @@ public class SetupFight : MonoBehaviour
                     enemyDefence += EnemycoinList[i].Tails_defence;
                     enemyHeal += EnemycoinList[i].Tails_HP;
                 }
+                
             }
         }
-    }
 
+    }
+    void DupeCoin(int i)
+    {
+        enemyStats.coinList.Add(new CoinStats(EnemycoinList[i].itemName, EnemycoinList[i].itemDescription, EnemycoinList[i].itemDescription2, EnemycoinList[i].itemID, EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence, EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack, EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP, EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, EnemycoinList[i].Icon, true, EnemycoinList[i].DuplicateCoin));
+        Debug.Log("adding x");
+    }
     //onplayerattacks do player stuff, onenemyattacks, do enemy stuff.
     //make attacking, defending etc string functions and return the amount defended and attacked etc.
     //disable the buttons on the combat screen
 
     void applyFight()//on death lock it so that the attack button cant be clicked again.
     {
-
+        for (int i = 0; i < dupeList.Count; i++)
+        {
+            DupeCoin(dupeList[i]);
+            clearEnemyCoins();
+            setEnemyList(enemyStats.coinList);
+            loadEnemyCoins();
+            setColoursHT();
+        }
         StartCoroutine(PlayerCombat(0));
     }
 
@@ -547,7 +586,24 @@ public class SetupFight : MonoBehaviour
 
                 if (enemyAttacks)
                 {
-
+                    if(DealDmgGainHealthCoins != 0)
+                    {
+                        DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
+                        if(DealDmgGainHealthCoins > 0)
+                        {
+                            enemyHeal += DealDmgGainHealthCoins;
+                        }
+                    }
+                    if(enemybleedcoin != 0)
+                    {
+                        bleedcoinCounter += enemybleedcoin;
+                        Debug.Log(bleedcoinCounter);
+                        if(bleedcoinCounter >= 5)
+                        {
+                            enemyAttack += 5;
+                            bleedcoinCounter = 0;
+                        }
+                    }
                     enemyAttack -= playerDefence;
                     if (0 > enemyAttack)
                     {
@@ -573,7 +629,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,null,false,false), 0);
                     playerStats.health = playerStats.maxHealth;
                     playerStats.supplies = playerStats.maxSupply;
                     playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
@@ -652,7 +708,7 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,null,false,false), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
@@ -758,6 +814,17 @@ public class SetupFight : MonoBehaviour
             else if (PlayercoinList[i].isHeads == false)
             {
                 PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+            }
+        }
+        for (int i = 0; i < EnemycoinList.Count; i++)
+        {
+            if (EnemycoinList[i].isHeads == true)
+            {
+                EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+            }
+            else if (EnemycoinList[i].isHeads == false)
+            {
+                EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
             }
         }
     }
