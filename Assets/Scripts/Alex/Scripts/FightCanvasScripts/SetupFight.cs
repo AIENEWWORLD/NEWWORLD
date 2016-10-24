@@ -62,6 +62,7 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * shop text popup "Press" Inputkey
      * make bosses not respawn
      * enemy AI with roaming
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
@@ -518,6 +519,7 @@ public class SetupFight : MonoBehaviour
     {
         for (int i = 0; i < dupeList.Count; i++)
         {
+            if(EnemycoinList.Count < 5)
             DupeCoin(dupeList[i]);
             clearEnemyCoins();
             setEnemyList(enemyStats.coinList);

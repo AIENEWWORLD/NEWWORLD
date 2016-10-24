@@ -23,11 +23,11 @@ public class CoinStats
 
     //I decided to make these bools, rather than enums so that we can use multiple
     [Header("Enemy Coins Only-------------")]
-    public bool BleedCoin;        //ENEMY WITH BLEED COINS ONLY USES BLEED COINS deals 1 damage, if unblocked increase counter, if counter reaches 5 deal 5 damage, ------ what determines which coin is blocked?
+    public bool BleedCoin;        //ENEMY WITH BLEED COINS ONLY USES BLEED COINS deals 1 damage, if unblocked increase counter, if counter reaches 5 deal 5 damage, ------ done
     public bool RegenCoin;        //chance for the enemy to regenerate to X health upon death, should probably remove this coin from the enemylist upon using it 4hp --- done
     public bool DealDmgGainHealth;//ENEMY WITH THIS COIN ONLY USES THESE COINS deal 1 damage, gain 1 damage if unblocked ------ done not tested
     public bool DealDmgDealDmg;   //deal 1 damage, deal 2 damage if player health < x --- done but combat2 needs to be fixed
-    public bool DuplicateCoin;    //weird ---- 
+    public bool DuplicateCoin;    //weird ---- done
     public bool CurseCoin;        //count to 5 if it reaches 5 player loses halfHealth --- done but no UI?
 
 
@@ -57,7 +57,7 @@ public class CoinStats
         standard,
         flip,
         counter,
-        secondChance,
+        secondChance, //flips the coin for a 50/50 chance again
         secondChance_2,
         Double,
         ShieldBash,
