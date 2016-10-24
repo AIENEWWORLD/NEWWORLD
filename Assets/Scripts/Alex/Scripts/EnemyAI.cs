@@ -23,9 +23,14 @@ public class EnemyAI : MonoBehaviour
     public Vector3 Velocity = new Vector3(0,0,0);
     Vector3 prevpos;
 
+    NavMeshPath path;
+
+    Vector3 PlayerPos;
+
 
     void Start ()
     {
+        path = new NavMeshPath();
         myRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
         myPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         me = gameObject.GetComponent<NavMeshAgent>();
@@ -43,6 +48,8 @@ public class EnemyAI : MonoBehaviour
         Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
         gameObject.transform.eulerAngles = temprot_;
 
+        
+
         if (gameObject.GetComponent<StatsScript>().dead == true)
         {
             //me.Resume();
@@ -52,11 +59,13 @@ public class EnemyAI : MonoBehaviour
 
         if (!GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement && !gameObject.GetComponent<StatsScript>().dead)
         {
-            me.Resume();
-            Vector3 PlayerPos = Player.transform.position;
+            //me.Resume();
+            PlayerPos = Player.transform.position;
             float Dist = Vector3.Distance(transform.position, PlayerPos);
+            //NavMesh.CalculatePath(transform.position, PlayerPos, 1, path);
             if (Dist <= DistanceToPlayer)
             {
+                me.SetDestination(PlayerPos);
                 me.speed = chaseSpeed;
                 RandomMove = false;
                 me.destination = PlayerPos;
@@ -121,7 +130,8 @@ public class EnemyAI : MonoBehaviour
             //me.Stop();
             //me.speed = 0;
         }
-	}
+        
+    }
 
     void GetDirectionofMe()
     {

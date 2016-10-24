@@ -134,7 +134,7 @@ public class SetupFight : MonoBehaviour
 
     [HideInInspector]
     public GameObject mouseover;
-    [HideInInspector]
+    //[HideInInspector]
     public bool playerAttacks = true;
     [HideInInspector]
     public bool enemyAttacks = true;
@@ -469,7 +469,7 @@ public class SetupFight : MonoBehaviour
                     }
                     if (EnemycoinList[i].DuplicateCoin == true && EnemycoinList.Count < 5)
                     {
-                        Debug.Log(i);
+                        //Debug.Log(i);
                         duplicate = true;
                         dupeList.Add(i);
 
@@ -514,7 +514,7 @@ public class SetupFight : MonoBehaviour
     void DupeCoin(int i)
     {
         enemyStats.coinList.Add(new CoinStats(EnemycoinList[i].itemName, EnemycoinList[i].itemDescription, EnemycoinList[i].itemDescription2, EnemycoinList[i].itemID, EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence, EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack, EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP, EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, EnemycoinList[i].Icon, true, EnemycoinList[i].DuplicateCoin));
-        Debug.Log("adding x");
+        //Debug.Log("adding x");
     }
     //onplayerattacks do player stuff, onenemyattacks, do enemy stuff.
     //make attacking, defending etc string functions and return the amount defended and attacked etc.
@@ -546,19 +546,25 @@ public class SetupFight : MonoBehaviour
         {
             if (combatStage == 1)
             {
-                for (int i = 0; i < PlayercoinList.Count; i++)
+                if (playerAttacks)
                 {
-                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
+                    for (int i = 0; i < PlayercoinList.Count; i++)
+                    {
+                        PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
+                    }
                 }
                 //time until flip
                 StartCoroutine(PlayerCombat(TimeBeforeFlip));
             }
             if (combatStage == 2)
             {
-                for (int i = 0; i < PlayercoinList.Count; i++)
+                if (playerAttacks == true)
                 {
-                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
-                    PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = true;
+                    for (int i = 0; i < PlayercoinList.Count; i++)
+                    {
+                        PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
+                        PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = true;
+                    }
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }

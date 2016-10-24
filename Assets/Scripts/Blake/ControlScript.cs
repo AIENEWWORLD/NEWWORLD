@@ -280,6 +280,14 @@ public class ControlScript : MonoBehaviour
             grounded = true;
         }
     }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
+    }
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
