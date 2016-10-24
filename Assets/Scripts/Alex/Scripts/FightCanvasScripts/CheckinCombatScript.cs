@@ -14,6 +14,7 @@ public class CheckinCombatScript : MonoBehaviour
     public bool Combatisenabled = false;
     public bool Optionsisenabled = false;
     public bool Mapisenabled = false;
+    public bool inShop = false;
 
 	void Start ()
     {
@@ -67,9 +68,10 @@ public class CheckinCombatScript : MonoBehaviour
         }
 
 
-        if (Combatisenabled || Optionsisenabled || Mapisenabled)
+        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement = true;
+            //animation play idle
         }
         else
         {

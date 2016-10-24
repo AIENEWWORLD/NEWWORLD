@@ -1,0 +1,465 @@
+fileFormatVersion: 2
+guid: 364d9c92b2bc60e40a5239053f337602
+timeCreated: 1476233052
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Male walk side_0
+    21300002: Male walk side_1
+    21300004: Male walk side_2
+    21300006: Male walk side_3
+    21300008: Male walk side_4
+    21300010: Male walk side_5
+    21300012: Male walk side_6
+    21300014: Male walk side_7
+    21300016: Male walk side_8
+    21300018: Male walk side_9
+    21300020: Male walk side_10
+    21300022: Male walk side_11
+    21300024: Male walk side_12
+    21300026: Male walk side_13
+    21300028: Male walk side_14
+    21300030: Male walk side_15
+    21300032: Male walk side_16
+    21300034: Male walk side_17
+    21300036: Male walk side_18
+    21300038: Male walk side_19
+    21300040: Male walk side_20
+    21300042: Male walk side_21
+    21300044: Male walk side_22
+    21300046: Male walk side_23
+    21300048: Male walk side_24
+    21300050: Male walk side_25
+    21300052: Male walk side_26
+    21300054: Male walk side_27
+    21300056: Male walk side_28
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Male walk side_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_1
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_2
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_3
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_4
+      rect:
+        serializedVersion: 2
+        x: 4532
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_5
+      rect:
+        serializedVersion: 2
+        x: 5665
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_6
+      rect:
+        serializedVersion: 2
+        x: 6798
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_7
+      rect:
+        serializedVersion: 2
+        x: 7931
+        y: 2565
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_9
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_10
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_11
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_12
+      rect:
+        serializedVersion: 2
+        x: 4532
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_13
+      rect:
+        serializedVersion: 2
+        x: 5665
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_14
+      rect:
+        serializedVersion: 2
+        x: 6798
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_15
+      rect:
+        serializedVersion: 2
+        x: 7931
+        y: 1710
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_17
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_18
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_19
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_20
+      rect:
+        serializedVersion: 2
+        x: 4532
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_21
+      rect:
+        serializedVersion: 2
+        x: 5665
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_22
+      rect:
+        serializedVersion: 2
+        x: 6798
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_23
+      rect:
+        serializedVersion: 2
+        x: 7931
+        y: 855
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_25
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 0
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_26
+      rect:
+        serializedVersion: 2
+        x: 2266
+        y: 0
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_27
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 0
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male walk side_28
+      rect:
+        serializedVersion: 2
+        x: 4532
+        y: 0
+        width: 1133
+        height: 855
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

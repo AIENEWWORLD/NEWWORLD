@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: fd619115fc4769743bdee23812ede73c
+timeCreated: 1476232425
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: elite battle scene with baby_0
+    21300002: elite battle scene with baby_1
+    21300004: elite battle scene with baby_2
+    21300006: elite battle scene with baby_3
+    21300008: elite battle scene with baby_4
+    21300010: elite battle scene with baby_5
+    21300012: elite battle scene with baby_6
+    21300014: elite battle scene with baby_7
+    21300016: elite battle scene with baby_8
+    21300018: elite battle scene with baby_9
+    21300020: elite battle scene with baby_10
+    21300022: elite battle scene with baby_11
+    21300024: elite battle scene with baby_12
+    21300026: elite battle scene with baby_13
+    21300028: elite battle scene with baby_14
+    21300030: elite battle scene with baby_15
+    21300032: elite battle scene with baby_16
+    21300034: elite battle scene with baby_17
+    21300036: elite battle scene with baby_18
+    21300038: elite battle scene with baby_19
+    21300040: elite battle scene with baby_20
+    21300042: elite battle scene with baby_21
+    21300044: elite battle scene with baby_22
+    21300046: elite battle scene with baby_23
+    21300048: elite battle scene with baby_24
+    21300050: elite battle scene with baby_25
+    21300052: elite battle scene with baby_26
+    21300054: elite battle scene with baby_27
+    21300056: elite battle scene with baby_28
+    21300058: elite battle scene with baby_29
+    21300060: elite battle scene with baby_30
+    21300062: elite battle scene with baby_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: elite battle scene with baby_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_1
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_2
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_3
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_4
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_5
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_6
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_7
+      rect:
+        serializedVersion: 2
+        x: 3269
+        y: 1545
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_9
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_10
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_11
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_12
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_13
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_14
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_15
+      rect:
+        serializedVersion: 2
+        x: 3269
+        y: 1030
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_17
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_18
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_19
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_20
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_21
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_22
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_23
+      rect:
+        serializedVersion: 2
+        x: 3269
+        y: 515
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_25
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_26
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_27
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_28
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_29
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_30
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elite battle scene with baby_31
+      rect:
+        serializedVersion: 2
+        x: 3269
+        y: 0
+        width: 467
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

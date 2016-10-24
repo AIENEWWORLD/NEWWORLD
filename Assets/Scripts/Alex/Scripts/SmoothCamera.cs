@@ -65,7 +65,7 @@ public class SmoothCamera : MonoBehaviour
         left = Player.transform.position.x - Box.x;
         right = Player.transform.position.x + Box.x;
         up = Player.transform.position.z + Box.z;
-        down = Player.transform.position.z - Box.z;
+        down = Player.transform.position.z;
     }
 
     void LateUpdate()

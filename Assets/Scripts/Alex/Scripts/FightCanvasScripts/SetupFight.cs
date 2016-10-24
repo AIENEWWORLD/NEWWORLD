@@ -63,11 +63,16 @@ public class SetupFight : MonoBehaviour
      * -------------------------------------------------
      * TO DO:
      * shop text popup "Press" Inputkey
+     * add curse counter coins
+     * flip coins and remove the colours
      * make bosses not respawn
      * enemy AI with roaming
+     * while fleeing spin
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * put in the animations
      * tutorial script when you talk to dude trigger tutorial
+     * play the idle animation in the CheckinCombatScript (commenting shows where).
+     * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY
      * 
      * adjusting the slope can be done in the navigation tab under bake.
      * 

@@ -5,7 +5,7 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour
 {
     NavMeshAgent me;
-    [HideInInspector]
+    //[HideInInspector]
     public Vector3 myPos;
     Vector3 myRotation;
     GameObject Player;
@@ -31,6 +31,7 @@ public class EnemyAI : MonoBehaviour
         me = gameObject.GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player");
         newRandomPosition = myPos;
+        //Debug.Log(myPos);
     }
 
     void Update ()
