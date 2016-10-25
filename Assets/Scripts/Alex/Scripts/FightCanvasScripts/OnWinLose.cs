@@ -15,10 +15,12 @@ public class OnWinLose : MonoBehaviour
     public bool countdown = false;
     public bool counteddown = false;
     public float count = 2;
+    RespawnEnemies respawnscript;
 
     void Start()
     {
         endCombatCanvas.SetActive(false);
+        respawnscript = GameObject.FindGameObjectWithTag("EnemyRespawner").GetComponent<RespawnEnemies>();
     }
 
     void Update()
@@ -102,7 +104,10 @@ public class OnWinLose : MonoBehaviour
             Title.text = "You Died";
             RecievedText.text = "click to continue...";
 
-            //do stuff here I guess
+            if (gameObject.GetComponent<SetupFight>().Enemy.GetComponent<StatsScript>().guyType == StatsScript.enumType.boss)
+            {
+                respawnscript.EnemyList.Add(gameObject.GetComponent<SetupFight>().Enemy);
+            }
         }
         gameObject.GetComponent<SetupFight>().mouseover.SetActive(false);
         endCombatCanvas.SetActive(true);

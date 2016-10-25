@@ -118,7 +118,11 @@ public class StatsScript : MonoBehaviour
                 //Destroy(gameObject);
                 dead = true;
                 transform.position = startpos;
-                respawnscript.EnemyList.Add(gameObject);
+                if (guyType != enumType.boss)
+                {
+                    respawnscript.EnemyList.Add(gameObject);
+                }
+                FightCamera.GetComponent<SetupFight>().Enemy = gameObject;
                 //gameObject.SetActive(false);
                 //gameObject.GetComponent<EnemyScript>().enabled = false;
                 if (gameObject.GetComponent<SpriteRenderer>() != null)

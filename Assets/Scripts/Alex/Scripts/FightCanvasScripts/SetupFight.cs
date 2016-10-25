@@ -67,17 +67,18 @@ public class SetupFight : MonoBehaviour
      * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY - done
      * camera rotation - done
      * add curse counter coins - done
+     * play the idle animation in the CheckinCombatScript (commenting shows where). - done
      * 
      * -------------------------------------------------
      * TO DO:
-     * make bosses not respawn
+     * make bosses not respawn - THEY WILL NOT RESPAWN IF THE GUYTYPE ENUM IS SET TO BOSS BUT THEY WILL IF THE PLAYER DIES TO THEM
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * put in the animations
      * tutorial script when you talk to dude trigger tutorial
-     * play the idle animation in the CheckinCombatScript (commenting shows where).
      * PLAYER SLOPE
      * Sounds
      * health upgrade, supply upgrade
+     * COINS
      * 
      * 
      * 
@@ -106,7 +107,7 @@ public class SetupFight : MonoBehaviour
     public GameObject EnemyCoinPrefab;
     [HideInInspector]
     public StatsScript playerStats;
-    [HideInInspector]
+    //[HideInInspector]
     public StatsScript enemyStats;//the way this is being set could be dodgy///////////////////////////////////////
     [HideInInspector]
     public GameObject enemySprite;
@@ -185,6 +186,8 @@ public class SetupFight : MonoBehaviour
     Vector3 CounterStart = new Vector3(140, -255, 0);
     public List<GameObject> counters;
     public int addedCounters = 0;
+
+    public GameObject Enemy;
 
     // Use this for initialization
     void Start()
@@ -671,7 +674,7 @@ public class SetupFight : MonoBehaviour
                     }
                     if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
                     {
-                        //enemyAttack = (int)playerStats.health;
+                        enemyAttack = (int)playerStats.health;
                         //playerStats.health /= 2;
                         enemyCounterCursed = 0;
                     }
