@@ -73,9 +73,9 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
     {
         if (inv.pickCoinList.Count > 0)
         {
-            if (inv.picking && coin.itemName != "empty slot" && inv.pickCoinList[0].cType == CoinStats.coinTypes.flip || coin == inv.pickCoinList[0])
+            if (inv.picking && coin.itemName != "empty slot" && inv.pickCoinList[0].cType == CoinStats.coinTypes.flip || coin == inv.pickCoinList[0] || inv.picking && coin.itemName != "empty slot" && inv.pickCoinList[0].cType == CoinStats.coinTypes.secondChance || inv.picking && coin.itemName != "empty slot" && inv.pickCoinList[0].cType == CoinStats.coinTypes.Double)
             {
-                inv.checkSelections(coin);
+                inv.checkSelections(coin, gameObject);
             }
         }
     }

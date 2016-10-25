@@ -33,7 +33,7 @@ public class CoinStats
 
     [Space][Space]
     [Header("Selections")]
-    public bool activeonHeads;
+    public bool activeonHeads = true;
     [HideInInspector]
     public bool isPlayerCoin;
     [HideInInspector]
@@ -53,17 +53,14 @@ public class CoinStats
 
     public enum coinTypes
     {
-        none,
-        standard,
-        flip,
-        counter,
-        secondChance, //flips the coin for a 50/50 chance again
-        secondChance_2,
-        Double,
-        ShieldBash,
-        Mother,
-        Father,
-        Child,
+        none,//done
+        standard,//done
+        flip,//done
+        secondChance, //flips the coin for a 50/50 chance again - done
+        Double, //done
+        Mother,// done
+        Father,// done
+        Child,// done
     }//list of player coin types
 
     public enum EnemycoinTypes //???? what coins do I make???
