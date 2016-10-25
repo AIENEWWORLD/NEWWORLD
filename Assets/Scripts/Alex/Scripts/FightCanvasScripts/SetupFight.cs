@@ -48,6 +48,7 @@ public class SetupFight : MonoBehaviour
      * EnemyScript uses the rigidbody to zero out velocity, sometimes the enemy would just run in a random direction.
      * orthographic cameras on shop, fix input after text is fully written
      * make coins flip properly
+     * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.
      * ENEMY RUNS IN RANDOM DIRECTION (MAYBE BECAUSE OF RESPAWN) ----------- BECAUSE OF COLLISION PUSHING IT AWAY WHEN IT FINALLY COLLIDES WITH PLAYER
      * With collision between the enemy and player there is sometimes a chance that unity collision will still occur and the enemy will continue to add velocity away from the object it collided with this happens now that the enemies are disabled when they die rather than destroyed. with the rigidbody's mass on the player being 500, and the enemies mass being 0.1 I'd assume this is why the enemy floats away and doesn't seem to slow down.
      * blakes player movement script locks the players Y axis (preventing falling when no keys are being pressed), this might work better without that
@@ -63,6 +64,7 @@ public class SetupFight : MonoBehaviour
      * flip coins and remove the colours - done
      * enemy AI with roaming - done
      * while fleeing spin - done
+     * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY - done
      * 
      * -------------------------------------------------
      * TO DO:
@@ -72,22 +74,21 @@ public class SetupFight : MonoBehaviour
      * put in the animations
      * tutorial script when you talk to dude trigger tutorial
      * play the idle animation in the CheckinCombatScript (commenting shows where).
-     * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY
      * PLAYER SLOPE
+     * Sounds
+     * camera rotation
+     * health upgrade, supply upgrade
      * 
-     * adjusting the slope can be done in the navigation tab under bake.
+     * adjusting the slope can be done in the navigation tab under bake. FOR ENEMIES
      * 
-     * //Might have to change this to a vector 2 in the EnemyAI under randommove
      * 
      * upgrade slots shop
-     * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.
      * 
      * 
      * 
      * chkme on each coinscript
      * add all those coins
-     * autoresolve
-     * reposition the enemy coins
+     * reposition the enemy coins?
      * clean up scripts
      * 
      * -----------------------------------------------

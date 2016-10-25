@@ -95,11 +95,11 @@ public class ControlScript : MonoBehaviour
     {
         if (p_SeizeMovement == false)
         {
-            transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
+            //transform.RotateAround(GameObject.FindGameObjectWithTag("Player").transform.position, Vector3.up, rotLR);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -134,47 +134,47 @@ public class ControlScript : MonoBehaviour
             //velocity.x = Input.GetAxis("Horizontal");
             //velocity.z = Input.GetAxis("Vertical");
 
-            if(Input.GetKey(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.E))
             {
-                rotLR = 1 * rotationSpeed;
-                
+                //rotLR = 1 * rotationSpeed;
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
             }
-            if(Input.GetKey(KeyCode.Q))
+            if(Input.GetKeyDown(KeyCode.Q))
             {
-                rotLR = -1 * rotationSpeed;
-                
+                //rotLR = -1 * rotationSpeed;
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z);
             }
 
-            if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                //if (rotLR < maxRotSpeed)
-                //{
-                    rotLR = Input.GetAxis("Mouse X") * rotationSpeed;
-                //}
-                if (rotLR > 0)
-                {
-                    rotLR = Mathf.Lerp(rotLR, maxRotSpeed, Time.deltaTime * smooth);
-                }
-                else if(rotLR < 0)
-                {
-                    rotLR = Mathf.Lerp(rotLR, -maxRotSpeed, Time.deltaTime * smooth);
-                }
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                //rotLR = 0;
-                
-                if (Mathf.Abs(rotLR) < 0.1f)
-                {
-                    rotLR = 0;
-                }
-                else
-                {
-                    rotLR = Mathf.Lerp(rotLR, 0, Time.deltaTime * smooth * 5);
-                }
-            }
+            //if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
+            //{
+            //    Cursor.lockState = CursorLockMode.Locked;
+            //    //if (rotLR < maxRotSpeed)
+            //    //{
+            //        rotLR = Input.GetAxis("Mouse X") * rotationSpeed;
+            //    //}
+            //    if (rotLR > 0)
+            //    {
+            //        rotLR = Mathf.Lerp(rotLR, maxRotSpeed, Time.deltaTime * smooth);
+            //    }
+            //    else if(rotLR < 0)
+            //    {
+            //        rotLR = Mathf.Lerp(rotLR, -maxRotSpeed, Time.deltaTime * smooth);
+            //    }
+            //}
+            //else
+            //{
+            //    Cursor.lockState = CursorLockMode.None;
+            //    //rotLR = 0;
+            //    
+            //    if (Mathf.Abs(rotLR) < 0.1f)
+            //    {
+            //        rotLR = 0;
+            //    }
+            //    else
+            //    {
+            //        rotLR = Mathf.Lerp(rotLR, 0, Time.deltaTime * smooth * 5);
+            //    }
+            //}
 
             velocity.x = InputGameobject.GetComponent<SavedInput>().horizontal;
             velocity.z = InputGameobject.GetComponent<SavedInput>().vertical;
