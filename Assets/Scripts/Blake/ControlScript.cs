@@ -208,12 +208,17 @@ public class ControlScript : MonoBehaviour
                 NotMoving = false;
                 FacingDirection = false;
             }
-            else if (velocity.x == 0)
+            else if (velocity.x == 0 && velocity.z == 0)
             {
                 NotMoving = true;
             }
 
-            
+            if (velocity.z < 0 || velocity.z > 0)
+            {
+                NotMoving = false;
+            }
+
+
 
             if (velocity.x != 0 || velocity.z != 0)
             {
