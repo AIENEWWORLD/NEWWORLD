@@ -351,6 +351,15 @@ public class SetupFight : MonoBehaviour
         clearPlayerCoins();
         clearEnemyCoins();
         clearCounters();
+        for (int i = 0; i < tempCoinsToDouble.Count; i++)
+        {
+            tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Heads_attack /= 2;
+            tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Heads_defence /= 2;
+            tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Heads_HP /= 2;
+            tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_attack /= 2;
+            tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_defence /= 2;
+            tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_HP /= 2;
+        }
     }
 
     void clearPlayerCoins()
@@ -464,6 +473,7 @@ public class SetupFight : MonoBehaviour
         enemyRegenCoin = false; duplicate = false;
         DealDmgGainHealthCoins = 0; enemybleedcoin = 0;
         dupeList.Clear();
+
         tempCoinsToDouble.Clear();
         //pickCoinList.Clear();
         if (playerAttacks)
@@ -571,7 +581,7 @@ public class SetupFight : MonoBehaviour
     }
     void DupeCoin(int i)
     {
-        enemyStats.coinList.Add(new CoinStats(EnemycoinList[i].itemName, EnemycoinList[i].itemDescription, EnemycoinList[i].itemDescription2, EnemycoinList[i].itemID, EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence, EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack, EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP, EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, EnemycoinList[i].Icon, true, EnemycoinList[i].DuplicateCoin));
+        enemyStats.coinList.Add(new CoinStats(EnemycoinList[i].itemName, EnemycoinList[i].itemDescription, "", EnemycoinList[i].itemID, EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence, EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack, EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP, EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, EnemycoinList[i].Icon, true, EnemycoinList[i].DuplicateCoin));
         //Debug.Log("adding x");
     }
     //onplayerattacks do player stuff, onenemyattacks, do enemy stuff.
@@ -677,7 +687,7 @@ public class SetupFight : MonoBehaviour
                     if(enemybleedcoin != 0)
                     {
                         bleedcoinCounter += enemybleedcoin;
-                        Debug.Log(bleedcoinCounter);
+                        //Debug.Log(bleedcoinCounter);
                         if(bleedcoinCounter >= 5)
                         {
                             enemyAttack += 5;
@@ -864,8 +874,8 @@ public class SetupFight : MonoBehaviour
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_attack /= 2;
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_defence /= 2;
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_HP /= 2;
-                }                                                        
-                                                                         
+                }
+
                 combatStage = 0;                                         
             }                                                            
         }                                                                

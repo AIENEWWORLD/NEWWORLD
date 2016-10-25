@@ -53,14 +53,9 @@ public class DisplayCoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         {
             mouseoverTextDesc1 = GameObject.FindGameObjectWithTag("Desc1").GetComponent<Text>();
         }
-        if (GameObject.FindGameObjectWithTag("Desc2").GetComponent<Text>() != null)
-        {
-            mouseoverTextDesc2 = GameObject.FindGameObjectWithTag("Desc2").GetComponent<Text>();
-        }
 
         //Debug.Log(coin.itemName);
         mouseoverTextDesc1.text = coin.itemName + "\n" + coin.itemDescription;
-        mouseoverTextDesc2.text = coin.itemDescription2;
 
         //name
         //description

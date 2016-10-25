@@ -65,10 +65,12 @@ public class CheckinCombatScript : MonoBehaviour
         if (MapCamera.GetComponent<Camera>().enabled == true)
         {
             Mapisenabled = true;
+            RenderSettings.fog = false;
         }
         else
         {
             Mapisenabled = false;
+            RenderSettings.fog = true;
         }
 
 

@@ -54,7 +54,6 @@ public class Shopcoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
 
         //Debug.Log(coin.itemName);
         mouseoverTextDesc1.text = coin.itemName + "\n" + coin.itemDescription;
-        mouseoverTextDesc2.text = coin.itemDescription2;
 
         //name
         //description

@@ -7,7 +7,6 @@ public class CoinStats
 {
     public string itemName;
     public string itemDescription;
-    public string itemDescription2;
     public Sprite Icon;
     public int itemID;
     //
@@ -80,7 +79,6 @@ public class CoinStats
         DuplicateCoin = _DuplicateCoin;
         itemName = _itemName;
         itemDescription = _itemDescription;
-        itemDescription2 = _itemDescription2;
         if(useSprite)
         {
             Icon = _Icon;

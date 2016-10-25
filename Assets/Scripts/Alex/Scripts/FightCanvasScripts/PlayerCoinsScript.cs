@@ -85,11 +85,9 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
         mouseover = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().mouseover;
         mouseover.SetActive(true);
         mouseoverTextDesc1 = GameObject.FindGameObjectWithTag("Desc1").GetComponent<Text>();
-        mouseoverTextDesc2 = GameObject.FindGameObjectWithTag("Desc2").GetComponent<Text>();
 
         //Debug.Log(coin.itemName);
         mouseoverTextDesc1.text = coin.itemName + "\n" + coin.itemDescription;
-        mouseoverTextDesc2.text = coin.itemDescription2;
 
         //name
         //description
