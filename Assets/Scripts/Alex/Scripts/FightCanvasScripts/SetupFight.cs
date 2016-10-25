@@ -59,20 +59,21 @@ public class SetupFight : MonoBehaviour
      * calculatecoins2 breaks other coins. Fixed
      * health not resetting upon death fixed
      * merge counter coin and flip coin into one. Done
+     * shop text popup "Press" Inputkey - done
+     * flip coins and remove the colours - done
+     * enemy AI with roaming - done
+     * while fleeing spin - done
      * 
      * -------------------------------------------------
      * TO DO:
-     * shop text popup "Press" Inputkey
      * add curse counter coins
-     * flip coins and remove the colours
      * make bosses not respawn
-     * enemy AI with roaming
-     * while fleeing spin
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * put in the animations
      * tutorial script when you talk to dude trigger tutorial
      * play the idle animation in the CheckinCombatScript (commenting shows where).
      * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY
+     * PLAYER SLOPE
      * 
      * adjusting the slope can be done in the navigation tab under bake.
      * 
@@ -425,25 +426,25 @@ public class SetupFight : MonoBehaviour
 
                 if (PlayercoinList[i].isHeads == true)
                 {
-                    PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                    //PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
                     playerAttack += PlayercoinList[i].Heads_attack;
                     playerDefence += PlayercoinList[i].Heads_defence;
                     playerHeal += PlayercoinList[i].Heads_HP;
                     if (PlayercoinList[i].cType == CoinStats.coinTypes.flip && PlayercoinList[i].activeonHeads == true || PlayercoinList[i].cType == CoinStats.coinTypes.counter && PlayercoinList[i].activeonHeads == true)
                     {
-                        PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0.8f, 1);
+                        //PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0.8f, 1);
                         pickCoinList.Add(PlayercoinList[i]);
                     }
                 }
                 else if (PlayercoinList[i].isHeads == false)
                 {
-                    PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                    //PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
                     playerAttack += PlayercoinList[i].Tails_attack;
                     playerDefence += PlayercoinList[i].Tails_defence;
                     playerHeal += PlayercoinList[i].Tails_HP;
                     if (PlayercoinList[i].cType == CoinStats.coinTypes.flip && PlayercoinList[i].activeonHeads == false || PlayercoinList[i].cType == CoinStats.coinTypes.counter && PlayercoinList[i].activeonHeads == false)
                     {
-                        PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0.8f, 1);
+                        //PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0.8f, 1);
                         pickCoinList.Add(PlayercoinList[i]);
                     }
                 }
@@ -457,7 +458,7 @@ public class SetupFight : MonoBehaviour
                 EnemycoinList[i].isHeads = getRandom(50, 0, 100);
                 if (EnemycoinList[i].isHeads == true)
                 {
-                    EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                    //EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
@@ -501,7 +502,7 @@ public class SetupFight : MonoBehaviour
                 }
                 else if (EnemycoinList[i].isHeads == false)
                 {
-                    EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                    //EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
                     enemyAttack += EnemycoinList[i].Tails_attack;
                     enemyDefence += EnemycoinList[i].Tails_defence;
                     enemyHeal += EnemycoinList[i].Tails_HP;
@@ -522,15 +523,7 @@ public class SetupFight : MonoBehaviour
 
     void applyFight()//on death lock it so that the attack button cant be clicked again.
     {
-        for (int i = 0; i < dupeList.Count; i++)
-        {
-            if(EnemycoinList.Count < 5)
-            DupeCoin(dupeList[i]);
-            clearEnemyCoins();
-            setEnemyList(enemyStats.coinList);
-            loadEnemyCoins();
-            setColoursHT();
-        }
+        
         StartCoroutine(PlayerCombat(0));
     }
 
@@ -553,6 +546,13 @@ public class SetupFight : MonoBehaviour
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
                     }
                 }
+                if(enemyAttacks)
+                {
+                    for(int i = 0; i < EnemycoinList.Count; i++)
+                    {
+                        EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 20;
+                    }
+                }
                 //time until flip
                 StartCoroutine(PlayerCombat(TimeBeforeFlip));
             }
@@ -564,6 +564,14 @@ public class SetupFight : MonoBehaviour
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = true;
+                    }
+                }
+                if(enemyAttacks == true)
+                {
+                    for(int i = 0; i < EnemycoinList.Count; i++)
+                    {
+                        EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 5;
+                        EnemyitemList[i].GetComponent<EnemyCoinsScript>().flip = true;
                     }
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
@@ -761,6 +769,21 @@ public class SetupFight : MonoBehaviour
                 {
                     PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = false;
                 }
+                for (int i = 0; i < EnemycoinList.Count; i++)
+                {
+                    EnemyitemList[i].GetComponent<EnemyCoinsScript>().flip = false;
+                }
+
+
+                for (int i = 0; i < dupeList.Count; i++)
+                {
+                    if (EnemycoinList.Count < 5)
+                        DupeCoin(dupeList[i]);
+                    clearEnemyCoins();
+                    setEnemyList(enemyStats.coinList);
+                    loadEnemyCoins();
+                    setColoursHT();
+                }
 
                 combatStage = 0;
             }
@@ -779,25 +802,25 @@ public class SetupFight : MonoBehaviour
     {
         if (coinToFlip.ETypes == CoinStats.EnemycoinTypes.none)
         {
-            for (int x = 0; x < PlayercoinList.Count; x++)
-            {
-                if (PlayercoinList[x] == coinToFlip)
-                {
-                    PlayeritemList[x].GetComponent<Image>().color = new Color(1, 0, 1, 1);
-                }
-
-            }
+            //for (int x = 0; x < PlayercoinList.Count; x++)
+            //{
+            //    if (PlayercoinList[x] == coinToFlip)
+            //    {
+            //        PlayeritemList[x].GetComponent<Image>().color = new Color(1, 0, 1, 1);
+            //    }
+            //
+            //}
         }
         else if (coinToFlip.cType == CoinStats.coinTypes.none)
         {
-            for (int x = 0; x < EnemycoinList.Count; x++)
-            {
-                if (EnemycoinList[x] == coinToFlip)
-                {
-                    EnemyitemList[x].GetComponent<Image>().color = new Color(1, 0, 1, 1);
-                }
-
-            }
+            //for (int x = 0; x < EnemycoinList.Count; x++)
+            //{
+            //    if (EnemycoinList[x] == coinToFlip)
+            //    {
+            //        EnemyitemList[x].GetComponent<Image>().color = new Color(1, 0, 1, 1);
+            //    }
+            //
+            //}
         }
 
         if (pickCoinList[0].cType == CoinStats.coinTypes.flip)
@@ -818,28 +841,28 @@ public class SetupFight : MonoBehaviour
     }
     void setColoursHT()
     {
-        for (int i = 0; i < PlayercoinList.Count; i++)
-        {
-            if (PlayercoinList[i].isHeads == true)
-            {
-                PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
-            }
-            else if (PlayercoinList[i].isHeads == false)
-            {
-                PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
-            }
-        }
-        for (int i = 0; i < EnemycoinList.Count; i++)
-        {
-            if (EnemycoinList[i].isHeads == true)
-            {
-                EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
-            }
-            else if (EnemycoinList[i].isHeads == false)
-            {
-                EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
-            }
-        }
+        //for (int i = 0; i < PlayercoinList.Count; i++)
+        //{
+        //    if (PlayercoinList[i].isHeads == true)
+        //    {
+        //        PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+        //    }
+        //    else if (PlayercoinList[i].isHeads == false)
+        //    {
+        //        PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+        //    }
+        //}
+        //for (int i = 0; i < EnemycoinList.Count; i++)
+        //{
+        //    if (EnemycoinList[i].isHeads == true)
+        //    {
+        //        EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+        //    }
+        //    else if (EnemycoinList[i].isHeads == false)
+        //    {
+        //        EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+        //    }
+        //}
     }
 
     /*
@@ -910,7 +933,7 @@ public class SetupFight : MonoBehaviour
 
                 if (PlayercoinList[i].isHeads == true)
                 {
-                    PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                    //PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
                     playerAttack += PlayercoinList[i].Heads_attack;
                     playerDefence += PlayercoinList[i].Heads_defence;
                     playerHeal += PlayercoinList[i].Heads_HP;
@@ -918,7 +941,7 @@ public class SetupFight : MonoBehaviour
                 }
                 else if (PlayercoinList[i].isHeads == false)
                 {
-                    PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                    //PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
                     playerAttack += PlayercoinList[i].Tails_attack;
                     playerDefence += PlayercoinList[i].Tails_defence;
                     playerHeal += PlayercoinList[i].Tails_HP;
@@ -932,7 +955,7 @@ public class SetupFight : MonoBehaviour
             {
                 if (EnemycoinList[i].isHeads == true)
                 {
-                    EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
+                    //EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
@@ -960,7 +983,7 @@ public class SetupFight : MonoBehaviour
                 }
                 else if (EnemycoinList[i].isHeads == false)
                 {
-                    EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
+                    //EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
                     enemyAttack += EnemycoinList[i].Tails_attack;
                     enemyDefence += EnemycoinList[i].Tails_defence;
                     enemyHeal += EnemycoinList[i].Tails_HP;
