@@ -16,12 +16,16 @@ public class CheckinCombatScript : MonoBehaviour
     public bool Mapisenabled = false;
     public bool inShop = false;
 
+    ControlScript PlayerCS;
+
 	void Start ()
     {
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
         FightCanvas = GameObject.FindGameObjectWithTag("FightCanvas");
         MapCamera = GameObject.FindGameObjectWithTag("MapCamera");
         OptionsCamera = GameObject.FindGameObjectWithTag("OptionsCamera");
+
+        PlayerCS = GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>();
 
         //if (GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().Combatisenabled == false)
         //{
@@ -70,12 +74,13 @@ public class CheckinCombatScript : MonoBehaviour
 
         if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement = true;
+            PlayerCS.p_SeizeMovement = true;
+            PlayerCS.NotMoving = true;
             //animation play idle
         }
         else
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement = false;
+            PlayerCS.p_SeizeMovement = false;
         }
 	}
 }

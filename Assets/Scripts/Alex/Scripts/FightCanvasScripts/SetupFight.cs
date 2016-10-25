@@ -65,10 +65,11 @@ public class SetupFight : MonoBehaviour
      * enemy AI with roaming - done
      * while fleeing spin - done
      * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY - done
+     * camera rotation - done
+     * add curse counter coins - done
      * 
      * -------------------------------------------------
      * TO DO:
-     * add curse counter coins
      * make bosses not respawn
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * put in the animations
@@ -76,13 +77,8 @@ public class SetupFight : MonoBehaviour
      * play the idle animation in the CheckinCombatScript (commenting shows where).
      * PLAYER SLOPE
      * Sounds
-     * camera rotation
      * health upgrade, supply upgrade
      * 
-     * adjusting the slope can be done in the navigation tab under bake. FOR ENEMIES
-     * 
-     * 
-     * upgrade slots shop
      * 
      * 
      * 
@@ -90,15 +86,6 @@ public class SetupFight : MonoBehaviour
      * add all those coins
      * reposition the enemy coins?
      * clean up scripts
-     * 
-     * -----------------------------------------------
-     * Maybe:
-     * make sure my scripts can all save and load
-     * maybe saving can be done like this public List<Object> scripts; ?????
-     * 
-     * Notes:
-     * combat ends in the enemydropcoins script, referencing the buttonspressed script
-     * 
      */
     public GameObject Inventory;
     public GameObject FightScreen;
@@ -147,7 +134,7 @@ public class SetupFight : MonoBehaviour
     public int playerFleeRate = 50;
     [HideInInspector]
     public int playerAttack = 0, playerDefence = 0, playerHeal = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int enemyAttack = 0, enemyDefence = 0, enemyHeal = 0, enemyCounterCursed = 0;
     [HideInInspector]
     public bool enemyRegenCoin = false;
@@ -192,6 +179,12 @@ public class SetupFight : MonoBehaviour
     bool duplicate = false;
 
     public List<int> dupeList;
+
+    public GameObject CounterPrefab;
+
+    Vector3 CounterStart = new Vector3(140, -255, 0);
+    public List<GameObject> counters;
+    public int addedCounters = 0;
 
     // Use this for initialization
     void Start()
@@ -246,6 +239,50 @@ public class SetupFight : MonoBehaviour
         {
 
         }
+        if (addedCounters < enemyCounterCursed) //two counters can use the same code because there will never be both bleed coins and cursed coins on a single enemy
+        {
+            int tempInt = enemyCounterCursed - addedCounters;
+            for (int i = 0; i < tempInt; i++)
+            {
+                GameObject s = Instantiate(CounterPrefab) as GameObject;
+                s.transform.SetParent(fightPanel);
+                s.transform.localScale = new Vector3(1, 1, 1);
+                s.transform.localPosition = new Vector3(CounterStart.x + (45 * enemyCounterCursed), CounterStart.y, CounterStart.z);
+                counters.Add(s);
+                addedCounters = enemyCounterCursed;
+            }
+        }
+        else if (addedCounters != 0 && enemyCounterCursed == 0 && bleedcoinCounter == 0)
+        {
+            clearCounters();
+        }
+        if (addedCounters < bleedcoinCounter)
+        {
+            int tempInt = bleedcoinCounter - addedCounters;
+            for (int i = 0; i < tempInt; i++)
+            {
+                GameObject s = Instantiate(CounterPrefab) as GameObject;
+                s.transform.SetParent(fightPanel);
+                s.transform.localScale = new Vector3(1, 1, 1);
+                s.transform.localPosition = new Vector3(CounterStart.x + (45 * bleedcoinCounter), CounterStart.y, CounterStart.z);
+                counters.Add(s);
+                addedCounters = bleedcoinCounter;
+            }
+        }
+        else if (addedCounters != 0 && bleedcoinCounter == 0 && enemyCounterCursed == 0)
+        {
+            clearCounters();
+        }
+    }
+
+    void clearCounters()
+    {
+        for (int i = 0; i < counters.Count; i++)
+        {
+            Destroy(counters[i]);
+        }
+        counters.Clear();
+        addedCounters = 0;
     }
 
     public void setEnemyList(List<CoinStats> cList)
@@ -304,6 +341,7 @@ public class SetupFight : MonoBehaviour
         // playerAttacks = true;
         clearPlayerCoins();
         clearEnemyCoins();
+        clearCounters();
     }
 
     void clearPlayerCoins()
@@ -633,7 +671,7 @@ public class SetupFight : MonoBehaviour
                     }
                     if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
                     {
-                        enemyAttack = (int)playerStats.health;
+                        //enemyAttack = (int)playerStats.health;
                         //playerStats.health /= 2;
                         enemyCounterCursed = 0;
                     }
