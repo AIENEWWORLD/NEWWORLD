@@ -9,6 +9,7 @@ public class TriggerShop : MonoBehaviour
     public CoinShopManager CSM;
     public UpgradeButtonScripts UBS;
     public Text tmptext;
+    public Text PressToContText;
     public string textToType = "";
     public string newTEXT;
     public float TimeBetweenChar;
@@ -19,6 +20,7 @@ public class TriggerShop : MonoBehaviour
     public bool newbool = false;
     public bool typing = false;
     public SavedInput InputGameobject;
+    public bool enablePresstoCont = false;
 
     bool starting = true;
     //startup not working well for getcomponent, probably something to do with the script execution order
@@ -31,6 +33,7 @@ public class TriggerShop : MonoBehaviour
     void start()
     {
         speechCanvas.enabled = false;
+        //PressToContText.enabled = false;
     }
     void Update()
     {
@@ -63,11 +66,14 @@ public class TriggerShop : MonoBehaviour
         {
             newbool = true;
             newTEXT = textToType;
+            
         }
         if (tmpBool)
         {
             if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && myCanvas.enabled == false && runText == true)
             {
+                enablePresstoCont = false;
+                GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().inShop = true;
                 speechCanvas.enabled = true;
                 
                 StartCoroutine(writeText(textToType, TimeBetweenChar));
@@ -79,18 +85,30 @@ public class TriggerShop : MonoBehaviour
             x = 0;
             newTEXT = "";
         }
-
+        if(enablePresstoCont)
+        {
+            PressToContText.enabled = true;
+            PressToContText.text = "Press " + InputGameobject.keycodes["interact"].ToString() + " to enter shop.";
+        }
+        else
+        {
+            PressToContText.enabled = false;
+        }
 
     }
 
     void OnTriggerEnter(Collider collision)
     {
         tmpBool = true;
+        if (speechCanvas.enabled == false && myCanvas.enabled == false)
+            enablePresstoCont = true;
         
     }
     void OnTriggerStay(Collider collision)
     {
         tmpBool = true;
+        if (speechCanvas.enabled == false && myCanvas.enabled == false)
+            enablePresstoCont = true;
     }
 
     public void resetStuff()
@@ -103,6 +121,8 @@ public class TriggerShop : MonoBehaviour
         speechCanvas.enabled = false;
         newbool = false;
         typing = false;
+        enablePresstoCont = false;
+        GameObject.FindGameObjectWithTag("checkCombat").GetComponent<CheckinCombatScript>().inShop = false;
     }
 
     void OnTriggerExit(Collider collision)

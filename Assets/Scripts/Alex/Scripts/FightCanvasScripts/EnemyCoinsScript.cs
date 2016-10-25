@@ -13,6 +13,11 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
     public float spinrate = 0.25f;
     public GameObject myCoin;
 
+    public bool flip = false;
+
+    private Quaternion lookRot;
+    private Vector3 dir;
+
     GameObject mouseover;
 
     Text mouseoverTextDesc1;
@@ -25,7 +30,7 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
         inv = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>();
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
 
-        myCoin.transform.Rotate(0, 0, Random.Range(0, 100));
+        myCoin.transform.Rotate(0, Random.Range(0, 100), 0);
 
     }
 
@@ -35,13 +40,12 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
         if (itemImage.sprite != null)
         {
             myCoin.SetActive(true);
-            
+
         }
         else
         {
             myCoin.SetActive(false);
         }
-        myCoin.transform.Rotate(0, 0, (spinrate));
 
         if (inv.EnemycoinList[itemNumber].itemName != null)
         {
@@ -51,6 +55,14 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
         else
         {
             itemImage.enabled = false;
+        }
+        if (flip)
+        {
+            StartCoroutine(flipcoin(coin.isHeads, 0));
+        }
+        else
+        {
+            myCoin.transform.Rotate(0, spinrate, 0);
         }
 
     }
@@ -73,7 +85,7 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
         //Debug.Log(coin.itemName);
         mouseoverTextDesc1.text = coin.itemName + "\n" + coin.itemDescription;
         mouseoverTextDesc2.text = coin.itemDescription2;
-        
+
         //name
         //description
         //description 2
@@ -81,5 +93,28 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
     public void OnPointerExit(PointerEventData data)
     {
         mouseover.SetActive(false);
+    }
+
+    public IEnumerator flipcoin(bool heads, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (flip)
+        {
+            //spinCoin = false;
+            Vector3 pos = transform.position;
+            if (heads)
+            {
+                pos.z -= 5;
+            }
+            else
+            {
+                pos.z += 5;
+            }
+
+
+            dir = (pos - myCoin.transform.position).normalized;
+            lookRot = Quaternion.LookRotation(dir);
+            myCoin.transform.rotation = Quaternion.Slerp(myCoin.transform.rotation, lookRot, Time.deltaTime * spinrate);
+        }
     }
 }
