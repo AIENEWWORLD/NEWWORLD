@@ -56,6 +56,10 @@ public class ControlScript : MonoBehaviour
     Vector3 tmpvec;
     float sqrMaxVel;
 
+    public Quaternion deg = Quaternion.identity;
+    public float rotation;
+    public float smoothRotation;
+
     void checkDiscoveredPercentage()
     {
         //Using InvokeRepeating method to update only update percentage every x second rather than each update cycle
@@ -133,18 +137,24 @@ public class ControlScript : MonoBehaviour
             //character movement
             //velocity.x = Input.GetAxis("Horizontal");
             //velocity.z = Input.GetAxis("Vertical");
+            
 
-            if(Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 //rotLR = 1 * rotationSpeed;
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
+                //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
+                rotation += 45;
+                deg = Quaternion.Euler(0, rotation,0);
             }
             if(Input.GetKeyDown(KeyCode.Q))
             {
+                rotation -= 45;
+                deg = Quaternion.Euler(0, rotation, 0);
                 //rotLR = -1 * rotationSpeed;
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 45, transform.eulerAngles.z);
+                //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - deg, transform.eulerAngles.z);
             }
-
+            transform.rotation = Quaternion.Lerp(transform.rotation, deg, smoothRotation * Time.deltaTime);
+            
             //if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
             //{
             //    Cursor.lockState = CursorLockMode.Locked;

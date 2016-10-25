@@ -149,6 +149,7 @@ public class SmoothCamera : MonoBehaviour
         }
     }
 
+
     void resetBox()
     {
         left = Player.transform.position.x - Box.x;
