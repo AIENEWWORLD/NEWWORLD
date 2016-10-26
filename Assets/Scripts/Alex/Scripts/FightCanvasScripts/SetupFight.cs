@@ -185,6 +185,7 @@ public class SetupFight : MonoBehaviour
     public List<int> dupeList;
 
     public GameObject CounterPrefab;
+    public GameObject BleedPrefab;
 
     Vector3 CounterStart = new Vector3(140, -255, 0);
     public List<GameObject> counters;
@@ -256,11 +257,11 @@ public class SetupFight : MonoBehaviour
             {
                 GameObject s = Instantiate(CounterPrefab) as GameObject;
                 s.transform.SetParent(fightPanel);
-                s.transform.localScale = new Vector3(1, 1, 1);
+                s.transform.localScale = new Vector3(1.620384f, 1, 1);
                 s.transform.localPosition = new Vector3(CounterStart.x + (45 * enemyCounterCursed), CounterStart.y, CounterStart.z);
                 counters.Add(s);
                 addedCounters = enemyCounterCursed;
-                Debug.Log("s");
+                //Debug.Log("s");
             }
         }
         else if (addedCounters != 0 && enemyCounterCursed == 0 && bleedcoinCounter == 0)
@@ -273,13 +274,13 @@ public class SetupFight : MonoBehaviour
 
             for (int i = 0; i < tempInt; i++)
             {
-                GameObject s = Instantiate(CounterPrefab) as GameObject;
+                GameObject s = Instantiate(BleedPrefab) as GameObject;
                 s.transform.SetParent(fightPanel);
                 s.transform.localScale = new Vector3(1, 1, 1);
                 s.transform.localPosition = new Vector3(CounterStart.x + (45 * bleedcoinCounter), CounterStart.y, CounterStart.z);
                 counters.Add(s);
                 addedCounters = bleedcoinCounter;
-                Debug.Log("s2");
+                //Debug.Log("s2");
             }
         }
         else if (addedCounters != 0 && bleedcoinCounter == 0 && enemyCounterCursed == 0)
@@ -611,8 +612,10 @@ public class SetupFight : MonoBehaviour
         combatStage += 1;
         //Debug.Log(combatStage);
 
+        //Enemy defends for X(silver)Enemy takes X damage Player defends for X(silver)Player takes X damage Player and enemy heal for X(green)
+
         //take damage
-        if (gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeSelf == false)
+                    if (gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeSelf == false)
         {
             if (combatStage == 1)
             {
@@ -657,6 +660,8 @@ public class SetupFight : MonoBehaviour
             }
             if (combatStage == 3)//player attacks + enemy defends
             {
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
                 if (spr)
                 {
                     sprcycle.enable = true;
@@ -668,7 +673,18 @@ public class SetupFight : MonoBehaviour
                 if (pickCoinList.Count > 0)
                 {
                     combatStage = 0;
-                    Instructions.text = "pick a " + pickCoinList[0].cType + " coin";
+                    if (pickCoinList[0].cType == CoinStats.coinTypes.flip)
+                    {
+                        Instructions.text = "pick a coin to reverse";
+                    }
+                    if (pickCoinList[0].cType == CoinStats.coinTypes.secondChance)
+                    {
+                        Instructions.text = "pick a coin to flip again";
+                    }
+                    if (pickCoinList[0].cType == CoinStats.coinTypes.Double)
+                    {
+                        Instructions.text = "pick a coin to double";
+                    }
                     picking = true;
                 }
 
@@ -676,55 +692,21 @@ public class SetupFight : MonoBehaviour
             }
             if (combatStage == 4)
             {
-
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
                 Instructions.text = "Instructions";
                 setColoursHT();
-                StartCoroutine(PlayerCombat(TimeBetweenCombat));
-            }
-            if (combatStage == 5)//enemy attacks + player defends
-            {
-
-                if (enemyAttacks)
+                if (enemyDefence > 0)
                 {
-                    if(DealDmgGainHealthCoins != 0)
-                    {
-                        DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
-                        if(DealDmgGainHealthCoins > 0)
-                        {
-                            enemyHeal += DealDmgGainHealthCoins;
-                        }
-                    }
-                    if(enemybleedcoin != 0)
-                    {
-                        bleedcoinCounter += enemybleedcoin;
-                        //Debug.Log(bleedcoinCounter);
-                        if(bleedcoinCounter >= 5)
-                        {
-                            enemyAttack += 5;
-                            bleedcoinCounter = 0;
-                        }
-                    }
-                    enemyAttack -= playerDefence;
-                    if (0 > enemyAttack)
-                    {
-                        enemyAttack = 0;
-                    }
-                    if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
-                    {
-                        enemyAttack = (int)playerStats.health;
-                        //playerStats.health /= 2;
-                        enemyCounterCursed = 0;
-                    }
-                    playerStats.health = playerStats.health - enemyAttack;
-                    PlayerNumbers.text = "-" + enemyAttack.ToString();
-                    playerSlider.value = playerStats.health;
+                    EnemyNumbers.color = new Color(192, 192, 192);
+                    EnemyNumbers.text = enemyDefence.ToString();
                 }
-
-
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 6)// enemy + player heal
+            if (combatStage == 5)// enemy + player heal
             {
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
@@ -761,6 +743,7 @@ public class SetupFight : MonoBehaviour
                         playerAttack = 0;
                     }
                     enemyStats.health = enemyStats.health - playerAttack;
+                    EnemyNumbers.color = Color.red;
                     EnemyNumbers.text = "-" + playerAttack.ToString();
                     EnemySlider.value = enemyStats.health;
 
@@ -768,8 +751,80 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 7)
+            if (combatStage == 6)//enemy attacks + player defends
             {
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
+                if (enemyStats.health <= 0)
+                {
+                    enemyStats.health = 0;
+                    //do something about death too
+                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
+                    {
+                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
+                    }
+                    else
+                    {
+                        enemyStats.health = enemyStats.maxHealth / 2;
+                    }
+
+                }
+                if (playerDefence > 0)
+                {
+                    PlayerNumbers.color = new Color(192, 192, 192); //silver
+                    PlayerNumbers.text = playerDefence.ToString();
+                }
+
+                StartCoroutine(PlayerCombat(TimeBetweenCombat));
+            }
+            if(combatStage == 7)
+            {
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
+                if (enemyAttacks)
+                {
+                    if (DealDmgGainHealthCoins != 0)
+                    {
+                        DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
+                        if (DealDmgGainHealthCoins > 0)
+                        {
+                            enemyHeal += DealDmgGainHealthCoins;
+                        }
+                    }
+                    if (enemybleedcoin != 0)
+                    {
+                        bleedcoinCounter += enemybleedcoin;
+                        //Debug.Log(bleedcoinCounter);
+                        if (bleedcoinCounter >= 5)
+                        {
+                            enemyAttack += 5;
+                            bleedcoinCounter = 0;
+                        }
+                    }
+                    enemyAttack -= playerDefence;
+                    if (0 > enemyAttack)
+                    {
+                        enemyAttack = 0;
+                    }
+                    if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    {
+                        enemyAttack = (int)playerStats.health;
+                        //playerStats.health /= 2;
+                        enemyCounterCursed = 0;
+                    }
+                    playerStats.health = playerStats.health - enemyAttack;
+
+
+                    PlayerNumbers.color = Color.red;
+                    PlayerNumbers.text = "-" + enemyAttack.ToString();
+                    playerSlider.value = playerStats.health;
+                }
+                StartCoroutine(PlayerCombat(TimeBetweenCombat));
+            }
+            if (combatStage == 8)
+            {
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
                 if (enemyStats.health <= 0)
                 {
                     enemyStats.health = 0;
@@ -785,15 +840,12 @@ public class SetupFight : MonoBehaviour
 
                 }
 
-
+                PlayerNumbers.color = Color.green;
+                PlayerNumbers.text = "";
                 playerStats.health = playerStats.health + playerHeal;
                 if (playerHeal > 0)
                 {
                     PlayerNumbers.text = "+" + playerHeal.ToString();
-                }
-                else if (playerHeal < 0)
-                {
-                    PlayerNumbers.text = "" + playerHeal.ToString();
                 }
                 if (playerStats.maxHealth < playerStats.health)
                 {
@@ -801,7 +853,11 @@ public class SetupFight : MonoBehaviour
                 }
 
                 enemyStats.health = enemyStats.health + enemyHeal;
-                EnemyNumbers.text = "+" + enemyHeal.ToString();
+                EnemyNumbers.color = Color.green;
+                if (enemyHeal > 0)
+                {
+                    EnemyNumbers.text = "+" + enemyHeal.ToString();
+                }
                 if (enemyStats.maxHealth < enemyStats.health)
                 {
                     enemyStats.health = enemyStats.maxHealth;
@@ -814,8 +870,10 @@ public class SetupFight : MonoBehaviour
                 enemyAttacks = true;
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 8)
+            if (combatStage == 9)
             {
+                PlayerNumbers.text = "";
+                EnemyNumbers.text = "";
                 //RECHECK DEATH since players can heal negative values (risky coins)
                 if (playerStats.health <= 0)
                 {
@@ -842,8 +900,6 @@ public class SetupFight : MonoBehaviour
                 }
 
 
-                PlayerNumbers.text = "";
-                EnemyNumbers.text = "";
                 Instructions.text = "Instructions";
 
                 if (spr)
