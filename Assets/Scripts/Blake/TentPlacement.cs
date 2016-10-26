@@ -46,6 +46,7 @@ public class TentPlacement : MonoBehaviour
             Instantiate(Tent, TentLocation, transform.rotation);
             gameObject.GetComponent<Renderer>().enabled = false;
             GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().allRespawnPoints.Add(gameObject);
+            GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<VistaTentTracker>().allTents.Add(gameObject);
         }
     }
 }
