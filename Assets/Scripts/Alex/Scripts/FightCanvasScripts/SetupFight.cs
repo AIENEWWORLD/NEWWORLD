@@ -248,6 +248,7 @@ public class SetupFight : MonoBehaviour
         {
 
         }
+        // && gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeInHierarchy == true
         if (addedCounters < enemyCounterCursed) //two counters can use the same code because there will never be both bleed coins and cursed coins on a single enemy
         {
             int tempInt = enemyCounterCursed - addedCounters;
@@ -259,15 +260,17 @@ public class SetupFight : MonoBehaviour
                 s.transform.localPosition = new Vector3(CounterStart.x + (45 * enemyCounterCursed), CounterStart.y, CounterStart.z);
                 counters.Add(s);
                 addedCounters = enemyCounterCursed;
+                Debug.Log("s");
             }
         }
         else if (addedCounters != 0 && enemyCounterCursed == 0 && bleedcoinCounter == 0)
         {
             clearCounters();
         }
-        if (addedCounters < bleedcoinCounter)
+        if (addedCounters < bleedcoinCounter )
         {
             int tempInt = bleedcoinCounter - addedCounters;
+
             for (int i = 0; i < tempInt; i++)
             {
                 GameObject s = Instantiate(CounterPrefab) as GameObject;
@@ -276,6 +279,7 @@ public class SetupFight : MonoBehaviour
                 s.transform.localPosition = new Vector3(CounterStart.x + (45 * bleedcoinCounter), CounterStart.y, CounterStart.z);
                 counters.Add(s);
                 addedCounters = bleedcoinCounter;
+                Debug.Log("s2");
             }
         }
         else if (addedCounters != 0 && bleedcoinCounter == 0 && enemyCounterCursed == 0)
@@ -286,12 +290,14 @@ public class SetupFight : MonoBehaviour
 
     void clearCounters()
     {
+        enemyCounterCursed = 0;
+        bleedcoinCounter = 0;
+        addedCounters = 0;
         for (int i = 0; i < counters.Count; i++)
         {
-            Destroy(counters[i]);
+            Destroy(counters[i].gameObject);
         }
         counters.Clear();
-        addedCounters = 0;
     }
 
     public void setEnemyList(List<CoinStats> cList)
@@ -351,6 +357,10 @@ public class SetupFight : MonoBehaviour
         clearPlayerCoins();
         clearEnemyCoins();
         clearCounters();
+        cleartempcoins();
+    }
+    void cleartempcoins()
+    {
         for (int i = 0; i < tempCoinsToDouble.Count; i++)
         {
             tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Heads_attack /= 2;

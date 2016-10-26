@@ -65,12 +65,14 @@ public class ButtonsPressed : MonoBehaviour
             {
                 //fCam.GetComponent<Camera>().enabled = false;
                 fCam.GetComponent<SetupFight>().onExitCombat();
+                //Debug.Log("clearing");
             }
             else
             {
                 Debug.Log("FightCamera = null");
             }
         }
+        
         gameObject.GetComponent<EnemyDropCoins>().dead = false;
     }
 

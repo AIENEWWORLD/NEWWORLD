@@ -114,5 +114,6 @@ public class OnWinLose : MonoBehaviour
         counteddown = false;
         countdown = true;
         count = 2;
+        gameObject.GetComponent<SetupFight>().addedCounters = 0;
     }
 }

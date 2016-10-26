@@ -262,6 +262,10 @@ public class ControlScript : MonoBehaviour
                 {
                     statsScript.supplies -= (Time.deltaTime * supplyDeincrement);
                 }
+                if(statsScript.health > 1 && statsScript.supplies == 0)
+                {
+                    statsScript.health -= (Time.deltaTime * supplyDeincrement);
+                }
 
 
             }
