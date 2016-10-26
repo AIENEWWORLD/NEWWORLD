@@ -72,6 +72,10 @@ public class ButtonsPressed : MonoBehaviour
                 Debug.Log("FightCamera = null");
             }
         }
+        else
+        {
+            Debug.Log("Please tag my prefab combat script with: CanvasEnemy");
+        }
         
         gameObject.GetComponent<EnemyDropCoins>().dead = false;
     }
@@ -99,6 +103,7 @@ public class ButtonsPressed : MonoBehaviour
 
     public void destroysprite()
     {
+        
         if (GameObject.FindGameObjectWithTag("CanvasEnemy") != null)
         {
             Destroy(GameObject.FindGameObjectWithTag("CanvasEnemy"));

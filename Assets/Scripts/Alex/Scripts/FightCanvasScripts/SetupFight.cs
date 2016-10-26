@@ -165,10 +165,6 @@ public class SetupFight : MonoBehaviour
 
     public Text PlayerNumbers;
     public Text EnemyNumbers;
-    [HideInInspector]
-    public TextureCycler texcycle;
-    [HideInInspector]
-    public SpriteAnimator sprcycle;
     bool spr;
     //[HideInInspector]
     public List<CoinStats> pickCoinList;
@@ -195,6 +191,8 @@ public class SetupFight : MonoBehaviour
 
 
     public List<GameObject> tempCoinsToDouble;
+
+    public Animator EnemyAnims;
 
     // Use this for initialization
     void Start()
@@ -317,25 +315,8 @@ public class SetupFight : MonoBehaviour
     public void onEnterCombat()
     {
         playerinCombat = true;
-        texcycle = null;
-        sprcycle = null;
 
-
-        if (enemySprite.GetComponent<TextureCycler>() != null)
-        {
-            texcycle = enemySprite.GetComponent<TextureCycler>();
-            texcycle.enable = false;
-            spr = false;
-        }
-        else
-        {
-            if (enemySprite.GetComponent<SpriteAnimator>() != null)
-            {
-                sprcycle = enemySprite.GetComponent<SpriteAnimator>();
-                sprcycle.enable = false;
-                spr = true;
-            }
-        }
+        EnemyAnims = enemySprite.GetComponent<Animator>();
 
         EnemyName.text = enemyStats.Name;
         PlayerName.text = playerStats.Name;
@@ -662,14 +643,9 @@ public class SetupFight : MonoBehaviour
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
-                if (spr)
-                {
-                    sprcycle.enable = true;
-                }
-                else
-                {
-                    texcycle.enable = true;
-                }
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////PLAY ATTACK ANIMATION
+                EnemyAnims.Play("Attack");
+                
                 if (pickCoinList.Count > 0)
                 {
                     combatStage = 0;
@@ -902,14 +878,8 @@ public class SetupFight : MonoBehaviour
 
                 Instructions.text = "Instructions";
 
-                if (spr)
-                {
-                    sprcycle.enable = false;
-                }
-                else
-                {
-                    texcycle.enable = false;
-                }
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////PLAY IDLE ANIMATION
+                EnemyAnims.Play("Idle");
                 gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
 
                 for (int i = 0; i < PlayercoinList.Count; i++)

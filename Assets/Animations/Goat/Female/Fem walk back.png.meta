@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: 2e6b5cf7683b3ad42a146c757433c242
+timeCreated: 1477472509
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Fem walk back_0
+    21300002: Fem walk back_1
+    21300004: Fem walk back_2
+    21300006: Fem walk back_3
+    21300008: Fem walk back_4
+    21300010: Fem walk back_5
+    21300012: Fem walk back_6
+    21300014: Fem walk back_7
+    21300016: Fem walk back_8
+    21300018: Fem walk back_9
+    21300020: Fem walk back_10
+    21300022: Fem walk back_11
+    21300024: Fem walk back_12
+    21300026: Fem walk back_13
+    21300028: Fem walk back_14
+    21300030: Fem walk back_15
+    21300032: Fem walk back_16
+    21300034: Fem walk back_17
+    21300036: Fem walk back_18
+    21300038: Fem walk back_19
+    21300040: Fem walk back_20
+    21300042: Fem walk back_21
+    21300044: Fem walk back_22
+    21300046: Fem walk back_23
+    21300048: Fem walk back_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fem walk back_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_1
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_2
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_3
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_4
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_5
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_6
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_7
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 2745
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_9
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_10
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_11
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_12
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_13
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_14
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_15
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 1830
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_17
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_18
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_19
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_20
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_21
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_22
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_23
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 915
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Fem walk back_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 427
+        height: 915
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

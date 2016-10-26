@@ -21,15 +21,22 @@ public class EnemyAI : MonoBehaviour
     public Vector3 newRandomPosition;
 
     public Vector3 Velocity = new Vector3(0,0,0);
+    public bool FlipLeftRight = false;
+    public bool boss;
     Vector3 prevpos;
 
     NavMeshPath path;
 
     Vector3 PlayerPos;
 
+    Animator MyAnimator;
+
+    SpriteRenderer thisRenderer;
 
     void Start ()
     {
+        MyAnimator = GetComponent<Animator>();
+        thisRenderer = GetComponent<SpriteRenderer>();
         path = new NavMeshPath();
         myRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
         myPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -40,95 +47,98 @@ public class EnemyAI : MonoBehaviour
 
     void Update ()
     {
-        Velocity = (transform.position - prevpos) / Time.deltaTime;
-        Velocity = Velocity.normalized;
-        
-        GetDirectionofMe();
-        prevpos = transform.position;
-        Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
-        gameObject.transform.eulerAngles = temprot_;
-
-        
-
-        if (gameObject.GetComponent<StatsScript>().dead == true)
+        if (!boss)
         {
-            //me.Resume();
-            me.speed = chaseSpeed;
-            me.destination = myPos;
-        }
+            Velocity = (transform.position - prevpos) / Time.deltaTime;
+            //Velocity = Velocity.normalized;
 
-        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement && !gameObject.GetComponent<StatsScript>().dead)
-        {
-            //me.Resume();
-            PlayerPos = Player.transform.position;
-            float Dist = Vector3.Distance(transform.position, PlayerPos);
-            //NavMesh.CalculatePath(transform.position, PlayerPos, 1, path);
-            if (Dist <= DistanceToPlayer)
+            GetDirectionofMe();
+            prevpos = transform.position;
+            Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
+            gameObject.transform.eulerAngles = temprot_;
+
+            newRandomPosition.y = transform.position.y;
+
+            if (gameObject.GetComponent<StatsScript>().dead == true)
             {
-                me.SetDestination(PlayerPos);
+                //me.Resume();
                 me.speed = chaseSpeed;
-                RandomMove = false;
-                me.destination = PlayerPos;
-            }
-            else
-            {
-                RandomMove = true;
-                ResetPos = true;
+                me.destination = myPos;
             }
 
-            if(RandomMove)
+            if (!GameObject.FindGameObjectWithTag("Player").GetComponent<ControlScript>().p_SeizeMovement && !gameObject.GetComponent<StatsScript>().dead)
             {
-                
-                
-                if(Vector3.Distance(transform.position,newRandomPosition) < 2) //Might have to change this to a vector 2
+                //me.Resume();
+                PlayerPos = Player.transform.position;
+                float Dist = Vector3.Distance(transform.position, PlayerPos);
+                //NavMesh.CalculatePath(transform.position, PlayerPos, 1, path);
+                if (Dist <= DistanceToPlayer)
                 {
-                    me.speed = RandomMoveSpeed;
-                    /*
-                     * get a new position that is above boxinner.x but below boxouter.x
-                     */
-
-                    //me.speed = 8;
-                    newRandomPosition = myPos;
-
-                    newRandomPosition.y = transform.position.y;
-
-                    if(Random.Range(0, 2) == 0)//right
-                    {
-                        newRandomPosition.x = Random.Range(newRandomPosition.x + BoxInner.x, newRandomPosition.x + BoxOuter.x);
-                    }
-                    else //left
-                    {
-                        newRandomPosition.x = Random.Range(newRandomPosition.x - BoxInner.x, newRandomPosition.x - BoxOuter.x);
-                    }
-
-                    if(Random.Range(0,2) == 0)//up
-                    {
-                        newRandomPosition.z = Random.Range(newRandomPosition.z + BoxInner.z, newRandomPosition.z + BoxOuter.z);
-                    }
-                    else //down
-                    {
-                        newRandomPosition.z = Random.Range(newRandomPosition.z - BoxInner.z, newRandomPosition.z - BoxOuter.z);
-                    }
-
-                    //newRandomPosition.x = Random.Range(newRandomPosition.x - BoxOuter.x, newRandomPosition.x + BoxOuter.x);
-                    //newRandomPosition.z = Random.Range(newRandomPosition.z - BoxOuter.z, newRandomPosition.z + BoxOuter.z);
-                    me.destination = newRandomPosition;
+                    me.SetDestination(PlayerPos);
+                    me.speed = chaseSpeed;
+                    RandomMove = false;
+                    me.destination = PlayerPos;
                 }
                 else
                 {
-                    if(ResetPos)
+                    RandomMove = true;
+                    ResetPos = true;
+                }
+
+                if (RandomMove)
+                {
+
+
+                    if (Vector3.Distance(transform.position, newRandomPosition) < 2) //Might have to change this to a vector 2
                     {
+                        me.speed = RandomMoveSpeed;
+                        /*
+                         * get a new position that is above boxinner.x but below boxouter.x
+                         */
+
+                        //me.speed = 8;
+                        newRandomPosition = myPos;
+
+                        newRandomPosition.y = transform.position.y;
+
+                        if (Random.Range(0, 2) == 0)//right
+                        {
+                            newRandomPosition.x = Random.Range(newRandomPosition.x + BoxInner.x, newRandomPosition.x + BoxOuter.x);
+                        }
+                        else //left
+                        {
+                            newRandomPosition.x = Random.Range(newRandomPosition.x - BoxInner.x, newRandomPosition.x - BoxOuter.x);
+                        }
+
+                        if (Random.Range(0, 2) == 0)//up
+                        {
+                            newRandomPosition.z = Random.Range(newRandomPosition.z + BoxInner.z, newRandomPosition.z + BoxOuter.z);
+                        }
+                        else //down
+                        {
+                            newRandomPosition.z = Random.Range(newRandomPosition.z - BoxInner.z, newRandomPosition.z - BoxOuter.z);
+                        }
+
+                        //newRandomPosition.x = Random.Range(newRandomPosition.x - BoxOuter.x, newRandomPosition.x + BoxOuter.x);
+                        //newRandomPosition.z = Random.Range(newRandomPosition.z - BoxOuter.z, newRandomPosition.z + BoxOuter.z);
                         me.destination = newRandomPosition;
-                        ResetPos = false;
+                    }
+                    else
+                    {
+                        if (ResetPos)
+                        {
+                            me.destination = newRandomPosition;
+                            ResetPos = false;
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            //me.Stop();
-            //me.speed = 0;
+            else
+            {
+                //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //me.Stop();
+                //me.speed = 0;
+            }
         }
         
     }
@@ -140,27 +150,52 @@ public class EnemyAI : MonoBehaviour
          */
         Velocity = transform.InverseTransformDirection(Velocity);
 
-        if (Mathf.Abs(Velocity.x) > Mathf.Abs(Velocity.z))
+        if (Mathf.Abs(Velocity.x) > Mathf.Abs(Velocity.z) && (Mathf.Abs(Velocity.x) + Mathf.Abs(Velocity.z)) > 1)
         {
             if (Velocity.x > 0)
             {
                 //Debug.Log("Right");
+                MyAnimator.Play("Side");
+                if (!FlipLeftRight)
+                {
+                    thisRenderer.flipX = false;
+                }
+                else
+                {
+                    thisRenderer.flipX = true;
+                }
             }
             if (Velocity.x < 0)
             {
                 //Debug.Log("Left");
+                MyAnimator.Play("Side");
+                if (!FlipLeftRight)
+                {
+                    thisRenderer.flipX = true;
+                }
+                else
+                {
+                    thisRenderer.flipX = false;
+                }
             }
         }
-        else
+        else if(Mathf.Abs(Velocity.x) < Mathf.Abs(Velocity.z) && (Mathf.Abs(Velocity.x)+ Mathf.Abs(Velocity.z)) > 1)
         {
             if (Velocity.z > 0)
             {
                 //Debug.Log("Up");
+                MyAnimator.Play("Back");
             }
             if (Velocity.z < 0)
             {
                 //Debug.Log("Down");
+                
+                MyAnimator.Play("Front");
             }
+        }
+        else
+        {
+            MyAnimator.Play("Front");
         }
     }
 }

@@ -21,6 +21,7 @@ public class StatsScript : MonoBehaviour
     public List<CoinStats> coinList = new List<CoinStats>();
     public Vector2 UIpos; //the position of the sprite on the prefab. Please make z 0
     public Vector3 UIrotation;
+    public Vector3 Scale;
     public int index; //we will compare this to the enemy we run into to spawn it.
 
     private GameObject FightCamera;
@@ -40,7 +41,16 @@ public class StatsScript : MonoBehaviour
     {
         boss,//REMEMBER TO SET THIS ON THE FLEE BUTTON PROPERLY SO THAT CANT FLEE FROM BOSSES
         pimpkin,
-        bird,
+        tortoise_common,
+        tortoise_boss,
+        thunderbird_boss,
+        Octopie_boss,
+        Goat_M,
+        Goat_F,
+        Dolphin_M,
+        Dolphin_F,
+        Deer_M,
+        Deer_F,
         player,
     }
 
@@ -72,6 +82,7 @@ public class StatsScript : MonoBehaviour
         guyType = s.guyType;
         coinList = s.coinList;
         UIpos = s.UIpos;
+        Scale = s.Scale;
         UIrotation = s.UIrotation;
         index = s.index;
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
@@ -110,6 +121,7 @@ public class StatsScript : MonoBehaviour
                     //sprite.transform.localScale = new Vector3(1, 1, 1);
                     sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -15);
                     sprite.transform.localEulerAngles = new Vector3(UIrotation.x, UIrotation.y, UIrotation.z);
+                    sprite.transform.localScale = new Vector3(Scale.x,Scale.y,Scale.z);
                 }
                 else
                 {

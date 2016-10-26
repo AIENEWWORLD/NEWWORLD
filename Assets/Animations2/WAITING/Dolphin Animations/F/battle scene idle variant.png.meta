@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: dcc2fb004799ae94c950e6a57da408ff
+timeCreated: 1477464532
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: battle scene idle variant_0
+    21300002: battle scene idle variant_1
+    21300004: battle scene idle variant_2
+    21300006: battle scene idle variant_3
+    21300008: battle scene idle variant_4
+    21300010: battle scene idle variant_5
+    21300012: battle scene idle variant_6
+    21300014: battle scene idle variant_7
+    21300016: battle scene idle variant_8
+    21300018: battle scene idle variant_9
+    21300020: battle scene idle variant_10
+    21300022: battle scene idle variant_11
+    21300024: battle scene idle variant_12
+    21300026: battle scene idle variant_13
+    21300028: battle scene idle variant_14
+    21300030: battle scene idle variant_15
+    21300032: battle scene idle variant_16
+    21300034: battle scene idle variant_17
+    21300036: battle scene idle variant_18
+    21300038: battle scene idle variant_19
+    21300040: battle scene idle variant_20
+    21300042: battle scene idle variant_21
+    21300044: battle scene idle variant_22
+    21300046: battle scene idle variant_23
+    21300048: battle scene idle variant_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: battle scene idle variant_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_1
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_2
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_3
+      rect:
+        serializedVersion: 2
+        x: 2658
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_4
+      rect:
+        serializedVersion: 2
+        x: 3544
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_5
+      rect:
+        serializedVersion: 2
+        x: 4430
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_6
+      rect:
+        serializedVersion: 2
+        x: 5316
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_7
+      rect:
+        serializedVersion: 2
+        x: 6202
+        y: 1677
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_9
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_10
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_11
+      rect:
+        serializedVersion: 2
+        x: 2658
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_12
+      rect:
+        serializedVersion: 2
+        x: 3544
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_13
+      rect:
+        serializedVersion: 2
+        x: 4430
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_14
+      rect:
+        serializedVersion: 2
+        x: 5316
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_15
+      rect:
+        serializedVersion: 2
+        x: 6202
+        y: 1118
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_17
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_18
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_19
+      rect:
+        serializedVersion: 2
+        x: 2658
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_20
+      rect:
+        serializedVersion: 2
+        x: 3544
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_21
+      rect:
+        serializedVersion: 2
+        x: 4430
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_22
+      rect:
+        serializedVersion: 2
+        x: 5316
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_23
+      rect:
+        serializedVersion: 2
+        x: 6202
+        y: 559
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: battle scene idle variant_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 886
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
