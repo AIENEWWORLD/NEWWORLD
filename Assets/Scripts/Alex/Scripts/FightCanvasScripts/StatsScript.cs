@@ -16,6 +16,7 @@ public class StatsScript : MonoBehaviour
     public int totalCoins; //how many coins can be selected.
     public int dropRate = 50;//the drop rate of the coins
     public enumType guyType;
+    public Enemy Monster;
 
     //for UI
     public List<CoinStats> coinList = new List<CoinStats>();
@@ -40,6 +41,11 @@ public class StatsScript : MonoBehaviour
     public enum enumType
     {
         boss,//REMEMBER TO SET THIS ON THE FLEE BUTTON PROPERLY SO THAT CANT FLEE FROM BOSSES
+        Enemy,
+        player,
+    }
+    public enum Enemy
+    {
         pimpkin,
         tortoise_common,
         tortoise_boss,
@@ -51,7 +57,7 @@ public class StatsScript : MonoBehaviour
         Dolphin_F,
         Deer_M,
         Deer_F,
-        player,
+        none,
     }
 
     void Start()
@@ -80,6 +86,7 @@ public class StatsScript : MonoBehaviour
         totalCoins = s.totalCoins;
         dropRate = s.dropRate;
         guyType = s.guyType;
+        Monster = s.Monster;
         coinList = s.coinList;
         UIpos = s.UIpos;
         Scale = s.Scale;
@@ -137,13 +144,13 @@ public class StatsScript : MonoBehaviour
                 FightCamera.GetComponent<SetupFight>().Enemy = gameObject;
                 //gameObject.SetActive(false);
                 //gameObject.GetComponent<EnemyScript>().enabled = false;
-                if (gameObject.GetComponent<SpriteRenderer>() != null)
+                if (transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
                 {
-                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 }
                 else
                 {
-                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
                 }
                 gameObject.GetComponent<Collider>().enabled = false;
                 gameObject.name = Name + " dead";
@@ -159,13 +166,13 @@ public class StatsScript : MonoBehaviour
         //respawnscript.EnemyList[i].SetActive(true);
         //gameObject.GetComponent<EnemyScript>().enabled = true;
         gameObject.transform.position = gameObject.GetComponent<EnemyAI>().myPos;
-        if (gameObject.GetComponent<SpriteRenderer>() != null)
+        if (transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>() != null)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
         else
         {
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
         gameObject.GetComponent<Collider>().enabled = true;
         respawnscript.EnemyList.Remove(gameObject);

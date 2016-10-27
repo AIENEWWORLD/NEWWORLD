@@ -33,16 +33,22 @@ public class EnemyAI : MonoBehaviour
 
     SpriteRenderer thisRenderer;
 
+    public bool FixHalfPoint = false;
+
+    public Camera CamPos;
+
     void Start ()
     {
-        MyAnimator = GetComponent<Animator>();
-        thisRenderer = GetComponent<SpriteRenderer>();
+        
+        MyAnimator = transform.GetChild(0).GetComponent<Animator>();
+        thisRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         path = new NavMeshPath();
         myRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
         myPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         me = gameObject.GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player");
         newRandomPosition = myPos;
+        CamPos = Camera.main;
     }
 
     void Update ()
@@ -53,6 +59,7 @@ public class EnemyAI : MonoBehaviour
             //Velocity = Velocity.normalized;
 
             GetDirectionofMe();
+
             prevpos = transform.position;
             Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
             gameObject.transform.eulerAngles = temprot_;
@@ -137,8 +144,13 @@ public class EnemyAI : MonoBehaviour
             {
                 //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 //me.Stop();
-                //me.speed = 0;
+                me.speed = 0;
             }
+        }
+        else
+        {
+            Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
+            gameObject.transform.eulerAngles = temprot_;
         }
         
     }
@@ -148,10 +160,35 @@ public class EnemyAI : MonoBehaviour
         /*
          * get the players rotation and compare it to enemy current rotation, then figure out which animation to play
          */
+        bool zeroVel = false;
+        if (Velocity == Vector3.zero)
+        {
+            MyAnimator.speed = 0;
+            Vector3 newDir;
+            newDir = new Vector3(PlayerPos.x - transform.position.x, 0, PlayerPos.z - transform.position.z);
+            Velocity = newDir;
+            zeroVel = true;
+        }
+
+
         Velocity = transform.InverseTransformDirection(Velocity);
 
-        if (Mathf.Abs(Velocity.x) > Mathf.Abs(Velocity.z) && (Mathf.Abs(Velocity.x) + Mathf.Abs(Velocity.z)) > 1)
+        float VX = Mathf.Abs(Velocity.x);
+        float VZ = Mathf.Abs(Velocity.z);
+        FixHalfPoint = false;
+        float fixNum = 0.6f;
+
+        //check if x is within a range of z
+        if (VX >= VZ-fixNum && VX <= VZ+fixNum && VX + VZ > 1)
         {
+            FixHalfPoint = true;
+        }
+        if (VX > VZ && VX + VZ > 1 || FixHalfPoint == true)
+        {
+            if (zeroVel == false)
+            {
+                MyAnimator.speed = 1;
+            }
             if (Velocity.x > 0)
             {
                 //Debug.Log("Right");
@@ -169,6 +206,7 @@ public class EnemyAI : MonoBehaviour
             {
                 //Debug.Log("Left");
                 MyAnimator.Play("Side");
+                
                 if (!FlipLeftRight)
                 {
                     thisRenderer.flipX = true;
@@ -179,8 +217,12 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-        else if(Mathf.Abs(Velocity.x) < Mathf.Abs(Velocity.z) && (Mathf.Abs(Velocity.x)+ Mathf.Abs(Velocity.z)) > 1)
+        else if(VX < VZ && VX + VZ > 1)
         {
+            if (zeroVel == false)
+            {
+                MyAnimator.speed = 1;
+            }
             if (Velocity.z > 0)
             {
                 //Debug.Log("Up");
@@ -191,11 +233,8 @@ public class EnemyAI : MonoBehaviour
                 //Debug.Log("Down");
                 
                 MyAnimator.Play("Front");
+                
             }
-        }
-        else
-        {
-            MyAnimator.Play("Front");
         }
     }
 }

@@ -106,7 +106,7 @@ public class CoinShopManager : MonoBehaviour
                 CBS.GetComponent<Button>().interactable = false;
             }
             CBS.setbuttonText();
-            goldAmount.text = "Gold: " + CBS.playerstats.gold.ToString();
+            goldAmount.text = "" + CBS.playerstats.gold.ToString() + " Gold";
         }
     }
     public void destroyatID(GameObject go)

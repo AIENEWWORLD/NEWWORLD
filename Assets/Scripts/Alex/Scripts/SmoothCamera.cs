@@ -39,7 +39,7 @@ public class SmoothCamera : MonoBehaviour
     public float targetLookAheadZ;
     [HideInInspector]
     public bool lookAheadStoppedZ;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentLookAheadZ;
     [HideInInspector]
     public float smoothLookVelocityZ;
@@ -52,7 +52,7 @@ public class SmoothCamera : MonoBehaviour
     //bool withinRadius;
     //Vector3 NewLookPos;
 
-    void Start ()
+    void Start()
     {
         lookAheadStopped = true;
         BoxPosition = Player.transform.position;
@@ -113,6 +113,7 @@ public class SmoothCamera : MonoBehaviour
 
         currentLookAheadX = Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, smoothX);
         currentLookAheadZ = Mathf.SmoothDamp(currentLookAheadZ, targetLookAheadZ, ref smoothLookVelocityZ, smoothZ);
+
         focusPosition += transform.right * currentLookAheadX;
         focusPosition += transform.up * currentLookAheadZ;
         transform.position = focusPosition + tempOffset;
@@ -129,8 +130,15 @@ public class SmoothCamera : MonoBehaviour
 
         if (fix)
         {
+            //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
+
             transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position ).normalized), CamLookSmooth * Time.smoothDeltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
+            //float X = Mathf.Cos(transform.rotation.y)*currentLookAheadX;
+            //float Z = Mathf.Sin(transform.rotation.y)*currentLookAheadZ;
+
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position + new Vector3(X,0,Z)).normalized), CamLookSmooth * Time.smoothDeltaTime);
 
         }
         else
@@ -144,7 +152,7 @@ public class SmoothCamera : MonoBehaviour
             else
             {
                 transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((new Vector3(Player.transform.position.x+currentLookAheadX,Player.transform.position.y,Player.transform.position.z+currentLookAheadZ) - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((new Vector3(Player.transform.position.x + currentLookAheadX, Player.transform.position.y, Player.transform.position.z + currentLookAheadZ) - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
             }
         }
     }
@@ -162,7 +170,7 @@ public class SmoothCamera : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, .5f);
-        Gizmos.DrawCube(BoxPosition, Box*2);
+        Gizmos.DrawCube(BoxPosition, Box * 2);
     }
 
     void CheckBox()// smooth move across since this is called in the LateUpdate   new Vector2(right,0)
@@ -189,7 +197,8 @@ public class SmoothCamera : MonoBehaviour
         left += VX; right += VX;
         down += VZ; up += VZ;
 
-        BoxPosition = new Vector3((left + right)/2,Player.transform.position.y,(up + down)/2);
+        BoxPosition = new Vector3((left + right) / 2, Player.transform.position.y, (up + down) / 2);
+
         camVelocity = new Vector3(VX, 0, VZ);
     }
 }

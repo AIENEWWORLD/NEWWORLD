@@ -22,6 +22,7 @@ public class ButtonsPressed : MonoBehaviour
         {
 
         }
+
     }
     public void onClickFlee()
     {
@@ -91,6 +92,7 @@ public class ButtonsPressed : MonoBehaviour
         {
             fCam.GetComponent<SetupFight>().calcFight = true;
             SetInteractable(false);
+            
         }
     }
 
@@ -99,6 +101,7 @@ public class ButtonsPressed : MonoBehaviour
         FlipButton.interactable = a;
         InventoryButton.interactable = a;
         FleeButton.interactable = a;
+        
     }
 
     public void destroysprite()

@@ -42,7 +42,7 @@ public class CoinStats
 
     public bool isSelected = false;
     [Header("Use this for dropCoins")]
-    public List<StatsScript.enumType> en = new List<StatsScript.enumType>();//only for dropcoins.
+    public List<StatsScript.Enemy> en = new List<StatsScript.Enemy>();//only for dropcoins.
     [Header("cost to buy")]
     public int cost = 0;//only for the shop coins that you can buy
     [Header("use only for player coins")]

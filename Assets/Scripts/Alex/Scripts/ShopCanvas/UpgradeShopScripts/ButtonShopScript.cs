@@ -15,12 +15,12 @@ public class ButtonShopScript : MonoBehaviour, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (active && !purchased)
-        {
-            mainScript.UpgradeTotalCoins(cost);
-            purchased = true;
-            mainScript._checkGold();
-        }
+            if (active && !purchased)
+            {
+                mainScript.UpgradeTotalCoins(cost);
+                purchased = true;
+                mainScript._checkGold();
+            }
     }
 
     void Start ()

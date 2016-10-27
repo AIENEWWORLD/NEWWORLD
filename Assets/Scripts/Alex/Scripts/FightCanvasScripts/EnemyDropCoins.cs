@@ -36,7 +36,7 @@ public class EnemyDropCoins : MonoBehaviour
         return (Random.Range(rangeMin, rangeMax) > rangeMax - chance);
     }
 
-    public void onKilled(StatsScript.enumType gType, int gold, int droprate)
+    public void onKilled(StatsScript.Enemy gType, int gold, int droprate)
     {
         CoinStats coin = new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0,CoinStats.coinTypes.standard,CoinStats.EnemycoinTypes.none, false, null,false,false);
         dead = true;

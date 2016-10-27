@@ -39,7 +39,7 @@ public class CompassScript : MonoBehaviour
         }
         Coins.text = PlayerStats.gold.ToString();
         Landmarks.text = 0.ToString(); //WAT
-        Beasts.text = 0.ToString();
+        //Beasts.text = 0.ToString();
     }
 
     void LateUpdate()

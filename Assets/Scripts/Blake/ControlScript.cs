@@ -154,7 +154,11 @@ public class ControlScript : MonoBehaviour
                 //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - deg, transform.eulerAngles.z);
             }
             transform.rotation = Quaternion.Lerp(transform.rotation, deg, smoothRotation * Time.deltaTime);
-            
+
+            if (rotation == 360 || rotation == -360)
+            {
+                rotation = 0;
+            }
             //if (Input.GetMouseButton(0) && Input.GetAxis("Mouse X") != 0)
             //{
             //    Cursor.lockState = CursorLockMode.Locked;

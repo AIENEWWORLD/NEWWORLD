@@ -189,10 +189,13 @@ public class SetupFight : MonoBehaviour
 
     public GameObject Enemy;
 
+    public List<StatsScript.Enemy> DiscoveryList;
 
     public List<GameObject> tempCoinsToDouble;
 
     public Animator EnemyAnims;
+
+    public bool inList = false;
 
     // Use this for initialization
     void Start()
@@ -312,6 +315,14 @@ public class SetupFight : MonoBehaviour
         inventoryisActive = !inventoryisActive;
     }
 
+    public void chkBoss()
+    {
+        if (enemyStats.guyType == StatsScript.enumType.boss)
+        {
+            gameObject.GetComponent<ButtonsPressed>().FleeButton.interactable = false;
+        }
+    }
+
     public void onEnterCombat()
     {
         playerinCombat = true;
@@ -326,6 +337,26 @@ public class SetupFight : MonoBehaviour
 
         playerSlider.value = playerStats.health;
         EnemySlider.value = enemyStats.health;
+        gameObject.GetComponent<ButtonsPressed>().FleeButton.interactable = true;
+        chkBoss();
+
+        if (enemyStats.Monster != StatsScript.Enemy.none)
+        {
+            inList = false;
+            for (int i = 0; i < DiscoveryList.Count; i++)
+            {
+                if (enemyStats.Monster == DiscoveryList[i])
+                {
+                    inList = true;
+                }
+            }
+            if (inList == false)
+            {
+                DiscoveryList.Add(enemyStats.Monster);
+            }
+        }
+
+        GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
 
         inventory.greyoutUnselected();
         loadPlayerCoins();
@@ -644,7 +675,7 @@ public class SetupFight : MonoBehaviour
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////PLAY ATTACK ANIMATION
-                EnemyAnims.Play("Attack");
+                
                 
                 if (pickCoinList.Count > 0)
                 {
@@ -737,7 +768,7 @@ public class SetupFight : MonoBehaviour
                     //do something about death too
                     if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
                     {
-                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
+                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
                     }
                     else
                     {
@@ -759,6 +790,8 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.text = "";
                 if (enemyAttacks)
                 {
+                    //EnemyAnims.SetTrigger("TransAttack");
+                    EnemyAnims.Play("Attack");
                     if (DealDmgGainHealthCoins != 0)
                     {
                         DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
@@ -807,7 +840,7 @@ public class SetupFight : MonoBehaviour
                     //do something about death too
                     if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
                     {
-                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
+                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
                     }
                     else
                     {
@@ -866,7 +899,7 @@ public class SetupFight : MonoBehaviour
                     //do something about death too
                     if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
                     {
-                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
+                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
                     }
                     else
                     {
@@ -881,7 +914,7 @@ public class SetupFight : MonoBehaviour
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////PLAY IDLE ANIMATION
                 EnemyAnims.Play("Idle");
                 gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
-
+                chkBoss();
                 for (int i = 0; i < PlayercoinList.Count; i++)
                 {
                     PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = false;
@@ -922,6 +955,7 @@ public class SetupFight : MonoBehaviour
             EnemyNumbers.text = "";
             Instructions.text = "Instructions";
             gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
+            chkBoss();
         }
     }
 
