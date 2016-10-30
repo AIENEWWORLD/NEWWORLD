@@ -75,13 +75,13 @@ public class SetupFight : MonoBehaviour
      * COINS - done necessary coins
      * TEST COMBAT WITH FLIP COINS
      * update the calculatefight2
-     * 
      * health upgrade, supply upgrade
+     * put in the animations
+     * 
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * PLAYER SLOPE
      * tutorial script when you talk to dude trigger tutorial
      * Sounds
-     * put in the animations
      * 
      * 
      * 

@@ -14,8 +14,7 @@ public class SmoothCamera : MonoBehaviour
 
     public float LookMaxX;
     public float LookMaxZ;
-    [HideInInspector]
-    public Vector3 camVelocity;
+
     public float smoothX;
     public float smoothZ;
 
@@ -23,35 +22,31 @@ public class SmoothCamera : MonoBehaviour
 
     [HideInInspector]
     public float left, right, up, down;
-    [HideInInspector]
+    //[HideInInspector]
     public float targetLookAheadX;
-    [HideInInspector]
+    //[HideInInspector]
     public float lookAheadDirX;
     //[HideInInspector]
     public float currentLookAheadX;
-    [HideInInspector]
+    //[HideInInspector]
     public bool lookAheadStopped;
-    [HideInInspector]
+    //[HideInInspector]
     public float smoothLookVelocityX;
-    [HideInInspector]
+    //[HideInInspector]
     public float lookAheadDirZ;
-    [HideInInspector]
+    //[HideInInspector]
     public float targetLookAheadZ;
-    [HideInInspector]
+    //[HideInInspector]
     public bool lookAheadStoppedZ;
     //[HideInInspector]
     public float currentLookAheadZ;
-    [HideInInspector]
+    //[HideInInspector]
     public float smoothLookVelocityZ;
 
-    [HideInInspector]
+    //[HideInInspector]
+    public Vector3 camVelocity;
+    //[HideInInspector]
     public Vector3 PlayerVelocity;
-
-    public bool fix = true;
-
-    //bool withinRadius;
-    //Vector3 NewLookPos;
-
     void Start()
     {
         lookAheadStopped = true;
@@ -65,7 +60,7 @@ public class SmoothCamera : MonoBehaviour
         left = Player.transform.position.x - Box.x;
         right = Player.transform.position.x + Box.x;
         up = Player.transform.position.z + Box.z;
-        down = Player.transform.position.z;
+        down = Player.transform.position.z - Box.z;
     }
 
     void LateUpdate()
@@ -75,10 +70,9 @@ public class SmoothCamera : MonoBehaviour
 
         PlayerVelocity = Player.GetComponent<Rigidbody>().velocity;
 
-        if (camVelocity.x != 0 || camVelocity.z != 0)
+        if (camVelocity.x != 0)
         {
             lookAheadDirX = Mathf.Sign(camVelocity.x);
-            lookAheadDirZ = Mathf.Sign(camVelocity.z);
             if (Mathf.Sign(PlayerVelocity.x) == Mathf.Sign(camVelocity.x) && PlayerVelocity.x != 0)
             {
                 lookAheadStopped = false;
@@ -93,6 +87,11 @@ public class SmoothCamera : MonoBehaviour
                     targetLookAheadX = currentLookAheadX + (lookAheadDirX * LookMaxX - currentLookAheadX) / 4f;
                 }
             }
+        }
+
+        if (camVelocity.z != 0)
+        {
+            lookAheadDirZ = Mathf.Sign(camVelocity.z);
             if (Mathf.Sign(PlayerVelocity.z) == Mathf.Sign(camVelocity.z) && PlayerVelocity.z != 0)
             {
                 lookAheadStoppedZ = false;
@@ -109,62 +108,23 @@ public class SmoothCamera : MonoBehaviour
             }
         }
 
+        if (targetLookAheadZ < 0)
+        {
+            targetLookAheadZ = 0;
+        }
 
 
         currentLookAheadX = Mathf.SmoothDamp(currentLookAheadX, targetLookAheadX, ref smoothLookVelocityX, smoothX);
         currentLookAheadZ = Mathf.SmoothDamp(currentLookAheadZ, targetLookAheadZ, ref smoothLookVelocityZ, smoothZ);
-
         focusPosition += transform.right * currentLookAheadX;
-        focusPosition += transform.up * currentLookAheadZ;
+        focusPosition += transform.forward * currentLookAheadZ;
         transform.position = focusPosition + tempOffset;
 
-        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
+        transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.forward * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
 
+        //negative transform.forward.z fixed
 
-        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
-        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
-
-        //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
-
-
-
-        if (fix)
-        {
-            //transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
-            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
-
-            transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
-            //float X = Mathf.Cos(transform.rotation.y)*currentLookAheadX;
-            //float Z = Mathf.Sin(transform.rotation.y)*currentLookAheadZ;
-
-            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position + new Vector3(X,0,Z)).normalized), CamLookSmooth * Time.smoothDeltaTime);
-
-        }
-        else
-        {
-            if (Input.GetMouseButton(0))
-            {
-                transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position + (transform.right * -currentLookAheadX) + (transform.up * -currentLookAheadZ) - Player.transform.position) + Player.transform.position;
-
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
-            }
-            else
-            {
-                transform.position = Quaternion.Euler(Player.transform.eulerAngles) * (transform.position - Player.transform.position) + Player.transform.position;
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((new Vector3(Player.transform.position.x + currentLookAheadX, Player.transform.position.y, Player.transform.position.z + currentLookAheadZ) - transform.position).normalized), CamLookSmooth * Time.smoothDeltaTime);
-            }
-        }
-    }
-
-
-    void resetBox()
-    {
-        left = Player.transform.position.x - Box.x;
-        right = Player.transform.position.x + Box.x;
-        up = Player.transform.position.z + Box.z;
-        down = Player.transform.position.z - Box.z;
-        BoxPosition = Player.transform.position;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((Player.transform.position - transform.position + new Vector3(currentLookAheadX,0,currentLookAheadZ))), CamLookSmooth * Time.smoothDeltaTime);
     }
 
     void OnDrawGizmos()
@@ -173,7 +133,7 @@ public class SmoothCamera : MonoBehaviour
         Gizmos.DrawCube(BoxPosition, Box * 2);
     }
 
-    void CheckBox()// smooth move across since this is called in the LateUpdate   new Vector2(right,0)
+    void CheckBox()
     {
         float VX = 0, VZ = 0;
 
@@ -198,49 +158,6 @@ public class SmoothCamera : MonoBehaviour
         down += VZ; up += VZ;
 
         BoxPosition = new Vector3((left + right) / 2, Player.transform.position.y, (up + down) / 2);
-
         camVelocity = new Vector3(VX, 0, VZ);
     }
 }
-
-
-/*
- * 
- *         if (camVelocity.x != 0)
-        {
-            lookAheadDirX = Mathf.Sign(camVelocity.x);
-            if (Mathf.Sign(InputGameobject.horizontal) == Mathf.Sign(camVelocity.x) && InputGameobject.horizontal != 0)
-            {
-                lookAheadStopped = false;
-                targetLookAheadX = lookAheadDirX * LookMaxX;
-
-            }
-            else
-            {
-                if (!lookAheadStopped)
-                {
-                    lookAheadStopped = true;
-                    targetLookAheadX = currentLookAheadX + (lookAheadDirX * LookMaxX - currentLookAheadX) / 4f;
-                }
-            }
-        }
-        if (camVelocity.z != 0)
-        {
-            lookAheadDirZ = Mathf.Sign(camVelocity.z);
-            if (Mathf.Sign(InputGameobject.vertical) == Mathf.Sign(camVelocity.z) && InputGameobject.vertical != 0)
-            {
-                lookAheadStoppedY = false;
-                targetLookAheadZ = lookAheadDirZ * LookMaxZ;
-
-            }
-            else
-            {
-                if (!lookAheadStoppedZ)
-                {
-                    lookAheadStoppedZ = true;
-                    targetLookAheadZ = currentLookAheadZ + (lookAheadDirZ * LookMaxZ - currentLookAheadZ) / 4f;
-                }
-            }
-        }
-
-    */

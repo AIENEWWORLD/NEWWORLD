@@ -145,15 +145,19 @@ public class ControlScript : MonoBehaviour
                 //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
                 rotation += 45;
                 deg = Quaternion.Euler(0, rotation,0);
+                Camera.main.GetComponent<SmoothCamera>().targetLookAheadZ = 0;
+                Camera.main.GetComponent<SmoothCamera>().targetLookAheadX = 0;
             }
             if(Input.GetKeyDown(KeyCode.Q))
             {
                 rotation -= 45;
                 deg = Quaternion.Euler(0, rotation, 0);
+                Camera.main.GetComponent<SmoothCamera>().targetLookAheadZ = 0;
+                Camera.main.GetComponent<SmoothCamera>().targetLookAheadX = 0;
                 //rotLR = -1 * rotationSpeed;
                 //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - deg, transform.eulerAngles.z);
             }
-            transform.rotation = Quaternion.Lerp(transform.rotation, deg, smoothRotation * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, deg, smoothRotation * Time.deltaTime);
 
             if (rotation == 360 || rotation == -360)
             {
