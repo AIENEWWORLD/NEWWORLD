@@ -68,9 +68,6 @@ public class SetupFight : MonoBehaviour
      * camera rotation - done
      * add curse counter coins - done
      * play the idle animation in the CheckinCombatScript (commenting shows where). - done
-     * 
-     * -------------------------------------------------
-     * TO DO:
      * make bosses not respawn - THEY WILL NOT RESPAWN IF THE GUYTYPE ENUM IS SET TO BOSS BUT THEY WILL IF THE PLAYER DIES TO THEM
      * COINS - done necessary coins
      * TEST COMBAT WITH FLIP COINS
@@ -79,10 +76,18 @@ public class SetupFight : MonoBehaviour
      * put in the animations
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * 
-     * tutorial script when you talk to dude trigger tutorial
-     * Sounds
-     * PLAYER SLOPE
+     * -------------------------------------------------
+     * TO DO:
      * 
+     * tutorial script when you enter combat, goes through images as player clicks
+     * Sounds, check sliders
+     * PLAYER SLOPE
+     * Fix need for sprites
+     * bloodthirst weird
+     * 
+     * online portfolio
+     * schedule
+     * technical design doc
      * 
      * 
      * 
@@ -703,11 +708,11 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.text = "";
                 Instructions.text = "Instructions";
                 setColoursHT();
-                if (enemyDefence > 0)
-                {
-                    EnemyNumbers.color = new Color(192, 192, 192);
-                    EnemyNumbers.text = enemyDefence.ToString();
-                }
+                //if (enemyDefence > 0)
+                //{
+                //    EnemyNumbers.color = new Color(192, 192, 192);
+                //    EnemyNumbers.text = enemyDefence.ToString();
+                //}
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
             if (combatStage == 5)// enemy + player heal
@@ -751,7 +756,7 @@ public class SetupFight : MonoBehaviour
                     }
                     enemyStats.health = enemyStats.health - playerAttack;
                     EnemyNumbers.color = Color.red;
-                    EnemyNumbers.text = "-" + playerAttack.ToString();
+                    EnemyNumbers.text = "" + playerAttack.ToString();
                     EnemySlider.value = enemyStats.health;
 
                 }
@@ -776,11 +781,11 @@ public class SetupFight : MonoBehaviour
                     }
 
                 }
-                if (playerDefence > 0)
-                {
-                    PlayerNumbers.color = new Color(192, 192, 192); //silver
-                    PlayerNumbers.text = playerDefence.ToString();
-                }
+                //if (playerDefence > 0)
+                //{
+                //    PlayerNumbers.color = new Color(192, 192, 192); //silver
+                //    PlayerNumbers.text = playerDefence.ToString();
+                //}
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
@@ -806,7 +811,7 @@ public class SetupFight : MonoBehaviour
                         //Debug.Log(bleedcoinCounter);
                         if (bleedcoinCounter >= 5)
                         {
-                            enemyAttack += 5;
+                            enemyAttack += 3;
                             bleedcoinCounter = 0;
                         }
                     }
@@ -825,7 +830,7 @@ public class SetupFight : MonoBehaviour
 
 
                     PlayerNumbers.color = Color.red;
-                    PlayerNumbers.text = "-" + enemyAttack.ToString();
+                    PlayerNumbers.text = "" + enemyAttack.ToString();
                     playerSlider.value = playerStats.health;
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
@@ -854,7 +859,7 @@ public class SetupFight : MonoBehaviour
                 playerStats.health = playerStats.health + playerHeal;
                 if (playerHeal > 0)
                 {
-                    PlayerNumbers.text = "+" + playerHeal.ToString();
+                    PlayerNumbers.text = "" + playerHeal.ToString();
                 }
                 if (playerStats.maxHealth < playerStats.health)
                 {
@@ -865,7 +870,7 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.color = Color.green;
                 if (enemyHeal > 0)
                 {
-                    EnemyNumbers.text = "+" + enemyHeal.ToString();
+                    EnemyNumbers.text = "" + enemyHeal.ToString();
                 }
                 if (enemyStats.maxHealth < enemyStats.health)
                 {

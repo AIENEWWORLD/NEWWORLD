@@ -71,6 +71,7 @@ public class CoinStats
 
     public enum TextureEnum
     {
+        LiamsCoin,
         Texture_attack,
         Texture_defence,
         Texture_heal,
@@ -161,7 +162,7 @@ public class CoinStats
     public Texture GetTexture()
     {
         Texture t = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<SetupCoinTextures>().TexSetter[(int)myTexture]; //what even is this
-        Debug.Log((int)myTexture);
+        //Debug.Log((int)myTexture);
         return t;
     }
 }

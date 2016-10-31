@@ -25,8 +25,8 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         inv = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<CreateInventory>();
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
 
-        myCoin.transform.Rotate(0, 0, Random.Range(0, 100));
-        myCoin.GetComponent<Renderer>().material.mainTexture = coin.GetTexture();
+        myCoin.transform.Rotate(0, Random.Range(0, 100), 0);
+        myCoin.transform.GetChild(1).GetComponent<Renderer>().material.mainTexture = coin.GetTexture();
     }
 	
 	// Update is called once per frame
@@ -43,7 +43,7 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         }
         if (coin.isSelected)
         {
-            myCoin.transform.Rotate(0, 0, (spinrate));
+            myCoin.transform.Rotate(0, (spinrate), 0);
         }
         if (inv.coinList[itemNumber].itemName != null)
         {
