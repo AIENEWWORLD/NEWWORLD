@@ -70,7 +70,7 @@ public class ControlScript : MonoBehaviour
         for (int itr = 0; itr < vistaNumber; itr++)
         {
             GameObject visRef = VistaObjects[itr];
-            if (visRef.GetComponent<OnTriggerDefog>().hasBeenTriggered == true)
+            if (visRef.GetComponent<OnTriggerDefog>().hasBeenDiscovered == true)
             {
                 discoveredVistas++;
             }

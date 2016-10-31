@@ -6,7 +6,7 @@ public class OnTriggerDefog : MonoBehaviour
 {
     //Component requires FogOfWarUnit
     [HideInInspector]
-    public bool hasBeenTriggered = false;
+    public bool hasBeenDiscovered = false;
 
     void Start()
     {
@@ -15,10 +15,10 @@ public class OnTriggerDefog : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == ("Player") && hasBeenTriggered == false)
+        if (col.gameObject.tag == ("Player") && hasBeenDiscovered == false)
         {
             gameObject.GetComponent<FogOfWarUnit>().enabled = true;
-            hasBeenTriggered = true;
+            hasBeenDiscovered = true;
         }
     }
 }
