@@ -84,6 +84,7 @@ public class SetupFight : MonoBehaviour
      * PLAYER SLOPE
      * Fix need for sprites
      * bloodthirst weird
+     * landmark discovery text popup.
      * 
      * online portfolio
      * schedule
@@ -795,7 +796,7 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.text = "";
                 if (enemyAttacks)
                 {
-                    //EnemyAnims.SetTrigger("TransAttack");
+                    
                     EnemyAnims.Play("Attack");
                     if (DealDmgGainHealthCoins != 0)
                     {
