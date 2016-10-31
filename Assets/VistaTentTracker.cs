@@ -67,7 +67,7 @@ public class VistaTentTracker : MonoBehaviour
 
                 if (totalDiscovered == allVistas.Count)
                 {
-                    AllLandmarksDiscovered = true;
+                    AllLandmarksDiscovered = true; //All discovered-> add functionality when needed
                 }
 
             }
@@ -87,6 +87,7 @@ public class VistaTentTracker : MonoBehaviour
         allVistas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Vista"));
 
         InvokeRepeating("FindNearestTent", 2.0f, 1.0f);
+        InvokeRepeating("checkDiscoveredVistas", 1.5f, 3.0f);
     }
 
 
