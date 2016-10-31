@@ -26,6 +26,7 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
 
         myCoin.transform.Rotate(0, 0, Random.Range(0, 100));
+        myCoin.GetComponent<Renderer>().material.mainTexture = coin.GetTexture();
     }
 	
 	// Update is called once per frame

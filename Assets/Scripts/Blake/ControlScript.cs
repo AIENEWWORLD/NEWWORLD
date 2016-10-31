@@ -60,6 +60,8 @@ public class ControlScript : MonoBehaviour
     public float rotation;
     public float smoothRotation;
 
+    public float rotationAmount = 90;
+
     void checkDiscoveredPercentage()
     {
         //Using InvokeRepeating method to update only update percentage every x second rather than each update cycle
@@ -93,7 +95,10 @@ public class ControlScript : MonoBehaviour
         t_Body = GetComponent<Rigidbody>();
         InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
         SmoothCameraObj = Camera.main.GetComponent<SmoothCamera>();
+        transform.eulerAngles = new Vector3(0, rotation, 0);
     }
+    //-0.3826835
+    //0.9238795
 
     void LateUpdate()
     {
@@ -114,7 +119,7 @@ public class ControlScript : MonoBehaviour
         {
             t_Body.velocity = (tmpvec.normalized * movementSpeed);
         }
-            //Debug.Log(t_Body.velocity);
+        //Debug.Log(t_Body.velocity);
 
     }
 
@@ -137,20 +142,22 @@ public class ControlScript : MonoBehaviour
             //character movement
             //velocity.x = Input.GetAxis("Horizontal");
             //velocity.z = Input.GetAxis("Vertical");
-            
+
+            //-0.3826835
+            //0.9238795
 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //rotLR = 1 * rotationSpeed;
                 //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
-                rotation += 45;
+                rotation += rotationAmount;
                 deg = Quaternion.Euler(0, rotation,0);
                 Camera.main.GetComponent<SmoothCamera>().targetLookAheadZ = 0;
                 Camera.main.GetComponent<SmoothCamera>().targetLookAheadX = 0;
             }
             if(Input.GetKeyDown(KeyCode.Q))
             {
-                rotation -= 45;
+                rotation -= rotationAmount;
                 deg = Quaternion.Euler(0, rotation, 0);
                 Camera.main.GetComponent<SmoothCamera>().targetLookAheadZ = 0;
                 Camera.main.GetComponent<SmoothCamera>().targetLookAheadX = 0;

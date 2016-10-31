@@ -23,6 +23,7 @@ public class DisplayCoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         myCoin.SetActive(false);
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         tempspinrate = Random.Range(0, 100);
+        myCoin.transform.GetChild(1).GetComponent<Renderer>().material.mainTexture = coin.GetTexture(); // FIX THIS AND THE CAMERA ROTATION
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class DisplayCoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         if (itemImage.sprite != null)
         {
             myCoin.SetActive(true);
-            myCoin.transform.Rotate(0, 0, (spinrate + tempspinrate));
+            myCoin.transform.Rotate(0, (spinrate + tempspinrate), 0);
             tempspinrate = 0;
         }
         else

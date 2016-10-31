@@ -25,7 +25,8 @@ public class Shopcoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
     {
         myCoin.SetActive(false);
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
-        myCoin.transform.Rotate(0, 0, Random.Range(0, 100));
+        myCoin.transform.Rotate(0, Random.Range(0, 100), 0);
+        myCoin.transform.GetChild(1).GetComponent<Renderer>().material.mainTexture = coin.GetTexture();
     }
 
     // Update is called once per frame
@@ -34,13 +35,13 @@ public class Shopcoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
         if (itemImage.sprite != null && myCan.enabled == true)
         {
             myCoin.SetActive(true);
-
+        
         }
         else
         {
             myCoin.SetActive(false);
         }
-        myCoin.transform.Rotate(0, 0, (spinrate));
+        myCoin.transform.Rotate(0, (spinrate), 0);
     }
 
     public void OnPointerDown(PointerEventData data)

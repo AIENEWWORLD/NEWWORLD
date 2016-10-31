@@ -80,6 +80,7 @@ public class CreateInventory : MonoBehaviour
             addItem(addI.coins[i].itemID);
             coinList[i] = addI.coins[i];
             itemList[i].GetComponent<coinScript>().coin = addI.coins[i];
+            
 
         }
     }

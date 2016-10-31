@@ -9,6 +9,7 @@ public class CoinStats
     public string itemDescription;
     public Sprite Icon;
     public int itemID;
+    public TextureEnum myTexture;
     //
     public int Heads_attack;
     public int Heads_defence;
@@ -68,9 +69,26 @@ public class CoinStats
         standard,
     }
 
+    public enum TextureEnum
+    {
+        Texture_attack,
+        Texture_defence,
+        Texture_heal,
+        Texture_bleed,
+        Texture_regen,
+        Texture_dealdmggainhealth,
+        Texture_dealdmgdealdmg,
+        Texture_duplicate,
+        Texture_flip,
+        Texture_secondChance,
+        Texture_Double,
+        Texture_Mother,
+        Texture_Father,
+        Texture_Child,
+    }
+
     void Start ()
     {
-
 
     }
 
@@ -138,6 +156,13 @@ public class CoinStats
         {
             Debug.Log("please pick one coin type");
         }
+    }
+
+    public Texture GetTexture()
+    {
+        Texture t = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<SetupCoinTextures>().TexSetter[(int)myTexture]; //what even is this
+        Debug.Log((int)myTexture);
+        return t;
     }
 }
 

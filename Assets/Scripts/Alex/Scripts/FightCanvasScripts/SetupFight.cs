@@ -77,11 +77,11 @@ public class SetupFight : MonoBehaviour
      * update the calculatefight2
      * health upgrade, supply upgrade
      * put in the animations
-     * 
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
-     * PLAYER SLOPE
+     * 
      * tutorial script when you talk to dude trigger tutorial
      * Sounds
+     * PLAYER SLOPE
      * 
      * 
      * 
