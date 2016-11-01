@@ -103,7 +103,7 @@ public class OptionsMenu : MonoBehaviour
             float x = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>().SoundValue;
             Camera.main.GetComponent<AudioSource>().volume = x;
             SoundSelectedSlider.value = x;
-            Debug.Log(Camera.main.GetComponent<AudioSource>().volume);
+            //Debug.Log(Camera.main.GetComponent<AudioSource>().volume);
             //Debug.Log("yes");
         }
     }
