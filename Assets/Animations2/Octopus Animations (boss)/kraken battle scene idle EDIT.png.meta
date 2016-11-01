@@ -1,0 +1,423 @@
+fileFormatVersion: 2
+guid: b5797bddab0e2744b9dda4a7fd9f9453
+timeCreated: 1477958708
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: kraken battle scene idle EDIT_0
+    21300002: kraken battle scene idle EDIT_1
+    21300004: kraken battle scene idle EDIT_2
+    21300006: kraken battle scene idle EDIT_3
+    21300008: kraken battle scene idle EDIT_4
+    21300010: kraken battle scene idle EDIT_5
+    21300012: kraken battle scene idle EDIT_6
+    21300014: kraken battle scene idle EDIT_7
+    21300016: kraken battle scene idle EDIT_8
+    21300018: kraken battle scene idle EDIT_9
+    21300020: kraken battle scene idle EDIT_10
+    21300022: kraken battle scene idle EDIT_11
+    21300024: kraken battle scene idle EDIT_12
+    21300026: kraken battle scene idle EDIT_13
+    21300028: kraken battle scene idle EDIT_14
+    21300030: kraken battle scene idle EDIT_15
+    21300032: kraken battle scene idle EDIT_16
+    21300034: kraken battle scene idle EDIT_17
+    21300036: kraken battle scene idle EDIT_18
+    21300038: kraken battle scene idle EDIT_19
+    21300040: kraken battle scene idle EDIT_20
+    21300042: kraken battle scene idle EDIT_21
+    21300044: kraken battle scene idle EDIT_22
+    21300046: kraken battle scene idle EDIT_23
+    21300048: kraken battle scene idle EDIT_24
+    21300050: kraken battle scene idle EDIT_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4494.857
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_1
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 4494.857
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_2
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 4494.857
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_3
+      rect:
+        serializedVersion: 2
+        x: 3894
+        y: 4494.857
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3745.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_5
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 3745.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_6
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 3745.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_7
+      rect:
+        serializedVersion: 2
+        x: 3894
+        y: 3745.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2996.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_9
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 2996.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_10
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 2996.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_11
+      rect:
+        serializedVersion: 2
+        x: 3894
+        y: 2996.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2247.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_13
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 2247.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_14
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 2247.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_15
+      rect:
+        serializedVersion: 2
+        x: 3894
+        y: 2247.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1498.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_17
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 1498.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_18
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 1498.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_19
+      rect:
+        serializedVersion: 2
+        x: 3894
+        y: 1498.8572
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 749.8571
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_21
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 749.8571
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_22
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 749.8571
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_23
+      rect:
+        serializedVersion: 2
+        x: 3894
+        y: 749.8571
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.8571167
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: kraken battle scene idle EDIT_25
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 0.8571167
+        width: 1298
+        height: 749.1429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

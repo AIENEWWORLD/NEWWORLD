@@ -26,35 +26,37 @@ public class ButtonsPressed : MonoBehaviour
     }
     public void onClickFlee()
     {
-        if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
+        if (fCam.GetComponent<SetupFight>().TutorialPlayed == true)
         {
-            if (fCam.GetComponent<SetupFight>().playerAttacks == true)
+            if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
             {
-                if (getRandom(fCam.GetComponent<SetupFight>().playerFleeRate, 0, 100))
+                if (fCam.GetComponent<SetupFight>().playerAttacks == true)
                 {
-                    //have the enemy attack you without your coins working
-                    endcombat();
-                    fCam.GetComponent<Camera>().enabled = false;
-                    gameObject.GetComponent<SetupFight>().playerinCombat = false;
-                }
-                else
-                {
-                    if (fCam != null)
+                    if (getRandom(fCam.GetComponent<SetupFight>().playerFleeRate, 0, 100))
                     {
-                        if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                        //have the enemy attack you without your coins working
+                        endcombat();
+                        fCam.GetComponent<Camera>().enabled = false;
+                        gameObject.GetComponent<SetupFight>().playerinCombat = false;
+                    }
+                    else
+                    {
+                        if (fCam != null)
                         {
-                            fCam.GetComponent<SetupFight>().playerAttacks = false;
-                        }
-                        if (fCam.GetComponent<SetupFight>().playerinCombat == true)
-                        {
-                            fCam.GetComponent<SetupFight>().calcFight = true;
-                            SetInteractable(false);
+                            if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                            {
+                                fCam.GetComponent<SetupFight>().playerAttacks = false;
+                            }
+                            if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                            {
+                                fCam.GetComponent<SetupFight>().calcFight = true;
+                                SetInteractable(false);
+                            }
                         }
                     }
                 }
             }
         }
-
     }
 
     public void endcombat()
@@ -90,9 +92,11 @@ public class ButtonsPressed : MonoBehaviour
     {
         if (fCam != null)
         {
-            fCam.GetComponent<SetupFight>().calcFight = true;
-            SetInteractable(false);
-            
+            if (fCam.GetComponent<SetupFight>().TutorialPlayed == true)
+            {
+                fCam.GetComponent<SetupFight>().calcFight = true;
+                SetInteractable(false);
+            }
         }
     }
 
