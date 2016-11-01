@@ -41,6 +41,7 @@ public class VistaTentTracker : MonoBehaviour
                 actualDistance = currentDistance;
                 NearestTent = itr;
                 GameObject Compass = GameObject.FindGameObjectWithTag("Compass");
+                if(Compass != null)
                 Compass.GetComponent<CompassScript>().ClosestSupplyTent = NearestTent;
 
             }
@@ -63,7 +64,8 @@ public class VistaTentTracker : MonoBehaviour
 
                 NumberOfDiscoveredVistas = totalDiscovered;
                 GameObject Compass = GameObject.FindGameObjectWithTag("Compass");
-                Compass.GetComponent<CompassScript>().Landmarks.text = NumberOfDiscoveredVistas.ToString();
+                if (Compass != null)
+                    Compass.GetComponent<CompassScript>().Landmarks.text = NumberOfDiscoveredVistas.ToString();
 
                 if (totalDiscovered == allVistas.Count)
                 {

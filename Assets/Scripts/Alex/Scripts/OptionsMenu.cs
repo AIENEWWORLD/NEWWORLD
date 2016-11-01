@@ -41,7 +41,8 @@ public class OptionsMenu : MonoBehaviour
     public int height, width;
 
     public Resolution[] res;
-    private int resindex = 0;
+    [HideInInspector]
+    public int resindex = 0;
 
     public Dictionary<string, KeyCode> key = new Dictionary<string, KeyCode>(); //need to save this across scenes
     public List<keycodes> controls;
@@ -93,6 +94,18 @@ public class OptionsMenu : MonoBehaviour
             }
         }
         gameObject.GetComponent<EventSystem>().SetSelectedGameObject(null);
+    }
+
+    void Awake()
+    {
+        if (Camera.main != null && Camera.main.GetComponent<AudioSource>() != null)
+        {
+            float x = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>().SoundValue;
+            Camera.main.GetComponent<AudioSource>().volume = x;
+            SoundSelectedSlider.value = x;
+            Debug.Log(Camera.main.GetComponent<AudioSource>().volume);
+            //Debug.Log("yes");
+        }
     }
     void Update()
     {
@@ -395,7 +408,7 @@ public class OptionsMenu : MonoBehaviour
             _index += 1;
         }
     }
-    void setKeyCodes()
+    public void setKeyCodes()
     {
         key.Clear();
         for(int i = 0; i < controls.Count; i++)
@@ -415,7 +428,7 @@ public class OptionsMenu : MonoBehaviour
             }
         }
     }
-    void applycontrols()
+    public void applycontrols()
     {
         GameObject InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
 

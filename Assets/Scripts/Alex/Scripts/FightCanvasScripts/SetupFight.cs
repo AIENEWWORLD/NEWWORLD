@@ -75,23 +75,21 @@ public class SetupFight : MonoBehaviour
      * health upgrade, supply upgrade
      * put in the animations
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
+     * landmark discovery text popup.
+     * tutorial script when you enter combat, goes through images as player clicks
      * 
      * -------------------------------------------------
      * TO DO:
      * 
-     * tutorial script when you enter combat, goes through images as player clicks
-     * Sounds, check sliders
-     * PLAYER SLOPE
+     * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
+     * PLAYER SLOPE probably won't do
      * Fix need for sprites
-     * bloodthirst weird
-     * landmark discovery text popup.
      * 
-     * make dealdmgdealdmg a public var
      * 
      * online portfolio
      * schedule
      * technical design doc
-     * 
+     * sustainability stuff
      * 
      * 
      * chkme on each coinscript
@@ -365,9 +363,10 @@ public class SetupFight : MonoBehaviour
                 DiscoveryList.Add(enemyStats.Monster);
             }
         }
-
-        GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
-
+        if (GameObject.FindGameObjectWithTag("Compass") != null)
+        {
+            GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
+        }
         inventory.greyoutUnselected();
         loadPlayerCoins();
         loadEnemyCoins();
