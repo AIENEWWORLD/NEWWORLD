@@ -9,7 +9,7 @@ public class donttouch : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            Debug.Log("");
+            //Debug.Log("");
         }
         else
         {

@@ -21,7 +21,7 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
     // Use this for initialization
     void Start ()
     {
-        myCoin.SetActive(false);
+        //myCoin.SetActive(false);
         inv = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<CreateInventory>();
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
 
@@ -32,15 +32,15 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 	// Update is called once per frame
 	void Update ()
     {
-        if (itemImage.sprite != null)
+        if (coin.notEmpty == false)
         {
             myCoin.SetActive(true);
-
         }
         else
         {
             myCoin.SetActive(false);
         }
+
         if (coin.isSelected)
         {
             myCoin.transform.Rotate(0, (spinrate), 0);
@@ -48,7 +48,7 @@ public class coinScript : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
         if (inv.coinList[itemNumber].itemName != null)
         {
             itemImage.enabled = true;
-            itemImage.sprite = inv.coinList[itemNumber].Icon;
+            //itemImage.sprite = inv.coinList[itemNumber].Icon;
         }
         else
         {

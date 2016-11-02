@@ -37,10 +37,9 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
     // Update is called once per frame
     void Update()
     {
-        if (itemImage.sprite != null)
+        if (coin.notEmpty == false)
         {
             myCoin.SetActive(true);
-
         }
         else
         {
@@ -50,7 +49,7 @@ public class EnemyCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnte
         if (inv.EnemycoinList[itemNumber].itemName != null)
         {
             itemImage.enabled = true;
-            itemImage.sprite = inv.EnemycoinList[itemNumber].Icon;
+            //itemImage.sprite = inv.EnemycoinList[itemNumber].Icon;
         }
         else
         {

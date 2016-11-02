@@ -7,7 +7,6 @@ public class CoinStats
 {
     public string itemName;
     public string itemDescription;
-    public Sprite Icon;
     public int itemID;
     public TextureEnum myTexture;
     //
@@ -18,7 +17,8 @@ public class CoinStats
     public int Tails_attack;
     public int Tails_defence;
     public int Tails_HP; // + or -.
-
+    //[HideInInspector]
+    public bool notEmpty = false;
     //ENEMY ONLY COINS
 
     //I decided to make these bools, rather than enums so that we can use multiple
@@ -93,20 +93,11 @@ public class CoinStats
 
     }
 
-    public CoinStats(string _itemName, string _itemDescription, string _itemDescription2, int _itemID, int H_attack, int H_defence, int H_HP, int T_attack, int T_defence, int T_HP, coinTypes _cType, EnemycoinTypes _Etypes, bool _isHeads, Sprite _Icon,bool useSprite, bool _DuplicateCoin)
+    public CoinStats(string _itemName, string _itemDescription, string _itemDescription2, int _itemID, int H_attack, int H_defence, int H_HP, int T_attack, int T_defence, int T_HP, coinTypes _cType, EnemycoinTypes _Etypes, bool _isHeads,bool useSprite,bool isempty, bool _DuplicateCoin)
     {
         DuplicateCoin = _DuplicateCoin;
         itemName = _itemName;
         itemDescription = _itemDescription;
-        if(useSprite)
-        {
-            Icon = _Icon;
-        }
-        else
-        {
-            Icon = Resources.Load<Sprite>(""+itemName);
-
-        }
         itemID = _itemID;
         //
         Heads_attack = H_attack;
@@ -120,6 +111,7 @@ public class CoinStats
         cType = _cType;
         ETypes = _Etypes;
         isHeads = _isHeads;
+        notEmpty = isempty;
 
     }
 

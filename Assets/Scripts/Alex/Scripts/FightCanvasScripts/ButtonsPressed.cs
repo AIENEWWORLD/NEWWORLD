@@ -8,11 +8,25 @@ public class ButtonsPressed : MonoBehaviour
     public Button FlipButton;
     public Button InventoryButton;
     public Button FleeButton;
+
+    public bool CanFlee = false;
+    public bool CanAttack = false;
+    [HideInInspector]
+    public bool CanInventory = false;
+    public bool clicktocontinue;
 	// Use this for initialization
 	void Start ()
     {
         fCam = GameObject.FindGameObjectWithTag("FightCamera");
 
+    }
+
+    public void setButtons(bool attack, bool flee, bool inventory, bool clicktoCont)
+    {
+        CanFlee = flee;
+        CanAttack = attack;
+        CanInventory = inventory;
+        clicktocontinue = clicktoCont;
     }
 
     // Update is called once per frame
@@ -26,8 +40,9 @@ public class ButtonsPressed : MonoBehaviour
     }
     public void onClickFlee()
     {
-        if (fCam.GetComponent<SetupFight>().TutorialPlayed == true)
+        if (CanFlee == true && clicktocontinue == false)
         {
+            GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
             if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
             {
                 if (fCam.GetComponent<SetupFight>().playerAttacks == true)
@@ -90,10 +105,13 @@ public class ButtonsPressed : MonoBehaviour
 
     public void onClickAttack()
     {
+        //Debug.Log("1");
         if (fCam != null)
         {
-            if (fCam.GetComponent<SetupFight>().TutorialPlayed == true)
+            if (CanAttack == true && clicktocontinue == false)
             {
+                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+                //Debug.Log("2");
                 fCam.GetComponent<SetupFight>().calcFight = true;
                 SetInteractable(false);
             }

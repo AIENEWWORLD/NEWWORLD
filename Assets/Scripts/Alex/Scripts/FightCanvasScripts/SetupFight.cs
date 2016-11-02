@@ -82,6 +82,7 @@ public class SetupFight : MonoBehaviour
      * TO DO:
      * 
      * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
+     * disable certain buttons to go with certain images
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
      * 
@@ -317,8 +318,9 @@ public class SetupFight : MonoBehaviour
     }
     public void setInventory()
     {
-        if (TutorialPlayed)
+        if (gameObject.GetComponent<ButtonsPressed>().CanInventory && gameObject.GetComponent<ButtonsPressed>().clicktocontinue == false)
         {
+            GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
             inventory.greyout = true;
             enterCombat = true;
             inventoryisActive = !inventoryisActive;
@@ -430,7 +432,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,null,false,false));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false));
             }
         }
         else
@@ -612,8 +614,7 @@ public class SetupFight : MonoBehaviour
             EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence,
             EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack,
             EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP,
-            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false,
-            EnemycoinList[i].Icon, true, EnemycoinList[i].DuplicateCoin));
+            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin));
         //Debug.Log("adding x");
     }
     void applyFight()//on death lock it so that the attack button cant be clicked again.
@@ -724,7 +725,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,null,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
                     playerStats.health = playerStats.maxHealth;
                     playerStats.supplies = playerStats.maxSupply;
                     playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
@@ -898,7 +899,7 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,null,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too

@@ -1,0 +1,395 @@
+fileFormatVersion: 2
+guid: f5b52638382d3b548a96989f6b38b9e2
+timeCreated: 1478039317
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: attacksheet_0
+    21300002: attacksheet_1
+    21300004: attacksheet_2
+    21300006: attacksheet_3
+    21300008: attacksheet_4
+    21300010: attacksheet_5
+    21300012: attacksheet_6
+    21300014: attacksheet_7
+    21300016: attacksheet_8
+    21300018: attacksheet_9
+    21300020: attacksheet_10
+    21300022: attacksheet_11
+    21300024: attacksheet_12
+    21300026: attacksheet_13
+    21300028: attacksheet_14
+    21300030: attacksheet_15
+    21300032: attacksheet_16
+    21300034: attacksheet_17
+    21300036: attacksheet_18
+    21300038: attacksheet_19
+    21300040: attacksheet_20
+    21300042: attacksheet_21
+    21300044: attacksheet_22
+    21300046: attacksheet_23
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: attacksheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6666.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_1
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 6666.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_2
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 6666.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_3
+      rect:
+        serializedVersion: 2
+        x: 3693
+        y: 6666.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5333.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_5
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 5333.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_6
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 5333.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_7
+      rect:
+        serializedVersion: 2
+        x: 3693
+        y: 5333.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4000.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_9
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 4000.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_10
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 4000.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_11
+      rect:
+        serializedVersion: 2
+        x: 3693
+        y: 4000.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2667.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_13
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 2667.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_14
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 2667.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_15
+      rect:
+        serializedVersion: 2
+        x: 3693
+        y: 2667.6665
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1334.6666
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_17
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1334.6666
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_18
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 1334.6666
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_19
+      rect:
+        serializedVersion: 2
+        x: 3693
+        y: 1334.6666
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.666626
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_21
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1.666626
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_22
+      rect:
+        serializedVersion: 2
+        x: 2462
+        y: 1.666626
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: attacksheet_23
+      rect:
+        serializedVersion: 2
+        x: 3693
+        y: 1.666626
+        width: 1231.75
+        height: 1333.3334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

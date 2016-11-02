@@ -126,7 +126,7 @@ public class StatsScript : MonoBehaviour
                     FightCamera.GetComponent<SetupFight>().enemySprite = sprite;
                     sprite.transform.SetParent(FightPanel.transform);
                     //sprite.transform.localScale = new Vector3(1, 1, 1);
-                    sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -15);
+                    sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -94.3f);
                     sprite.transform.localEulerAngles = new Vector3(UIrotation.x, UIrotation.y, UIrotation.z);
                     sprite.transform.localScale = new Vector3(Scale.x,Scale.y,Scale.z);
                 }
