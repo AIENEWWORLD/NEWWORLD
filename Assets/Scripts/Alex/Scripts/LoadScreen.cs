@@ -12,8 +12,10 @@ public class LoadScreen : MonoBehaviour
     public float LoadingDelay = 1;
     public float LoadSmoothing = 0.5f; //I have no idea if I should be doing this...
 
-	void Start ()
+	void Awake ()
     {
+        Time.timeScale = 1;
+        op = null;
         StartCoroutine(LoadLevel(LoadingDelay));
     }
 	
@@ -21,16 +23,16 @@ public class LoadScreen : MonoBehaviour
     {
         if (op != null)
         {
-            //LoadSlider.value = op.progress;
-            Debug.Log(op.progress);
-            if (op.progress < 0.95f)
-            {
-                LoadSlider.value = Mathf.Lerp(LoadSlider.value, op.progress, Time.deltaTime* LoadSmoothing);
-            }
-            else
-            {
-                LoadSlider.value = 1;
-            }
+            LoadSlider.value = op.progress;
+
+            //if (op.progress < 0.95f)
+            //{
+            //    LoadSlider.value = Mathf.Lerp(LoadSlider.value, op.progress, Time.deltaTime* LoadSmoothing);
+            //}
+            //else
+            //{
+            //    LoadSlider.value = 1;
+            //}
         }
     }
 
