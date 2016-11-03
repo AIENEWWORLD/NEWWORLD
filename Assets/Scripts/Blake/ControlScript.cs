@@ -62,6 +62,14 @@ public class ControlScript : MonoBehaviour
 
     public float rotationAmount = 90;
 
+    public AudioClip[] currSounds;
+
+    public AudioSource WhereToPlayFootsteps;
+
+    public SpriteRenderer SpriteAnim;
+
+    int currSound = 0;
+
     void checkDiscoveredPercentage()
     {
         //Using InvokeRepeating method to update only update percentage every x second rather than each update cycle
@@ -81,7 +89,6 @@ public class ControlScript : MonoBehaviour
             }
         }
     }
-    // Use this for initialization
     void Start()
     {
         supplyAmount = maxSupply;
@@ -97,8 +104,6 @@ public class ControlScript : MonoBehaviour
         SmoothCameraObj = Camera.main.GetComponent<SmoothCamera>();
         transform.eulerAngles = new Vector3(0, rotation, 0);
     }
-    //-0.3826835
-    //0.9238795
 
     void LateUpdate()
     {
@@ -114,16 +119,28 @@ public class ControlScript : MonoBehaviour
 
     void FixedUpdate()//https://www.reddit.com/r/Unity3D/comments/1yeegm/rigidbody_velocity_cap_for_diagonal_movement/ this helped a lot to keep the movement smooth while still normalizing the velocity
     {
-        
-        if (t_Body.velocity.sqrMagnitude > sqrMaxVel)
+        float temp = t_Body.velocity.sqrMagnitude;
+        if (temp > sqrMaxVel)
         {
             t_Body.velocity = (tmpvec.normalized * movementSpeed);
         }
-        //Debug.Log(t_Body.velocity);
 
+        if (currSounds.Length != 0 && WhereToPlayFootsteps.isPlaying != true && temp != 0 ) // animation of foot out is at frame 0 and 13
+        {
+            if (SpriteAnim.sprite.name == "side walk_0" || SpriteAnim.sprite.name == "side walk_13")
+            {
+                currSound = Random.Range(1, currSounds.Length);
+                AudioClip tmp = currSounds[currSound];
+
+                currSounds[currSound] = currSounds[0];
+
+                currSounds[0] = tmp;
+
+                WhereToPlayFootsteps.PlayOneShot(currSounds[0]);
+            }
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (p_SeizeMovement == false)
@@ -314,7 +331,6 @@ public class ControlScript : MonoBehaviour
             grounded = true;
         }
     }
-
     void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Ground")
@@ -329,4 +345,39 @@ public class ControlScript : MonoBehaviour
             grounded = false;
         }
     }
+
+
+   // private void ProgressStepCycle(float speed)
+   // {
+   //     if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
+   //     {
+   //         m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
+   //                      Time.fixedDeltaTime;
+   //     }
+   //
+   //     if (!(m_StepCycle > m_NextStep))
+   //     {
+   //         return;
+   //     }
+   //
+   //     m_NextStep = m_StepCycle + m_StepInterval;
+   //
+   //     PlayFootStepAudio();
+   // }
+   //
+   //
+   // private void PlayFootStepAudio()
+   // {
+   //     if (!m_CharacterController.isGrounded)
+   //     {
+   //         return;
+   //     }
+   //     int n = Random.Range(1, m_FootstepSounds.Length);
+   //     m_AudioSource.clip = m_FootstepSounds[n];
+   //     m_AudioSource.PlayOneShot(m_AudioSource.clip);
+
+   //     m_FootstepSounds[n] = m_FootstepSounds[0];
+   //     m_FootstepSounds[0] = m_AudioSource.clip;
+   // }
+
 }

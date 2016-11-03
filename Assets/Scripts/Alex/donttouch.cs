@@ -13,7 +13,7 @@ public class donttouch : MonoBehaviour
         }
         else
         {
-            Debug.Log("fixing compass material");
+            //Debug.Log("fixing compass material");
             GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Health.SetFloat("_Cutoff", 0);
             GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Supplies.SetFloat("_Cutoff", 0);
         }

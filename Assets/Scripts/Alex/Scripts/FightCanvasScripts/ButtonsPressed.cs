@@ -42,7 +42,10 @@ public class ButtonsPressed : MonoBehaviour
     {
         if (CanFlee == true && clicktocontinue == false)
         {
-            GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+            if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
+            {
+                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+            }
             if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
             {
                 if (fCam.GetComponent<SetupFight>().playerAttacks == true)
@@ -110,7 +113,10 @@ public class ButtonsPressed : MonoBehaviour
         {
             if (CanAttack == true && clicktocontinue == false)
             {
-                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+                if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
+                {
+                    GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+                }
                 //Debug.Log("2");
                 fCam.GetComponent<SetupFight>().calcFight = true;
                 SetInteractable(false);

@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 
+[System.Serializable]
+public class myAudioClass
+{
+    public string name;
+    public AudioClip soundClip;
+}
+
 public class SetupFight : MonoBehaviour
 {
     /* Fixed?: Double check
@@ -209,6 +216,9 @@ public class SetupFight : MonoBehaviour
     [HideInInspector]
     public bool TutorialPlayed = false;
 
+    public List<myAudioClass> sounds; // 0 attack,  1 block, 2 coinflip, 3 healing.
+    public AudioSource WheretoPlaySounds;
+
     void Start()
     {
         PlayerAnims = PlayerSprite.GetComponent<Animator>();
@@ -320,7 +330,10 @@ public class SetupFight : MonoBehaviour
     {
         if (gameObject.GetComponent<ButtonsPressed>().CanInventory && gameObject.GetComponent<ButtonsPressed>().clicktocontinue == false)
         {
-            GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+            if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
+            {
+                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+            }
             inventory.greyout = true;
             enterCombat = true;
             inventoryisActive = !inventoryisActive;
@@ -642,6 +655,7 @@ public class SetupFight : MonoBehaviour
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
                     }
+                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
                 }
                 if(enemyAttacks)
                 {
@@ -649,6 +663,7 @@ public class SetupFight : MonoBehaviour
                     {
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 20;
                     }
+                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
                 }
                 //time until flip
                 StartCoroutine(PlayerCombat(TimeBeforeFlip));
@@ -700,6 +715,7 @@ public class SetupFight : MonoBehaviour
                 if (playerAttacks)
                 {
                     PlayerAnims.Play("PlayerAttack");
+                    
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
@@ -709,6 +725,9 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.text = "";
                 Instructions.text = "Instructions";
                 setColoursHT();
+
+                if(playerAttacks)
+                    WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
 
                 //if (enemyDefence > 0)
                 //{
@@ -738,7 +757,10 @@ public class SetupFight : MonoBehaviour
 
                 if (playerAttacks)
                 {
-                    
+                    if (enemyDefence > 0)
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
+                    }
                     playerAttack -= enemyDefence;
                     if (familyCounter == 1)
                     {
@@ -785,8 +807,11 @@ public class SetupFight : MonoBehaviour
 
                 }
 
-                if(enemyAttacks)
-                EnemyAnims.Play("Attack");
+                if (enemyAttacks)
+                {
+                    EnemyAnims.Play("Attack");
+                    WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
+                }
                 //if (playerDefence > 0)
                 //{
                 //    PlayerNumbers.color = new Color(192, 192, 192); //silver
@@ -821,6 +846,10 @@ public class SetupFight : MonoBehaviour
                             enemyAttack += 3;
                             bleedcoinCounter = 0;
                         }
+                    }
+                    if (playerDefence > 0)
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
                     }
                     enemyAttack -= playerDefence;
                     if (0 > enemyAttack)
@@ -867,6 +896,7 @@ public class SetupFight : MonoBehaviour
                 if (playerHeal > 0)
                 {
                     PlayerNumbers.text = "" + playerHeal.ToString();
+                    WheretoPlaySounds.PlayOneShot(sounds[3].soundClip);
                 }
                 if (playerStats.maxHealth < playerStats.health)
                 {
@@ -878,6 +908,7 @@ public class SetupFight : MonoBehaviour
                 if (enemyHeal > 0)
                 {
                     EnemyNumbers.text = "" + enemyHeal.ToString();
+                    WheretoPlaySounds.PlayOneShot(sounds[3].soundClip);
                 }
                 if (enemyStats.maxHealth < enemyStats.health)
                 {

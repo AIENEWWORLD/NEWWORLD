@@ -73,11 +73,13 @@ public class TutorialDisplayImages : MonoBehaviour
             else if(Destroyme)
             {
                 //Debug.Log("S");
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<ButtonsPressed>().setButtons(true, true, true, false);
                 ImageHolder.texture = null;
                 myCanvas.enabled = false;
                 SF.TutorialPlayed = true;
                 currentGO.SetActive(false);
-                //Destroy(gameObject);
+                Destroy(currentGO);
+                Destroy(this);
             }
         }
 	}
