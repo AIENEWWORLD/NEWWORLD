@@ -85,6 +85,7 @@ public class EnemyAI : MonoBehaviour
                     me.speed = chaseSpeed;
                     RandomMove = false;
                     me.destination = PlayerPos;
+                    //Debug.Log("P");
                 }
                 else
                 {
@@ -129,6 +130,7 @@ public class EnemyAI : MonoBehaviour
                         //newRandomPosition.x = Random.Range(newRandomPosition.x - BoxOuter.x, newRandomPosition.x + BoxOuter.x);
                         //newRandomPosition.z = Random.Range(newRandomPosition.z - BoxOuter.z, newRandomPosition.z + BoxOuter.z);
                         me.destination = newRandomPosition;
+                        //Debug.Log("R");
                     }
                     else
                     {
@@ -136,15 +138,16 @@ public class EnemyAI : MonoBehaviour
                         {
                             me.destination = newRandomPosition;
                             ResetPos = false;
+                            
                         }
                     }
                 }
             }
             else
             {
-                //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //me.Stop();
-                me.speed = 0;
+                //RandomMove = true;
+                //ResetPos = true;
+
             }
         }
         else
@@ -161,7 +164,7 @@ public class EnemyAI : MonoBehaviour
          * get the players rotation and compare it to enemy current rotation, then figure out which animation to play
          */
         bool zeroVel = false;
-        if (Velocity == Vector3.zero)
+        if (Velocity == Vector3.zero)///////////////////
         {
             MyAnimator.speed = 0;
             Vector3 newDir;
