@@ -218,6 +218,8 @@ public class SetupFight : MonoBehaviour
 
     public List<myAudioClass> sounds; // 0 attack,  1 block, 2 coinflip, 3 healing.
     public AudioSource WheretoPlaySounds;
+    public float DelaySoundAfterStartingCombat = 0.5f;
+    bool playedSound = false;
 
     void Start()
     {
@@ -348,6 +350,9 @@ public class SetupFight : MonoBehaviour
     }
     public void onEnterCombat()
     {
+        if(!playedSound)
+        StartCoroutine(PlaySound());
+        playedSound = true;
         playerinCombat = true;
         PlayerAnims.Play("PlayerIdle");
         EnemyAnims = enemySprite.GetComponent<Animator>();
@@ -393,6 +398,7 @@ public class SetupFight : MonoBehaviour
         clearEnemyCoins();
         clearCounters();
         cleartempcoins();
+        playedSound = false;
     }
     void cleartempcoins()
     {
@@ -1178,5 +1184,17 @@ public class SetupFight : MonoBehaviour
             }
         }
 
-    } 
+    }
+    IEnumerator PlaySound()
+    {
+        yield return new WaitForSeconds(DelaySoundAfterStartingCombat);
+        if (enemyStats.MySound != null)
+        {
+            WheretoPlaySounds.PlayOneShot(enemyStats.MySound);
+        }
+        else
+        {
+            Debug.Log("attach my sound");
+        }
+    }
 }

@@ -30,6 +30,7 @@ public class Coin_buttonscript : MonoBehaviour, IPointerUpHandler
         if (active)
         {
             playerstats.gold -= coin_stats.cost;
+            CSM.WhereToPlay.PlayOneShot(CSM.PurchaseSound);
             coin_stats.itemID = AddI.coins.Count;
             AddI.AddCoin(coin_stats);
             inv.addItem(AddI.coins.Count);

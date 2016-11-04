@@ -38,6 +38,8 @@ public class StatsScript : MonoBehaviour
     //[HideInInspector]
     public bool counting;
 
+    public AudioClip MySound;
+
     public enum enumType
     {
         boss,//REMEMBER TO SET THIS ON THE FLEE BUTTON PROPERLY SO THAT CANT FLEE FROM BOSSES
@@ -95,6 +97,7 @@ public class StatsScript : MonoBehaviour
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
         FightPanel = GameObject.FindGameObjectWithTag("FightPanel");
         prefab = s.prefab;
+        MySound = s.MySound;
     }
 
     void OnCollisionStay(Collision collision) //using oncollisionstay because oncollisionenter bugs out when its already colliding with the player

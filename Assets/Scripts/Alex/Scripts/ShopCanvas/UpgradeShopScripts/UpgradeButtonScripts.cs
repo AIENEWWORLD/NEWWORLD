@@ -17,6 +17,9 @@ public class UpgradeButtonScripts : MonoBehaviour
 
     public bool chkgld = false;
 
+    public AudioClip PurchaseSound;
+    public AudioSource WhereToPlay;
+
     private int Compare(GameObject _x, GameObject _y)
     {
         ButtonShopScript x = _x.GetComponent<ButtonShopScript>();
@@ -78,6 +81,7 @@ public class UpgradeButtonScripts : MonoBehaviour
     }
     public void UpgradeTotalCoins(int cost)
     {
+        WhereToPlay.PlayOneShot(PurchaseSound);
         playerStats.gold -= cost;
         playerStats.totalCoins += 1;
     }

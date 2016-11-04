@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ControlScript : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public bool p_SeizeMovement = false;
     Vector3 velocity;
     Vector3 mouseWorldPos;

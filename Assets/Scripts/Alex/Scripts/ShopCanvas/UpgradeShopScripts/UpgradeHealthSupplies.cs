@@ -20,6 +20,9 @@ public class UpgradeHealthSupplies : MonoBehaviour
 
     public Text goldText;
 
+    public AudioClip PurchaseSound;
+    public AudioSource WhereToPlay;
+
     void Start ()
     {
         for (int i = 0; i < healList.Count; i++)
@@ -69,6 +72,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
         {
             if (currhealthUHS.id == i)
             {
+                WhereToPlay.PlayOneShot(PurchaseSound);
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= currhealthUHS.cost;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth += currhealthUHS.ExtraHealth;
                 healList[i].GetComponent<Button>().interactable = false;
@@ -92,6 +96,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
         {
             if (currsupplyUHS.id == i)
             {
+                WhereToPlay.PlayOneShot(PurchaseSound);
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= currsupplyUHS.cost;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply += currsupplyUHS.ExtraSupplies;
                 supplyList[i].GetComponent<Button>().interactable = false;

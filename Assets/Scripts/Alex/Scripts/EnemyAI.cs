@@ -85,12 +85,12 @@ public class EnemyAI : MonoBehaviour
                     me.speed = chaseSpeed;
                     RandomMove = false;
                     me.destination = PlayerPos;
-                    //Debug.Log("P");
                 }
                 else
                 {
                     RandomMove = true;
                     ResetPos = true;
+                    me.speed = RandomMoveSpeed;
                 }
 
                 if (RandomMove)
@@ -138,7 +138,7 @@ public class EnemyAI : MonoBehaviour
                         {
                             me.destination = newRandomPosition;
                             ResetPos = false;
-                            
+                            //me.speed = 1;
                         }
                     }
                 }
@@ -147,7 +147,7 @@ public class EnemyAI : MonoBehaviour
             {
                 //RandomMove = true;
                 //ResetPos = true;
-
+                me.speed = 0;
             }
         }
         else
