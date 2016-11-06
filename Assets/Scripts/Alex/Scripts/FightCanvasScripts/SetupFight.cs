@@ -87,6 +87,7 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * fix sounds so that block sound plays when player attacks etc
      * 
      * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
      * disable certain buttons to go with certain images
