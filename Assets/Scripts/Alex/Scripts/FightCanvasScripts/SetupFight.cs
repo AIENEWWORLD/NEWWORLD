@@ -192,7 +192,7 @@ public class SetupFight : MonoBehaviour
 
     public float TimeBetweenCombat = 2.0f;
     public float TimeBeforeFlip = 2.0f;
-    [HideInInspector]
+    //[HideInInspector]
     public int combatStage = 0; //1 attack + defend phase, 2 select phase, 3 heal phase
 
     public Text PlayerNumbers;
@@ -734,15 +734,21 @@ public class SetupFight : MonoBehaviour
                     }
                     picking = true;
                 }
+
+                StartCoroutine(PlayerCombat(TimeBetweenCombat));
+            }
+            if(combatStage == 4)
+            {
                 if (playerAttacks)
                 {
                     PlayerAnims.Play("PlayerAttack");
-                    
+
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 4)
+            if (combatStage == 5)
             {
+
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
                 Instructions.text = "Instructions";
@@ -758,7 +764,7 @@ public class SetupFight : MonoBehaviour
                 //}
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 5)// enemy + player heal
+            if (combatStage == 6)// enemy + player heal
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -813,7 +819,7 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 6)//enemy attacks + player defends
+            if (combatStage == 7)//enemy attacks + player defends
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -846,7 +852,7 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if(combatStage == 7)
+            if(combatStage == 8)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -901,7 +907,7 @@ public class SetupFight : MonoBehaviour
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 8)
+            if (combatStage == 9)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -952,7 +958,7 @@ public class SetupFight : MonoBehaviour
                 enemyAttacks = true;
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 9)
+            if (combatStage == 10)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
