@@ -136,7 +136,14 @@ public class EnemyAI : MonoBehaviour
                     {
                         if (ResetPos)
                         {
-                            me.destination = newRandomPosition;
+                            if (5 < Vector3.Distance(transform.position, myPos))
+                            {
+                                me.destination = myPos;
+                            }
+                            else
+                            {
+                                me.destination = newRandomPosition;
+                            }
                             ResetPos = false;
                             //me.speed = 1;
                         }
