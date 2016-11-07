@@ -59,7 +59,7 @@ public class TriggerShop : MonoBehaviour
         {
         
             newbool = true;
-            StartCoroutine(enablemyCanvas(2));
+            StartCoroutine(enablemyCanvas(0.2f));
         }
 
         if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && typing == true)

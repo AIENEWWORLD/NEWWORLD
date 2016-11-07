@@ -84,13 +84,22 @@ public class SetupFight : MonoBehaviour
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
      * landmark discovery text popup.
      * tutorial script when you enter combat, goes through images as player clicks
+     * disable certain buttons to go with certain images
+     * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
+     * set audiosources on main camera and fight camera to SFX, set other objects with tag "music" to music volume
      * 
      * -------------------------------------------------
      * TO DO:
      * fix sounds so that block sound plays when player attacks etc
      * 
-     * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
-     * disable certain buttons to go with certain images
+     * fix the option menu bindings
+     * 
+     * fix strange animation wat
+     * 
+     * fix dat navmesh
+     * 
+     * transition to combat screen and maybe other stuff
+     * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
      * 
@@ -768,6 +777,10 @@ public class SetupFight : MonoBehaviour
                     {
                         WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
                     }
+                    else
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[4].soundClip);
+                    }
                     playerAttack -= enemyDefence;
                     if (familyCounter == 1)
                     {
@@ -856,7 +869,11 @@ public class SetupFight : MonoBehaviour
                     }
                     if (playerDefence > 0)
                     {
-                        WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
+                        WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
+                    }
+                    else
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[4].soundClip);
                     }
                     enemyAttack -= playerDefence;
                     if (0 > enemyAttack)

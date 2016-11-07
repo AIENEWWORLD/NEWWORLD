@@ -75,6 +75,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 WhereToPlay.PlayOneShot(PurchaseSound);
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= currhealthUHS.cost;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth += currhealthUHS.ExtraHealth;
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().health = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth;
                 healList[i].GetComponent<Button>().interactable = false;
                 if (i + 1 < healList.Count)
                 {
@@ -99,6 +100,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 WhereToPlay.PlayOneShot(PurchaseSound);
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= currsupplyUHS.cost;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply += currsupplyUHS.ExtraSupplies;
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().supplies = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply;
                 supplyList[i].GetComponent<Button>().interactable = false;
                 if (i + 1 < supplyList.Count)
                 {
