@@ -157,6 +157,7 @@ public class StatsScript : MonoBehaviour
                 }
                 gameObject.GetComponent<Collider>().enabled = false;
                 gameObject.name = Name + " dead";
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat = true;
             }
         }
     }

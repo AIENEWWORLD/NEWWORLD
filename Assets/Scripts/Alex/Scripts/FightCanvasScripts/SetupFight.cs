@@ -94,7 +94,7 @@ public class SetupFight : MonoBehaviour
      * TO DO:
      * 
      * fix the option menu bindings
-     * 
+     * if haven't picked a flip coin animation continuously plays
      * fix strange animation wat
      * 
      * transition to combat screen and maybe other stuff
