@@ -40,11 +40,13 @@ public class MainMapController : MonoBehaviour
         {
             ZoomDistance = Input.GetAxis("Mouse ScrollWheel");
             ZoomDistance = ZoomDistance * -100;
+
+
             xVelocity = InputGameobject.GetComponent<SavedInput>().horizontal;
             zVelocity = InputGameobject.GetComponent<SavedInput>().vertical;
 
             transform.position += new Vector3(xVelocity * ScrollSpeed * Time.deltaTime, ZoomDistance, zVelocity * ScrollSpeed* Time.deltaTime);
-
+           
        }
 
 
