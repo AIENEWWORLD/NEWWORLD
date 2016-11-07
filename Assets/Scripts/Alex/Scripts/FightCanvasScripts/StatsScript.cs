@@ -109,7 +109,10 @@ public class StatsScript : MonoBehaviour
                 //Debug.Log("entering combat");
                 if (FightCamera != null)
                 {
-                    FightCamera.GetComponent<Camera>().enabled = true;
+                    //FightCamera.GetComponent<Camera>().enabled = true;/////////////////////////////////////////////////////////////////////////////////////////
+                    Transitions T = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>();
+                    T.TransCam = FightCamera.GetComponent<Camera>();
+                    T.trans = true;
 
                     FightCamera.GetComponent<SetupFight>().setEnemyList(coinList);
                     FightCamera.GetComponent<SetupFight>().enterCombat = true;

@@ -75,7 +75,7 @@ public class CheckinCombatScript : MonoBehaviour
         }
 
 
-        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop)
+        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop || GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>().trans == true)
         {
             PlayerCS.p_SeizeMovement = true;
             PlayerCS.NotMoving = true;
