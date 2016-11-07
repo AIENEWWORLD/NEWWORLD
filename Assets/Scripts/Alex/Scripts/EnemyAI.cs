@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
                 //NavMesh.CalculatePath(transform.position, PlayerPos, 1, path);
                 if (Dist <= DistanceToPlayer)
                 {
-                    me.SetDestination(PlayerPos);
+                    //me.SetDestination(PlayerPos);
                     me.speed = chaseSpeed;
                     RandomMove = false;
                     me.destination = PlayerPos;
@@ -130,13 +130,12 @@ public class EnemyAI : MonoBehaviour
                         //newRandomPosition.x = Random.Range(newRandomPosition.x - BoxOuter.x, newRandomPosition.x + BoxOuter.x);
                         //newRandomPosition.z = Random.Range(newRandomPosition.z - BoxOuter.z, newRandomPosition.z + BoxOuter.z);
                         me.destination = newRandomPosition;
-                        //Debug.Log("R");
                     }
                     else
                     {
                         if (ResetPos)
                         {
-                            if (5 < Vector3.Distance(transform.position, myPos))
+                            if (BoxOuter.x+BoxOuter.z < Vector3.Distance(transform.position, myPos))
                             {
                                 me.destination = myPos;
                             }
@@ -212,7 +211,7 @@ public class EnemyAI : MonoBehaviour
                     thisRenderer.flipX = true;
                 }
             }
-            if (Velocity.x < 0)
+            else if (Velocity.x < 0)
             {
                 //Debug.Log("Left");
                 MyAnimator.Play("Side");
