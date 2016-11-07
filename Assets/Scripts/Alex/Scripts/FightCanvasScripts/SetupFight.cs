@@ -87,21 +87,27 @@ public class SetupFight : MonoBehaviour
      * disable certain buttons to go with certain images
      * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
      * set audiosources on main camera and fight camera to SFX, set other objects with tag "music" to music volume
+     * fix sounds so that block sound plays when player attacks etc
+     * fix the navmesh
      * 
      * -------------------------------------------------
      * TO DO:
-     * fix sounds so that block sound plays when player attacks etc
      * 
      * fix the option menu bindings
      * 
      * fix strange animation wat
      * 
-     * fix dat navmesh
-     * 
      * transition to combat screen and maybe other stuff
+     * 
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
+     * 
+     * interact
+     * map
+     * compass
+     * rotleft
+     * rotright
      * 
      * 
      * online portfolio
