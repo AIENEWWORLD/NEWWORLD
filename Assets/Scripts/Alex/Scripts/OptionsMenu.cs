@@ -41,7 +41,8 @@ public class OptionsMenu : MonoBehaviour
     public int height, width;
 
     public Resolution[] res;
-    private int resindex = 0;
+    [HideInInspector]
+    public int resindex = 0;
 
     public Dictionary<string, KeyCode> key = new Dictionary<string, KeyCode>(); //need to save this across scenes
     public List<keycodes> controls;
@@ -93,6 +94,32 @@ public class OptionsMenu : MonoBehaviour
             }
         }
         gameObject.GetComponent<EventSystem>().SetSelectedGameObject(null);
+    }
+
+    void Awake()
+    {
+        if (Camera.main != null && Camera.main.GetComponent<AudioSource>() != null)
+        {
+            float x = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>().soundEffectValue;
+            Camera.main.GetComponent<AudioSource>().volume = x;
+            soundEffectSlider.value = x;
+            //Debug.Log(Camera.main.GetComponent<AudioSource>().volume);
+            //Debug.Log("yes");
+        }
+        if (GameObject.FindGameObjectWithTag("FightCamera") != null && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>() != null)
+        {
+            float x = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>().soundEffectValue;
+            GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>().volume = x;
+            soundEffectSlider.value = x;
+            //Debug.Log(Camera.main.GetComponent<AudioSource>().volume);
+            //Debug.Log("yes");
+        }
+        SoundSelectedSlider.value = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>().SoundValue;
+        GameObject[] array = GameObject.FindGameObjectsWithTag("Music");
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i].GetComponent<AudioSource>().volume = SoundSelectedSlider.value;
+        }
     }
     void Update()
     {
@@ -318,13 +345,24 @@ public class OptionsMenu : MonoBehaviour
     }
     public void clickApply()
     {
-        Camera.main.GetComponent<AudioSource>().volume = SoundSelectedSlider.value;
+        
         Screen.SetResolution(res[resindex].width, res[resindex].height, fullscreen);
        // Resolution.text = "Resolution: " + width + "x" + height;
         QualitySettings.vSyncCount = vsync;
 
         setKeyCodes();
         applycontrols();
+
+        Camera.main.GetComponent<AudioSource>().volume = soundEffectSlider.value;
+        if (GameObject.FindGameObjectWithTag("FightCamera") != null && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>() != null)
+        {
+            GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>().volume = soundEffectSlider.value;
+        }
+        GameObject[] array = GameObject.FindGameObjectsWithTag("Music");
+        for(int i = 0; i < array.Length; i++)
+        {
+            array[i].GetComponent<AudioSource>().volume = SoundSelectedSlider.value;
+        }
     }
     void OnGUI()
     {
@@ -395,7 +433,7 @@ public class OptionsMenu : MonoBehaviour
             _index += 1;
         }
     }
-    void setKeyCodes()
+    public void setKeyCodes()
     {
         key.Clear();
         for(int i = 0; i < controls.Count; i++)
@@ -415,7 +453,7 @@ public class OptionsMenu : MonoBehaviour
             }
         }
     }
-    void applycontrols()
+    public void applycontrols()
     {
         GameObject InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes");
 

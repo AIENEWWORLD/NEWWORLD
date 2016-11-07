@@ -38,6 +38,8 @@ public class StatsScript : MonoBehaviour
     //[HideInInspector]
     public bool counting;
 
+    public AudioClip MySound;
+
     public enum enumType
     {
         boss,//REMEMBER TO SET THIS ON THE FLEE BUTTON PROPERLY SO THAT CANT FLEE FROM BOSSES
@@ -95,6 +97,7 @@ public class StatsScript : MonoBehaviour
         FightCamera = GameObject.FindGameObjectWithTag("FightCamera");
         FightPanel = GameObject.FindGameObjectWithTag("FightPanel");
         prefab = s.prefab;
+        MySound = s.MySound;
     }
 
     void OnCollisionStay(Collision collision) //using oncollisionstay because oncollisionenter bugs out when its already colliding with the player
@@ -106,7 +109,10 @@ public class StatsScript : MonoBehaviour
                 //Debug.Log("entering combat");
                 if (FightCamera != null)
                 {
-                    FightCamera.GetComponent<Camera>().enabled = true;
+                    //FightCamera.GetComponent<Camera>().enabled = true;/////////////////////////////////////////////////////////////////////////////////////////
+                    Transitions T = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>();
+                    T.TransCam = FightCamera.GetComponent<Camera>();
+                    T.trans = true;
 
                     FightCamera.GetComponent<SetupFight>().setEnemyList(coinList);
                     FightCamera.GetComponent<SetupFight>().enterCombat = true;
@@ -126,7 +132,7 @@ public class StatsScript : MonoBehaviour
                     FightCamera.GetComponent<SetupFight>().enemySprite = sprite;
                     sprite.transform.SetParent(FightPanel.transform);
                     //sprite.transform.localScale = new Vector3(1, 1, 1);
-                    sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -15);
+                    sprite.transform.localPosition = new Vector3(UIpos.x, UIpos.y, -94.3f);
                     sprite.transform.localEulerAngles = new Vector3(UIrotation.x, UIrotation.y, UIrotation.z);
                     sprite.transform.localScale = new Vector3(Scale.x,Scale.y,Scale.z);
                 }
@@ -154,6 +160,7 @@ public class StatsScript : MonoBehaviour
                 }
                 gameObject.GetComponent<Collider>().enabled = false;
                 gameObject.name = Name + " dead";
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>().playerinCombat = true;
             }
         }
     }

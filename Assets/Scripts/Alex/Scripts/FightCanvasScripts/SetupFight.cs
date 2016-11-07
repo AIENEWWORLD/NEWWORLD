@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 
+[System.Serializable]
+public class myAudioClass
+{
+    public string name;
+    public AudioClip soundClip;
+}
+
 public class SetupFight : MonoBehaviour
 {
     /* Fixed?: Double check
@@ -75,21 +82,38 @@ public class SetupFight : MonoBehaviour
      * health upgrade, supply upgrade
      * put in the animations
      * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
+     * landmark discovery text popup.
+     * tutorial script when you enter combat, goes through images as player clicks
+     * disable certain buttons to go with certain images
+     * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
+     * set audiosources on main camera and fight camera to SFX, set other objects with tag "music" to music volume
+     * fix sounds so that block sound plays when player attacks etc
+     * fix the navmesh
      * 
      * -------------------------------------------------
      * TO DO:
      * 
-     * tutorial script when you enter combat, goes through images as player clicks
-     * Sounds, check sliders
-     * PLAYER SLOPE
+     * fix the option menu bindings
+     * if haven't picked a flip coin animation continuously plays
+     * fix strange animation wat
+     * 
+     * transition to combat screen and maybe other stuff
+     * 
+     * 
+     * PLAYER SLOPE probably won't do
      * Fix need for sprites
-     * bloodthirst weird
-     * landmark discovery text popup.
+     * 
+     * interact
+     * map
+     * compass
+     * rotleft
+     * rotright
+     * 
      * 
      * online portfolio
      * schedule
      * technical design doc
-     * 
+     * sustainability stuff
      * 
      * 
      * chkme on each coinscript
@@ -131,6 +155,8 @@ public class SetupFight : MonoBehaviour
 
     AddItem AddItm;
 
+    public GameObject PlayerSprite;
+
     [HideInInspector]
     public GameObject mouseover;
     //[HideInInspector]
@@ -166,7 +192,7 @@ public class SetupFight : MonoBehaviour
 
     public float TimeBetweenCombat = 2.0f;
     public float TimeBeforeFlip = 2.0f;
-    [HideInInspector]
+    //[HideInInspector]
     public int combatStage = 0; //1 attack + defend phase, 2 select phase, 3 heal phase
 
     public Text PlayerNumbers;
@@ -200,12 +226,20 @@ public class SetupFight : MonoBehaviour
     public List<GameObject> tempCoinsToDouble;
 
     public Animator EnemyAnims;
-
+    Animator PlayerAnims;
     public bool inList = false;
+    public TutorialDisplayImages TutorialCanvas;
+    [HideInInspector]
+    public bool TutorialPlayed = false;
 
-    // Use this for initialization
+    public List<myAudioClass> sounds; // 0 attack,  1 block, 2 coinflip, 3 healing.
+    public AudioSource WheretoPlaySounds;
+    public float DelaySoundAfterStartingCombat = 0.5f;
+    bool playedSound = false;
+
     void Start()
     {
+        PlayerAnims = PlayerSprite.GetComponent<Animator>();
         playerStats = gameObject.GetComponent<StatsScript>();
 
         //PlayercoinList add this to inventory list.
@@ -219,8 +253,6 @@ public class SetupFight : MonoBehaviour
 
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (inventoryisActive)
@@ -236,6 +268,10 @@ public class SetupFight : MonoBehaviour
 
         if (enterCombat)
         {
+            if(!TutorialPlayed)
+            {
+                TutorialCanvas.myCanvas.enabled = true;
+            }
             onEnterCombat();
             enterCombat = false;
         }
@@ -247,7 +283,6 @@ public class SetupFight : MonoBehaviour
             applyFight();
             calcFight = false;
         }
-        //mouseover.SetActive(false);
 
         screenmousePos = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
         mouseover.transform.position = new Vector3(screenmousePos.x + MouseOverTextOffset.x, screenmousePos.y + MouseOverTextOffset.y, mouseover.transform.position.z);
@@ -256,7 +291,6 @@ public class SetupFight : MonoBehaviour
         {
 
         }
-        // && gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeInHierarchy == true
         if (addedCounters < enemyCounterCursed) //two counters can use the same code because there will never be both bleed coins and cursed coins on a single enemy
         {
             int tempInt = enemyCounterCursed - addedCounters;
@@ -268,7 +302,6 @@ public class SetupFight : MonoBehaviour
                 s.transform.localPosition = new Vector3(CounterStart.x + (45 * enemyCounterCursed), CounterStart.y, CounterStart.z);
                 counters.Add(s);
                 addedCounters = enemyCounterCursed;
-                //Debug.Log("s");
             }
         }
         else if (addedCounters != 0 && enemyCounterCursed == 0 && bleedcoinCounter == 0)
@@ -295,7 +328,6 @@ public class SetupFight : MonoBehaviour
             clearCounters();
         }
     }
-
     void clearCounters()
     {
         enemyCounterCursed = 0;
@@ -307,20 +339,24 @@ public class SetupFight : MonoBehaviour
         }
         counters.Clear();
     }
-
     public void setEnemyList(List<CoinStats> cList)
     {
         //coinList.Clear();
         EnemycoinList = cList;
     }
-
     public void setInventory()
     {
-        inventory.greyout = true;
-        enterCombat = true;
-        inventoryisActive = !inventoryisActive;
+        if (gameObject.GetComponent<ButtonsPressed>().CanInventory && gameObject.GetComponent<ButtonsPressed>().clicktocontinue == false)
+        {
+            if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
+            {
+                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+            }
+            inventory.greyout = true;
+            enterCombat = true;
+            inventoryisActive = !inventoryisActive;
+        }
     }
-
     public void chkBoss()
     {
         if (enemyStats.guyType == StatsScript.enumType.boss)
@@ -328,11 +364,13 @@ public class SetupFight : MonoBehaviour
             gameObject.GetComponent<ButtonsPressed>().FleeButton.interactable = false;
         }
     }
-
     public void onEnterCombat()
     {
+        if(!playedSound)
+        StartCoroutine(PlaySound());
+        playedSound = true;
         playerinCombat = true;
-
+        PlayerAnims.Play("PlayerIdle");
         EnemyAnims = enemySprite.GetComponent<Animator>();
 
         EnemyName.text = enemyStats.Name;
@@ -361,22 +399,22 @@ public class SetupFight : MonoBehaviour
                 DiscoveryList.Add(enemyStats.Monster);
             }
         }
-
-        GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
-
+        if (GameObject.FindGameObjectWithTag("Compass") != null)
+        {
+            GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
+        }
         inventory.greyoutUnselected();
         loadPlayerCoins();
         loadEnemyCoins();
     }
-
     public void onExitCombat()
     {
         combatStage = 0;
-        // playerAttacks = true;
         clearPlayerCoins();
         clearEnemyCoins();
         clearCounters();
         cleartempcoins();
+        playedSound = false;
     }
     void cleartempcoins()
     {
@@ -390,7 +428,6 @@ public class SetupFight : MonoBehaviour
             tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_HP /= 2;
         }
     }
-
     void clearPlayerCoins()
     {
         PlayercoinList.Clear();
@@ -408,7 +445,6 @@ public class SetupFight : MonoBehaviour
         }
         EnemyitemList.Clear();
     }//this should be done every time you exit combat, use onExitCombat to access these publicly.
-
     void loadPlayerCoins()
     {
         clearPlayerCoins();
@@ -431,7 +467,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,null,false,false));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false));
             }
         }
         else
@@ -486,13 +522,11 @@ public class SetupFight : MonoBehaviour
             num++;
         }
     }
-
     //chance out of rangeMax, minrange (0), rangeMax(100)
     bool getRandom(int chance, int rangeMin, int rangeMax)//returns true if random number is higher
     {
         return (UnityEngine.Random.Range(rangeMin, rangeMax) > rangeMax - chance);
     }
-
     public void calculateFight()
     {
         //play fancy flip animation on 3d model coins hopefully?
@@ -610,20 +644,18 @@ public class SetupFight : MonoBehaviour
     }
     void DupeCoin(int i)
     {
-        enemyStats.coinList.Add(new CoinStats(EnemycoinList[i].itemName, EnemycoinList[i].itemDescription, "", EnemycoinList[i].itemID, EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence, EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack, EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP, EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, EnemycoinList[i].Icon, true, EnemycoinList[i].DuplicateCoin));
+        enemyStats.coinList.Add(new CoinStats(EnemycoinList[i].itemName,
+            EnemycoinList[i].itemDescription, "", EnemycoinList[i].itemID,
+            EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence,
+            EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack,
+            EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP,
+            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin));
         //Debug.Log("adding x");
     }
-    //onplayerattacks do player stuff, onenemyattacks, do enemy stuff.
-    //make attacking, defending etc string functions and return the amount defended and attacked etc.
-    //disable the buttons on the combat screen
-
     void applyFight()//on death lock it so that the attack button cant be clicked again.
     {
-        
         StartCoroutine(PlayerCombat(0));
     }
-
-
     IEnumerator PlayerCombat(float time)
     {
         yield return new WaitForSeconds(time);
@@ -633,7 +665,7 @@ public class SetupFight : MonoBehaviour
         //Enemy defends for X(silver)Enemy takes X damage Player defends for X(silver)Player takes X damage Player and enemy heal for X(green)
 
         //take damage
-                    if (gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeSelf == false)
+        if (gameObject.GetComponent<OnWinLose>().endCombatCanvas.activeSelf == false)
         {
             if (combatStage == 1)
             {
@@ -645,6 +677,7 @@ public class SetupFight : MonoBehaviour
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
                     }
+                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
                 }
                 if(enemyAttacks)
                 {
@@ -652,6 +685,7 @@ public class SetupFight : MonoBehaviour
                     {
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 20;
                     }
+                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
                 }
                 //time until flip
                 StartCoroutine(PlayerCombat(TimeBeforeFlip));
@@ -703,12 +737,26 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 4)
+            if(combatStage == 4)
             {
+                if (playerAttacks)
+                {
+                    PlayerAnims.Play("PlayerAttack");
+
+                }
+                StartCoroutine(PlayerCombat(TimeBetweenCombat));
+            }
+            if (combatStage == 5)
+            {
+
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
                 Instructions.text = "Instructions";
                 setColoursHT();
+
+                if(playerAttacks)
+                    WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
+
                 //if (enemyDefence > 0)
                 //{
                 //    EnemyNumbers.color = new Color(192, 192, 192);
@@ -716,7 +764,7 @@ public class SetupFight : MonoBehaviour
                 //}
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 5)// enemy + player heal
+            if (combatStage == 6)// enemy + player heal
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -724,7 +772,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,null,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
                     playerStats.health = playerStats.maxHealth;
                     playerStats.supplies = playerStats.maxSupply;
                     playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
@@ -737,7 +785,14 @@ public class SetupFight : MonoBehaviour
 
                 if (playerAttacks)
                 {
-
+                    if (enemyDefence > 0)
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
+                    }
+                    else
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[4].soundClip);
+                    }
                     playerAttack -= enemyDefence;
                     if (familyCounter == 1)
                     {
@@ -764,10 +819,11 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 6)//enemy attacks + player defends
+            if (combatStage == 7)//enemy attacks + player defends
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
+                
                 if (enemyStats.health <= 0)
                 {
                     enemyStats.health = 0;
@@ -782,6 +838,12 @@ public class SetupFight : MonoBehaviour
                     }
 
                 }
+
+                if (enemyAttacks)
+                {
+                    EnemyAnims.Play("Attack");
+                    WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
+                }
                 //if (playerDefence > 0)
                 //{
                 //    PlayerNumbers.color = new Color(192, 192, 192); //silver
@@ -790,14 +852,15 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if(combatStage == 7)
+            if(combatStage == 8)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
+                //PlayerAnims.Play("PlayerIdle");
                 if (enemyAttacks)
                 {
                     
-                    EnemyAnims.Play("Attack");
+                    
                     if (DealDmgGainHealthCoins != 0)
                     {
                         DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
@@ -815,6 +878,14 @@ public class SetupFight : MonoBehaviour
                             enemyAttack += 3;
                             bleedcoinCounter = 0;
                         }
+                    }
+                    if (playerDefence > 0)
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
+                    }
+                    else
+                    {
+                        WheretoPlaySounds.PlayOneShot(sounds[4].soundClip);
                     }
                     enemyAttack -= playerDefence;
                     if (0 > enemyAttack)
@@ -836,7 +907,7 @@ public class SetupFight : MonoBehaviour
                 }
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 8)
+            if (combatStage == 9)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -861,6 +932,7 @@ public class SetupFight : MonoBehaviour
                 if (playerHeal > 0)
                 {
                     PlayerNumbers.text = "" + playerHeal.ToString();
+                    WheretoPlaySounds.PlayOneShot(sounds[3].soundClip);
                 }
                 if (playerStats.maxHealth < playerStats.health)
                 {
@@ -872,6 +944,7 @@ public class SetupFight : MonoBehaviour
                 if (enemyHeal > 0)
                 {
                     EnemyNumbers.text = "" + enemyHeal.ToString();
+                    WheretoPlaySounds.PlayOneShot(sounds[3].soundClip);
                 }
                 if (enemyStats.maxHealth < enemyStats.health)
                 {
@@ -885,7 +958,7 @@ public class SetupFight : MonoBehaviour
                 enemyAttacks = true;
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if (combatStage == 9)
+            if (combatStage == 10)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
@@ -893,7 +966,7 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,null,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
@@ -964,7 +1037,6 @@ public class SetupFight : MonoBehaviour
             chkBoss();
         }
     }
-
     public void checkSelections(CoinStats coinToFlip, GameObject coinGameObject)
     {
         if (coinToFlip.ETypes == CoinStats.EnemycoinTypes.none)
@@ -1044,63 +1116,8 @@ public class SetupFight : MonoBehaviour
         //    }
         //}
     }
-
-    /*
-    public void calculateFight2() //temporary fix
-    {
-        //play fancy flip animation on 3d model coins hopefully?
-
-        playerAttack = 0; playerDefence = 0; playerHeal = 0;
-        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
-        //pickCoinList.Clear();
-        if (playerAttacks)
-        {
-            for (int i = 0; i < PlayercoinList.Count; i++)
-            {
-
-                if (PlayercoinList[i].isHeads == true)
-                {
-                    PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
-                    playerAttack += PlayercoinList[i].Heads_attack;
-                    playerDefence += PlayercoinList[i].Heads_defence;
-                    playerHeal += PlayercoinList[i].Heads_HP;
-                }
-                else if (PlayercoinList[i].isHeads == false)
-                {
-                    PlayeritemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
-                    playerAttack += PlayercoinList[i].Tails_attack;
-                    playerDefence += PlayercoinList[i].Tails_defence;
-                    playerHeal += PlayercoinList[i].Tails_HP;
-                }
-            }
-        }
-
-        if (enemyAttacks)
-        {
-            for (int i = 0; i < EnemycoinList.Count; i++)
-            {
-                if (EnemycoinList[i].isHeads == true)
-                {
-                    EnemyitemList[i].GetComponent<Image>().color = new Color(0, 1, 0, 1);
-                    enemyAttack += EnemycoinList[i].Heads_attack;
-                    enemyDefence += EnemycoinList[i].Heads_defence;
-                    enemyHeal += EnemycoinList[i].Heads_HP;
-                }
-                else if (EnemycoinList[i].isHeads == false)
-                {
-                    EnemyitemList[i].GetComponent<Image>().color = new Color(1, 0, 0, 1);
-                    enemyAttack += EnemycoinList[i].Tails_attack;
-                    enemyDefence += EnemycoinList[i].Tails_defence;
-                    enemyHeal += EnemycoinList[i].Tails_HP;
-                }
-            }
-        }
-    }
-    */
-
     public void calculateFight2()
     {
-        //play fancy flip animation on 3d model coins hopefully?
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0; familyCounter = 0;
         enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
@@ -1198,85 +1215,16 @@ public class SetupFight : MonoBehaviour
         }
 
     }
+    IEnumerator PlaySound()
+    {
+        yield return new WaitForSeconds(DelaySoundAfterStartingCombat);
+        if (enemyStats.MySound != null)
+        {
+            WheretoPlaySounds.PlayOneShot(enemyStats.MySound);
+        }
+        else
+        {
+            Debug.Log("attach my sound");
+        }
+    }
 }
-
-
-
-/*
-  //player takedamage
-        if (playerDefence < enemyAttack)
-        {
-            enemyAttack -= playerDefence;
-        }
-
-        playerStats.health = playerStats.health + (playerHeal - enemyAttack);
-
-        if (playerStats.maxHealth < playerStats.health)
-        {
-            playerStats.health = playerStats.maxHealth;
-        }
-
-        if (playerStats.health <= 0)
-        {
-            playerStats.health = 0;
-            gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0), 0);
-            //do something about death too
-        }
-
-        playerSlider.value = playerStats.health;
-
-        ///////////////enemy
-
-        if (enemyDefence < playerAttack)
-        {
-            playerAttack -= enemyDefence;
-        }
-
-        enemyStats.health = enemyStats.health + (enemyHeal - playerAttack);
-
-        if (enemyStats.maxHealth < enemyStats.health)
-        {
-            enemyStats.health = enemyStats.maxHealth;
-        }
-
-        if (enemyStats.health <= 0)
-        {
-            enemyStats.health = 0;
-            //do something about death too
-            if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
-            {
-                gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.guyType, enemyStats.gold, enemyStats.dropRate);
-            }
-
-        }
-
-        EnemySlider.value = enemyStats.health;
-        playerAttacks = true;
-        enemyAttacks = true;
-
-    */
-
-
-
-/*
- * attack, if you have flip/counter coins display the text saying which coin you are using
- * let the player select from the coins grey out coins that cant be flipped, no flip or counter coins can be flipped apart from myself
- * change the coin colour of the flipped coin
- * check the coins enum to determine which coins it can pick from
- * reset the colours so that people know what happened
- * continue combat.
- */
-
-/*
-                 for (int i = 0; i < tempCoinsToDouble.Count; i++)
-            {
-                for (int x = 0; x < PlayercoinList.Count; x++)
-                {
-                    if (tempCoinsToDouble[i] == PlayercoinList[x])
-                    {
-                        Debug.Log(tempCoinsToDouble[i].itemName);
-                        //tempCoinsToDouble.Remove(tempCoinsToDouble[i]);
-                    }
-                }
-            }
-*/

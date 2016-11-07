@@ -20,6 +20,9 @@ public class UpgradeHealthSupplies : MonoBehaviour
 
     public Text goldText;
 
+    public AudioClip PurchaseSound;
+    public AudioSource WhereToPlay;
+
     void Start ()
     {
         for (int i = 0; i < healList.Count; i++)
@@ -69,8 +72,10 @@ public class UpgradeHealthSupplies : MonoBehaviour
         {
             if (currhealthUHS.id == i)
             {
+                WhereToPlay.PlayOneShot(PurchaseSound);
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= currhealthUHS.cost;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth += currhealthUHS.ExtraHealth;
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().health = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth;
                 healList[i].GetComponent<Button>().interactable = false;
                 if (i + 1 < healList.Count)
                 {
@@ -92,8 +97,10 @@ public class UpgradeHealthSupplies : MonoBehaviour
         {
             if (currsupplyUHS.id == i)
             {
+                WhereToPlay.PlayOneShot(PurchaseSound);
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold -= currsupplyUHS.cost;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply += currsupplyUHS.ExtraSupplies;
+                GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().supplies = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply;
                 supplyList[i].GetComponent<Button>().interactable = false;
                 if (i + 1 < supplyList.Count)
                 {

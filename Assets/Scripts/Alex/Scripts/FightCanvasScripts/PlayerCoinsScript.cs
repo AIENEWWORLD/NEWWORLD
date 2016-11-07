@@ -26,7 +26,7 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
     // Use this for initialization
     void Start()
     {
-        myCoin.SetActive(false);
+        //myCoin.SetActive(false);
         inv = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<SetupFight>();
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         myCoin.transform.Rotate(0, Random.Range(0, 100), 0);
@@ -38,10 +38,10 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
     // Update is called once per frame
     void Update()
     {
-        if (itemImage.sprite != null)
+        if (coin.notEmpty == false)
         {
             myCoin.SetActive(true);
-
+        
         }
         else
         {
@@ -53,7 +53,7 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
         if (inv.PlayercoinList[itemNumber].itemName != null)
         {
             itemImage.enabled = true;
-            itemImage.sprite = inv.PlayercoinList[itemNumber].Icon;
+            //itemImage.sprite = inv.PlayercoinList[itemNumber].Icon;
         }
         else
         {

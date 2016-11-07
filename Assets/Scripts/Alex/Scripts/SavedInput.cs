@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System;
 
-//THIS IS GETTING ERRORS WHEN MINIMIZED
-
 //using controls:
 
 [System.Serializable]
@@ -38,6 +36,8 @@ public class SavedInput : MonoBehaviour
     public float intepAdjustment = 0.05f;
 
     public bool doesSmooth = true;
+
+    public OptionsMenu OptionsMenuObject;
 
     // Use this for initialization
     void Start ()
@@ -123,14 +123,25 @@ public class SavedInput : MonoBehaviour
     }
     void Awake()
     {
+
+
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(transform.gameObject);
+
         }
         if(instance != this)
         {
             Destroy(gameObject);
         }
+        //OptionsMenuObject = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<OptionsMenu>();
+
+        //OptionsMenuObject.SoundSelectedSlider = SoundValue;
+
+        ///
+
+        //OptionsMenuObject.setKeyCodes();
+        //OptionsMenuObject.applycontrols();
     }
 }

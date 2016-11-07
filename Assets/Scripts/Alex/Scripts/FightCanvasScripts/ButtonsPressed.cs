@@ -8,11 +8,25 @@ public class ButtonsPressed : MonoBehaviour
     public Button FlipButton;
     public Button InventoryButton;
     public Button FleeButton;
+
+    public bool CanFlee = false;
+    public bool CanAttack = false;
+    [HideInInspector]
+    public bool CanInventory = false;
+    public bool clicktocontinue;
 	// Use this for initialization
 	void Start ()
     {
         fCam = GameObject.FindGameObjectWithTag("FightCamera");
 
+    }
+
+    public void setButtons(bool attack, bool flee, bool inventory, bool clicktoCont)
+    {
+        CanFlee = flee;
+        CanAttack = attack;
+        CanInventory = inventory;
+        clicktocontinue = clicktoCont;
     }
 
     // Update is called once per frame
@@ -26,35 +40,46 @@ public class ButtonsPressed : MonoBehaviour
     }
     public void onClickFlee()
     {
-        if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
+        if (CanFlee == true && clicktocontinue == false)
         {
-            if (fCam.GetComponent<SetupFight>().playerAttacks == true)
+            if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
             {
-                if (getRandom(fCam.GetComponent<SetupFight>().playerFleeRate, 0, 100))
+                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+            }
+            if (fCam.GetComponent<SetupFight>().enemyStats.guyType != StatsScript.enumType.boss)//remember to add all the boss names
+            {
+                if (fCam.GetComponent<SetupFight>().playerAttacks == true)
                 {
-                    //have the enemy attack you without your coins working
-                    endcombat();
-                    fCam.GetComponent<Camera>().enabled = false;
-                    gameObject.GetComponent<SetupFight>().playerinCombat = false;
-                }
-                else
-                {
-                    if (fCam != null)
+                    if (getRandom(fCam.GetComponent<SetupFight>().playerFleeRate, 0, 100))
                     {
-                        if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                        //have the enemy attack you without your coins working
+                        endcombat();
+                        fCam.GetComponent<Camera>().enabled = false;
+
+                        Transitions T = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>();
+                        T.TransCam = Camera.main;
+                        T.trans = true;
+
+                        gameObject.GetComponent<SetupFight>().playerinCombat = false;
+                    }
+                    else
+                    {
+                        if (fCam != null)
                         {
-                            fCam.GetComponent<SetupFight>().playerAttacks = false;
-                        }
-                        if (fCam.GetComponent<SetupFight>().playerinCombat == true)
-                        {
-                            fCam.GetComponent<SetupFight>().calcFight = true;
-                            SetInteractable(false);
+                            if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                            {
+                                fCam.GetComponent<SetupFight>().playerAttacks = false;
+                            }
+                            if (fCam.GetComponent<SetupFight>().playerinCombat == true)
+                            {
+                                fCam.GetComponent<SetupFight>().calcFight = true;
+                                SetInteractable(false);
+                            }
                         }
                     }
                 }
             }
         }
-
     }
 
     public void endcombat()
@@ -88,11 +113,19 @@ public class ButtonsPressed : MonoBehaviour
 
     public void onClickAttack()
     {
+        //Debug.Log("1");
         if (fCam != null)
         {
-            fCam.GetComponent<SetupFight>().calcFight = true;
-            SetInteractable(false);
-            
+            if (CanAttack == true && clicktocontinue == false)
+            {
+                if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
+                {
+                    GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+                }
+                //Debug.Log("2");
+                fCam.GetComponent<SetupFight>().calcFight = true;
+                SetInteractable(false);
+            }
         }
     }
 

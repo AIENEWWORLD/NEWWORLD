@@ -29,7 +29,7 @@ public class DisplayCoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     // Update is called once per frame
     void Update()
     {
-        if (itemImage.sprite != null)
+        if (coin.notEmpty == false)
         {
             myCoin.SetActive(true);
             myCoin.transform.Rotate(0, (spinrate + tempspinrate), 0);

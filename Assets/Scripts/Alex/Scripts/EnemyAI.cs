@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
                 //NavMesh.CalculatePath(transform.position, PlayerPos, 1, path);
                 if (Dist <= DistanceToPlayer)
                 {
-                    me.SetDestination(PlayerPos);
+                    //me.SetDestination(PlayerPos);
                     me.speed = chaseSpeed;
                     RandomMove = false;
                     me.destination = PlayerPos;
@@ -90,6 +90,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     RandomMove = true;
                     ResetPos = true;
+                    me.speed = RandomMoveSpeed;
                 }
 
                 if (RandomMove)
@@ -134,16 +135,24 @@ public class EnemyAI : MonoBehaviour
                     {
                         if (ResetPos)
                         {
-                            me.destination = newRandomPosition;
+                            if (BoxOuter.x+BoxOuter.z < Vector3.Distance(transform.position, myPos))
+                            {
+                                me.destination = myPos;
+                            }
+                            else
+                            {
+                                me.destination = newRandomPosition;
+                            }
                             ResetPos = false;
+                            //me.speed = 1;
                         }
                     }
                 }
             }
             else
             {
-                //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                //me.Stop();
+                //RandomMove = true;
+                //ResetPos = true;
                 me.speed = 0;
             }
         }
@@ -161,7 +170,7 @@ public class EnemyAI : MonoBehaviour
          * get the players rotation and compare it to enemy current rotation, then figure out which animation to play
          */
         bool zeroVel = false;
-        if (Velocity == Vector3.zero)
+        if (Velocity == Vector3.zero)///////////////////
         {
             MyAnimator.speed = 0;
             Vector3 newDir;
@@ -202,7 +211,7 @@ public class EnemyAI : MonoBehaviour
                     thisRenderer.flipX = true;
                 }
             }
-            if (Velocity.x < 0)
+            else if (Velocity.x < 0)
             {
                 //Debug.Log("Left");
                 MyAnimator.Play("Side");

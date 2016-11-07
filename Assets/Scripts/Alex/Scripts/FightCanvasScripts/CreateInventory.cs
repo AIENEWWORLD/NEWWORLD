@@ -58,8 +58,17 @@ public class CreateInventory : MonoBehaviour
         {
             for (int y = 0; y < 10; y++)
             {
-                Items.GetComponent<coinScript>().itemNumber = num;
+                coinScript cs = Items.GetComponent<coinScript>();
+                cs.itemNumber = num;
                 GameObject item = Instantiate(Items);
+                if(cs.coin.itemName != null)
+                {
+                    cs.coin.notEmpty = true;
+                }
+                else
+                {
+                    cs.coin.notEmpty = false;
+                }
                 itemList.Add(item);
                 coinList.Add(new CoinStats());
                 item.transform.SetParent(gameObject.transform);
@@ -112,7 +121,7 @@ public class CreateInventory : MonoBehaviour
         {
             if (coinList[i].isSelected == true)
             {
-                itemList[i].GetComponent<Image>().color = new Color(0, 0, 1, 1);
+                //itemList[i].GetComponent<Image>().color = new Color(0, 0, 1, 1);
                 num += 1;
             }
             else
@@ -120,14 +129,30 @@ public class CreateInventory : MonoBehaviour
                 itemList[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
             }
         }
-
         for (int x = 0; x < itemList.Count; x++)
         {
+           // if (coinList[x].isSelected != true)
+           // {
+           //     itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+           //     itemList[x].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+           //     //Debug.Log("h");
+           // }
+           // else
+           // {
+           //     itemList[x].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+           // }
+
             if (num >= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().totalCoins)
             {
                 if (coinList[x].isSelected != true)
                 {
                     itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+                    itemList[x].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                    //Debug.Log("h");
+                }
+                else
+                {
+                    itemList[x].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 }
             }
             else

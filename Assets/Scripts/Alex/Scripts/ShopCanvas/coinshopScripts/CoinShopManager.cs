@@ -8,7 +8,8 @@ public class CoinShopManager : MonoBehaviour
     //this script is terrible, please remember to clean
 
 
-
+    public AudioClip PurchaseSound;
+    public AudioSource WhereToPlay;
     public Text goldAmount;
     public Vector3 offsetPos;
     public Canvas myCanvas;

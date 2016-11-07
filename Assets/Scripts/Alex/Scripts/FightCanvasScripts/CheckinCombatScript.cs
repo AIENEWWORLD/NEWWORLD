@@ -15,6 +15,7 @@ public class CheckinCombatScript : MonoBehaviour
     public bool Optionsisenabled = false;
     public bool Mapisenabled = false;
     public bool inShop = false;
+    public GameObject Compass;
 
     ControlScript PlayerCS;
 
@@ -74,14 +75,16 @@ public class CheckinCombatScript : MonoBehaviour
         }
 
 
-        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop)
+        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop || GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>().trans == true)
         {
             PlayerCS.p_SeizeMovement = true;
             PlayerCS.NotMoving = true;
+            Compass.SetActive(false);
             //animation play idle
         }
         else
         {
+            Compass.SetActive(true);
             PlayerCS.p_SeizeMovement = false;
         }
 	}
