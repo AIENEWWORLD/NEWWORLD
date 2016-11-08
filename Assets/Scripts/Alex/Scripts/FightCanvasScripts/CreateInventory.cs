@@ -14,6 +14,7 @@ public class CreateInventory : MonoBehaviour
 
     AddItem addI;
 
+    public float alphaCoins = 0.5f;
 
     // Use this for initialization
     void Start ()
@@ -146,7 +147,7 @@ public class CreateInventory : MonoBehaviour
             {
                 if (coinList[x].isSelected != true)
                 {
-                    itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+                    itemList[x].GetComponent<Image>().color = new Color(1, 1, 1, alphaCoins);
                     itemList[x].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                     //Debug.Log("h");
                 }

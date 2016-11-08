@@ -92,12 +92,21 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * add text to blakes tent thingo - done
+     * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK FOR MAP - done
+     * DEALDMGGAINHEALTHATTACK GET REMOVED AND ADD IT TO THE ACTUAL COIN - done
+     * make alpha better on inventory coins - done 
+     * coins layout - done
+     * coin shop mouseover text not working - done
+     * fix the option menu bindings - done
+     * if haven't picked a flip coin animation continuously plays - done
+     * transition to combat screen and maybe other stuff - done
      * 
-     * fix the option menu bindings
-     * if haven't picked a flip coin animation continuously plays
-     * fix strange animation wat
+     * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford" - text on first row not working
      * 
-     * transition to combat screen and maybe other stuff
+     * combat screen and victory screen transitions
+     * put the fish in animations folder on google drive
+     * 
      * 
      * 
      * PLAYER SLOPE probably won't do
@@ -116,10 +125,6 @@ public class SetupFight : MonoBehaviour
      * sustainability stuff
      * 
      * 
-     * chkme on each coinscript
-     * add all those coins
-     * reposition the enemy coins?
-     * clean up scripts
      */
     public GameObject Inventory;
     public GameObject FightScreen;
@@ -237,6 +242,14 @@ public class SetupFight : MonoBehaviour
     public float DelaySoundAfterStartingCombat = 0.5f;
     bool playedSound = false;
 
+    bool pFlipSound = true;
+
+    public int DealdmgGainHealthAttack;
+    public List<int> dealdmggainhealthindx;
+
+    Vector2 EnemyinitialXY = new Vector2(0, -95);
+    Vector2 initialXY = new Vector2(-130, -102);
+    Vector2 offsetXY = new Vector2(30, 60);
     void Start()
     {
         PlayerAnims = PlayerSprite.GetComponent<Animator>();
@@ -449,8 +462,8 @@ public class SetupFight : MonoBehaviour
     {
         clearPlayerCoins();
 
-        offsetPosX = -130;
-        offsetPosY = -22;
+        offsetPosX = initialXY.x;
+        offsetPosY = initialXY.y;
 
 
         for (int i = 0; i < AddItm.coins.Count; i++)
@@ -467,7 +480,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false, 0));
             }
         }
         else
@@ -491,7 +504,16 @@ public class SetupFight : MonoBehaviour
             item.transform.SetParent(fightPanel);
             item.transform.localScale = new Vector3(1, 1, 1);
             item.transform.localPosition = new Vector3(offsetPosX, offsetPosY, 0);
-            offsetPosX += 60;
+            offsetPosX += offsetXY.x;
+
+            if (x % 2 == 0)
+            {
+                offsetPosY += offsetXY.y;
+            }
+            else
+            {
+                offsetPosY -= offsetXY.y;
+            }
 
             PlayeritemList[x].GetComponent<PlayerCoinsScript>().coin = PlayercoinList[x];
             PlayeritemList[x].name = "PlayerCoin: " + PlayeritemList[x].GetComponent<PlayerCoinsScript>().coin.itemName;
@@ -502,8 +524,8 @@ public class SetupFight : MonoBehaviour
     {
         clearEnemyCoins();
 
-        EnemyoffsetPosX = -130;
-        EnemyoffsetPosY = -95;
+        EnemyoffsetPosX = EnemyinitialXY.x;
+        EnemyoffsetPosY = EnemyinitialXY.y;
 
         int num = 0;
 
@@ -515,7 +537,16 @@ public class SetupFight : MonoBehaviour
             item.transform.SetParent(fightPanel);
             item.transform.localScale = new Vector3(1, 1, 1);
             item.transform.localPosition = new Vector3(EnemyoffsetPosX, EnemyoffsetPosY, 0);
-            EnemyoffsetPosX += 60;
+            EnemyoffsetPosX -= offsetXY.x;
+
+            if (x % 2 == 0)
+            {
+                EnemyoffsetPosY += offsetXY.y;
+            }
+            else
+            {
+                EnemyoffsetPosY -= offsetXY.y;
+            }
 
             EnemyitemList[x].GetComponent<EnemyCoinsScript>().coin = EnemycoinList[x];
             EnemyitemList[x].name = "EnemyCoin: " + EnemyitemList[x].GetComponent<EnemyCoinsScript>().coin.itemName;
@@ -532,10 +563,10 @@ public class SetupFight : MonoBehaviour
         //play fancy flip animation on 3d model coins hopefully?
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0; familyCounter = 0;
-        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
+        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0; pFlipSound = true;
         enemyRegenCoin = false; duplicate = false;
         DealDmgGainHealthCoins = 0; enemybleedcoin = 0;
-        dupeList.Clear();
+        dupeList.Clear(); dealdmggainhealthindx.Clear();
 
         tempCoinsToDouble.Clear();
         //pickCoinList.Clear();
@@ -613,6 +644,7 @@ public class SetupFight : MonoBehaviour
                     if (EnemycoinList[i].DealDmgGainHealth == true && pickCoinList.Count == 0)
                     {
                         DealDmgGainHealthCoins += 1;
+                        dealdmggainhealthindx.Add(i);
                     }
                     if (EnemycoinList[i].DealDmgDealDmg == true && pickCoinList.Count == 0)/////////////////////////////////////////////////////////////////////////////////////////////
                     {
@@ -649,7 +681,7 @@ public class SetupFight : MonoBehaviour
             EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence,
             EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack,
             EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP,
-            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin));
+            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin, EnemycoinList[i].DealdmgGainHealthAttack));
         //Debug.Log("adding x");
     }
     void applyFight()//on death lock it so that the attack button cant be clicked again.
@@ -677,7 +709,7 @@ public class SetupFight : MonoBehaviour
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
                     }
-                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
+
                 }
                 if(enemyAttacks)
                 {
@@ -685,7 +717,11 @@ public class SetupFight : MonoBehaviour
                     {
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 20;
                     }
+                }
+                if (pFlipSound)
+                {
                     WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
+                    pFlipSound = false;
                 }
                 //time until flip
                 StartCoroutine(PlayerCombat(TimeBeforeFlip));
@@ -694,6 +730,7 @@ public class SetupFight : MonoBehaviour
             {
                 if (playerAttacks == true)
                 {
+                    
                     for (int i = 0; i < PlayercoinList.Count; i++)
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
@@ -772,7 +809,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false, 0), 0);
                     playerStats.health = playerStats.maxHealth;
                     playerStats.supplies = playerStats.maxSupply;
                     playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
@@ -781,6 +818,7 @@ public class SetupFight : MonoBehaviour
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
+                    combatStage = 0;
                 }
 
                 if (playerAttacks)
@@ -836,7 +874,7 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyStats.health = enemyStats.maxHealth / 2;
                     }
-
+                    combatStage = 0;
                 }
 
                 if (enemyAttacks)
@@ -866,7 +904,12 @@ public class SetupFight : MonoBehaviour
                         DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
                         if (DealDmgGainHealthCoins > 0)
                         {
-                            enemyHeal += DealDmgGainHealthCoins;
+                            for (int i = 0; i < dealdmggainhealthindx.Count; i++)
+                            {
+                                //enemyHeal += DealDmgGainHealthCoins * DealdmgGainHealthAttack;
+
+                                enemyHeal += EnemycoinList[dealdmggainhealthindx[i]].DealdmgGainHealthAttack;
+                            }
                         }
                     }
                     if (enemybleedcoin != 0)
@@ -923,7 +966,7 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyStats.health = enemyStats.maxHealth / 2;
                     }
-
+                    combatStage = 0;
                 }
 
                 PlayerNumbers.color = Color.green;
@@ -966,10 +1009,11 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false, 0), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
+                    combatStage = 0;
                 }
 
                 if (enemyStats.health <= 0)
@@ -984,9 +1028,9 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyStats.health = enemyStats.maxHealth / 2;
                     }
-
+                    combatStage = 0;
                 }
-
+                pFlipSound = true;
 
                 Instructions.text = "Instructions";
 

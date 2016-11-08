@@ -61,6 +61,10 @@ public class OnWinLose : MonoBehaviour
         Title.text = "";
         RecievedText.text = "";
 
+        Transitions T = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>();
+        T.TransCam = gameObject.GetComponent<Camera>();
+        T.trans = true;
+
         FightCanvas.SetActive(false);
         if (dead == true)
         {
