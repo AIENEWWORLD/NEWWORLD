@@ -93,6 +93,10 @@ public class SetupFight : MonoBehaviour
      * -------------------------------------------------
      * TO DO:
      * 
+     * make alpha better on inventory coins
+     * coins layout
+     * main menu UI
+     * 
      * fix the option menu bindings
      * if haven't picked a flip coin animation continuously plays
      * fix strange animation wat
@@ -236,6 +240,8 @@ public class SetupFight : MonoBehaviour
     public AudioSource WheretoPlaySounds;
     public float DelaySoundAfterStartingCombat = 0.5f;
     bool playedSound = false;
+
+    bool pFlipSound = true;
 
     void Start()
     {
@@ -532,7 +538,7 @@ public class SetupFight : MonoBehaviour
         //play fancy flip animation on 3d model coins hopefully?
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0; familyCounter = 0;
-        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
+        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0; pFlipSound = true;
         enemyRegenCoin = false; duplicate = false;
         DealDmgGainHealthCoins = 0; enemybleedcoin = 0;
         dupeList.Clear();
@@ -677,7 +683,7 @@ public class SetupFight : MonoBehaviour
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 20;
                     }
-                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
+
                 }
                 if(enemyAttacks)
                 {
@@ -685,7 +691,11 @@ public class SetupFight : MonoBehaviour
                     {
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 20;
                     }
+                }
+                if (pFlipSound)
+                {
                     WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
+                    pFlipSound = false;
                 }
                 //time until flip
                 StartCoroutine(PlayerCombat(TimeBeforeFlip));
@@ -694,6 +704,7 @@ public class SetupFight : MonoBehaviour
             {
                 if (playerAttacks == true)
                 {
+                    
                     for (int i = 0; i < PlayercoinList.Count; i++)
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
@@ -781,6 +792,7 @@ public class SetupFight : MonoBehaviour
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
+                    combatStage = 0;
                 }
 
                 if (playerAttacks)
@@ -836,7 +848,7 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyStats.health = enemyStats.maxHealth / 2;
                     }
-
+                    combatStage = 0;
                 }
 
                 if (enemyAttacks)
@@ -923,7 +935,7 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyStats.health = enemyStats.maxHealth / 2;
                     }
-
+                    combatStage = 0;
                 }
 
                 PlayerNumbers.color = Color.green;
@@ -970,6 +982,7 @@ public class SetupFight : MonoBehaviour
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
+                    combatStage = 0;
                 }
 
                 if (enemyStats.health <= 0)
@@ -984,9 +997,9 @@ public class SetupFight : MonoBehaviour
                     {
                         enemyStats.health = enemyStats.maxHealth / 2;
                     }
-
+                    combatStage = 0;
                 }
-
+                pFlipSound = true;
 
                 Instructions.text = "Instructions";
 
