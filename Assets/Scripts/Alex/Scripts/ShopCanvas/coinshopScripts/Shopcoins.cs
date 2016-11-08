@@ -13,11 +13,11 @@ public class Shopcoins : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
 
     public Canvas myCan;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject mouseover;
-    [HideInInspector]
+    //[HideInInspector]
     public Text mouseoverTextDesc1;
-    [HideInInspector]
+    //[HideInInspector]
     public Text mouseoverTextDesc2;
 
     // Use this for initialization

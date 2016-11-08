@@ -127,6 +127,7 @@ public class UpgradeButtonScripts : MonoBehaviour
             else
             {
                 Bss.myButton.interactable = false;
+                Bss.gameObject.GetComponentInChildren<Text>().text = "Purchased";
             }
             if (Bss.cost >= playerStats.gold)
             {

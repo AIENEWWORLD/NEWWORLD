@@ -49,19 +49,23 @@ public class UpgradeHealthSupplies : MonoBehaviour
         if (currsupplyUHS.cost <= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold)
         {
             supplyList[currsupplyID].GetComponent<Button>().interactable = true;
+            supplyList[currsupplyID].transform.GetChild(0).GetComponent<Text>().text = "Click to buy " + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().ExtraSupplies + " supplies for \n" + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().cost;
         }
         else
         {
             supplyList[currsupplyID].GetComponent<Button>().interactable = false;
+            supplyList[currsupplyID].transform.GetChild(0).GetComponent<Text>().text = "can't afford " + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().cost + " gold";
         }
 
         if (currhealthUHS.cost <= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold)
         {
             healList[currhealthID].GetComponent<Button>().interactable = true;
+            healList[currhealthID].transform.GetChild(0).GetComponent<Text>().text = "Click to buy " + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().ExtraHealth + " health for " + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().cost;
         }
         else
         {
             healList[currhealthID].GetComponent<Button>().interactable = false;
+            healList[currhealthID].transform.GetChild(0).GetComponent<Text>().text = "can't afford " + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().cost + " gold";
         }
     }
 
@@ -77,6 +81,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth += currhealthUHS.ExtraHealth;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().health = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxHealth;
                 healList[i].GetComponent<Button>().interactable = false;
+                healList[i].transform.GetChild(0).GetComponent<Text>().text = "Purchased";
                 if (i + 1 < healList.Count)
                 {
                     currhealthID = currhealthUHS.id + 1;
@@ -85,6 +90,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 else
                 {
                     healList[i].GetComponent<Button>().interactable = false;
+                    healList[i].transform.GetChild(0).GetComponent<Text>().text = "Purchased";
                 }
             }
         }
@@ -102,6 +108,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply += currsupplyUHS.ExtraSupplies;
                 GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().supplies = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().maxSupply;
                 supplyList[i].GetComponent<Button>().interactable = false;
+                supplyList[i].transform.GetChild(0).GetComponent<Text>().text = "Purchased";
                 if (i + 1 < supplyList.Count)
                 {
                     currsupplyID = currsupplyUHS.id + 1;
@@ -110,6 +117,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 else
                 {
                     supplyList[i].GetComponent<Button>().interactable = false;
+                    supplyList[i].transform.GetChild(0).GetComponent<Text>().text = "Purchased";
                 }
             }
         }
@@ -125,10 +133,12 @@ public class UpgradeHealthSupplies : MonoBehaviour
             if (i == id)
             {
                 s[i].GetComponent<Button>().interactable = true;
+                
             }
             else
             {
                 s[i].GetComponent<Button>().interactable = false;
+                s[i].transform.GetChild(0).GetComponent<Text>().text = "Buy previous upgrade";
             }
         }
     }
