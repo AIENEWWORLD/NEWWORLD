@@ -96,7 +96,7 @@ public class SetupFight : MonoBehaviour
      * make alpha better on inventory coins
      * coins layout
      * main menu UI
-     * 
+     * combat screen and victory screen transitions
      * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford"
      * coin shop mouseover text not working
      * put the fish in animations folder on google drive
