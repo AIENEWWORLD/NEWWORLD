@@ -92,6 +92,7 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * add text to blakes tent thingo
      * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK FOR MAP
      * DEALDMGGAINHEALTHATTACK GET REMOVED AND ADD IT TO THE ACTUAL COIN
      * make alpha better on inventory coins
