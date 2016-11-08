@@ -92,7 +92,7 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
-     * 
+     * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK
      * make alpha better on inventory coins
      * coins layout
      * main menu UI
