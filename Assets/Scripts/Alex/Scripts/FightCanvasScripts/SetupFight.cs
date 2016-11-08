@@ -97,6 +97,10 @@ public class SetupFight : MonoBehaviour
      * coins layout
      * main menu UI
      * 
+     * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford"
+     * coin shop mouseover text not working
+     * put the fish in animations folder on google drive
+     * 
      * fix the option menu bindings
      * if haven't picked a flip coin animation continuously plays
      * fix strange animation wat
