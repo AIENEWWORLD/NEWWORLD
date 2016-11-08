@@ -92,7 +92,8 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
-     * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK
+     * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK FOR MAP
+     * DEALDMGGAINHEALTHATTACK GET REMOVED AND ADD IT TO THE ACTUAL COIN
      * make alpha better on inventory coins
      * coins layout
      * main menu UI
@@ -106,7 +107,6 @@ public class SetupFight : MonoBehaviour
      * fix strange animation wat
      * 
      * transition to combat screen and maybe other stuff
-     * 
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
@@ -246,6 +246,8 @@ public class SetupFight : MonoBehaviour
     bool playedSound = false;
 
     bool pFlipSound = true;
+
+    public int DealdmgGainHealthAttack;
 
     void Start()
     {
@@ -882,7 +884,7 @@ public class SetupFight : MonoBehaviour
                         DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
                         if (DealDmgGainHealthCoins > 0)
                         {
-                            enemyHeal += DealDmgGainHealthCoins;
+                            enemyHeal += DealDmgGainHealthCoins * DealdmgGainHealthAttack;
                         }
                     }
                     if (enemybleedcoin != 0)
