@@ -84,24 +84,17 @@ public class ButtonsPressed : MonoBehaviour
 
     public void endcombat()
     {
-        if (GameObject.FindGameObjectWithTag("CanvasEnemy") != null)
-        {
-            destroysprite();
-            if (fCam != null)
-            {
-                //fCam.GetComponent<Camera>().enabled = false;
-                fCam.GetComponent<SetupFight>().onExitCombat();
-                //Debug.Log("clearing");
-            }
-            else
-            {
-                Debug.Log("FightCamera = null");
-            }
-        }
-        else
-        {
-            Debug.Log("Please tag my prefab combat script with: CanvasEnemy");
-        }
+         Destroy(fCam.GetComponent<SetupFight>().enemySprite);
+         if (fCam != null)
+         {
+             //fCam.GetComponent<Camera>().enabled = false;
+             fCam.GetComponent<SetupFight>().onExitCombat();
+             //Debug.Log("clearing");
+         }
+         else
+         {
+             Debug.Log("FightCamera = null");
+         }
         
         gameObject.GetComponent<EnemyDropCoins>().dead = false;
     }
@@ -116,7 +109,7 @@ public class ButtonsPressed : MonoBehaviour
         //Debug.Log("1");
         if (fCam != null)
         {
-            if (CanAttack == true && clicktocontinue == false)
+            if (CanAttack == true && clicktocontinue == false && fCam.GetComponent<SetupFight>().enemyStats != null)
             {
                 if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
                 {
@@ -135,18 +128,5 @@ public class ButtonsPressed : MonoBehaviour
         InventoryButton.interactable = a;
         FleeButton.interactable = a;
         
-    }
-
-    public void destroysprite()
-    {
-        
-        if (GameObject.FindGameObjectWithTag("CanvasEnemy") != null)
-        {
-            Destroy(GameObject.FindGameObjectWithTag("CanvasEnemy"));
-        }
-        else
-        {
-            Debug.Log("CanvasEnemy = null");
-        }
     }
 }

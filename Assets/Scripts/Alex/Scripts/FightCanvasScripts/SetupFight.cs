@@ -101,14 +101,16 @@ public class SetupFight : MonoBehaviour
      * 
      * -------------------------------------------------
      * TO DO:
+     * after fighting the thunderbird and dying to it using coins, the bird stays in the scene - fixed I think
+     * 
      * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford" - text on first row not working
      * combat screen and victory screen transitions
      * put the fish in animations folder on google drive
-     * after fighting the thunderbird and dying to it using coins, the play
      * put in use of controls script
-     * with blakes tent we will make the flattened tent with esclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
+     * with blakes tent we will make the flattened tent with exclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
      * make this icon show up when text to interact with things pops up https://drive.google.com/file/d/0B5Lg-Kk6lY3RVXF0MW9tMWoxelU/view
      * when at 50% and 0% supplies display text
+     * update combatstage2 thingo
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
@@ -251,6 +253,7 @@ public class SetupFight : MonoBehaviour
     Vector2 EnemyinitialXY = new Vector2(160, -102);
     Vector2 initialXY = new Vector2(-160, -102);
     Vector2 offsetXY = new Vector2(25, 50);
+
     void Start()
     {
         PlayerAnims = PlayerSprite.GetComponent<Animator>();
@@ -292,10 +295,13 @@ public class SetupFight : MonoBehaviour
 
         if (calcFight)
         {
-            calculateFight();
+            if (enemyStats != null)
+            {
+                calculateFight();
 
-            applyFight();
-            calcFight = false;
+                applyFight();
+                calcFight = false;
+            }
         }
 
         screenmousePos = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
@@ -423,6 +429,7 @@ public class SetupFight : MonoBehaviour
     }
     public void onExitCombat()
     {
+        
         combatStage = 0;
         clearPlayerCoins();
         clearEnemyCoins();
@@ -702,7 +709,10 @@ public class SetupFight : MonoBehaviour
         {
             if (combatStage == 1)
             {
-
+                if (playerStats.health <= 0)
+                {
+                    combatStage = 10;
+                }
 
                 if (playerAttacks)
                 {
@@ -808,18 +818,7 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.text = "";
                 if (playerStats.health <= 0)
                 {
-                    playerStats.health = 0;
-                    gameObject.GetComponent<ButtonsPressed>().endcombat();
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
-                    playerStats.health = playerStats.maxHealth;
-                    playerStats.supplies = playerStats.maxSupply;
-                    playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
-
-
-                    //playerStats.dead = true;
-                    GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
-                    //do something about death too
-                    combatStage = 0;
+                    combatStage = 10;
                 }
 
                 if (playerAttacks)
@@ -1009,15 +1008,6 @@ public class SetupFight : MonoBehaviour
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
                 //RECHECK DEATH since players can heal negative values (risky coins)
-                if (playerStats.health <= 0)
-                {
-                    playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
-                    //playerStats.dead = true;
-                    GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
-                    //do something about death too
-                    combatStage = 0;
-                }
 
                 if (enemyStats.health <= 0)
                 {
@@ -1037,7 +1027,6 @@ public class SetupFight : MonoBehaviour
 
                 Instructions.text = "Instructions";
 
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////PLAY IDLE ANIMATION
                 EnemyAnims.Play("Idle");
                 gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
                 chkBoss();
@@ -1069,6 +1058,16 @@ public class SetupFight : MonoBehaviour
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_attack /= 2;
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_defence /= 2;
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_HP /= 2;
+                }
+                if (playerStats.health <= 0)
+                {
+                    playerStats.health = 0;
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
+                    //playerStats.dead = true;
+                    GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
+                    //do something about death too
+                    gameObject.GetComponent<ButtonsPressed>().endcombat();
+                    //combatStage = 10;
                 }
 
                 combatStage = 0;                                         
