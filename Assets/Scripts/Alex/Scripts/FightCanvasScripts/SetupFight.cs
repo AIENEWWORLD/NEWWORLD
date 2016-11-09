@@ -89,9 +89,6 @@ public class SetupFight : MonoBehaviour
      * set audiosources on main camera and fight camera to SFX, set other objects with tag "music" to music volume
      * fix sounds so that block sound plays when player attacks etc
      * fix the navmesh
-     * 
-     * -------------------------------------------------
-     * TO DO:
      * add text to blakes tent thingo - done
      * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK FOR MAP - done
      * DEALDMGGAINHEALTHATTACK GET REMOVED AND ADD IT TO THE ACTUAL COIN - done
@@ -102,12 +99,16 @@ public class SetupFight : MonoBehaviour
      * if haven't picked a flip coin animation continuously plays - done
      * transition to combat screen and maybe other stuff - done
      * 
+     * -------------------------------------------------
+     * TO DO:
      * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford" - text on first row not working
-     * 
      * combat screen and victory screen transitions
      * put the fish in animations folder on google drive
-     * 
-     * 
+     * after fighting the thunderbird and dying to it using coins, the play
+     * put in use of controls script
+     * with blakes tent we will make the flattened tent with esclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
+     * make this icon show up when text to interact with things pops up https://drive.google.com/file/d/0B5Lg-Kk6lY3RVXF0MW9tMWoxelU/view
+     * when at 50% and 0% supplies display text
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
@@ -247,9 +248,9 @@ public class SetupFight : MonoBehaviour
     public int DealdmgGainHealthAttack;
     public List<int> dealdmggainhealthindx;
 
-    Vector2 EnemyinitialXY = new Vector2(0, -95);
-    Vector2 initialXY = new Vector2(-130, -102);
-    Vector2 offsetXY = new Vector2(30, 60);
+    Vector2 EnemyinitialXY = new Vector2(160, -102);
+    Vector2 initialXY = new Vector2(-160, -102);
+    Vector2 offsetXY = new Vector2(25, 50);
     void Start()
     {
         PlayerAnims = PlayerSprite.GetComponent<Animator>();
@@ -480,7 +481,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false, 0));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false));
             }
         }
         else
@@ -681,7 +682,7 @@ public class SetupFight : MonoBehaviour
             EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence,
             EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack,
             EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP,
-            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin, EnemycoinList[i].DealdmgGainHealthAttack));
+            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin));
         //Debug.Log("adding x");
     }
     void applyFight()//on death lock it so that the attack button cant be clicked again.
@@ -809,7 +810,7 @@ public class SetupFight : MonoBehaviour
                 {
                     playerStats.health = 0;
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false, 0), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
                     playerStats.health = playerStats.maxHealth;
                     playerStats.supplies = playerStats.maxSupply;
                     playerStats.gold = Convert.ToInt32(playerStats.gold * (GoldToLosePercentage / 100));//(int)(playerStats.gold * (GoldToLosePercentage/100));
@@ -908,7 +909,9 @@ public class SetupFight : MonoBehaviour
                             {
                                 //enemyHeal += DealDmgGainHealthCoins * DealdmgGainHealthAttack;
 
-                                enemyHeal += EnemycoinList[dealdmggainhealthindx[i]].DealdmgGainHealthAttack;
+                                enemyHeal += EnemycoinList[dealdmggainhealthindx[i]].Heads_attack;
+
+                                //enemyHeal += EnemycoinList[dealdmggainhealthindx[i]].DealdmgGainHealthAttack;
                             }
                         }
                     }
@@ -1009,7 +1012,7 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false, 0), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
