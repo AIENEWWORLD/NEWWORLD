@@ -102,15 +102,16 @@ public class SetupFight : MonoBehaviour
      * -------------------------------------------------
      * TO DO:
      * after fighting the thunderbird and dying to it using coins, the bird stays in the scene - fixed I think
+     * make this icon show up when text to interact with things pops up https://drive.google.com/file/d/0B5Lg-Kk6lY3RVXF0MW9tMWoxelU/view done
+     * when at 50% and 0% supplies display text
+     * put in use of controls script
      * 
      * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford" - text on first row not working
      * combat screen and victory screen transitions
      * put the fish in animations folder on google drive
-     * put in use of controls script
      * with blakes tent we will make the flattened tent with exclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
-     * make this icon show up when text to interact with things pops up https://drive.google.com/file/d/0B5Lg-Kk6lY3RVXF0MW9tMWoxelU/view
-     * when at 50% and 0% supplies display text
      * update combatstage2 thingo
+     * polish
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
@@ -254,6 +255,12 @@ public class SetupFight : MonoBehaviour
     Vector2 initialXY = new Vector2(-160, -102);
     Vector2 offsetXY = new Vector2(25, 50);
 
+    bool usePlacementobjects = false;
+    public GameObject playerPlaceobj;
+    public GameObject EnemyPlaceobj;
+    public List<Vector2> playerplacements;
+    public List<Vector2> enemyplacements;
+
     void Start()
     {
         PlayerAnims = PlayerSprite.GetComponent<Animator>();
@@ -268,7 +275,14 @@ public class SetupFight : MonoBehaviour
 
         inventory = GameObject.FindGameObjectWithTag("ItemDatabase").GetComponent<CreateInventory>();
 
-
+        for (int i = 0; i < 5; i++)
+        {
+            playerplacements.Add(new Vector2(playerPlaceobj.transform.GetChild(i).transform.localPosition.x, playerPlaceobj.transform.GetChild(i).transform.localPosition.y));
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            enemyplacements.Add(new Vector2(EnemyPlaceobj.transform.GetChild(i).transform.localPosition.x, EnemyPlaceobj.transform.GetChild(i).transform.localPosition.y));
+        }
     }
     void Update()
     {
@@ -511,7 +525,14 @@ public class SetupFight : MonoBehaviour
             PlayeritemList.Add(item);
             item.transform.SetParent(fightPanel);
             item.transform.localScale = new Vector3(1, 1, 1);
-            item.transform.localPosition = new Vector3(offsetPosX, offsetPosY, 0);
+            if (usePlacementobjects)
+            {
+                item.transform.localPosition = new Vector3(playerplacements[x].x, playerplacements[x].y, 0);
+            }
+            else
+            {
+                item.transform.localPosition = new Vector3(offsetPosX, offsetPosY, 0);
+            }
             offsetPosX += offsetXY.x;
 
             if (x % 2 == 0)
@@ -544,7 +565,14 @@ public class SetupFight : MonoBehaviour
             EnemyitemList.Add(item);
             item.transform.SetParent(fightPanel);
             item.transform.localScale = new Vector3(1, 1, 1);
-            item.transform.localPosition = new Vector3(EnemyoffsetPosX, EnemyoffsetPosY, 0);
+            if (usePlacementobjects)
+            {
+                item.transform.localPosition = new Vector3(enemyplacements[x].x, enemyplacements[x].y, 0);
+            }
+            else
+            {
+                item.transform.localPosition = new Vector3(EnemyoffsetPosX, EnemyoffsetPosY, 0);
+            }
             EnemyoffsetPosX -= offsetXY.x;
 
             if (x % 2 == 0)

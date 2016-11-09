@@ -22,23 +22,25 @@ public class CompassScript : MonoBehaviour
     public Text Coins;
     public Text Landmarks;
     public Text Beasts;
+    public SavedInput InputGameobject;
 
     void Start()
     {
         Health.SetFloat("_Cutoff", 0);
         Supplies.SetFloat("_Cutoff", 0);
+        InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>();
     }
 
     void Update()
     {
         Health.SetFloat("_Cutoff", 1-PlayerStats.health/PlayerStats.maxHealth);
         Supplies.SetFloat("_Cutoff", 1-PlayerStats.supplies/PlayerStats.maxSupply);
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(InputGameobject.keycodes["Compass"]))
         {
             flip = !flip;
         }
         Coins.text = PlayerStats.gold.ToString();
-        Landmarks.text = 0.ToString(); //WAT
+        //Landmarks.text = 0.ToString();
         //Beasts.text = 0.ToString();
     }
 

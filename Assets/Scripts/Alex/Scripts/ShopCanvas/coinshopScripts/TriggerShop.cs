@@ -85,15 +85,15 @@ public class TriggerShop : MonoBehaviour
             x = 0;
             newTEXT = "";
         }
-        if(enablePresstoCont)
-        {
-            PressToContText.enabled = true;
-            PressToContText.text = "Press " + InputGameobject.keycodes["interact"].ToString() + " to enter shop.";
-        }
-        else
-        {
-            PressToContText.enabled = false;
-        }
+        //if(enablePresstoCont)
+        //{
+        //    PressToContText.enabled = true;
+        //    PressToContText.text = "Press " + InputGameobject.keycodes["interact"].ToString() + " to enter shop.";
+        //}
+        //else
+        //{
+        //    PressToContText.enabled = false;
+        //}
 
     }
 
