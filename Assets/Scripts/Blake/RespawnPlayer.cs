@@ -41,6 +41,9 @@ public class RespawnPlayer : MonoBehaviour
 
         PlayerObject.transform.position = nearestRespawnPoint.transform.position;
         PlayerObject.transform.position += new Vector3(0, 5, 0); // fix for checking grounded
+        ControlScript c = PlayerObject.GetComponent<ControlScript>();
+        c.rotation = 0;
+        PlayerObject.transform.Rotate(0, 0, 0);
     }
 
     void Start()

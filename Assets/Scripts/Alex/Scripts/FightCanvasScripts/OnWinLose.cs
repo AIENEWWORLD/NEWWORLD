@@ -64,7 +64,7 @@ public class OnWinLose : MonoBehaviour
         Transitions T = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>();
         T.TransCam = gameObject.GetComponent<Camera>();
         T.trans = true;
-
+        gameObject.GetComponent<SetupFight>().cancelAudio();
         FightCanvas.SetActive(false);
         if (dead == true)
         {

@@ -8,6 +8,7 @@ public class TentPlacement : MonoBehaviour
     private bool m_Inside = false;
     private bool m_TentPlaced = false;
     SavedInput InputGameobject;
+    public Vector3 myOffset;
 
     void OnTriggerEnter(Collider col)
     {
@@ -44,7 +45,7 @@ public class TentPlacement : MonoBehaviour
         if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && m_Inside == true && m_TentPlaced == false)
         {
             m_TentPlaced = true;
-            Vector3 TentLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Vector3 TentLocation = new Vector3(transform.position.x+ myOffset.x, transform.position.y+ myOffset.y, transform.position.z+ myOffset.z);
             Instantiate(Tent, TentLocation, transform.rotation);
             gameObject.GetComponent<Renderer>().enabled = false;
             GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().allRespawnPoints.Add(gameObject);

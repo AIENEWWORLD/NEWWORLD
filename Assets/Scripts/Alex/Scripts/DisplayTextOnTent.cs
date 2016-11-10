@@ -11,6 +11,7 @@ public class DisplayTextOnTent : MonoBehaviour
     GameObject instance;
     Text t;
     public bool disableonInteract = false;
+    public bool DestroyonInteract = false;
     bool enable = true;
     public bool enableImage = false;
     public Vector3 Imageoffset;
@@ -31,6 +32,8 @@ public class DisplayTextOnTent : MonoBehaviour
             ImageHolder.enabled = false;
         }
         InputGameobject = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>();
+        if (DestroyonInteract)
+            disableonInteract = true;
     }
 	
 	void Update ()
@@ -40,7 +43,23 @@ public class DisplayTextOnTent : MonoBehaviour
             Vector3 temprot_ = new Vector3(myRotation.x, 0 + Player.transform.rotation.eulerAngles.y + myRotation.y, myRotation.z);
             ImageHolderGO.transform.eulerAngles = temprot_;
         }
+        if (Input.GetKeyDown(KeyCode.F) && disableonInteract)
+        {
+            if (instance != null)
+            {
+                if (enableImage)
+                {
+                    ImageHolder.enabled = false;
+                }
+                enable = false;
+                Destroy(instance);
+                if (DestroyonInteract)
+                {
+                    Destroy(this);
+                }
+            }
 
+        }
     }
 
     void OnTriggerEnter()
@@ -68,18 +87,7 @@ public class DisplayTextOnTent : MonoBehaviour
         {
             t.text = myText;
         }
-        if (Input.GetKeyDown(InputGameobject.keycodes["interact"]) && disableonInteract)
-        {
-            if (instance != null)
-            {
-                if (enableImage)
-                {
-                    ImageHolder.enabled = false;
-                }
-                enable = false;
-                Destroy(instance);
-            }
-        }
+        
     }
     void OnTriggerExit()
     {

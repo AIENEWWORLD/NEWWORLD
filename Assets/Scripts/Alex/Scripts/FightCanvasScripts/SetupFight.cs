@@ -105,11 +105,12 @@ public class SetupFight : MonoBehaviour
      * make this icon show up when text to interact with things pops up https://drive.google.com/file/d/0B5Lg-Kk6lY3RVXF0MW9tMWoxelU/view done
      * when at 50% and 0% supplies display text
      * put in use of controls script
+     * Coins can now be set to materials rather than just textures
+     * with blakes tent we will make the flattened tent with exclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
      * 
      * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford" - text on first row not working
      * combat screen and victory screen transitions
      * put the fish in animations folder on google drive
-     * with blakes tent we will make the flattened tent with exclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
      * update combatstage2 thingo
      * polish
      * 
@@ -215,8 +216,8 @@ public class SetupFight : MonoBehaviour
     public int emptyCoins = 0;
 
     int DealDmgGainHealthCoins = 0;
-    int enemybleedcoin = 0;
-    int bleedcoinCounter = 0;
+    public int enemybleedcoin = 0;
+    public int bleedcoinCounter = 0;
     bool duplicate = false;
 
     public List<int> dupeList;
@@ -261,6 +262,8 @@ public class SetupFight : MonoBehaviour
     public List<Vector2> playerplacements;
     public List<Vector2> enemyplacements;
 
+    public int quickfix = 1;
+
     void Start()
     {
         PlayerAnims = PlayerSprite.GetComponent<Animator>();
@@ -286,6 +289,7 @@ public class SetupFight : MonoBehaviour
     }
     void Update()
     {
+
         if (inventoryisActive)
         {
             Inventory.SetActive(true);
@@ -333,8 +337,9 @@ public class SetupFight : MonoBehaviour
                 GameObject s = Instantiate(CounterPrefab) as GameObject;
                 s.transform.SetParent(fightPanel);
                 s.transform.localScale = new Vector3(1.620384f, 1, 1);
-                s.transform.localPosition = new Vector3(CounterStart.x + (45 * enemyCounterCursed), CounterStart.y, CounterStart.z);
+                s.transform.localPosition = new Vector3(CounterStart.x + (45 * quickfix), CounterStart.y, CounterStart.z);
                 counters.Add(s);
+                quickfix++;
                 addedCounters = enemyCounterCursed;
             }
         }
@@ -351,8 +356,9 @@ public class SetupFight : MonoBehaviour
                 GameObject s = Instantiate(BleedPrefab) as GameObject;
                 s.transform.SetParent(fightPanel);
                 s.transform.localScale = new Vector3(1, 1, 1);
-                s.transform.localPosition = new Vector3(CounterStart.x + (45 * bleedcoinCounter), CounterStart.y, CounterStart.z);
+                s.transform.localPosition = new Vector3(CounterStart.x + (45 * quickfix), CounterStart.y, CounterStart.z);
                 counters.Add(s);
+                quickfix++;
                 addedCounters = bleedcoinCounter;
                 //Debug.Log("s2");
             }
@@ -659,7 +665,7 @@ public class SetupFight : MonoBehaviour
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
-                    if (EnemycoinList[i].CurseCoin == true && pickCoinList.Count == 0)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    if (EnemycoinList[i].CurseCoin == true && pickCoinList.Count == 0)
                     {
                         enemyCounterCursed += 1;
                         //Debug.Log(enemyCounterCursed);
@@ -682,7 +688,7 @@ public class SetupFight : MonoBehaviour
                         DealDmgGainHealthCoins += 1;
                         dealdmggainhealthindx.Add(i);
                     }
-                    if (EnemycoinList[i].DealDmgDealDmg == true && pickCoinList.Count == 0)/////////////////////////////////////////////////////////////////////////////////////////////
+                    if (EnemycoinList[i].DealDmgDealDmg == true && pickCoinList.Count == 0)
                     {
                         if (playerStats.health <= 10)
                         {
@@ -759,7 +765,7 @@ public class SetupFight : MonoBehaviour
                 }
                 if (pFlipSound)
                 {
-                    WheretoPlaySounds.PlayOneShot(sounds[2].soundClip);
+                    playClip(sounds[2].soundClip);
                     pFlipSound = false;
                 }
                 //time until flip
@@ -790,7 +796,6 @@ public class SetupFight : MonoBehaviour
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////PLAY ATTACK ANIMATION
                 
                 
                 if (pickCoinList.Count > 0)
@@ -831,7 +836,7 @@ public class SetupFight : MonoBehaviour
                 setColoursHT();
 
                 if(playerAttacks)
-                    WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
+                    playClip(sounds[0].soundClip);
 
                 //if (enemyDefence > 0)
                 //{
@@ -853,11 +858,11 @@ public class SetupFight : MonoBehaviour
                 {
                     if (enemyDefence > 0)
                     {
-                        WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
+                        playClip(sounds[1].soundClip);
                     }
                     else
                     {
-                        WheretoPlaySounds.PlayOneShot(sounds[4].soundClip);
+                        playClip(sounds[4].soundClip);
                     }
                     playerAttack -= enemyDefence;
                     if (familyCounter == 1)
@@ -890,25 +895,15 @@ public class SetupFight : MonoBehaviour
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
                 
-                if (enemyStats.health <= 0)
+                if (enemyStats.health <= 0 && !enemyRegenCoin)
                 {
-                    enemyStats.health = 0;
-                    //do something about death too
-                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
-                    {
-                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
-                    }
-                    else
-                    {
-                        enemyStats.health = enemyStats.maxHealth / 2;
-                    }
-                    combatStage = 0;
+                    combatStage = 10;
                 }
 
                 if (enemyAttacks)
                 {
                     EnemyAnims.Play("Attack");
-                    WheretoPlaySounds.PlayOneShot(sounds[0].soundClip);
+                    playClip(sounds[0].soundClip);
                 }
                 //if (playerDefence > 0)
                 //{
@@ -929,7 +924,7 @@ public class SetupFight : MonoBehaviour
                     
                     if (DealDmgGainHealthCoins != 0)
                     {
-                        DealDmgGainHealthCoins -= playerDefence;////////////////////////////////////////////////////////////////////////////////////////
+                        DealDmgGainHealthCoins -= playerDefence;
                         if (DealDmgGainHealthCoins > 0)
                         {
                             for (int i = 0; i < dealdmggainhealthindx.Count; i++)
@@ -950,22 +945,23 @@ public class SetupFight : MonoBehaviour
                         {
                             enemyAttack += 3;
                             bleedcoinCounter = 0;
+                            quickfix = 1;
                         }
                     }
                     if (playerDefence > 0)
                     {
-                        WheretoPlaySounds.PlayOneShot(sounds[1].soundClip);
+                        playClip(sounds[1].soundClip);
                     }
                     else
                     {
-                        WheretoPlaySounds.PlayOneShot(sounds[4].soundClip);
+                        playClip(sounds[4].soundClip);
                     }
                     enemyAttack -= playerDefence;
                     if (0 > enemyAttack)
                     {
                         enemyAttack = 0;
                     }
-                    if (enemyCounterCursed >= 5)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    if (enemyCounterCursed >= 5)
                     {
                         enemyAttack = (int)playerStats.health;
                         //playerStats.health /= 2;
@@ -984,19 +980,13 @@ public class SetupFight : MonoBehaviour
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
-                if (enemyStats.health <= 0)
+                if (enemyStats.health <= 0 && !enemyRegenCoin)
                 {
-                    enemyStats.health = 0;
-                    //do something about death too
-                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
-                    {
-                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
-                    }
-                    else
-                    {
-                        enemyStats.health = enemyStats.maxHealth / 2;
-                    }
-                    combatStage = 0;
+                    combatStage = 10;
+                }
+                else if(enemyRegenCoin && enemyStats.health <= 0)
+                {
+                    enemyHeal = (int)enemyStats.maxHealth / 2;
                 }
 
                 PlayerNumbers.color = Color.green;
@@ -1005,7 +995,7 @@ public class SetupFight : MonoBehaviour
                 if (playerHeal > 0)
                 {
                     PlayerNumbers.text = "" + playerHeal.ToString();
-                    WheretoPlaySounds.PlayOneShot(sounds[3].soundClip);
+                    playClip(sounds[3].soundClip);
                 }
                 if (playerStats.maxHealth < playerStats.health)
                 {
@@ -1017,7 +1007,7 @@ public class SetupFight : MonoBehaviour
                 if (enemyHeal > 0)
                 {
                     EnemyNumbers.text = "" + enemyHeal.ToString();
-                    WheretoPlaySounds.PlayOneShot(sounds[3].soundClip);
+                    playClip(sounds[3].soundClip);
                 }
                 if (enemyStats.maxHealth < enemyStats.health)
                 {
@@ -1037,20 +1027,6 @@ public class SetupFight : MonoBehaviour
                 EnemyNumbers.text = "";
                 //RECHECK DEATH since players can heal negative values (risky coins)
 
-                if (enemyStats.health <= 0)
-                {
-                    enemyStats.health = 0;
-                    //do something about death too
-                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false && !enemyRegenCoin)
-                    {
-                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
-                    }
-                    else
-                    {
-                        enemyStats.health = enemyStats.maxHealth / 2;
-                    }
-                    combatStage = 0;
-                }
                 pFlipSound = true;
 
                 Instructions.text = "Instructions";
@@ -1086,6 +1062,15 @@ public class SetupFight : MonoBehaviour
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_attack /= 2;
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_defence /= 2;
                     tempCoinsToDouble[i].GetComponent<PlayerCoinsScript>().coin.Tails_HP /= 2;
+                }
+                if (enemyStats.health <= 0)
+                {
+                    //do something about death too
+                    enemyStats.health = 0;
+                    if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
+                    {
+                        gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
+                    }
                 }
                 if (playerStats.health <= 0)
                 {
@@ -1239,7 +1224,7 @@ public class SetupFight : MonoBehaviour
                     enemyAttack += EnemycoinList[i].Heads_attack;
                     enemyDefence += EnemycoinList[i].Heads_defence;
                     enemyHeal += EnemycoinList[i].Heads_HP;
-                    if (EnemycoinList[i].CurseCoin == true && pickCoinList.Count == 0)///////////////////////////////////////////////////////////////////////////////////////////////////
+                    if (EnemycoinList[i].CurseCoin == true && pickCoinList.Count == 0)
                     {
                         enemyCounterCursed += 1;
                         //Debug.Log(enemyCounterCursed);
@@ -1261,7 +1246,7 @@ public class SetupFight : MonoBehaviour
                     {
                         DealDmgGainHealthCoins += 1;
                     }
-                    if (EnemycoinList[i].DealDmgDealDmg == true)/////////////////////////////////////////////////////////////////////////////////////////////
+                    if (EnemycoinList[i].DealDmgDealDmg == true)
                     {
                         if (playerStats.health <= 10)
                         {
@@ -1294,11 +1279,21 @@ public class SetupFight : MonoBehaviour
         yield return new WaitForSeconds(DelaySoundAfterStartingCombat);
         if (enemyStats.MySound != null)
         {
-            WheretoPlaySounds.PlayOneShot(enemyStats.MySound);
+            playClip(enemyStats.MySound);
         }
         else
         {
             Debug.Log("attach my sound");
         }
+    }
+    void playClip(AudioClip clip)
+    {
+        WheretoPlaySounds.clip = clip;
+        WheretoPlaySounds.Play();
+    }
+    public void cancelAudio()
+    {
+        //StopAllCoroutines();
+        gameObject.GetComponent<SetupFight>().WheretoPlaySounds.Stop();
     }
 }
