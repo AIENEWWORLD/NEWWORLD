@@ -113,6 +113,7 @@ public class SetupFight : MonoBehaviour
      * put the fish in animations folder on google drive
      * update combatstage2 thingo
      * polish
+     * adjust enemy colliders
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites

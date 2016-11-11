@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: eb2c40fe816a482428a592dd4e840b74
+timeCreated: 1478814057
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: landmark koi swim_0
+    21300002: landmark koi swim_1
+    21300004: landmark koi swim_2
+    21300006: landmark koi swim_3
+    21300008: landmark koi swim_4
+    21300010: landmark koi swim_5
+    21300012: landmark koi swim_6
+    21300014: landmark koi swim_7
+    21300016: landmark koi swim_8
+    21300018: landmark koi swim_9
+    21300020: landmark koi swim_10
+    21300022: landmark koi swim_11
+    21300024: landmark koi swim_12
+    21300026: landmark koi swim_13
+    21300028: landmark koi swim_14
+    21300030: landmark koi swim_15
+    21300032: landmark koi swim_16
+    21300034: landmark koi swim_17
+    21300036: landmark koi swim_18
+    21300038: landmark koi swim_19
+    21300040: landmark koi swim_20
+    21300042: landmark koi swim_21
+    21300044: landmark koi swim_22
+    21300046: landmark koi swim_23
+    21300048: landmark koi swim_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: landmark koi swim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_1
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_2
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_3
+      rect:
+        serializedVersion: 2
+        x: 2643
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_4
+      rect:
+        serializedVersion: 2
+        x: 3524
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_5
+      rect:
+        serializedVersion: 2
+        x: 4405
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_6
+      rect:
+        serializedVersion: 2
+        x: 5286
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_7
+      rect:
+        serializedVersion: 2
+        x: 6167
+        y: 1032
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_9
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_10
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_11
+      rect:
+        serializedVersion: 2
+        x: 2643
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_12
+      rect:
+        serializedVersion: 2
+        x: 3524
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_13
+      rect:
+        serializedVersion: 2
+        x: 4405
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_14
+      rect:
+        serializedVersion: 2
+        x: 5286
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_15
+      rect:
+        serializedVersion: 2
+        x: 6167
+        y: 688
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_17
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_18
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_19
+      rect:
+        serializedVersion: 2
+        x: 2643
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_20
+      rect:
+        serializedVersion: 2
+        x: 3524
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_21
+      rect:
+        serializedVersion: 2
+        x: 4405
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_22
+      rect:
+        serializedVersion: 2
+        x: 5286
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_23
+      rect:
+        serializedVersion: 2
+        x: 6167
+        y: 344
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi swim_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 881
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

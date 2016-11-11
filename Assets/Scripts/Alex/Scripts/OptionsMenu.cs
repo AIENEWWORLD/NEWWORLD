@@ -110,6 +110,7 @@ public class OptionsMenu : MonoBehaviour
         {
             float x = GameObject.FindGameObjectWithTag("SaveAcrossScenes").GetComponent<SavedInput>().soundEffectValue;
             GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>().volume = x;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = x;
             soundEffectSlider.value = x;
             //Debug.Log(Camera.main.GetComponent<AudioSource>().volume);
             //Debug.Log("yes");
@@ -357,6 +358,7 @@ public class OptionsMenu : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("FightCamera") != null && GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>() != null)
         {
             GameObject.FindGameObjectWithTag("FightCamera").GetComponent<AudioSource>().volume = soundEffectSlider.value;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().volume = soundEffectSlider.value;
         }
         GameObject[] array = GameObject.FindGameObjectsWithTag("Music");
         for(int i = 0; i < array.Length; i++)

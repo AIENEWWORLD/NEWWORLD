@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: 2440d75bef7fcfd4a9769a5e784c0fa6
+timeCreated: 1478814083
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: landmark koi jump_0
+    21300002: landmark koi jump_1
+    21300004: landmark koi jump_2
+    21300006: landmark koi jump_3
+    21300008: landmark koi jump_4
+    21300010: landmark koi jump_5
+    21300012: landmark koi jump_6
+    21300014: landmark koi jump_7
+    21300016: landmark koi jump_8
+    21300018: landmark koi jump_9
+    21300020: landmark koi jump_10
+    21300022: landmark koi jump_11
+    21300024: landmark koi jump_12
+    21300026: landmark koi jump_13
+    21300028: landmark koi jump_14
+    21300030: landmark koi jump_15
+    21300032: landmark koi jump_16
+    21300034: landmark koi jump_17
+    21300036: landmark koi jump_18
+    21300038: landmark koi jump_19
+    21300040: landmark koi jump_20
+    21300042: landmark koi jump_21
+    21300044: landmark koi jump_22
+    21300046: landmark koi jump_23
+    21300048: landmark koi jump_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: landmark koi jump_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_1
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_2
+      rect:
+        serializedVersion: 2
+        x: 2666
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_3
+      rect:
+        serializedVersion: 2
+        x: 3999
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_4
+      rect:
+        serializedVersion: 2
+        x: 5332
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_5
+      rect:
+        serializedVersion: 2
+        x: 6665
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_6
+      rect:
+        serializedVersion: 2
+        x: 7998
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_7
+      rect:
+        serializedVersion: 2
+        x: 9331
+        y: 2661
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_9
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_10
+      rect:
+        serializedVersion: 2
+        x: 2666
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_11
+      rect:
+        serializedVersion: 2
+        x: 3999
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_12
+      rect:
+        serializedVersion: 2
+        x: 5332
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_13
+      rect:
+        serializedVersion: 2
+        x: 6665
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_14
+      rect:
+        serializedVersion: 2
+        x: 7998
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_15
+      rect:
+        serializedVersion: 2
+        x: 9331
+        y: 1774
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_17
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_18
+      rect:
+        serializedVersion: 2
+        x: 2666
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_19
+      rect:
+        serializedVersion: 2
+        x: 3999
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_20
+      rect:
+        serializedVersion: 2
+        x: 5332
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_21
+      rect:
+        serializedVersion: 2
+        x: 6665
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_22
+      rect:
+        serializedVersion: 2
+        x: 7998
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_23
+      rect:
+        serializedVersion: 2
+        x: 9331
+        y: 887
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: landmark koi jump_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1333
+        height: 887
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
