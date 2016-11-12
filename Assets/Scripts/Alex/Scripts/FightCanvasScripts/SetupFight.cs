@@ -387,16 +387,19 @@ public class SetupFight : MonoBehaviour
     }
     public void setInventory()
     {
-        if (gameObject.GetComponent<ButtonsPressed>().CanInventory && gameObject.GetComponent<ButtonsPressed>().clicktocontinue == false)
-        {
-            if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
-            {
-                GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
-            }
-            inventory.greyout = true;
-            enterCombat = true;
-            inventoryisActive = !inventoryisActive;
-        }
+		if (gameObject.GetComponent<ButtonsPressed> ().InventoryButton.interactable == true) 
+		{
+			if (gameObject.GetComponent<ButtonsPressed> ().CanInventory && gameObject.GetComponent<ButtonsPressed> ().clicktocontinue == false) 
+			{
+				if (GameObject.FindGameObjectWithTag ("FightCanvas").GetComponent<TutorialDisplayImages> () != null) 
+				{
+					GameObject.FindGameObjectWithTag ("FightCanvas").GetComponent<TutorialDisplayImages> ().currentFrame++;
+				}
+				inventory.greyout = true;
+				enterCombat = true;
+				inventoryisActive = !inventoryisActive;
+			}
+		}
     }
     public void chkBoss()
     {
@@ -532,6 +535,9 @@ public class SetupFight : MonoBehaviour
             PlayeritemList.Add(item);
             item.transform.SetParent(fightPanel);
             item.transform.localScale = new Vector3(1, 1, 1);
+			item.GetComponent<Button> ().onClick.AddListener (() => {
+				setInventory();
+			});
             if (usePlacementobjects)
             {
                 item.transform.localPosition = new Vector3(playerplacements[x].x, playerplacements[x].y, 0);
