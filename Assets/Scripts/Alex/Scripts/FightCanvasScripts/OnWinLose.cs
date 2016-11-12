@@ -68,7 +68,7 @@ public class OnWinLose : MonoBehaviour
         FightCanvas.SetActive(false);
         if (dead == true)
         {
-            Title.text = "You Win";
+            Title.text = "Victory";
             gameObject.GetComponent<SetupFight>().playerStats.gold += gold;
             StatsScript playerstats = gameObject.GetComponent<SetupFight>().playerStats;
             float heal = playerstats.maxHealth - playerstats.health;
@@ -105,8 +105,8 @@ public class OnWinLose : MonoBehaviour
         }
         if (dead == false)
         {
-            Title.text = "You Died";
-            RecievedText.text = "click to continue...";
+            Title.text = "Defeat";
+            RecievedText.text = "Click to continue...";
 
             if (gameObject.GetComponent<SetupFight>().Enemy.GetComponent<StatsScript>().guyType == StatsScript.enumType.boss)
             {
