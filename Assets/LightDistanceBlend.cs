@@ -23,7 +23,7 @@ public class LightDistanceBlend : MonoBehaviour
     {
         if (col.gameObject.tag == ("Player"))
         {
-            PlayerDistance = Mathf.Abs(CenterPoint.transform.position.x - col.transform.position.x) + Mathf.Abs(CenterPoint.transform.position.z - col.transform.position.z);
+            PlayerDistance = Mathf.Abs((CenterPoint.transform.position.x - col.transform.position.x)/5) + Mathf.Abs((CenterPoint.transform.position.z - col.transform.position.z)/5);
             GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>().color = Color.Lerp(DesiredColour, PlainLightC, PlayerDistance * Time.deltaTime) ;
             GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>().intensity = Mathf.Lerp(DesiredIntensity, PlainLightI, PlayerDistance * Time.deltaTime);
         }

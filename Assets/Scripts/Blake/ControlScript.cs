@@ -163,7 +163,7 @@ public class ControlScript : MonoBehaviour
             //-0.3826835
             //0.9238795
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(InputGameobject.GetComponent<SavedInput>().keycodes["RotateRight"]))
             {
                 //rotLR = 1 * rotationSpeed;
                 //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 45, transform.eulerAngles.z);
@@ -172,7 +172,7 @@ public class ControlScript : MonoBehaviour
                 Camera.main.GetComponent<SmoothCamera>().targetLookAheadZ = 0;
                 Camera.main.GetComponent<SmoothCamera>().targetLookAheadX = 0;
             }
-            if(Input.GetKeyDown(KeyCode.Q))
+            if(Input.GetKeyDown(InputGameobject.GetComponent<SavedInput>().keycodes["RotateLeft"]))
             {
                 rotation -= rotationAmount;
                 deg = Quaternion.Euler(0, rotation, 0);
@@ -275,11 +275,6 @@ public class ControlScript : MonoBehaviour
                 if(grounded)
                 t_Body.constraints = RigidbodyConstraints.FreezeAll;
 
-                //t_Body.constraints = RigidbodyConstraints.FreezePositionX;
-                //t_Body.constraints = RigidbodyConstraints.FreezePositionZ;
-                //t_Body.constraints = RigidbodyConstraints.FreezeRotationX;
-                //t_Body.constraints = RigidbodyConstraints.FreezeRotationY;
-                //t_Body.constraints = RigidbodyConstraints.FreezeRotationX;
             }
 
             //transform.position += velocity * movementSpeed * Time.deltaTime;
@@ -345,39 +340,5 @@ public class ControlScript : MonoBehaviour
             grounded = false;
         }
     }
-
-
-   // private void ProgressStepCycle(float speed)
-   // {
-   //     if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
-   //     {
-   //         m_StepCycle += (m_CharacterController.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
-   //                      Time.fixedDeltaTime;
-   //     }
-   //
-   //     if (!(m_StepCycle > m_NextStep))
-   //     {
-   //         return;
-   //     }
-   //
-   //     m_NextStep = m_StepCycle + m_StepInterval;
-   //
-   //     PlayFootStepAudio();
-   // }
-   //
-   //
-   // private void PlayFootStepAudio()
-   // {
-   //     if (!m_CharacterController.isGrounded)
-   //     {
-   //         return;
-   //     }
-   //     int n = Random.Range(1, m_FootstepSounds.Length);
-   //     m_AudioSource.clip = m_FootstepSounds[n];
-   //     m_AudioSource.PlayOneShot(m_AudioSource.clip);
-
-   //     m_FootstepSounds[n] = m_FootstepSounds[0];
-   //     m_FootstepSounds[0] = m_AudioSource.clip;
-   // }
 
 }

@@ -69,23 +69,43 @@ public class CoinStats
         standard,
     }
 
+    //public enum TextureEnum
+    //{
+    //    LiamsCoin,
+    //    Texture_attack,
+    //    Texture_defence,
+    //    Texture_heal,
+    //    Texture_bleed,
+    //    Texture_regen,
+    //    Texture_dealdmggainhealth,
+    //    Texture_dealdmgdealdmg,
+    //    Texture_duplicate,
+    //    Texture_flip,
+    //    Texture_secondChance,
+    //    Texture_Double,
+    //    Texture_Mother,
+    //    Texture_Father,
+    //    Texture_Child,
+    //}
+
     public enum TextureEnum
     {
-        LiamsCoin,
-        Texture_attack,
-        Texture_defence,
-        Texture_heal,
-        Texture_bleed,
-        Texture_regen,
-        Texture_dealdmggainhealth,
-        Texture_dealdmgdealdmg,
-        Texture_duplicate,
-        Texture_flip,
-        Texture_secondChance,
-        Texture_Double,
-        Texture_Mother,
-        Texture_Father,
-        Texture_Child,
+        Atk,
+        Atk1,
+        Block,
+        Block1,
+        Child,
+        Corrupted,
+        Double,
+        Father,
+        Heal,
+        Lucky,
+        Mother,
+        Risky,
+        Risky1,
+        SecondChance,
+        Switch,
+        SwordShield,
     }
 
     void Start ()
@@ -150,9 +170,9 @@ public class CoinStats
         }
     }
 
-    public Texture GetTexture()
+    public Material GetTexture()
     {
-        Texture t = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<SetupCoinTextures>().TexSetter[(int)myTexture]; //what even is this
+        Material t = GameObject.FindGameObjectWithTag("checkCombat").GetComponent<SetupCoinTextures>().TexSetter[(int)myTexture]; //what even is this
         //Debug.Log((int)myTexture);
         return t;
     }

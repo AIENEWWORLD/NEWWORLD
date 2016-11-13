@@ -31,7 +31,7 @@ public class PlayerCoinsScript : MonoBehaviour, IPointerDownHandler, IPointerEnt
         itemImage = gameObject.transform.GetChild(0).GetComponent<Image>();
         myCoin.transform.Rotate(0, Random.Range(0, 100), 0);
 
-        myCoin.transform.GetChild(1).GetComponent<Renderer>().material.mainTexture = coin.GetTexture();
+        myCoin.transform.GetChild(0).GetComponent<Renderer>().material = coin.GetTexture();
         coin.chkMe();
     }
 
