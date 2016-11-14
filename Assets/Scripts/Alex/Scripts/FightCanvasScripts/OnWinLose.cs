@@ -83,10 +83,10 @@ public class OnWinLose : MonoBehaviour
             }
             playerstats.health += heal;
 
-            RecievedText.text = "you got " + gold + " gold\nTotal gold: " + playerstats.gold;
+            RecievedText.text = "Received " + gold + " gold!"; //\nTotal gold: " + playerstats.gold;
             if (heal != 0)
             {
-                RecievedText.text = RecievedText.text + "\nYou used " + heal + " supplies to heal to " + playerstats.health;
+                RecievedText.text = RecievedText.text + "\nConsumed " + heal + " supplies to heal!"; //to " + playerstats.health;
             }
             playerstats.supplies -= heal;
 
