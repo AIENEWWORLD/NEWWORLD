@@ -1097,7 +1097,6 @@ public class SetupFight : MonoBehaviour
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
                     //combatStage = 10;
                 }
-                Debug.Log(enemyRegenCoin);
                 combatStage = 0;                                         
             }                                                            
         }                                                                
