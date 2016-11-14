@@ -118,10 +118,11 @@ public class SetupFight : MonoBehaviour
      * fix tent
      * make the end display text then transition to an image then transition back to the map camera after x time
      * tent icon appear above player head
-     * you can flee when you have a flip coin active
-     * weird error when fleeing
-     * combat plays again after fleeing
      * fish swim in circle
+     * 
+     * weird error when fleeing - also fixed I think
+     * combat plays again after fleeing - fixed I think?
+     * you can flee when you have a flip coin active - also fixed I think
      * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites

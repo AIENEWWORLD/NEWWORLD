@@ -9,8 +9,8 @@ public class EnemyAI : MonoBehaviour
     public Vector3 myPos;
     Vector3 myRotation;
     GameObject Player;
-    bool RandomMove = true;
-    bool ResetPos = false;
+    public bool RandomMove = true;
+    public bool ResetPos = false;
     public Vector3 BoxInner = new Vector3(3, 0, 3);
     public Vector3 BoxOuter = new Vector3(5, 0, 5);
     public float DistanceToPlayer;
