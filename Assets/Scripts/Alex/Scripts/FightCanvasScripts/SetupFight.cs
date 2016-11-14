@@ -115,6 +115,14 @@ public class SetupFight : MonoBehaviour
      * polish
      * adjust enemy colliders
      * 
+     * fix tent
+     * make the end display text then transition to an image then transition back to the map camera after x time
+     * tent icon appear above player head
+     * you can flee when you have a flip coin active
+     * weird error when fleeing
+     * combat plays again after fleeing
+     * fish swim in circle
+     * 
      * PLAYER SLOPE probably won't do
      * Fix need for sprites
      * 
@@ -196,7 +204,7 @@ public class SetupFight : MonoBehaviour
 
     public Text Instructions;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool playerinCombat = false;
 
     CreateInventory inventory;
@@ -257,7 +265,7 @@ public class SetupFight : MonoBehaviour
     Vector2 initialXY = new Vector2(-160, -102);
     Vector2 offsetXY = new Vector2(25, 50);
 
-    bool usePlacementobjects = false;
+    public bool usePlacementobjects = false;
     public GameObject playerPlaceobj;
     public GameObject EnemyPlaceobj;
     public List<Vector2> playerplacements;
@@ -1089,7 +1097,7 @@ public class SetupFight : MonoBehaviour
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
                     //combatStage = 10;
                 }
-
+                Debug.Log(enemyRegenCoin);
                 combatStage = 0;                                         
             }                                                            
         }                                                                

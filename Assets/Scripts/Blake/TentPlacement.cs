@@ -53,3 +53,6 @@ public class TentPlacement : MonoBehaviour
         }
     }
 }
+
+//make a child object of me and put the flat tent on it, have a collider that will trigger the built tent when you press F.
+//Add a proper collider to the flat tent.
