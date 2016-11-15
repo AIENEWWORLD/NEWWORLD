@@ -5,7 +5,7 @@ using System.Collections;
 public class OnTriggerDefog : MonoBehaviour
 {
     //Component requires FogOfWarUnit
-    [HideInInspector]
+    //[HideInInspector]
     public bool hasBeenDiscovered = false;
 
     void Start()

@@ -12,11 +12,11 @@ public class VistaTentTracker : MonoBehaviour
     public GameObject PlayerObject;
     [HideInInspector]
     public GameObject NearestTent;
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject> allTents;
-    [HideInInspector]
+    //[HideInInspector]
     public List<GameObject> allVistas;
-    [HideInInspector]
+    //[HideInInspector]
     public bool AllLandmarksDiscovered = false;
 
     public void FindNearestTent()
@@ -41,8 +41,8 @@ public class VistaTentTracker : MonoBehaviour
                 actualDistance = currentDistance;
                 NearestTent = itr;
                 GameObject Compass = GameObject.FindGameObjectWithTag("Compass");
-                if(Compass != null)
-                Compass.GetComponent<CompassScript>().ClosestSupplyTent = NearestTent;
+                if (Compass != null)
+                    Compass.GetComponent<CompassScript>().ClosestSupplyTent = NearestTent;
 
             }
         }
@@ -52,26 +52,27 @@ public class VistaTentTracker : MonoBehaviour
     {
         if (AllLandmarksDiscovered == false)
         {
+            int totalDiscovered = 0;
             foreach (GameObject itr in allVistas)
             {
-                int totalDiscovered = 0;
                 GameObject vistaRef = itr;
 
                 if (vistaRef.GetComponent<OnTriggerDefog>().hasBeenDiscovered == true)
                 {
                     totalDiscovered++;
+                    
                 }
 
-                NumberOfDiscoveredVistas = totalDiscovered;
                 GameObject Compass = GameObject.FindGameObjectWithTag("Compass");
                 if (Compass != null)
                     Compass.GetComponent<CompassScript>().Landmarks.text = NumberOfDiscoveredVistas.ToString();
+                NumberOfDiscoveredVistas = totalDiscovered;
+
 
                 if (totalDiscovered == allVistas.Count)
                 {
                     AllLandmarksDiscovered = true; //All discovered-> add functionality when needed
                 }
-
             }
         }
     }
@@ -83,8 +84,6 @@ public class VistaTentTracker : MonoBehaviour
         allTents.Add(StartingTent);
         NearestTent = StartingTent;
         PlayerObject = GameObject.FindGameObjectWithTag("Player");
-
-
 
         allVistas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Vista"));
 

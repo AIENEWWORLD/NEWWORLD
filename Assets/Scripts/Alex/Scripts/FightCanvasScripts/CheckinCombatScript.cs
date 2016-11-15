@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CheckinCombatScript : MonoBehaviour
 { 
@@ -75,7 +76,7 @@ public class CheckinCombatScript : MonoBehaviour
         }
 
 
-        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop || GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>().trans == true)
+        if (Combatisenabled || Optionsisenabled || Mapisenabled || inShop || GameObject.FindGameObjectWithTag("checkCombat").GetComponent<Transitions>().trans == true || GameObject.FindGameObjectWithTag("EndCanvas").GetComponent<RawImage>().enabled == true)
         {
             PlayerCS.p_SeizeMovement = true;
             PlayerCS.NotMoving = true;

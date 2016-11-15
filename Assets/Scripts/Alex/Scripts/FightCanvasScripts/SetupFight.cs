@@ -146,7 +146,7 @@ public class SetupFight : MonoBehaviour
     [HideInInspector]
     public bool inventoryisActive = true;
     [HideInInspector]
-    public List<CoinStats> EnemycoinList = new List<CoinStats>(); 
+    public List<CoinStats> EnemycoinList = new List<CoinStats>();
     [HideInInspector]
     public List<GameObject> EnemyitemList = new List<GameObject>();
     [HideInInspector]
@@ -271,6 +271,7 @@ public class SetupFight : MonoBehaviour
     public GameObject EnemyPlaceobj;
     public List<Vector2> playerplacements;
     public List<Vector2> enemyplacements;
+    public GameObject compass;
 
     public int quickfix = 1;
 
@@ -313,7 +314,7 @@ public class SetupFight : MonoBehaviour
 
         if (enterCombat)
         {
-            if(!TutorialPlayed)
+            if (!TutorialPlayed)
             {
                 TutorialCanvas.myCanvas.enabled = true;
             }
@@ -357,7 +358,7 @@ public class SetupFight : MonoBehaviour
         {
             clearCounters();
         }
-        if (addedCounters < bleedcoinCounter )
+        if (addedCounters < bleedcoinCounter)
         {
             int tempInt = bleedcoinCounter - addedCounters;
 
@@ -396,19 +397,19 @@ public class SetupFight : MonoBehaviour
     }
     public void setInventory()
     {
-		if (gameObject.GetComponent<ButtonsPressed> ().InventoryButton.interactable == true) 
-		{
-			if (gameObject.GetComponent<ButtonsPressed> ().CanInventory && gameObject.GetComponent<ButtonsPressed> ().clicktocontinue == false) 
-			{
-				if (GameObject.FindGameObjectWithTag ("FightCanvas").GetComponent<TutorialDisplayImages> () != null) 
-				{
-					GameObject.FindGameObjectWithTag ("FightCanvas").GetComponent<TutorialDisplayImages> ().currentFrame++;
-				}
-				inventory.greyout = true;
-				enterCombat = true;
-				inventoryisActive = !inventoryisActive;
-			}
-		}
+        if (gameObject.GetComponent<ButtonsPressed>().InventoryButton.interactable == true)
+        {
+            if (gameObject.GetComponent<ButtonsPressed>().CanInventory && gameObject.GetComponent<ButtonsPressed>().clicktocontinue == false)
+            {
+                if (GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>() != null)
+                {
+                    GameObject.FindGameObjectWithTag("FightCanvas").GetComponent<TutorialDisplayImages>().currentFrame++;
+                }
+                inventory.greyout = true;
+                enterCombat = true;
+                inventoryisActive = !inventoryisActive;
+            }
+        }
     }
     public void chkBoss()
     {
@@ -419,8 +420,8 @@ public class SetupFight : MonoBehaviour
     }
     public void onEnterCombat()
     {
-        if(!playedSound)
-        StartCoroutine(PlaySound());
+        if (!playedSound)
+            StartCoroutine(PlaySound());
         playedSound = true;
         playerinCombat = true;
         PlayerAnims.Play("PlayerIdle");
@@ -452,9 +453,13 @@ public class SetupFight : MonoBehaviour
                 DiscoveryList.Add(enemyStats.Monster);
             }
         }
-        if (GameObject.FindGameObjectWithTag("Compass") != null)
+        if (compass != null)
         {
-            GameObject.FindGameObjectWithTag("Compass").GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
+            compass.GetComponent<CompassScript>().Beasts.text = DiscoveryList.Count.ToString();
+        }
+        else
+        {
+            Debug.Log("attach compass");
         }
         inventory.greyoutUnselected();
         loadPlayerCoins();
@@ -462,7 +467,7 @@ public class SetupFight : MonoBehaviour
     }
     public void onExitCombat()
     {
-        
+
         combatStage = 0;
         clearPlayerCoins();
         clearEnemyCoins();
@@ -521,7 +526,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false,false,true,false));
+                PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false, false, true, false));
             }
         }
         else
@@ -544,9 +549,9 @@ public class SetupFight : MonoBehaviour
             PlayeritemList.Add(item);
             item.transform.SetParent(fightPanel);
             item.transform.localScale = new Vector3(1, 1, 1);
-			item.GetComponent<Button> ().onClick.AddListener (() => {
-				setInventory();
-			});
+            item.GetComponent<Button>().onClick.AddListener(() => {
+                setInventory();
+            });
             if (usePlacementobjects)
             {
                 item.transform.localPosition = new Vector3(playerplacements[x].x, playerplacements[x].y, 0);
@@ -646,7 +651,7 @@ public class SetupFight : MonoBehaviour
                         //PlayeritemList[i].GetComponent<Image>().color = new Color(0, 1, 0.8f, 1);
                         pickCoinList.Add(PlayercoinList[i]);
                     }
-                    if(PlayercoinList[i].activeonHeads == true && PlayercoinList[i].cType == CoinStats.coinTypes.Mother || PlayercoinList[i].activeonHeads == true && PlayercoinList[i].cType == CoinStats.coinTypes.Father || PlayercoinList[i].activeonHeads == true && PlayercoinList[i].cType == CoinStats.coinTypes.Child)
+                    if (PlayercoinList[i].activeonHeads == true && PlayercoinList[i].cType == CoinStats.coinTypes.Mother || PlayercoinList[i].activeonHeads == true && PlayercoinList[i].cType == CoinStats.coinTypes.Father || PlayercoinList[i].activeonHeads == true && PlayercoinList[i].cType == CoinStats.coinTypes.Child)
                     {
                         familyCounter++;
                     }
@@ -727,7 +732,7 @@ public class SetupFight : MonoBehaviour
                     enemyDefence += EnemycoinList[i].Tails_defence;
                     enemyHeal += EnemycoinList[i].Tails_HP;
                 }
-                
+
             }
         }
 
@@ -739,7 +744,7 @@ public class SetupFight : MonoBehaviour
             EnemycoinList[i].Heads_attack, EnemycoinList[i].Heads_defence,
             EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack,
             EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP,
-            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true,false, EnemycoinList[i].DuplicateCoin));
+            EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true, false, EnemycoinList[i].DuplicateCoin));
         //Debug.Log("adding x");
     }
     void applyFight()//on death lock it so that the attack button cant be clicked again.
@@ -772,9 +777,9 @@ public class SetupFight : MonoBehaviour
                     }
 
                 }
-                if(enemyAttacks)
+                if (enemyAttacks)
                 {
-                    for(int i = 0; i < EnemycoinList.Count; i++)
+                    for (int i = 0; i < EnemycoinList.Count; i++)
                     {
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 20;
                     }
@@ -791,16 +796,16 @@ public class SetupFight : MonoBehaviour
             {
                 if (playerAttacks == true)
                 {
-                    
+
                     for (int i = 0; i < PlayercoinList.Count; i++)
                     {
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().spinrate = 5;
                         PlayeritemList[i].GetComponent<PlayerCoinsScript>().flip = true;
                     }
                 }
-                if(enemyAttacks == true)
+                if (enemyAttacks == true)
                 {
-                    for(int i = 0; i < EnemycoinList.Count; i++)
+                    for (int i = 0; i < EnemycoinList.Count; i++)
                     {
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().spinrate = 5;
                         EnemyitemList[i].GetComponent<EnemyCoinsScript>().flip = true;
@@ -812,29 +817,29 @@ public class SetupFight : MonoBehaviour
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
-                
-                
+
+
                 if (pickCoinList.Count > 0)
                 {
                     combatStage = 0;
                     if (pickCoinList[0].cType == CoinStats.coinTypes.flip)
                     {
-                        Instructions.text = "pick a coin to reverse";
+                        Instructions.text = "Choose a coin to switch the result.";
                     }
                     if (pickCoinList[0].cType == CoinStats.coinTypes.secondChance)
                     {
-                        Instructions.text = "pick a coin to flip again";
+                        Instructions.text = "Choose a coin to flip it again.";
                     }
                     if (pickCoinList[0].cType == CoinStats.coinTypes.Double)
                     {
-                        Instructions.text = "pick a coin to double";
+                        Instructions.text = "Choose a coin to double its value.";
                     }
                     picking = true;
                 }
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if(combatStage == 4)
+            if (combatStage == 4)
             {
                 if (playerAttacks)
                 {
@@ -851,7 +856,7 @@ public class SetupFight : MonoBehaviour
                 Instructions.text = "Instructions";
                 setColoursHT();
 
-                if(playerAttacks)
+                if (playerAttacks)
                     playClip(sounds[0].soundClip);
 
                 //if (enemyDefence > 0)
@@ -910,7 +915,7 @@ public class SetupFight : MonoBehaviour
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
-                
+
                 if (enemyStats.health <= 0 && !enemyRegenCoin)
                 {
                     combatStage = 10;
@@ -929,15 +934,15 @@ public class SetupFight : MonoBehaviour
 
                 StartCoroutine(PlayerCombat(TimeBetweenCombat));
             }
-            if(combatStage == 8)
+            if (combatStage == 8)
             {
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
                 //PlayerAnims.Play("PlayerIdle");
                 if (enemyAttacks)
                 {
-                    
-                    
+
+
                     if (DealDmgGainHealthCoins != 0)
                     {
                         DealDmgGainHealthCoins -= playerDefence;
@@ -1000,7 +1005,7 @@ public class SetupFight : MonoBehaviour
                 {
                     combatStage = 10;
                 }
-                else if(enemyRegenCoin && enemyStats.health <= 0)
+                else if (enemyRegenCoin && enemyStats.health <= 0)
                 {
                     enemyHeal = (int)enemyStats.maxHealth / 2;
                 }
@@ -1091,16 +1096,16 @@ public class SetupFight : MonoBehaviour
                 if (playerStats.health <= 0)
                 {
                     playerStats.health = 0;
-                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none,false,false,false,false), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false, false, false, false), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
                     gameObject.GetComponent<ButtonsPressed>().endcombat();
                     //combatStage = 10;
                 }
-                combatStage = 0;                                         
-            }                                                            
-        }                                                                
+                combatStage = 0;
+            }
+        }
         else
         {
             combatStage = 0;
@@ -1135,7 +1140,7 @@ public class SetupFight : MonoBehaviour
             //
             //}
         }
-        
+
 
         if (pickCoinList[0].cType == CoinStats.coinTypes.flip)
         {
@@ -1194,11 +1199,12 @@ public class SetupFight : MonoBehaviour
     {
 
         playerAttack = 0; playerDefence = 0; playerHeal = 0; familyCounter = 0;
-        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0;
+        enemyAttack = 0; enemyDefence = 0; enemyHeal = 0; pFlipSound = true;
         enemyRegenCoin = false; duplicate = false;
         DealDmgGainHealthCoins = 0; enemybleedcoin = 0;
-        dupeList.Clear();
-        //pickCoinList.Clear();
+        dupeList.Clear(); dealdmggainhealthindx.Clear();
+        pickCoinList.Clear();
+
         if (playerAttacks)
         {
             for (int i = 0; i < PlayercoinList.Count; i++)
@@ -1245,7 +1251,7 @@ public class SetupFight : MonoBehaviour
                         //Debug.Log(enemyCounterCursed);
 
                     }
-                    if (EnemycoinList[i].DuplicateCoin == true && EnemycoinList.Count < 5)
+                    if (EnemycoinList[i].DuplicateCoin == true && EnemycoinList.Count < 5 && pickCoinList.Count == 0)
                     {
                         //Debug.Log(i);
                         duplicate = true;
@@ -1253,15 +1259,16 @@ public class SetupFight : MonoBehaviour
 
 
                     }
-                    if (EnemycoinList[i].BleedCoin == true)
+                    if (EnemycoinList[i].BleedCoin == true && pickCoinList.Count == 0)
                     {
                         enemybleedcoin += 1;
                     }
-                    if (EnemycoinList[i].DealDmgGainHealth == true)
+                    if (EnemycoinList[i].DealDmgGainHealth == true && pickCoinList.Count == 0)
                     {
                         DealDmgGainHealthCoins += 1;
+                        dealdmggainhealthindx.Add(i);
                     }
-                    if (EnemycoinList[i].DealDmgDealDmg == true)
+                    if (EnemycoinList[i].DealDmgDealDmg == true && pickCoinList.Count == 0)
                     {
                         if (playerStats.health <= 10)
                         {
@@ -1272,7 +1279,7 @@ public class SetupFight : MonoBehaviour
                             enemyAttack += 1;
                         }
                     }
-                    if (EnemycoinList[i].RegenCoin == true)
+                    if (EnemycoinList[i].RegenCoin == true && pickCoinList.Count == 0)
                     {
                         enemyRegenCoin = true;
                     }
@@ -1287,7 +1294,6 @@ public class SetupFight : MonoBehaviour
 
             }
         }
-
     }
     IEnumerator PlaySound()
     {
