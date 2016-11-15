@@ -10,7 +10,7 @@ public class FishScript : MonoBehaviour
     {
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position += -transform.right * Time.deltaTime*forwardspeed;
         transform.Rotate(Vector3.up * Time.deltaTime* rotSpeed, Space.World);
