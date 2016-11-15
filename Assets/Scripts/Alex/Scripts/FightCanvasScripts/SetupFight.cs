@@ -548,7 +548,7 @@ public class SetupFight : MonoBehaviour
             GameObject item = Instantiate(PlayerCoinPrefab);
             PlayeritemList.Add(item);
             item.transform.SetParent(fightPanel);
-            item.transform.localScale = new Vector3(1, 1, 1);
+            item.transform.localScale = new Vector3(2, 2, 2);                           //Set scale of player coins on canvas
             item.GetComponent<Button>().onClick.AddListener(() => {
                 setInventory();
             });
@@ -591,7 +591,7 @@ public class SetupFight : MonoBehaviour
             GameObject item = Instantiate(EnemyCoinPrefab);
             EnemyitemList.Add(item);
             item.transform.SetParent(fightPanel);
-            item.transform.localScale = new Vector3(1, 1, 1);
+            item.transform.localScale = new Vector3(2, 2, 2);                           //Set scale of enemy coins on canvas
             if (usePlacementobjects)
             {
                 item.transform.localPosition = new Vector3(enemyplacements[x].x, enemyplacements[x].y, 0);
