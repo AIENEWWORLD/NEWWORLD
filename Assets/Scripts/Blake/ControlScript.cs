@@ -125,7 +125,7 @@ public class ControlScript : MonoBehaviour
             t_Body.velocity = (tmpvec.normalized * movementSpeed);
         }
 
-        if (currSounds.Length != 0 && WhereToPlayFootsteps.isPlaying != true && temp != 0 ) // animation of foot out is at frame 0 and 13
+		if (currSounds.Length != 0 && WhereToPlayFootsteps.isPlaying != true && temp != 0 && SpriteAnim.sprite != null) // animation of foot out is at frame 0 and 13
         {
             if (SpriteAnim.sprite.name == "side walk_0" || SpriteAnim.sprite.name == "side walk_13")
             {
