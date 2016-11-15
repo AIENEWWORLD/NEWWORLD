@@ -45,6 +45,8 @@ public class UpgradeHealthSupplies : MonoBehaviour
 
     void Update()
     {
+        currsupplyUHS = supplyScriptList[currsupplyID];
+        currhealthUHS = healthScriptList[currhealthID];
         goldText.text = GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold.ToString() + " Gold";
         if (currsupplyUHS.cost <= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold)
         {
@@ -85,6 +87,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 if (i + 1 < healList.Count)
                 {
                     currhealthID = currhealthUHS.id + 1;
+                    
                     //SetInteractableList(UHS.id + 1, healList);
                 }
                 else
@@ -112,6 +115,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
                 if (i + 1 < supplyList.Count)
                 {
                     currsupplyID = currsupplyUHS.id + 1;
+                    
                     //SetInteractableList(UHS.id + 1, supplyList);
                 }
                 else

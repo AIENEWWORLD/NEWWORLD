@@ -57,8 +57,6 @@ public class UpgradeButtonScripts : MonoBehaviour
 
         }
         
-
-
         for (int i = 0; i < ButtonList.Length; i++)
         {
             ButtonShopScript BSS = ButtonList[i].GetComponent<ButtonShopScript>();
@@ -119,7 +117,7 @@ public class UpgradeButtonScripts : MonoBehaviour
                     //Debug.Log("nButton " + (i + 1));
                 }
             }
-            if (currButton == bList[i])
+            if (currButton == bList[i] && Bss.cost <= playerStats.gold)
             {
                 Bss.myButton.interactable = true;
                 Bss.gameObject.GetComponentInChildren<Text>().text = "costs " + Bss.cost + " gold to buy stage " + (Bss.number+1);
@@ -129,7 +127,7 @@ public class UpgradeButtonScripts : MonoBehaviour
                 Bss.myButton.interactable = false;
                 Bss.gameObject.GetComponentInChildren<Text>().text = "Purchased";
             }
-            if (Bss.cost >= playerStats.gold)
+            if (Bss.cost > playerStats.gold)
             {
                 Bss.myButton.interactable = false;
                 Bss.gameObject.GetComponentInChildren<Text>().text = "Can't afford " + Bss.cost + " gold";
