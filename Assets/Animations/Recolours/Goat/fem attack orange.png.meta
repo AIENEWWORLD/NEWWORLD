@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 8b6e98da1a4130b4bb6036b375e0b0e9
+timeCreated: 1479248566
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: fem attack orange_0
+    21300002: fem attack orange_1
+    21300004: fem attack orange_2
+    21300006: fem attack orange_3
+    21300008: fem attack orange_4
+    21300010: fem attack orange_5
+    21300012: fem attack orange_6
+    21300014: fem attack orange_7
+    21300016: fem attack orange_8
+    21300018: fem attack orange_9
+    21300020: fem attack orange_10
+    21300022: fem attack orange_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fem attack orange_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_1
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_2
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_3
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_4
+      rect:
+        serializedVersion: 2
+        x: 3220
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_5
+      rect:
+        serializedVersion: 2
+        x: 4025
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_6
+      rect:
+        serializedVersion: 2
+        x: 4830
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_7
+      rect:
+        serializedVersion: 2
+        x: 5635
+        y: 953
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_9
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 0
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_10
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 0
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: fem attack orange_11
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 0
+        width: 805
+        height: 953
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

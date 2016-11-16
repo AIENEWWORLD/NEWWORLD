@@ -1,0 +1,269 @@
+fileFormatVersion: 2
+guid: 108079b2a567dce40bd7bf8a722c4b38
+timeCreated: 1479248632
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Octo_Attack_Purple_0
+    21300002: Octo_Attack_Purple_1
+    21300004: Octo_Attack_Purple_2
+    21300006: Octo_Attack_Purple_3
+    21300008: Octo_Attack_Purple_4
+    21300010: Octo_Attack_Purple_5
+    21300012: Octo_Attack_Purple_6
+    21300014: Octo_Attack_Purple_7
+    21300016: Octo_Attack_Purple_8
+    21300018: Octo_Attack_Purple_9
+    21300020: Octo_Attack_Purple_10
+    21300022: Octo_Attack_Purple_11
+    21300024: Octo_Attack_Purple_12
+    21300026: Octo_Attack_Purple_13
+    21300028: Octo_Attack_Purple_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_1
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_2
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_3
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_4
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_5
+      rect:
+        serializedVersion: 2
+        x: 3350
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_6
+      rect:
+        serializedVersion: 2
+        x: 4020
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_7
+      rect:
+        serializedVersion: 2
+        x: 4690
+        y: 597
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_9
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_10
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_11
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_12
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_13
+      rect:
+        serializedVersion: 2
+        x: 3350
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Octo_Attack_Purple_14
+      rect:
+        serializedVersion: 2
+        x: 4020
+        y: 0
+        width: 670
+        height: 597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

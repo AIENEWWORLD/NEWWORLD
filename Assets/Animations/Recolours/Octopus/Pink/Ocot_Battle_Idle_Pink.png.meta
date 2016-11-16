@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: 6d51dc9de92142648a3eb95396dd76bc
+timeCreated: 1479248582
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ocot_Battle_Idle_Pink_0
+    21300002: Ocot_Battle_Idle_Pink_1
+    21300004: Ocot_Battle_Idle_Pink_2
+    21300006: Ocot_Battle_Idle_Pink_3
+    21300008: Ocot_Battle_Idle_Pink_4
+    21300010: Ocot_Battle_Idle_Pink_5
+    21300012: Ocot_Battle_Idle_Pink_6
+    21300014: Ocot_Battle_Idle_Pink_7
+    21300016: Ocot_Battle_Idle_Pink_8
+    21300018: Ocot_Battle_Idle_Pink_9
+    21300020: Ocot_Battle_Idle_Pink_10
+    21300022: Ocot_Battle_Idle_Pink_11
+    21300024: Ocot_Battle_Idle_Pink_12
+    21300026: Ocot_Battle_Idle_Pink_13
+    21300028: Ocot_Battle_Idle_Pink_14
+    21300030: Ocot_Battle_Idle_Pink_15
+    21300032: Ocot_Battle_Idle_Pink_16
+    21300034: Ocot_Battle_Idle_Pink_17
+    21300036: Ocot_Battle_Idle_Pink_18
+    21300038: Ocot_Battle_Idle_Pink_19
+    21300040: Ocot_Battle_Idle_Pink_20
+    21300042: Ocot_Battle_Idle_Pink_21
+    21300044: Ocot_Battle_Idle_Pink_22
+    21300046: Ocot_Battle_Idle_Pink_23
+    21300048: Ocot_Battle_Idle_Pink_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_1
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_2
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_3
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_4
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_5
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_6
+      rect:
+        serializedVersion: 2
+        x: 3882
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_7
+      rect:
+        serializedVersion: 2
+        x: 4529
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_9
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_10
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_11
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_12
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_13
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_14
+      rect:
+        serializedVersion: 2
+        x: 3882
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_15
+      rect:
+        serializedVersion: 2
+        x: 4529
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_17
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_18
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_19
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_20
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_21
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_22
+      rect:
+        serializedVersion: 2
+        x: 3882
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_23
+      rect:
+        serializedVersion: 2
+        x: 4529
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Pink_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: bd6cbceb766fa654d832955367b9b5ce
+timeCreated: 1479248488
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Male battle scene orange_0
+    21300002: Male battle scene orange_1
+    21300004: Male battle scene orange_2
+    21300006: Male battle scene orange_3
+    21300008: Male battle scene orange_4
+    21300010: Male battle scene orange_5
+    21300012: Male battle scene orange_6
+    21300014: Male battle scene orange_7
+    21300016: Male battle scene orange_8
+    21300018: Male battle scene orange_9
+    21300020: Male battle scene orange_10
+    21300022: Male battle scene orange_11
+    21300024: Male battle scene orange_12
+    21300026: Male battle scene orange_13
+    21300028: Male battle scene orange_14
+    21300030: Male battle scene orange_15
+    21300032: Male battle scene orange_16
+    21300034: Male battle scene orange_17
+    21300036: Male battle scene orange_18
+    21300038: Male battle scene orange_19
+    21300040: Male battle scene orange_20
+    21300042: Male battle scene orange_21
+    21300044: Male battle scene orange_22
+    21300046: Male battle scene orange_23
+    21300048: Male battle scene orange_24
+    21300050: Male battle scene orange_25
+    21300052: Male battle scene orange_26
+    21300054: Male battle scene orange_27
+    21300056: Male battle scene orange_28
+    21300058: Male battle scene orange_29
+    21300060: Male battle scene orange_30
+    21300062: Male battle scene orange_31
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Male battle scene orange_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_1
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_2
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_3
+      rect:
+        serializedVersion: 2
+        x: 1983
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_4
+      rect:
+        serializedVersion: 2
+        x: 2644
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_5
+      rect:
+        serializedVersion: 2
+        x: 3305
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_6
+      rect:
+        serializedVersion: 2
+        x: 3966
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_7
+      rect:
+        serializedVersion: 2
+        x: 4627
+        y: 2994
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_9
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_10
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_11
+      rect:
+        serializedVersion: 2
+        x: 1983
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_12
+      rect:
+        serializedVersion: 2
+        x: 2644
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_13
+      rect:
+        serializedVersion: 2
+        x: 3305
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_14
+      rect:
+        serializedVersion: 2
+        x: 3966
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_15
+      rect:
+        serializedVersion: 2
+        x: 4627
+        y: 1996
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_17
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_18
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_19
+      rect:
+        serializedVersion: 2
+        x: 1983
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_20
+      rect:
+        serializedVersion: 2
+        x: 2644
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_21
+      rect:
+        serializedVersion: 2
+        x: 3305
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_22
+      rect:
+        serializedVersion: 2
+        x: 3966
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_23
+      rect:
+        serializedVersion: 2
+        x: 4627
+        y: 998
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_25
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_26
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_27
+      rect:
+        serializedVersion: 2
+        x: 1983
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_28
+      rect:
+        serializedVersion: 2
+        x: 2644
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_29
+      rect:
+        serializedVersion: 2
+        x: 3305
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_30
+      rect:
+        serializedVersion: 2
+        x: 3966
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Male battle scene orange_31
+      rect:
+        serializedVersion: 2
+        x: 4627
+        y: 0
+        width: 661
+        height: 998
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

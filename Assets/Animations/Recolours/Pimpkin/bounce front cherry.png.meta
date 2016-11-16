@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: 08fbf299067f0f84198e5a0e50d62d0d
+timeCreated: 1479248885
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bounce front cherry_0
+    21300002: bounce front cherry_1
+    21300004: bounce front cherry_2
+    21300006: bounce front cherry_3
+    21300008: bounce front cherry_4
+    21300010: bounce front cherry_5
+    21300012: bounce front cherry_6
+    21300014: bounce front cherry_7
+    21300016: bounce front cherry_8
+    21300018: bounce front cherry_9
+    21300020: bounce front cherry_10
+    21300022: bounce front cherry_11
+    21300024: bounce front cherry_12
+    21300026: bounce front cherry_13
+    21300028: bounce front cherry_14
+    21300030: bounce front cherry_15
+    21300032: bounce front cherry_16
+    21300034: bounce front cherry_17
+    21300036: bounce front cherry_18
+    21300038: bounce front cherry_19
+    21300040: bounce front cherry_20
+    21300042: bounce front cherry_21
+    21300044: bounce front cherry_22
+    21300046: bounce front cherry_23
+    21300048: bounce front cherry_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bounce front cherry_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_1
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_2
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_3
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_4
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_5
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_6
+      rect:
+        serializedVersion: 2
+        x: 2124
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_7
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 1428
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_9
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_10
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_11
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_12
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_13
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_14
+      rect:
+        serializedVersion: 2
+        x: 2124
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_15
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 952
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_17
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_18
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_19
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_20
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_21
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_22
+      rect:
+        serializedVersion: 2
+        x: 2124
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_23
+      rect:
+        serializedVersion: 2
+        x: 2478
+        y: 476
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bounce front cherry_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 354
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: 2457bfbddac772041ac497d9eb721a6d
+timeCreated: 1479248624
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ocot_Battle_Idle_Purple_0
+    21300002: Ocot_Battle_Idle_Purple_1
+    21300004: Ocot_Battle_Idle_Purple_2
+    21300006: Ocot_Battle_Idle_Purple_3
+    21300008: Ocot_Battle_Idle_Purple_4
+    21300010: Ocot_Battle_Idle_Purple_5
+    21300012: Ocot_Battle_Idle_Purple_6
+    21300014: Ocot_Battle_Idle_Purple_7
+    21300016: Ocot_Battle_Idle_Purple_8
+    21300018: Ocot_Battle_Idle_Purple_9
+    21300020: Ocot_Battle_Idle_Purple_10
+    21300022: Ocot_Battle_Idle_Purple_11
+    21300024: Ocot_Battle_Idle_Purple_12
+    21300026: Ocot_Battle_Idle_Purple_13
+    21300028: Ocot_Battle_Idle_Purple_14
+    21300030: Ocot_Battle_Idle_Purple_15
+    21300032: Ocot_Battle_Idle_Purple_16
+    21300034: Ocot_Battle_Idle_Purple_17
+    21300036: Ocot_Battle_Idle_Purple_18
+    21300038: Ocot_Battle_Idle_Purple_19
+    21300040: Ocot_Battle_Idle_Purple_20
+    21300042: Ocot_Battle_Idle_Purple_21
+    21300044: Ocot_Battle_Idle_Purple_22
+    21300046: Ocot_Battle_Idle_Purple_23
+    21300048: Ocot_Battle_Idle_Purple_24
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_1
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_2
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_3
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_4
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_5
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_6
+      rect:
+        serializedVersion: 2
+        x: 3882
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_7
+      rect:
+        serializedVersion: 2
+        x: 4529
+        y: 1728
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_9
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_10
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_11
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_12
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_13
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_14
+      rect:
+        serializedVersion: 2
+        x: 3882
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_15
+      rect:
+        serializedVersion: 2
+        x: 4529
+        y: 1152
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_17
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_18
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_19
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_20
+      rect:
+        serializedVersion: 2
+        x: 2588
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_21
+      rect:
+        serializedVersion: 2
+        x: 3235
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_22
+      rect:
+        serializedVersion: 2
+        x: 3882
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_23
+      rect:
+        serializedVersion: 2
+        x: 4529
+        y: 576
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ocot_Battle_Idle_Purple_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 647
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
