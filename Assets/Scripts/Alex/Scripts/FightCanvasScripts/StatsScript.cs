@@ -17,6 +17,7 @@ public class StatsScript : MonoBehaviour
     public int dropRate = 50;//the drop rate of the coins
     public enumType guyType;
     public Enemy Monster;
+    public int Level;
 
     //for UI
     public List<CoinStats> coinList = new List<CoinStats>();

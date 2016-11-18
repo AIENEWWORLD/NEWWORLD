@@ -39,10 +39,12 @@ public class RespawnPlayer : MonoBehaviour
             }
         }
 
-        PlayerObject.transform.position = nearestRespawnPoint.transform.position;
+        //PlayerObject.transform.position = nearestRespawnPoint.transform.position;
+        PlayerObject.transform.position = nearestRespawnPoint.transform.GetChild(0).transform.position;
         PlayerObject.transform.position += new Vector3(0, 5, 0); // fix for checking grounded
         ControlScript c = PlayerObject.GetComponent<ControlScript>();
         c.rotation = 0;
+        c.deg = Quaternion.Euler(0, 0, 0);
         PlayerObject.transform.Rotate(0, 0, 0);
     }
 

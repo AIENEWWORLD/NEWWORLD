@@ -127,7 +127,7 @@ public class CoinStats
 
     }
 
-    public CoinStats(string _itemName, string _itemDescription, string _itemDescription2, int _itemID, int H_attack, int H_defence, int H_HP, int T_attack, int T_defence, int T_HP, coinTypes _cType, EnemycoinTypes _Etypes, bool _isHeads,bool useSprite,bool isempty, bool _DuplicateCoin)
+	public CoinStats(string _itemName, string _itemDescription, string _itemDescription2, int _itemID, int H_attack, int H_defence, int H_HP, int T_attack, int T_defence, int T_HP, coinTypes _cType, EnemycoinTypes _Etypes, bool _isHeads,bool useSprite,bool isempty, bool _DuplicateCoin, TextureEnum tEnum)
     {
         DuplicateCoin = _DuplicateCoin;
         itemName = _itemName;
@@ -146,6 +146,7 @@ public class CoinStats
         ETypes = _Etypes;
         isHeads = _isHeads;
         notEmpty = isempty;
+		myTexture = tEnum;
     }
 
     public CoinStats()
