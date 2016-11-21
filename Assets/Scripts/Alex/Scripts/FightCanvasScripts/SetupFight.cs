@@ -870,7 +870,7 @@ public class SetupFight : MonoBehaviour
 
                 PlayerNumbers.text = "";
                 EnemyNumbers.text = "";
-                Instructions.text = "Instructions";
+                Instructions.text = "";
                 setColoursHT();
 
                 if (playerAttacks)
@@ -1079,7 +1079,7 @@ public class SetupFight : MonoBehaviour
 
                 pFlipSound = true;
 
-                Instructions.text = "Instructions";
+                Instructions.text = "Press ATTACK or click on a coin slot to change your active coins.";
 
                 EnemyAnims.Play("Idle");
                 gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
@@ -1140,7 +1140,7 @@ public class SetupFight : MonoBehaviour
             combatStage = 0;
             PlayerNumbers.text = "";
             EnemyNumbers.text = "";
-            Instructions.text = "Instructions";
+            Instructions.text = "Press ATTACK or click on a coin slot to change your active coins.";
             gameObject.GetComponent<ButtonsPressed>().SetInteractable(true);
             chkBoss();
         }

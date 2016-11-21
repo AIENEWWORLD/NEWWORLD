@@ -8,7 +8,7 @@ public class CreateInventory : MonoBehaviour
     public List<GameObject> itemList = new List<GameObject>(); //save this
     public List<CoinStats> coinList = new List<CoinStats>(); //save this
     public GameObject Items;
-    int _x = -260; int _y = 180;
+    int _x = -320; int _y = 170;
 
     public bool greyout = true;
 
@@ -55,9 +55,9 @@ public class CreateInventory : MonoBehaviour
         itemList.Clear();
         int num = 0;
 
-        for (int x = 0; x < 5; x++)
+        for (int x = 0; x < 4; x++)
         {
-            for (int y = 0; y < 10; y++)
+            for (int y = 0; y < 9; y++)
             {
                 coinScript cs = Items.GetComponent<coinScript>();
                 cs.itemNumber = num;
@@ -73,13 +73,13 @@ public class CreateInventory : MonoBehaviour
                 itemList.Add(item);
                 coinList.Add(new CoinStats());
                 item.transform.SetParent(gameObject.transform);
-                item.transform.localScale = new Vector3(1, 1, 1);
+                item.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                 item.transform.localPosition = new Vector3(_x, _y, 0);
-                _x += 60;
-                if (y == 9)
+                _x += 80;
+                if (y == 8)
                 {
-                    _x = -260;
-                    _y -= 60;
+                    _x = -320;
+                    _y -= 80;
                 }
                 num++;
             }
