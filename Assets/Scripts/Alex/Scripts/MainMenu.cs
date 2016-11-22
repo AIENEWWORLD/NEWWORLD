@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         if (EventSystem.current.currentSelectedGameObject != null)
-            arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, EventSystem.current.currentSelectedGameObject.transform.localPosition.y, 0);
+            arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, EventSystem.current.currentSelectedGameObject.transform.localPosition.y, -220);
     }
 
     public void MouseOver(Button button)
