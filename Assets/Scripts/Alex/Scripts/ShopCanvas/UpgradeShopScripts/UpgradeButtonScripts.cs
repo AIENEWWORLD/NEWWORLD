@@ -120,7 +120,7 @@ public class UpgradeButtonScripts : MonoBehaviour
             if (currButton == bList[i] && Bss.cost <= playerStats.gold)
             {
                 Bss.myButton.interactable = true;
-                Bss.gameObject.GetComponentInChildren<Text>().text = "costs " + Bss.cost + " gold to buy stage " + (Bss.number+1);
+                Bss.gameObject.GetComponentInChildren<Text>().text = " + 1 Coin\n" + Bss.cost + " Gold";
             }
             else
             {
@@ -130,7 +130,7 @@ public class UpgradeButtonScripts : MonoBehaviour
             if (Bss.cost > playerStats.gold)
             {
                 Bss.myButton.interactable = false;
-                Bss.gameObject.GetComponentInChildren<Text>().text = "Can't afford " + Bss.cost + " gold";
+                Bss.gameObject.GetComponentInChildren<Text>().text = "Can't afford!\n" + Bss.cost + " Gold";
             }
             if (i == 3 && Bss.active == false && Bss.purchased == true)
             {

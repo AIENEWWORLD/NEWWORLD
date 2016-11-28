@@ -28,12 +28,12 @@ public class UpgradeHealthSupplies : MonoBehaviour
         for (int i = 0; i < healList.Count; i++)
         {
             healthScriptList.Add(healList[i].GetComponent<UpgradeHealthSupplies1>());
-            healList[i].transform.GetChild(0).GetComponent<Text>().text = "Click to buy " + healList[i].GetComponent<UpgradeHealthSupplies1>().ExtraHealth + " health for " + healList[i].GetComponent<UpgradeHealthSupplies1>().cost;
+            healList[i].transform.GetChild(0).GetComponent<Text>().text = "+ 5 Health\n" /*+ healList[i].GetComponent<UpgradeHealthSupplies1>().ExtraHealth + " health for "*/ + healList[i].GetComponent<UpgradeHealthSupplies1>().cost + " Gold";
         }
         for (int i = 0; i < supplyList.Count; i++)
         {
             supplyScriptList.Add(supplyList[i].GetComponent<UpgradeHealthSupplies1>());
-            supplyList[i].transform.GetChild(0).GetComponent<Text>().text = "Click to buy " + supplyList[i].GetComponent<UpgradeHealthSupplies1>().ExtraSupplies + " supplies for \n" + supplyList[i].GetComponent<UpgradeHealthSupplies1>().cost;
+            supplyList[i].transform.GetChild(0).GetComponent<Text>().text = "+ 50 Supply\n" /*+ supplyList[i].GetComponent<UpgradeHealthSupplies1>().ExtraSupplies + " supplies for \n"*/ + supplyList[i].GetComponent<UpgradeHealthSupplies1>().cost + " Gold";
         }
 
         currsupplyUHS = supplyScriptList[0];
@@ -51,23 +51,23 @@ public class UpgradeHealthSupplies : MonoBehaviour
         if (currsupplyUHS.cost <= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold)
         {
             supplyList[currsupplyID].GetComponent<Button>().interactable = true;
-            supplyList[currsupplyID].transform.GetChild(0).GetComponent<Text>().text = "Click to buy " + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().ExtraSupplies + " supplies for \n" + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().cost;
+            supplyList[currsupplyID].transform.GetChild(0).GetComponent<Text>().text = "+ 50 Supply\n" /*+ supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().ExtraSupplies + " supplies for \n"*/ + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().cost + " Gold";
         }
         else
         {
             supplyList[currsupplyID].GetComponent<Button>().interactable = false;
-            supplyList[currsupplyID].transform.GetChild(0).GetComponent<Text>().text = "can't afford " + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().cost + " gold";
+            supplyList[currsupplyID].transform.GetChild(0).GetComponent<Text>().text = "Can't afford!\n" + supplyList[currsupplyID].GetComponent<UpgradeHealthSupplies1>().cost + " Gold";
         }
 
         if (currhealthUHS.cost <= GameObject.FindGameObjectWithTag("FightCamera").GetComponent<StatsScript>().gold)
         {
             healList[currhealthID].GetComponent<Button>().interactable = true;
-            healList[currhealthID].transform.GetChild(0).GetComponent<Text>().text = "Click to buy " + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().ExtraHealth + " health for " + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().cost;
+            healList[currhealthID].transform.GetChild(0).GetComponent<Text>().text = "+ 5 Health\n" /*+ healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().ExtraHealth + " health for "*/ + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().cost + " Gold";
         }
         else
         {
             healList[currhealthID].GetComponent<Button>().interactable = false;
-            healList[currhealthID].transform.GetChild(0).GetComponent<Text>().text = "can't afford " + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().cost + " gold";
+            healList[currhealthID].transform.GetChild(0).GetComponent<Text>().text = "Can't afford!\n" + healList[currhealthID].GetComponent<UpgradeHealthSupplies1>().cost + " Gold";
         }
     }
 
@@ -142,7 +142,7 @@ public class UpgradeHealthSupplies : MonoBehaviour
             else
             {
                 s[i].GetComponent<Button>().interactable = false;
-                s[i].transform.GetChild(0).GetComponent<Text>().text = "Buy previous upgrade";
+                s[i].transform.GetChild(0).GetComponent<Text>().text = "Locked";
             }
         }
     }

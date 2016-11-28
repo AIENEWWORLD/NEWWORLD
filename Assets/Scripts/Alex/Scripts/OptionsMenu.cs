@@ -321,7 +321,7 @@ public class OptionsMenu : MonoBehaviour
         }
         selectedButton = button;
         //setKeyCodes();
-        button.transform.GetComponentInChildren<Text>().text = "assign a key";
+        button.transform.GetComponentInChildren<Text>().text = "Assign a key";
     }
     void getUpdates()
     {

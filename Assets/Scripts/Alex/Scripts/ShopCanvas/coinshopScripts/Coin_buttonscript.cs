@@ -52,11 +52,11 @@ public class Coin_buttonscript : MonoBehaviour, IPointerUpHandler
 
         if (active == true)
         {
-            gameObject.GetComponentInChildren<Text>().text = "Buy for " + coin_stats.cost.ToString() + " gold";
+            gameObject.GetComponentInChildren<Text>().text = /*"Buy for " +*/ coin_stats.cost.ToString() + " Gold";
         }
         else
         {
-            gameObject.GetComponentInChildren<Text>().text = "Can't afford " + coin_stats.cost.ToString() + " gold";
+            gameObject.GetComponentInChildren<Text>().text = "Can't afford!\n" + coin_stats.cost.ToString() + " Gold";
         }
     }
 }
