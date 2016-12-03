@@ -34,7 +34,7 @@ public class Coin_buttonscript : MonoBehaviour, IPointerUpHandler
             coin_stats.itemID = AddI.coins.Count;
             AddI.AddCoin(coin_stats);
             inv.addItem(AddI.coins.Count);
-            inv.fullReset(-260, 180);
+            inv.fullReset(-320, 170);
             inv.reAddItems();
             CSM.destroyatID(Parent);
             CSM.checkShop();

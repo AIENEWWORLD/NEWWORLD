@@ -6,7 +6,7 @@ public class VistaTentTracker : MonoBehaviour
 
 {
     public GameObject StartingTent;
-    [HideInInspector]
+    //[HideInInspector]
     public int NumberOfDiscoveredVistas = 0;
     [HideInInspector]
     public GameObject PlayerObject;
@@ -63,11 +63,10 @@ public class VistaTentTracker : MonoBehaviour
                     
                 }
 
+                NumberOfDiscoveredVistas = totalDiscovered;
                 GameObject Compass = GameObject.FindGameObjectWithTag("Compass");
                 if (Compass != null)
                     Compass.GetComponent<CompassScript>().Landmarks.text = NumberOfDiscoveredVistas.ToString();
-                NumberOfDiscoveredVistas = totalDiscovered;
-
 
                 if (totalDiscovered == allVistas.Count)
                 {

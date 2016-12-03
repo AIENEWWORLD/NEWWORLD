@@ -67,7 +67,7 @@ public class EnemyDropCoins : MonoBehaviour
                     //Debug.Log(newDcoins.Count + " you got " + newDcoins[rand].itemName + " for killing " + gType);
                     //gameObject.GetComponent<OnWinLose>().CheckDeath(true, newDcoins[rand]);
                     coin = newDcoins[rand];
-                    cInv.fullReset(-260, 180);
+                    cInv.fullReset(-320, 170);
                     cInv.reAddItems();
                     DropCoins.Remove(newDcoins[rand]);
 

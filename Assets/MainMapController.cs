@@ -11,12 +11,15 @@ public class MainMapController : MonoBehaviour
 
     bool mapEnabled = false;
     float CameraYDistance = 0;
-    float ZoomDistance = 0;
+    public float ZoomDistance = 0;
 
     Camera mapCamera;
     GameObject InputGameobject;
     float xVelocity;
     float zVelocity;
+
+    public float zoomMax;
+    public float zoomMin;
 
     // Use this for initialization
     void Start()
@@ -44,6 +47,17 @@ public class MainMapController : MonoBehaviour
 
             xVelocity = InputGameobject.GetComponent<SavedInput>().horizontal;
             zVelocity = InputGameobject.GetComponent<SavedInput>().vertical;
+
+            if (mapCamera.transform.position.y > zoomMax && Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                ZoomDistance = 0;
+            }
+            else if (mapCamera.transform.position.y < zoomMin && Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                ZoomDistance = 0;
+            }
+
+            Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
 
             transform.position += new Vector3(xVelocity * ScrollSpeed * Time.deltaTime, ZoomDistance, zVelocity * ScrollSpeed* Time.deltaTime);
            

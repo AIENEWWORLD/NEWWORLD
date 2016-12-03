@@ -17,127 +17,6 @@ public class myAudioClass
 
 public class SetupFight : MonoBehaviour
 {
-    /* Fixed?: Double check
-     * 
-     * FIXED PROBLEM
-     * script execution order:
-     * additem
-     * createinventory
-     * coinscript
-     * setupfight
-     * playercoinscript
-     * statsscript
-     * respawnenemies
-     * 
-     * 
-     * options menu, also options menu doesn't reload from the actual controls, go from menu to options to key bindings change controls, apply, return to menu, go back to options and its the same.
-     * totalcoins is a bit broken
-     * while in paused menu and in combat, the combat attack buttons are still active.
-     * shop menu
-     * fix flee, fix defence
-     * make animations play only when attacking.
-     * back button on menu reenters combat screen
-     * strange glitch where pimpkin moves to the right when I select a coin? BOX COLLIDER
-     * combat stages continue to count after combat ends.
-     * attack no longer greyed out when there is no coins selected. THIS IS BECAUSE OF THE EMPTY SLOTS
-     * clicking coins giving errors
-     * IN PLAYERCOINSSCRIPT CHANGE THE POS.Y ROTATION IN FLIP WHEN THE NEW COIN IS IN-GAME.
-     * visual indication of coins and heads/tails, make cylinder flip and stuff.
-     * respawn enemies get distance from player to respawn position, if player has made it x distance away, respawn the enemy.
-     * risky coin double check, healing symbol + or - needs to be correct for healing(check the risky coin's tails effect)
-     * npc shop with text like pokemon
-     * space enables/disables the menu sometimes? strange bug (to do with what is selected on the eventsystem). SETTING SELECTIONS SEGMENT
-     * spamming space while in the upgrade total coins menu breaks it
-     * mouseovertext stayed enabled one time after finishing combat
-     * under playerprefab1 playerobject has tag "player", does it need to be there? this breaks my respawn enemies getcomponent<Transform> position
-     * supplies in negatives heal negatives after combat
-     * can kind of skip the text too fast?
-     * death, go back to previous supply thing, lose gold
-     * enemies move when in combat, play can move when in combat
-     * lock some scripts
-     * check out the art, remember there are phases of combat, there is art to help remember and cursed coins activate the things in the bottom right.
-     * EnemyScript uses the rigidbody to zero out velocity, sometimes the enemy would just run in a random direction.
-     * orthographic cameras on shop, fix input after text is fully written
-     * make coins flip properly
-     * multiple enemies in combat screen? CANT GET THIS TO HAPPEN. fixed on death this could happen, doesn't seem like this was the issue though.
-     * ENEMY RUNS IN RANDOM DIRECTION (MAYBE BECAUSE OF RESPAWN) ----------- BECAUSE OF COLLISION PUSHING IT AWAY WHEN IT FINALLY COLLIDES WITH PLAYER
-     * With collision between the enemy and player there is sometimes a chance that unity collision will still occur and the enemy will continue to add velocity away from the object it collided with this happens now that the enemies are disabled when they die rather than destroyed. with the rigidbody's mass on the player being 500, and the enemies mass being 0.1 I'd assume this is why the enemy floats away and doesn't seem to slow down.
-     * blakes player movement script locks the players Y axis (preventing falling when no keys are being pressed), this might work better without that
-     * enemies don't fall + if they unlock the Y axis on rigidbody they can't climb hills, mass 500 works better
-     * something kinda messed up with the shop text...
-     * enemyCounterCursed counts towards damage even when there is a flip coin that got heads
-     * picking flip coin breaking getting random happened twice
-     * WHEN YOU DIE CANVAS IS GLITCHY fixed, things weren't being reset
-     * calculatecoins2 breaks other coins. Fixed
-     * health not resetting upon death fixed
-     * merge counter coin and flip coin into one. Done
-     * shop text popup "Press" Inputkey - done
-     * flip coins and remove the colours - done
-     * enemy AI with roaming - done
-     * while fleeing spin - done
-     * ENEMYAI NEEDS TO BE ATTACHED TO EVERY ENEMY - done
-     * camera rotation - done
-     * add curse counter coins - done
-     * play the idle animation in the CheckinCombatScript (commenting shows where). - done
-     * make bosses not respawn - THEY WILL NOT RESPAWN IF THE GUYTYPE ENUM IS SET TO BOSS BUT THEY WILL IF THE PLAYER DIES TO THEM
-     * COINS - done necessary coins
-     * TEST COMBAT WITH FLIP COINS
-     * update the calculatefight2
-     * health upgrade, supply upgrade
-     * put in the animations
-     * smooth movement camera with deadzone kinda like this https://www.youtube.com/watch?v=WL_PaUyRAXQ
-     * landmark discovery text popup.
-     * tutorial script when you enter combat, goes through images as player clicks
-     * disable certain buttons to go with certain images
-     * Sounds, check sliders set the volume of objects with tag "music" using findobjectswithtag in the optionsmenu Awake();
-     * set audiosources on main camera and fight camera to SFX, set other objects with tag "music" to music volume
-     * fix sounds so that block sound plays when player attacks etc
-     * fix the navmesh
-     * add text to blakes tent thingo - done
-     * OPTIONS MENU KEYBINDS CLICK THINGY DOESNT WORK FOR MAP - done
-     * DEALDMGGAINHEALTHATTACK GET REMOVED AND ADD IT TO THE ACTUAL COIN - done
-     * make alpha better on inventory coins - done 
-     * coins layout - done
-     * coin shop mouseover text not working - done
-     * fix the option menu bindings - done
-     * if haven't picked a flip coin animation continuously plays - done
-     * transition to combat screen and maybe other stuff - done
-	* weird error when fleeing - also fixed I think
-	* combat plays again after fleeing - fixed I think?
-	* you can flee when you have a flip coin active - also fixed I think
-	* after fighting the thunderbird and dying to it using coins, the bird stays in the scene - fixed I think
-	* make this icon show up when text to interact with things pops up https://drive.google.com/file/d/0B5Lg-Kk6lY3RVXF0MW9tMWoxelU/view done
-	* when at 50% and 0% supplies display text
-	* put in use of controls script
-	* Coins can now be set to materials rather than just textures
-	* with blakes tent we will make the flattened tent with exclamation mark or something next to where the actual tent will spawn, when you spawn the tent hide the flattened tent
-	* fix tent
-	* make the end display text then transition to an image then transition back to the map camera after x time
-	* fish swim in circle
-	* bleed coin if you block prevent bleed coin counter going up - done
-	* cursed icon needs to pop up when the bleed coin does - done
-	* second chance play flip animation again - done
-	* coins with negative health dont take away health - fixed
-	* FIX CALCFIGHT 2 - done
-	* make it so you don't spawn on top of a tent - done
-	* pitch combat sound - done
-	* CLONES MAKE COPIES OF THE DEFAULT COINATK COIN RATHER THAN THE CLONE MATERIAL - done
-	* fix rotation on respawn - done
-	* FIX ENEMIES AI - NEED REPOSITIONING AND CHECKING
-     * 
-     * -------------------------------------------------
-     * TO DO:
-     * 
-     * on the upgrade shop change text to "purchased" once purchased and when you run out of money "can't afford" - text on first row not working well
-     * 
-	 * 
-     * level enemies - I need visual studio
-     * make bleed/cursed repositionable
-     * when below 50%/0% supplies display text
-     * LOOK INTO FIXING THE SHOP
-     * 
-     * 
-     */
     public GameObject Inventory;
     public GameObject FightScreen;
     [HideInInspector]
@@ -272,6 +151,7 @@ public class SetupFight : MonoBehaviour
 
     public int quickfix = 1;
 	public int tempCursedint = 0;
+    public List<CoinStats> tmpCoinList = new List<CoinStats>();
 
     void Start()
     {
@@ -391,6 +271,7 @@ public class SetupFight : MonoBehaviour
     public void setEnemyList(List<CoinStats> cList)
     {
         //coinList.Clear();
+
         EnemycoinList = cList;
     }
     public void setInventory()
@@ -425,6 +306,17 @@ public class SetupFight : MonoBehaviour
         PlayerAnims.Play("PlayerIdle");
         EnemyAnims = enemySprite.GetComponent<Animator>();
 
+        if (tmpCoinList.Count == 0)
+        {
+            //Debug.Log(tmpCoinList.Count);
+            StatsScript SS = Enemy.GetComponent<StatsScript>();
+            for (int i = 0; i < SS.coinList.Count; i++)
+            {
+                tmpCoinList.Add(SS.coinList[i]);
+            }
+
+        }
+
         EnemyName.text = enemyStats.Name;
         PlayerName.text = playerStats.Name;
 
@@ -435,6 +327,7 @@ public class SetupFight : MonoBehaviour
         EnemySlider.value = enemyStats.health;
         gameObject.GetComponent<ButtonsPressed>().FleeButton.interactable = true;
         chkBoss();
+
 
         if (enemyStats.Monster != StatsScript.Enemy.none)
         {
@@ -465,7 +358,16 @@ public class SetupFight : MonoBehaviour
     }
     public void onExitCombat()
     {
-
+        if (tmpCoinList.Count != 0)
+        {
+            StatsScript SS = Enemy.GetComponent<StatsScript>();
+            SS.coinList.Clear();
+            for (int i = 0; i < tmpCoinList.Count; i++)
+            {
+                SS.coinList.Add(tmpCoinList[i]);
+            }
+            tmpCoinList.Clear();
+        }
         combatStage = 0;
         clearPlayerCoins();
         clearEnemyCoins();
@@ -524,7 +426,7 @@ public class SetupFight : MonoBehaviour
             {
                 //Debug.Log(playerStats.totalCoins - PlayercoinList.Count);
                 emptyCoins = x;
-				PlayercoinList.Add(new CoinStats("empty slot", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false, false, true, false,CoinStats.TextureEnum.Atk));
+                PlayercoinList.Add(new CoinStats("Click to select a coin", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false, false, true, false,CoinStats.TextureEnum.Atk));
             }
         }
         else
@@ -744,6 +646,7 @@ public class SetupFight : MonoBehaviour
             EnemycoinList[i].Heads_HP, EnemycoinList[i].Tails_attack,
             EnemycoinList[i].Tails_defence, EnemycoinList[i].Tails_HP,
 			EnemycoinList[i].cType, EnemycoinList[i].ETypes, false, true, false, EnemycoinList[i].DuplicateCoin, EnemycoinList[i].myTexture));
+
 		
         //Debug.Log("adding x");
     }
@@ -1119,13 +1022,35 @@ public class SetupFight : MonoBehaviour
                     enemyStats.health = 0;
                     if (gameObject.GetComponent<EnemyDropCoins>().dead == false)
                     {
+                        if (tmpCoinList.Count != 0)
+                        {
+                            StatsScript SS = Enemy.GetComponent<StatsScript>();
+                            SS.coinList.Clear();
+                            for (int i = 0; i < tmpCoinList.Count; i++)
+                            {
+                                SS.coinList.Add(tmpCoinList[i]);
+                            }
+                            tmpCoinList.Clear();
+                        }
+                        //Debug.Log(tmpCoinList.Count);
                         gameObject.GetComponent<EnemyDropCoins>().onKilled(enemyStats.Monster, enemyStats.gold, enemyStats.dropRate);
                     }
                 }
                 if (playerStats.health <= 0)
                 {
+                    if (tmpCoinList.Count != 0)
+                    {
+                        StatsScript SS = Enemy.GetComponent<StatsScript>();
+                        SS.coinList.Clear();
+                        for (int i = 0; i < tmpCoinList.Count; i++)
+                        {
+                            SS.coinList.Add(tmpCoinList[i]);
+                        }
+                        tmpCoinList.Clear();
+                    }
+                    //Debug.Log(tmpCoinList.Count);
                     playerStats.health = 0;
-					gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false, false, false, false,CoinStats.TextureEnum.Atk), 0);
+                    gameObject.GetComponent<OnWinLose>().CheckDeath(false, new CoinStats("", "", "", 0, 0, 0, 0, 0, 0, 0, CoinStats.coinTypes.standard, CoinStats.EnemycoinTypes.none, false, false, false, false,CoinStats.TextureEnum.Atk), 0);
                     //playerStats.dead = true;
                     GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<RespawnPlayer>().FindNearestRespawn();
                     //do something about death too
@@ -1244,7 +1169,8 @@ public class SetupFight : MonoBehaviour
 		DealDmgGainHealthCoins = 0; enemybleedcoin = 0; tempCursedint = 0;
 		dupeList.Clear(); dealdmggainhealthindx.Clear();
 
-		tempCoinsToDouble.Clear();
+		//tempCoinsToDouble.Clear();
+
 		//pickCoinList.Clear();
 		if (playerAttacks)
 		{

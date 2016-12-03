@@ -181,7 +181,7 @@ public class CoinStats
         }
         else if (cType == coinTypes.none && ETypes == EnemycoinTypes.none || cType != coinTypes.none && ETypes != EnemycoinTypes.none)
         {
-            Debug.Log("please pick one coin type");
+           // Debug.Log("please pick one coin type");
         }
     }
 

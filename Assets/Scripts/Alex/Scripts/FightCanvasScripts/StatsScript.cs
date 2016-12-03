@@ -21,6 +21,7 @@ public class StatsScript : MonoBehaviour
 
     //for UI
     public List<CoinStats> coinList = new List<CoinStats>();
+    //[HideInInspector]
     public Vector2 UIpos; //the position of the sprite on the prefab. Please make z 0
     public Vector3 UIrotation;
     public Vector3 Scale;
@@ -40,6 +41,7 @@ public class StatsScript : MonoBehaviour
     public bool counting;
 
     public AudioClip MySound;
+
 
     public enum enumType
     {
@@ -77,7 +79,6 @@ public class StatsScript : MonoBehaviour
 
     void Update()
     {
-
     }
 
     void setScript(StatsScript s)
@@ -116,6 +117,7 @@ public class StatsScript : MonoBehaviour
                     T.trans = true;
 
                     FightCamera.GetComponent<SetupFight>().setEnemyList(coinList);
+
                     FightCamera.GetComponent<SetupFight>().enterCombat = true;
                 }
                 else

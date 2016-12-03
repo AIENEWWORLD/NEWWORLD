@@ -84,7 +84,6 @@ public class CreateInventory : MonoBehaviour
                 num++;
             }
         }
-
         for (int i = 0; i < addI.coins.Count; i++)
         {
             addItem(addI.coins[i].itemID);
