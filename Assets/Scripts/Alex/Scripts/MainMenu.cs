@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         if (EventSystem.current.currentSelectedGameObject != null)
-            arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, EventSystem.current.currentSelectedGameObject.transform.localPosition.y, -220);
+            arrow.transform.localPosition = new Vector3(arrow.transform.localPosition.x, EventSystem.current.currentSelectedGameObject.transform.localPosition.y, 0);
     }
 
     public void MouseOver(Button button)
@@ -22,6 +22,17 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+
+    public void ClickCredits(Button button)
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void ClickMenu(Button button)
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
     public void ClickLoadGame(Button button)
     {
         //do magic
